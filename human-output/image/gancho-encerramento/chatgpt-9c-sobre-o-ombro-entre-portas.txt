@@ -1,0 +1,17 @@
+=== VERSÃO DESKTOP (16:9) ===
+
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo escuro da seção final de um site premium. O texto do site ficará centralizado por cima, então o centro da imagem precisa ficar livre e escuro.
+
+CENA: enquadramento por cima do ombro (over-the-shoulder), com a câmera muito próxima das costas de uma mulher parada no início de um corredor hospitalar. Em primeiro plano, no CANTO INFERIOR DIREITO, aparecem só o ombro, a lateral da touca cirúrgica e algumas mechas de cabelo dela, grandes e bem desfocados, em silhueta com contorno de luz; ela veste pijama cirúrgico azul-escuro. À frente, ocupando toda a imagem, um corredor longo e simétrico em perspectiva profunda. Dos dois lados do corredor há várias portas iguais, todas FECHADAS e escuras. Apenas UMA porta, a dupla porta do centro cirúrgico no fim do corredor, no centro exato da imagem, está aberta, com luz turquesa saindo e se espalhando pelo chão encerado em direção à câmera. Nenhum rosto aparece.
+
+LUZ E CLIMA: low key, quase tudo em azul-marinho profundo e preto. A única fonte forte é a porta aberta ao fundo, em turquesa (#2AD2C1); as portas fechadas laterais aparecem só pelos reflexos frios nas maçanetas e nos batentes. Clima de escolha e de certeza: entre tantas portas, o caminho certo está iluminado. Brilho contido, sem névoa, sem raios.
+
+COMPOSIÇÃO: ombro e touca da mulher no canto inferior direito, grandes e desfocados, emoldurando a cena; ponto de fuga e porta aberta no centro, na metade de baixo; o centro e o terço de cima escuros o bastante para um título branco por cima. Vinheta forte nas bordas. Foco nítido na porta ao fundo, primeiro plano muito desfocado. Grão fotográfico fino.
+
+CORES: somente preto, azul-marinho, cinzas frios e turquesa; no máximo um reflexo mínimo verde-menta (#00FB8A) no chão perto da porta aberta. Sem laranja, amarelo, dourado, bege, vermelho ou rosa.
+SEM texto, letras, números, placas, números de sala, sinalização ou logotipos em lugar nenhum. Sem rostos e sem outras pessoas. Aparência de foto real, não de ilustração nem 3D.
+
+
+=== VERSÃO CELULAR (4:5 vertical) — gere depois da desktop, na mesma conversa ===
+
+Agora gere a mesma cena em formato vertical 4:5, mantendo a mesma mulher, o corredor com as portas laterais fechadas e a única porta aberta ao fundo. A câmera continua por cima do ombro dela, mas o ombro e a touca ficam na FAIXA DE BAIXO da imagem, grandes e desfocados, um pouco à direita. O corredor sobe em perspectiva acima, com as portas fechadas dos dois lados, até a porta aberta de luz turquesa, um pouco abaixo do meio. A metade de cima deve ser bem escura, para caber o título. Mesmas regras de cores, sem texto e sem rostos.

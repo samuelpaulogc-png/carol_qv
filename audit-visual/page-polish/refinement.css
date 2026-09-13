@@ -1,0 +1,79 @@
+/* Acabamento entre seções: a identidade e as composições aprovadas permanecem. */
+:root{--section-space:clamp(64px,6.1vw,88px);--section-title:clamp(1.875rem,3.4vw,3rem);--copy-readable:rgba(236,240,248,.82)}
+.sec-who,.sec-proof,.offer-sec,.sec-faq{padding-block:var(--section-space)}
+.sec-who .forwhom h2,.sec-proof .sec-head h2,.offer-sec .sec-head h2,.sec-faq .sec-head h2{font-size:var(--section-title);line-height:1.13;letter-spacing:-.025em;text-wrap:balance}
+.sec-proof .sec-head,.offer-sec .sec-head{margin-bottom:40px}
+.sec-who .forwhom{max-width:none}
+.sec-who .check{font-size:1.0625rem;line-height:1.6;border-color:rgba(135,148,172,.24)}
+.sec-who .carol{border:1px solid rgba(135,148,172,.2);border-radius:28px}
+.sec-who .carol-story p{font-size:1.0625rem;line-height:1.7;color:var(--copy-readable);text-wrap:pretty}
+.sec-who .carol-story h2{line-height:1.15;text-wrap:balance}
+.sec-who .carol-story .hl{font-size:1.25rem;line-height:1.6;color:var(--cream);border-left-width:1px}
+.sec-proof .sec-head{max-width:860px;text-align:left;margin-left:0}
+.sec-proof .rail-wrap{max-width:var(--maxw);margin-inline:auto}
+.sec-proof .rail{padding:0 24px 16px;gap:24px;scroll-padding-inline:24px}
+.sec-proof .tcard{flex-basis:320px;background:var(--bg-2);border-radius:24px;gap:18px}
+.sec-proof .tcard.feature{flex-basis:440px;box-shadow:none;border-color:var(--mint-deep)}
+.sec-proof .tcard .av{background:var(--surface);border:1px solid var(--line);color:var(--mint-bright)}
+.sec-proof .tcard blockquote{font-size:1.0625rem;line-height:1.65;text-wrap:pretty}
+.sec-proof .tcard.feature blockquote{font-family:'Bricolage Grotesque',sans-serif;font-size:1.25rem;line-height:1.55;font-weight:400}
+.sec-proof .flow{margin-top:auto;padding-top:6px}
+.sec-proof .flow .chip{padding:6px 10px;font-size:.6875rem;letter-spacing:.015em;font-weight:500}
+.sec-proof .rail-hint{margin-top:12px;letter-spacing:.06em}
+.sec-proof .disclaimer{font-size:.8125rem;line-height:1.6;max-width:80ch}
+.offer-sec .offer-box,.offer-sec .guarantee{max-width:none}
+.offer-sec .offer-box h3{text-align:left;font-size:1.375rem;font-weight:500;margin-bottom:24px}
+.offer-sec .incl-item{border-radius:24px}
+.offer-sec .incl-item .offer-art{object-fit:contain;background:none;border-bottom:0}
+.offer-sec .incl-item .txt{padding-top:16px}
+.offer-sec .incl-item .txt strong{font-size:1.25rem;font-weight:500;line-height:1.3;letter-spacing:-.015em;text-wrap:pretty}
+.offer-sec .incl-item .txt>span{font-size:1rem;line-height:1.6;color:var(--copy-readable)}
+.offer-sec .bonus-lines .bonus-line{color:var(--copy-readable)}
+.offer-sec .offer-purchase{border:1px solid var(--line);border-radius:24px;gap:32px;padding:36px}
+.offer-sec .offer-purchase .btn{border-radius:100px}
+.offer-sec .price .new{font-size:clamp(3.5rem,5vw,4.5rem);font-weight:600}
+.offer-sec .price .old{font-size:.9375rem}
+.offer-sec .guarantee{padding:28px 32px;border-color:var(--line);border-radius:24px;background:none;gap:24px}
+.offer-sec .seal{width:76px;height:90px}
+.offer-sec .guarantee h4{font-size:1.375rem;font-weight:500}
+.offer-sec .guarantee p{color:var(--copy-readable);font-size:.9375rem;line-height:1.65}
+.sec-faq>.wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+.sec-faq .sec-head{text-align:left;margin:0;max-width:390px}
+.sec-faq .sec-head h2 .serif{display:block}
+.sec-faq .faq-list{width:100%;max-width:none;margin:0;gap:0;border-top:1px solid var(--line)}
+.sec-faq .faq{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;overflow:visible}
+.sec-faq .faq summary{padding:24px 0;gap:24px;font-size:1.125rem;font-weight:500;line-height:1.45;letter-spacing:-.01em}
+.sec-faq .faq summary .ch{width:32px;height:32px;background:var(--bg-2)}
+.sec-faq .faq[open] summary .ch{background:var(--mint);color:var(--bg);border-color:var(--mint)}
+.sec-faq .faq .a{padding:0 44px 24px 0;color:var(--copy-readable);font-size:1rem;line-height:1.7;text-wrap:pretty}
+.sec-faq .faq summary:hover{color:var(--mint-bright)}
+.final{padding:var(--section-space) 0}
+.final .wrap{max-width:960px}
+.final h2{font-size:clamp(1.875rem,3.4vw,3rem);line-height:1.15;letter-spacing:-.025em;text-wrap:balance}
+.final .steps-line{max-width:660px;margin:28px auto 32px;color:var(--copy-readable);font-size:1.0625rem;line-height:1.75;text-wrap:pretty}
+.final .steps-line b{font-weight:500}
+@media(max-width:900px){
+ .sec-faq>.wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+ .sec-faq .sec-head{max-width:680px}
+ .sec-faq .sec-head h2 .serif{display:inline}
+ .offer-sec .offer-purchase{padding:28px}
+}
+@media(max-width:560px){
+ .sec-who .check{font-size:1rem}
+ .sec-who .carol{padding:24px 20px;border-radius:24px}
+ .sec-who .carol-story p{font-size:1rem;line-height:1.65}
+ .sec-who .carol-story .hl{font-size:1.125rem}
+ .sec-proof .tcard,.sec-proof .tcard.feature{flex-basis:calc(100vw - 64px);padding:24px;gap:16px}
+ .sec-proof .tcard.feature blockquote{font-size:1.125rem;line-height:1.55}
+ .sec-proof .flow{gap:8px}
+ .sec-proof .disclaimer{margin-top:20px}
+ .offer-sec .offer-box h3{font-size:1.25rem}
+ .offer-sec .incl-item .txt strong{font-size:1.125rem}
+ .offer-sec .offer-purchase{padding:28px 20px}
+ .offer-sec .offer-purchase .btn{font-size:1rem;line-height:1.4}
+ .offer-sec .guarantee{padding:24px 20px;gap:20px}
+ .sec-faq .faq summary{font-size:1.0625rem;gap:16px;padding:20px 0}
+ .sec-faq .faq .a{padding:0 0 24px;font-size:1rem}
+ .final .steps-line{font-size:1rem;line-height:1.7}
+ .final .btn{width:100%;font-size:1rem;line-height:1.4;padding-inline:24px}
+}

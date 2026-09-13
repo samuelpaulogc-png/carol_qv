@@ -1,0 +1,10 @@
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo escuro da seção final de um site premium. O texto do site ficará centralizado por cima, então a luz principal deve ficar no centro, atrás do texto, e o resto da imagem bem escuro.
+
+CENA: vista de baixo para cima, a partir da altura da mesa cirúrgica, de um foco cirúrgico de teto (lâmpada de cirurgia com vários módulos circulares de LED) em uma sala de cirurgia escura. O foco está no centro exato da imagem, ligeiramente acima do meio, e está começando a acender: os LEDs do centro brilham em luz branca fria com halo turquesa, enquanto os módulos das bordas ainda estão apagados. O braço articulado do foco sai para o alto e para o lado, em silhueta. Ao redor, o teto e as bordas da sala quase não aparecem, só insinuados por reflexos. Nenhuma pessoa na cena.
+
+LUZ E CLIMA: low key, quase tudo em azul-marinho profundo e preto. A única fonte de luz é o foco acendendo, com um halo suave turquesa (#2AD2C1) que se dissolve no escuro. Brilho contido e elegante, sem névoa densa, sem raios de luz marcados, sem lens flare exagerado.
+
+COMPOSIÇÃO: foco e halo no centro; bordas e cantos mergulham no preto em vinheta forte. O halo não deve ser tão claro a ponto de apagar um texto branco por cima. Profundidade de campo rasa, grão fotográfico fino.
+
+CORES: somente preto, azul-marinho, cinzas frios, branco frio e turquesa. Sem laranja, amarelo, dourado, bege, vermelho ou rosa; nenhuma luz quente.
+SEM texto, letras, números, marcas ou logotipos em lugar nenhum (inclusive no foco). Sem pessoas. Aparência de foto real, não de ilustração nem 3D.

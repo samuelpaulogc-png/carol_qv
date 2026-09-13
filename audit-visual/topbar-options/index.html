@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Letreiro — opções de cor</title>
+<style>
+  :root{--bg:#080C22;--bg-2:#0C1236;--line:#2A3574;--cream:#ECF0F8;--muted:#8794AC;--mint:#2AD2C1}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--cream);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  body{display:flex;flex-direction:column}
+  iframe{flex:1;width:100%;border:0;display:block;background:var(--bg)}
+  .picker{flex:none;display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-2);border-top:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+  .picker::-webkit-scrollbar{display:none}
+  .picker strong{flex:none;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .picker button{flex:none;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--cream);font:inherit;font-size:.875rem;cursor:pointer;white-space:nowrap}
+  .picker button[aria-pressed="true"]{border-color:var(--mint);background:rgba(42,210,193,.12)}
+  .picker button:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+  .sw{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+  .note{flex:none;font-size:.8125rem;color:var(--muted);white-space:nowrap}
+</style>
+</head>
+<body>
+<iframe id="page" src="../../index.html?v=topbar" title="Landing page com o letreiro"></iframe>
+<div class="picker" role="group" aria-label="Cor do letreiro">
+  <strong>Letreiro</strong>
+  <button type="button" data-opt="0"><span class="sw" style="background:#00FB8A"></span>0 · Atual</button>
+  <button type="button" data-opt="1"><span class="sw" style="background:#2AD2C1"></span>1 · Turquesa</button>
+  <button type="button" data-opt="2"><span class="sw" style="background:#0C1236;border-color:#2AD2C1"></span>2 · Faixa escura</button>
+  <button type="button" data-opt="3"><span class="sw" style="background:#0E766C"></span>3 · Turquesa fechado</button>
+  <span class="note" id="note"></span>
+</div>
+<script>
+  // Cada opção só troca as cores do letreiro da página real (injetadas no iframe, mesma origem).
+  const OPTIONS = {
+    '0': { note: 'Verde-menta com texto navy · contraste 14:1', css: '' },
+    '1': { note: 'Turquesa dos botões com texto navy · contraste 10,2:1', css: `
+      .topbar{background:#2AD2C1!important;border-bottom:0!important;backdrop-filter:none!important}
+      .marquee>span,.marquee>span b,.marquee .sep{color:#080C22!important}` },
+    '2': { note: 'Navy com linha turquesa, texto claro e data em turquesa · contraste 11,5:1', css: `
+      .topbar{background:#0C1236!important;border-bottom:1px solid rgba(42,210,193,.55)!important;backdrop-filter:none!important}
+      .marquee>span{color:#ECF0F8!important}
+      .marquee>span b{color:#45E4D3!important}
+      .marquee .sep{color:#2AD2C1!important}` },
+    '3': { note: 'Turquesa fechado com texto creme · contraste 4,8:1', css: `
+      .topbar{background:#0E766C!important;border-bottom:0!important;backdrop-filter:none!important}
+      .marquee>span,.marquee>span b{color:#ECF0F8!important}
+      .marquee .sep{color:rgba(236,240,248,.6)!important}` }
+  };
+  const frame = document.getElementById('page');
+  const note = document.getElementById('note');
+  const buttons = [...document.querySelectorAll('.picker button')];
+  let current = new URLSearchParams(location.search).get('opt');
+  if (!OPTIONS[current]) { try { current = localStorage.getItem('topbar-opt'); } catch (e) {} }
+  if (!OPTIONS[current]) current = '1';
+
+  function apply() {
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.opt === current)));
+    note.textContent = OPTIONS[current].note;
+    const doc = frame.contentDocument;
+    if (!doc || !doc.head) return;
+    let style = doc.getElementById('topbar-opt');
+    if (!style) { style = doc.createElement('style'); style.id = 'topbar-opt'; doc.head.appendChild(style); }
+    style.textContent = OPTIONS[current].css;
+  }
+  buttons.forEach(b => b.addEventListener('click', () => {
+    current = b.dataset.opt;
+    try { localStorage.setItem('topbar-opt', current); } catch (e) {}
+    apply();
+  }));
+  frame.addEventListener('load', apply);
+  apply();
+</script>
+</body>
+</html>

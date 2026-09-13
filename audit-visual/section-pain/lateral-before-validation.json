@@ -1,0 +1,32 @@
+[
+  {
+    "name": "desktop",
+    "textUnchanged": true,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "questions": 5,
+    "emptyImageVisible": false,
+    "height": 654,
+    "errors": []
+  },
+  {
+    "name": "mobile",
+    "textUnchanged": true,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "questions": 5,
+    "emptyImageVisible": false,
+    "height": 877,
+    "errors": []
+  },
+  {
+    "name": "tablet",
+    "textUnchanged": true,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "questions": 5,
+    "emptyImageVisible": false,
+    "height": 599,
+    "errors": []
+  }
+]

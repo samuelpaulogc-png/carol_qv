@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garantia — variações embutidas na oferta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080C22;--bg-2:#0C1236;--surface:#141C4A;--surface-2:#1D2864;--line:#2A3574;--cream:#ECF0F8;--muted:#8794AC;--mint:#2AD2C1;--mint-bright:#45E4D3;--mint-deep:#1AA99B;--copy-readable:rgba(236,240,248,.82);--ease-out:cubic-bezier(.22,1,.36,1);--maxw:1160px;--section-space:clamp(64px,6.1vw,88px)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--cream);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  ul{list-style:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ===== moldura do comparador ===== */
+  .intro{padding:32px 0 18px}
+  .intro h1{font-family:'Bricolage Grotesque',sans-serif;font-size:1.375rem;font-weight:600;margin-bottom:6px}
+  .intro p{color:var(--muted);font-size:.9375rem;max-width:860px}
+  .picker{position:sticky;top:0;z-index:30;background:rgba(8,12,34,.92);backdrop-filter:blur(10px);border-block:1px solid var(--line)}
+  .picker .wrap{display:flex;align-items:center;gap:10px 14px;padding-block:10px;overflow-x:auto;scrollbar-width:none}
+  .picker .wrap::-webkit-scrollbar{display:none}
+  .picker p{flex:none;font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .picker div{display:flex;gap:8px}
+  .picker button{flex:none;white-space:nowrap;font:inherit;font-size:.875rem;color:var(--cream);background:none;padding:8px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+  .picker button b{color:var(--mint-bright);margin-right:6px}
+  .picker button:hover{border-color:var(--mint-deep)}
+  .picker button[aria-pressed="true"]{background:var(--mint);border-color:var(--mint);color:#06122E}
+  .picker button[aria-pressed="true"] b{color:#06122E}
+  .picker button:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+  .note{max-width:var(--maxw);margin:0 auto;padding:14px 24px 0;color:var(--muted);font-size:.875rem;min-height:40px}
+  @media (max-width:560px){.picker p{display:none}}
+
+  /* ===== trecho da oferta como está na página ===== */
+  .offer-sec{position:relative;padding-block:28px var(--section-space);background:var(--bg-2);border-block:1px solid var(--line)}
+  .offer-sec .ov{position:relative;border:1px solid var(--line);border-radius:28px;background:var(--bg);overflow:hidden;box-shadow:0 60px 120px -50px rgba(0,0,0,.9)}
+  .offer-sec .ov-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:290px}
+  .offer-sec .ov-media{position:relative;margin:0;overflow:hidden}
+  .offer-sec .ov-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 55%,var(--bg))}
+  .offer-sec .ov-bonus-art{display:grid;place-items:center;background:radial-gradient(260px 180px at 55% 50%,rgba(42,210,193,.16),transparent 70%),linear-gradient(rgba(42,210,193,.06) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(42,210,193,.06) 1px,transparent 1px) 0 0/28px 28px,var(--bg)}
+  .offer-sec .ov-bonus-art svg{width:100%;height:100%}
+  .offer-sec .ov-body{display:flex;flex-direction:column;justify-content:center;padding:48px 64px}
+  .offer-sec .ov-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.875rem,3vw,2.5rem);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--cream)}
+  .offer-sec .ov-title .serif,.serif{font-family:'Fraunces',serif;font-style:italic;font-weight:500;letter-spacing:-.015em;color:var(--mint-bright)}
+  .offer-sec .ov-title::after{content:"";display:block;width:32px;height:2px;margin:24px 0 20px;background:var(--mint)}
+  .offer-sec .ov-bonus{max-width:36ch}
+  .offer-sec .ov-bonus li{position:relative;padding:12px 0 12px 26px;font-size:1.0625rem;line-height:1.5;color:var(--copy-readable)}
+  .offer-sec .ov-bonus li+li{border-top:1px solid rgba(42,53,116,.8)}
+  .offer-sec .ov-bonus li:first-child{padding-top:0}
+  .offer-sec .ov-bonus li::before{content:"";position:absolute;left:0;top:calc(12px + .75em);width:12px;height:1.5px;background:var(--mint)}
+  .offer-sec .ov-bonus li:first-child::before{top:.75em}
+  .offer-sec .ov-buy{display:grid;grid-template-columns:auto 1px minmax(0,1fr);align-items:center;gap:56px;padding:44px 56px;border-top:1px solid var(--line);background:var(--bg-2)}
+  .offer-sec .ov-rule{align-self:stretch;background:var(--line)}
+  .offer-sec .ov-old{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:line-through}
+  .offer-sec .ov-amount{margin:10px 0 12px;font-family:'Bricolage Grotesque',sans-serif;font-size:4.5rem;font-weight:600;line-height:1;letter-spacing:-.04em;white-space:nowrap}
+  .offer-sec .ov-amount .cur,.offer-sec .ov-amount .cents{font-size:.4em;font-weight:500;letter-spacing:0;color:var(--muted)}
+  .offer-sec .ov-amount .cur{margin-right:.22em}
+  .offer-sec .ov-parc{font-size:.9375rem;color:var(--copy-readable)}
+  .offer-sec .ov-parc b{font-weight:600;color:var(--mint-bright)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:#06122E;background:linear-gradient(180deg,var(--mint-bright),var(--mint) 55%,var(--mint-deep));padding:18px 30px;min-height:60px;border-radius:100px;box-shadow:0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4);text-align:center;line-height:1.3;text-decoration:none}
+  .btn svg{width:18px;height:18px}
+  .offer-sec .ov-buy .btn{justify-self:center;width:min(100%,460px)}
+
+  /* ===== garantia: base comum ===== */
+  .g-slot{margin-top:24px}
+  .g h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.025em;color:var(--cream);line-height:1.1}
+  .g p{color:var(--copy-readable);text-wrap:pretty}
+  .shield{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:76px;height:90px;clip-path:polygon(50% 0,100% 14%,95% 70%,80% 87%,50% 100%,20% 87%,5% 70%,0 14%);background:var(--mint);color:var(--bg);font-family:'Bricolage Grotesque',sans-serif;line-height:1}
+  .shield .b{font-size:2.25rem;font-weight:700}
+  .shield .s{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+
+  /* 0 — atual (referência) */
+  .g0{display:flex;gap:24px;align-items:center;padding:28px 32px;border:1px solid var(--line);border-radius:24px}
+  .g0 h4{font-size:1.375rem;font-weight:500;margin-bottom:10px}
+  .g0 p{font-size:.9375rem;line-height:1.65;max-width:82ch}
+
+  /* 1 — numeral editorial */
+  .g1{position:relative;display:grid;grid-template-columns:auto 1px minmax(0,1fr);align-items:center;gap:56px;padding:52px 64px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,var(--surface) 0%,var(--bg) 58%);overflow:hidden}
+  .g1-num{position:relative;display:grid;justify-items:center;line-height:.8}
+  .g1-num .n{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:10rem;letter-spacing:-.04em;color:var(--mint-bright)}
+  .g1-num .u{margin-top:14px;font-size:.8125rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);padding-left:.32em}
+  .g1-rule{align-self:stretch;background:var(--line)}
+  .g1-copy{position:relative;z-index:1}
+  .g1 h4{font-size:clamp(1.875rem,3vw,2.5rem)}
+  .g1 h4::after{content:"";display:block;width:32px;height:2px;margin:22px 0 18px;background:var(--mint)}
+  .g1 p{font-size:1.0625rem;line-height:1.7;max-width:60ch}
+  .g1-ecg{position:absolute;right:-20px;bottom:18px;width:min(560px,60%);height:auto;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+  .g1-ecg path{fill:none;stroke:rgba(42,210,193,.22);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+  /* 2 — certificado */
+  .g2{position:relative;padding:12px;border:1px solid var(--line);border-radius:30px;background:var(--bg)}
+  .g2-frame{position:relative;display:grid;justify-items:center;text-align:center;padding:56px 48px 52px;border:1px solid rgba(42,210,193,.22);border-radius:20px;overflow:hidden;background:repeating-radial-gradient(circle at 50% 0,rgba(42,210,193,.055) 0 1px,transparent 1px 14px),linear-gradient(180deg,var(--surface),var(--bg-2) 70%)}
+  .g2-frame::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 90% at 50% 0,transparent 30%,var(--bg-2) 80%)}
+  .g2-corner{position:absolute;width:22px;height:22px;border-color:var(--mint);border-style:solid;border-width:0}
+  .g2-corner.tl{top:14px;left:14px;border-top-width:1.5px;border-left-width:1.5px}
+  .g2-corner.tr{top:14px;right:14px;border-top-width:1.5px;border-right-width:1.5px}
+  .g2-corner.bl{bottom:14px;left:14px;border-bottom-width:1.5px;border-left-width:1.5px}
+  .g2-corner.br{bottom:14px;right:14px;border-bottom-width:1.5px;border-right-width:1.5px}
+  .g2-medal{position:relative;z-index:1;width:132px;height:132px;margin-bottom:28px}
+  .g2-medal svg{width:100%;height:100%}
+  .g2-medal .ring-text{font-family:'Hanken Grotesk',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:2.6px;fill:var(--muted);text-transform:uppercase}
+  .g2-medal .num{position:absolute;inset:26px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(180deg,var(--mint-bright),var(--mint) 60%,var(--mint-deep));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -18px rgba(42,210,193,.6);color:var(--bg);font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:3.5rem;line-height:1}
+  .g2 h4,.g2 p{position:relative;z-index:1}
+  .g2 h4{font-size:clamp(1.875rem,3vw,2.5rem);margin-bottom:16px}
+  .g2 p{font-size:1.0625rem;line-height:1.7;max-width:62ch}
+
+  /* 3 — imagem + texto (espaço reservado para imagem gerada) */
+  .g3{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:320px;border:1px solid var(--line);border-radius:28px;background:var(--bg);overflow:hidden}
+  .g3-media{position:relative;overflow:hidden;background:radial-gradient(300px 220px at 50% 50%,rgba(42,210,193,.12),transparent 70%),linear-gradient(rgba(42,210,193,.05) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(42,210,193,.05) 1px,transparent 1px) 0 0/28px 28px,var(--bg-2)}
+  .g3-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 55%,var(--bg))}
+  .g3-slot{position:absolute;inset:24px;display:grid;place-items:center;border:1.5px dashed rgba(135,148,172,.4);border-radius:18px;color:var(--muted);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:16px}
+  .g3-copy{display:flex;flex-direction:column;justify-content:center;padding:48px 64px 48px 40px}
+  .g3-head{display:flex;align-items:center;gap:20px}
+  .g3 .shield{width:58px;height:68px;gap:2px}
+  .g3 .shield .b{font-size:1.625rem}
+  .g3 .shield .s{font-size:.55rem}
+  .g3 h4{font-size:clamp(1.875rem,3vw,2.5rem)}
+  .g3-rule{width:32px;height:2px;margin:24px 0 20px;background:var(--mint)}
+  .g3 p{font-size:1.0625rem;line-height:1.7;max-width:56ch}
+
+  @media (max-width:900px){
+    .offer-sec .ov-row{grid-template-columns:1fr}
+    .offer-sec .ov-media{aspect-ratio:16/9}
+    .offer-sec .ov-media::after{background:linear-gradient(0deg,var(--bg),transparent 45%)}
+    .offer-sec .ov-body{padding:6px 24px 32px}
+    .offer-sec .ov-buy{grid-template-columns:1fr;gap:24px;padding:28px 24px}
+    .offer-sec .ov-rule{height:1px;align-self:auto}
+    .offer-sec .ov-amount{font-size:3.75rem}
+    .offer-sec .ov-buy .btn{width:100%;max-width:460px;justify-self:start}
+    .g1{grid-template-columns:1fr;gap:24px;padding:36px 28px 44px}
+    .g1-num{grid-auto-flow:column;justify-content:start;align-items:end;gap:16px}
+    .g1-num .n{font-size:6.5rem}
+    .g1-num .u{margin:0 0 10px}
+    .g1-rule{height:1px;align-self:auto}
+    .g1-ecg{width:90%;bottom:10px}
+    .g2-frame{padding:48px 24px 44px}
+    .g3{grid-template-columns:1fr}
+    .g3-media{aspect-ratio:16/10}
+    .g3-media::after{background:linear-gradient(0deg,var(--bg),transparent 45%)}
+    .g3-copy{padding:8px 24px 36px}
+  }
+  @media (max-width:560px){
+    .offer-sec .ov{border-radius:24px}
+    .btn{font-size:.9375rem;padding-inline:18px;gap:8px}
+    .g0{flex-direction:column;align-items:flex-start;padding:24px 20px}
+    .g1{border-radius:24px}
+    .g1 p,.g2 p,.g3 p{font-size:1rem}
+    .g2{padding:8px;border-radius:24px}
+    .g2-frame{padding:44px 20px 40px;border-radius:18px}
+    .g2-medal{width:116px;height:116px}
+    .g2-medal .num{inset:23px;font-size:3rem}
+    .g3{border-radius:24px}
+    .g3-head{gap:14px}
+    .g3 .shield{width:50px;height:58px}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap intro">
+  <h1>Garantia · três propostas embutidas na oferta</h1>
+  <p>Abaixo está o fim da oferta exatamente como na página (bônus, preço e botão), com a garantia logo em seguida. Use o seletor para alternar entre a atual e as propostas. Copy da garantia idêntica. Veja também no celular.</p>
+</header>
+
+<div class="picker" role="group" aria-label="Versão da garantia">
+  <div class="wrap">
+    <p>Garantia</p>
+    <div>
+      <button type="button" data-pick="g0" aria-pressed="false"><b>0</b>Atual</button>
+      <button type="button" data-pick="g1" aria-pressed="true"><b>1</b>Numeral editorial</button>
+      <button type="button" data-pick="g2" aria-pressed="false"><b>2</b>Certificado</button>
+      <button type="button" data-pick="g3" aria-pressed="false"><b>3</b>Imagem + texto</button>
+    </div>
+  </div>
+</div>
+<p class="note" aria-live="polite"></p>
+
+<section class="offer-sec">
+  <div class="wrap">
+    <div class="ov">
+      <article class="ov-row">
+        <figure class="ov-media ov-bonus-art">
+          <svg viewBox="0 0 300 184" aria-hidden="true" fill="none">
+            <path d="m140 46 51-13 61 15v94l-61-15-51 13Z" fill="#FFFFFF" stroke="#1D2864" stroke-width="2"/>
+            <path d="M191 34v93" stroke="#DBE2F0" stroke-width="2"/><path d="M158 113c-12-21 60-12 47-41s23-14 27-7" stroke="#0C7D6F" stroke-width="2" stroke-dasharray="5 5"/>
+            <circle cx="159" cy="112" r="4" fill="#24B7D3"/><circle cx="231" cy="66" r="4" fill="#00FB8A"/>
+            <rect x="47" y="34" width="79" height="120" rx="6" fill="#1D2864"/><path d="M57 34v120" stroke="#2AD2C1" stroke-width="2"/>
+            <path d="m72 62 5 5 10-12m-15 33 5 5 10-12m-15 33 5 5 10-12" stroke="#2AD2C1" stroke-width="2"/><path d="M96 62h17M96 88h17M96 114h17" stroke="#ECF0F8" stroke-width="2"/>
+            <rect x="109" y="86" width="48" height="80" rx="8" fill="#080C22" stroke="#6F7F90" stroke-width="2"/><rect x="115" y="96" width="36" height="53" rx="3" fill="#141C4A"/><path d="m128 113 13 9-13 9Z" fill="#2AD2C1"/><path d="M128 157h10" stroke="#8794AC" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </figure>
+        <div class="ov-body">
+          <h4 class="ov-title"><span class="serif">Bônus</span></h4>
+          <ul class="ov-bonus"><li>1 dia de Vlog no Centro Cirúrgico</li><li>E-book "Checklist Cirúrgico"</li><li>Mapa da Jornada.</li></ul>
+        </div>
+      </article>
+      <div class="ov-buy">
+        <div>
+          <p class="ov-old">DE R$ 297,00</p>
+          <p class="ov-amount"><span class="cur">R$</span>47<span class="cents">,00</span></p>
+          <p class="ov-parc">ou em até <b>12x</b> no cartão</p>
+        </div>
+        <span class="ov-rule" aria-hidden="true"></span>
+        <a href="#" class="btn">QUERO PARTICIPAR DO GANCHO DA VIRADA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="g-slot"></div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const TEXT = 'A inscrição conta com 7 dias de garantia, conforme as condições da plataforma. Caso o participante entenda dentro desse período que o Gancho da Virada não é para ele, poderá solicitar o cancelamento seguindo as condições aplicáveis.';
+  const shield = '<div class="shield" aria-hidden="true"><span class="b">7</span><span class="s">dias</span></div>';
+  const VERSIONS = {
+    g0: {
+      note: 'Garantia atual da página, para referência.',
+      html: '<aside class="g g0">' + shield + '<div><h4>7 dias de garantia</h4><p>' + TEXT + '</p></div></aside>'
+    },
+    g1: {
+      note: 'Numeral editorial: o “7” em Fraunces itálico turquesa, grande, como assinatura; fio vertical, título com o filete da oferta e uma linha de batimento da marca, estática e bem sutil, atravessando o canto.',
+      html: '<aside class="g g1"><div class="g1-num" aria-hidden="true"><span class="n">7</span><span class="u">dias</span></div><span class="g1-rule" aria-hidden="true"></span><div class="g1-copy"><h4>7 dias de garantia</h4><p>' + TEXT + '</p></div>'
+        + '<svg class="g1-ecg" viewBox="0 0 560 80" aria-hidden="true"><path d="M0 52h170l14-22 12 40 16-62 14 44 10-12h120l12-16 10 24 12-40 12 30 8-8h130"/></svg></aside>'
+    },
+    g2: {
+      note: 'Certificado: moldura dupla com cantos turquesa, anéis finos irradiando do topo (como papel de segurança), medalha com o texto “7 dias de garantia” em volta e o “7” no centro; tudo centralizado.',
+      html: '<aside class="g g2"><div class="g2-frame"><i class="g2-corner tl"></i><i class="g2-corner tr"></i><i class="g2-corner bl"></i><i class="g2-corner br"></i>'
+        + '<div class="g2-medal" aria-hidden="true"><svg viewBox="0 0 132 132"><defs><path id="ring" d="M66 66m-56 0a56 56 0 1 1 112 0a56 56 0 1 1-112 0"/></defs><circle cx="66" cy="66" r="65" fill="none" stroke="rgba(42,210,193,.35)"/><circle cx="66" cy="66" r="44" fill="none" stroke="rgba(42,210,193,.25)"/><text class="ring-text"><textPath href="#ring" textLength="340">7 dias de garantia · 7 dias de garantia ·</textPath></text></svg><span class="num">7</span></div>'
+        + '<h4>7 dias de garantia</h4><p>' + TEXT + '</p></div></aside>'
+    },
+    g3: {
+      note: 'Imagem + texto: mesmo formato das faixas da oferta (imagem de um lado, texto do outro, filete turquesa). O quadro tracejado é o espaço para a imagem que vamos gerar.',
+      html: '<aside class="g g3"><div class="g3-media"><div class="g3-slot">Espaço para a imagem da garantia</div></div><div class="g3-copy"><div class="g3-head">' + shield + '<h4>7 dias de garantia</h4></div><span class="g3-rule" aria-hidden="true"></span><p>' + TEXT + '</p></div></aside>'
+    }
+  };
+  const slot = document.querySelector('.g-slot');
+  const note = document.querySelector('.note');
+  const picks = document.querySelectorAll('[data-pick]');
+  const choose = key => {
+    slot.innerHTML = VERSIONS[key].html;
+    note.textContent = VERSIONS[key].note;
+    picks.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.pick === key)));
+    try { localStorage.setItem('guarantee-version', key); } catch (e) {}
+  };
+  picks.forEach(b => b.addEventListener('click', () => choose(b.dataset.pick)));
+  let saved = 'g1';
+  try { saved = localStorage.getItem('guarantee-version') || 'g1'; } catch (e) {}
+  choose(VERSIONS[saved] ? saved : 'g1');
+  document.addEventListener('click', e => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "desktop",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "height": 1036,
+    "cards": 2,
+    "textPreserved": true,
+    "errors": [],
+    "failed": []
+  },
+  {
+    "name": "mobile",
+    "width": 375,
+    "scrollWidth": 375,
+    "height": 1464,
+    "cards": 2,
+    "textPreserved": true,
+    "errors": [],
+    "failed": []
+  },
+  {
+    "name": "tablet",
+    "width": 768,
+    "scrollWidth": 768,
+    "height": 991,
+    "cards": 2,
+    "textPreserved": true,
+    "errors": [],
+    "failed": []
+  }
+]

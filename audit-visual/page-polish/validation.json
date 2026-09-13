@@ -1,0 +1,38 @@
+[
+  {
+    "width": 1440,
+    "noOverflow": true,
+    "textPreserved": true,
+    "faqKeyboard": true,
+    "ctaNavigation": true,
+    "errors": [],
+    "failed": []
+  },
+  {
+    "width": 768,
+    "noOverflow": true,
+    "textPreserved": true,
+    "faqKeyboard": true,
+    "ctaNavigation": true,
+    "errors": [],
+    "failed": []
+  },
+  {
+    "width": 375,
+    "noOverflow": true,
+    "textPreserved": true,
+    "faqKeyboard": true,
+    "ctaNavigation": true,
+    "errors": [],
+    "failed": []
+  },
+  {
+    "width": 320,
+    "noOverflow": true,
+    "textPreserved": true,
+    "faqKeyboard": true,
+    "ctaNavigation": true,
+    "errors": [],
+    "failed": []
+  }
+]

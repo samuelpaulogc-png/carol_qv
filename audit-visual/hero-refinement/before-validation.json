@@ -1,0 +1,194 @@
+[
+  {
+    "name": "desktop",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "heroHeight": 691,
+    "backgrounds": {
+      ".hero": {
+        "image": "url(\"http://localhost:5501/assets/images/Image%20-%20Hero.png\")",
+        "color": "rgb(8, 12, 34)",
+        "size": "cover",
+        "position": "50% 50%"
+      },
+      ".hero::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      }
+    },
+    "errors": [],
+    "textUnchanged": true
+  },
+  {
+    "name": "mobile",
+    "width": 375,
+    "scrollWidth": 375,
+    "heroHeight": 1062,
+    "backgrounds": {
+      ".hero": {
+        "image": "none",
+        "color": "rgb(8, 12, 34)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art": {
+        "image": "url(\"http://localhost:5501/assets/images/Image%20-%20Hero.png\")",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto 100%",
+        "position": "80% 50%"
+      },
+      ".hero-mobile-art::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      }
+    },
+    "errors": [],
+    "textUnchanged": true
+  },
+  {
+    "name": "tablet",
+    "width": 768,
+    "scrollWidth": 768,
+    "heroHeight": 607,
+    "backgrounds": {
+      ".hero": {
+        "image": "url(\"http://localhost:5501/assets/images/Image%20-%20Hero.png\")",
+        "color": "rgb(8, 12, 34)",
+        "size": "cover",
+        "position": "50% 50%"
+      },
+      ".hero::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-mobile-art::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx::before": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      },
+      ".hero-fx::after": {
+        "image": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "size": "auto",
+        "position": "0% 0%"
+      }
+    },
+    "errors": [],
+    "textUnchanged": true
+  }
+]

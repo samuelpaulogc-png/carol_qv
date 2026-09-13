@@ -1,0 +1,8 @@
+# Configuração compartilhada e conservadora para este projeto.
+# Esta camada só é carregada quando o diretório é marcado como confiável.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[agents]
+max_concurrent_threads_per_session = 4

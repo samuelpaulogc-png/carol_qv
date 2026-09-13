@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citação final da Carol — variações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080C22;--bg-2:#0C1236;--surface:#141C4A;--line:#2A3574;--cream:#ECF0F8;--muted:#8794AC;--mint:#2AD2C1;--mint-bright:#45E4D3;--copy:rgba(236,240,248,.82)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--cream);font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased;padding:32px 16px 64px}
+  .intro{max-width:1240px;margin:0 auto 28px;color:var(--muted);font-size:.9375rem;line-height:1.6}
+  .intro h1{font-family:'Bricolage Grotesque',sans-serif;font-size:1.375rem;font-weight:600;color:var(--cream);margin-bottom:6px}
+  .grid{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+  .opt{width:375px;max-width:100%;background:var(--bg-2);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+  .opt header{padding:14px 24px;border-bottom:1px solid var(--line);display:grid;gap:2px}
+  .opt header b{font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:600}
+  .opt header b span{color:var(--mint-bright)}
+  .opt header small{color:var(--muted);font-size:.8125rem;line-height:1.45}
+
+  /* Trecho real da narrativa, com os estilos de celular da página */
+  .story{padding:32px 24px 40px}
+  .story .opening{display:block;margin-bottom:16px;font-family:'Bricolage Grotesque',sans-serif;font-size:1.375rem;font-weight:500;line-height:1.25;letter-spacing:-.025em;color:var(--cream)}
+  .story p{font-size:1rem;line-height:1.65;color:var(--copy);text-wrap:pretty}
+  .story p+p{margin-top:18px}
+  .story b{font-weight:600;color:var(--cream)}
+  .hl{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--cream)}
+
+  /* Atual */
+  .now .hl{position:relative;margin-top:28px;padding-top:24px;border-top:1px solid var(--line);font-size:1.3125rem;line-height:1.42}
+  .now .hl::before{content:'';position:absolute;top:-1px;left:0;width:56px;height:2px;background:var(--mint)}
+
+  /* A — Continuação: vira o último parágrafo, em turquesa, sem divisor */
+  .a .hl{margin-top:18px;font-size:1.1875rem;line-height:1.5;color:var(--mint-bright);text-wrap:pretty}
+
+  /* B — Fechamento em card, com a linha de batimento da marca */
+  .b .close{margin-top:28px;padding:20px 22px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+  .b .close svg{display:block;width:92px;height:18px;margin-bottom:12px}
+  .b .hl{font-size:1.25rem;line-height:1.45;text-wrap:balance}
+
+  /* C — Barra lateral fina, proporção de citação */
+  .c .hl{margin-top:26px;padding:2px 0 2px 18px;border-left:2px solid var(--mint);font-size:1.1875rem;line-height:1.5;text-wrap:balance}
+
+  /* D — Assinatura centralizada: fio vertical e frase equilibrada */
+  .d .hl{margin:40px auto 0;max-width:24ch;text-align:center;font-size:1.3125rem;line-height:1.42;text-wrap:balance}
+  .d .hl::before{content:'';display:block;width:1px;height:36px;margin:0 auto 20px;background:var(--mint)}
+</style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Citação final da Carol · variações no celular</h1>
+    <p>Mesmo trecho da página, copy idêntica, em 375 px. Só muda a forma da frase “Ter um mapa muda completamente a forma como você percorre o caminho.” Escolha uma letra.</p>
+  </div>
+
+  <div class="grid">
+    <section class="opt now">
+      <header><b>Atual</b><small>Filete no topo, frase grande em itálico.</small></header>
+      <div class="story">
+        <p><span class="opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>
+        <p>Com a minha própria trajetória e, depois, direcionando outros instrumentadores, comecei a enxergar as etapas que se repetiam. Foi assim que nasceu o <b>Mapa dos 6 Passos da Virada.</b></p>
+        <p class="hl">Ter um mapa muda completamente a forma como você percorre o caminho.</p>
+      </div>
+    </section>
+
+    <section class="opt a">
+      <header><b><span>A</span> Continuação</b><small>Vira o último parágrafo, em turquesa e itálico, sem divisor. Lê como conclusão da própria história.</small></header>
+      <div class="story">
+        <p><span class="opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>
+        <p>Com a minha própria trajetória e, depois, direcionando outros instrumentadores, comecei a enxergar as etapas que se repetiam. Foi assim que nasceu o <b>Mapa dos 6 Passos da Virada.</b></p>
+        <p class="hl">Ter um mapa muda completamente a forma como você percorre o caminho.</p>
+      </div>
+    </section>
+
+    <section class="opt b">
+      <header><b><span>B</span> Fechamento em card</b><small>Bloco próprio com a linha de batimento do mapa acima da frase. Separa sem parecer outra seção.</small></header>
+      <div class="story">
+        <p><span class="opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>
+        <p>Com a minha própria trajetória e, depois, direcionando outros instrumentadores, comecei a enxergar as etapas que se repetiam. Foi assim que nasceu o <b>Mapa dos 6 Passos da Virada.</b></p>
+        <div class="close">
+          <svg viewBox="0 0 92 18" aria-hidden="true"><path d="M0 9 H34 L39 9 L43 2 L48 16 L53 9 L59 9 L62 5 L65 13 L68 9 H92" fill="none" stroke="#2AD2C1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="hl">Ter um mapa muda completamente a forma como você percorre o caminho.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="opt c">
+      <header><b><span>C</span> Barra lateral</b><small>Citação clássica com fio turquesa à esquerda, em tamanho mais próximo do texto.</small></header>
+      <div class="story">
+        <p><span class="opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>
+        <p>Com a minha própria trajetória e, depois, direcionando outros instrumentadores, comecei a enxergar as etapas que se repetiam. Foi assim que nasceu o <b>Mapa dos 6 Passos da Virada.</b></p>
+        <p class="hl">Ter um mapa muda completamente a forma como você percorre o caminho.</p>
+      </div>
+    </section>
+
+    <section class="opt d">
+      <header><b><span>D</span> Assinatura centralizada</b><small>Fio vertical e frase centralizada em linhas equilibradas, como fechamento da seção.</small></header>
+      <div class="story">
+        <p><span class="opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>
+        <p>Com a minha própria trajetória e, depois, direcionando outros instrumentadores, comecei a enxergar as etapas que se repetiam. Foi assim que nasceu o <b>Mapa dos 6 Passos da Virada.</b></p>
+        <p class="hl">Ter um mapa muda completamente a forma como você percorre o caminho.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

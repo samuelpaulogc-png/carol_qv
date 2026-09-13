@@ -1,0 +1,457 @@
+[
+  {
+    "width": 1440,
+    "responses": [],
+    "normal": {
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "images": 0,
+      "main": 0,
+      "revealed": 0,
+      "elements": {
+        ".hero-mobile-art": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 0,
+          "height": 0,
+          "fontSize": "17px",
+          "lineHeight": "27.2px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".hero .btn": {
+          "color": "rgb(6, 18, 46)",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(69, 228, 211), rgb(42, 210, 193) 55%, rgb(26, 169, 155)) repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 607.171875,
+          "height": 83.03125,
+          "fontSize": "16.32px",
+          "lineHeight": "26.112px",
+          "animation": "ctapulse",
+          "duration": "3.2s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".hero h1": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 161.703125,
+          "height": 170.46875,
+          "fontSize": "54px",
+          "lineHeight": "56.16px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".pain-concept h2": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1821.5625,
+          "height": 283.890625,
+          "fontSize": "66.24px",
+          "lineHeight": "67.5648px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".pain-concept h2 .serif": {
+          "color": "rgb(69, 228, 211)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1965.234375,
+          "height": 140.21875,
+          "fontSize": "71.5392px",
+          "lineHeight": "70.1084px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".sec-head h2": {
+          "color": "rgb(22, 32, 76)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 3164.359375,
+          "height": 98.4375,
+          "fontSize": "46.4px",
+          "lineHeight": "48.72px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": "#0C7D6F"
+        },
+        ".pain-close .em": {
+          "color": "rgb(29, 40, 100)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 2841.015625,
+          "height": 47.1875,
+          "fontSize": "16.8px",
+          "lineHeight": "25.2px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".microcopy": {
+          "color": "rgb(92, 104, 137)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 702.203125,
+          "height": 22.015625,
+          "fontSize": "13.76px",
+          "lineHeight": "22.016px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".disclaimer": {
+          "color": "rgb(92, 104, 137)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 7113.609375,
+          "height": 38.375,
+          "fontSize": "12.8px",
+          "lineHeight": "19.2px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".tcard .rl": {
+          "color": "rgb(92, 104, 137)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 6729.96875,
+          "height": 21,
+          "fontSize": "13.12px",
+          "lineHeight": "20.992px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".map-sec": {
+          "color": "rgb(82, 93, 123)",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(239, 243, 251) 0%, rgb(231, 236, 247) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 3032.390625,
+          "height": 1231.8125,
+          "fontSize": "17px",
+          "lineHeight": "27.2px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": "#0C7D6F"
+        },
+        ".marquee": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 0,
+          "height": 60.46875,
+          "fontSize": "17px",
+          "lineHeight": "27.2px",
+          "animation": "marq",
+          "duration": "32s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".play::before": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1070.484375,
+          "height": 82,
+          "fontSize": "17px",
+          "lineHeight": "27.2px",
+          "animation": "ring",
+          "duration": "2.4s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".hero-ecg path": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1523.453125,
+          "height": 44,
+          "fontSize": "17px",
+          "lineHeight": "27.2px",
+          "animation": "heroDraw",
+          "duration": "2.8s",
+          "strokeDashoffset": "1197.29px",
+          "teal": ""
+        }
+      }
+    },
+    "reduced": {
+      "marquee": {
+        "color": "rgb(236, 240, 248)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "top": 0,
+        "height": 60.46875,
+        "fontSize": "17px",
+        "lineHeight": "27.2px",
+        "animation": "marq",
+        "duration": "32s",
+        "strokeDashoffset": "0px",
+        "teal": ""
+      },
+      "ring": {
+        "color": "rgb(236, 240, 248)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "top": 1070.484375,
+        "height": 82,
+        "fontSize": "17px",
+        "lineHeight": "27.2px",
+        "animation": "ring",
+        "duration": "2.4s",
+        "strokeDashoffset": "0px",
+        "teal": ""
+      },
+      "heroEcg": {
+        "color": "rgb(236, 240, 248)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "top": 1523.453125,
+        "height": 44,
+        "fontSize": "17px",
+        "lineHeight": "27.2px",
+        "animation": "none",
+        "duration": "0s",
+        "strokeDashoffset": "1300px",
+        "teal": ""
+      },
+      "svgMotion": [
+        193.8031005859375,
+        351.05743408203125
+      ]
+    },
+    "faqOpen": true,
+    "playTabIndex": -1
+  },
+  {
+    "width": 375,
+    "responses": [
+      {
+        "url": "http://localhost:5501/assets/images/Img_Mob.png",
+        "status": 404
+      }
+    ],
+    "normal": {
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "images": 0,
+      "main": 0,
+      "revealed": 0,
+      "elements": {
+        ".hero-mobile-art": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) url(\"http://localhost:5501/assets/images/Img_Mob.png\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+          "top": 61.46875,
+          "height": 337.5,
+          "fontSize": "16px",
+          "lineHeight": "25.6px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".hero .btn": {
+          "color": "rgb(6, 18, 46)",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(69, 228, 211), rgb(42, 210, 193) 55%, rgb(26, 169, 155)) repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1028.9375,
+          "height": 83.03125,
+          "fontSize": "16.32px",
+          "lineHeight": "26.112px",
+          "animation": "ctapulse",
+          "duration": "3.2s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".hero h1": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 487.671875,
+          "height": 126.75,
+          "fontSize": "30px",
+          "lineHeight": "31.2px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".pain-concept h2": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1888.96875,
+          "height": 224.015625,
+          "fontSize": "35.2px",
+          "lineHeight": "35.904px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".pain-concept h2 .serif": {
+          "color": "rgb(69, 228, 211)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 2001.234375,
+          "height": 111.75,
+          "fontSize": "38.016px",
+          "lineHeight": "37.2557px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".sec-head h2": {
+          "color": "rgb(22, 32, 76)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 3467.484375,
+          "height": 87.6875,
+          "fontSize": "27.2px",
+          "lineHeight": "28.56px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": "#0C7D6F"
+        },
+        ".pain-close .em": {
+          "color": "rgb(29, 40, 100)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 3210.515625,
+          "height": 45,
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".microcopy": {
+          "color": "rgb(92, 104, 137)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1123.96875,
+          "height": 22.015625,
+          "fontSize": "13.76px",
+          "lineHeight": "22.016px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".disclaimer": {
+          "color": "rgb(92, 104, 137)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 8509.015625,
+          "height": 57.5625,
+          "fontSize": "12.8px",
+          "lineHeight": "19.2px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".tcard .rl": {
+          "color": "rgb(92, 104, 137)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 8100.109375,
+          "height": 21,
+          "fontSize": "13.12px",
+          "lineHeight": "20.992px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".map-sec": {
+          "color": "rgb(82, 93, 123)",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(rgb(239, 243, 251) 0%, rgb(231, 236, 247) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 3365.515625,
+          "height": 1346.75,
+          "fontSize": "16px",
+          "lineHeight": "25.6px",
+          "animation": "none",
+          "duration": "0s",
+          "strokeDashoffset": "0px",
+          "teal": "#0C7D6F"
+        },
+        ".marquee": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 0,
+          "height": 60.46875,
+          "fontSize": "16px",
+          "lineHeight": "25.6px",
+          "animation": "marq",
+          "duration": "32s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".play::before": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1323.328125,
+          "height": 82,
+          "fontSize": "16px",
+          "lineHeight": "25.6px",
+          "animation": "ring",
+          "duration": "2.4s",
+          "strokeDashoffset": "0px",
+          "teal": ""
+        },
+        ".hero-ecg path": {
+          "color": "rgb(236, 240, 248)",
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "top": 1656.984375,
+          "height": 44,
+          "fontSize": "16px",
+          "lineHeight": "25.6px",
+          "animation": "heroDraw",
+          "duration": "2.8s",
+          "strokeDashoffset": "1119.47px",
+          "teal": ""
+        }
+      }
+    },
+    "reduced": {
+      "marquee": {
+        "color": "rgb(236, 240, 248)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "top": 0,
+        "height": 60.46875,
+        "fontSize": "16px",
+        "lineHeight": "25.6px",
+        "animation": "marq",
+        "duration": "32s",
+        "strokeDashoffset": "0px",
+        "teal": ""
+      },
+      "ring": {
+        "color": "rgb(236, 240, 248)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "top": 1323.328125,
+        "height": 82,
+        "fontSize": "16px",
+        "lineHeight": "25.6px",
+        "animation": "ring",
+        "duration": "2.4s",
+        "strokeDashoffset": "0px",
+        "teal": ""
+      },
+      "heroEcg": {
+        "color": "rgb(236, 240, 248)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "top": 1656.984375,
+        "height": 44,
+        "fontSize": "16px",
+        "lineHeight": "25.6px",
+        "animation": "none",
+        "duration": "0s",
+        "strokeDashoffset": "1300px",
+        "teal": ""
+      },
+      "svgMotion": [
+        59.58208840942383,
+        112.39521295166016
+      ]
+    },
+    "faqOpen": true,
+    "playTabIndex": -1
+  }
+]

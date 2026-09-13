@@ -1,0 +1,15 @@
+Projeto: gancho-oferta-bonus
+Data: 2026-09-13
+Pedido: capa para a faixa "Bônus" da oferta (index.html, .ov-row do bônus), hoje com a ilustração SVG antiga sobre grade.
+Bônus listados na página: 1 dia de Vlog no Centro Cirúrgico · E-book "Checklist Cirúrgico" · Mapa da Jornada.
+Estilo obrigatório: o mesmo das capas how-aulas.webp e how-encontro.webp (prompts em human-output/image/gancho-como-funciona/chatgpt-carol-card*.txt):
+  fundo navy quase preto com grade fina, fotos P&B de alto contraste com retícula, telas e cartões de interface flutuando com moldura de neon turquesa (#2AD2C1), ícones de play/progresso/check, centro cirúrgico ao fundo.
+Enquadramento: 16:9. No desktop a imagem fica à ESQUERDA da faixa (coluna ~555×340) e a borda DIREITA desvanece para o fundo; no celular aparece em 16:9 com a borda de BAIXO desvanecendo. Conteúdo principal no centro-esquerda; bordas direita e inferior mais calmas.
+Cuidados:
+  - o mapa com ECG e cadeados já está na capa do encontro; no bônus o mapa é pequeno, trilha pontilhada simples, sem cadeados, sem batimento;
+  - nada de texto legível (checklist, e-book, celular), nem "REC";
+  - trilha abstrata, nada que indique etapas ou conteúdo dos 6 passos;
+  - sem rostos (as ideias 1 e 2 não usam a Carol).
+Motor: ChatGPT.
+Prompts: chatgpt-bonus-1-tres-telas.txt (recomendada) e chatgpt-bonus-2-mao-gravando.txt.
+Arquivo final sugerido: assets/images/oferta-bonus.webp (+ -900).

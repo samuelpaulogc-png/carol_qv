@@ -1,0 +1,10 @@
+Crie uma imagem horizontal 16:9 para o topo de um card de site escuro, no estilo de colagem editorial de tecnologia (capa de módulo de curso premium).
+
+ESTILO: fundo azul-marinho quase preto (#080C22) com uma grade fina e discreta de linhas azuladas, como papel milimetrado. Todas as fotos e objetos em preto e branco de alto contraste, com textura de retícula de meio-tom, como xerox. A ÚNICA cor forte é o turquesa (#2AD2C1), usada em linhas de neon finas e molduras; um único ponto verde-menta (#00FB8A). Brilho contido, sem névoa.
+
+CENA: um mapa dobrado em três partes, em P&B com curvas de nível, flutuando inclinado em perspectiva no centro. Sobre ele, uma linha de neon turquesa em forma de batimento cardíaco (ECG) atravessa o mapa da esquerda para a direita, passando por seis marcadores circulares idênticos, cada um com um pequeno cadeado fechado, e termina num ponto de luz verde-menta na borda direita. À direita, levemente acima, uma pequena tela de transmissão ao vivo com moldura turquesa mostrando uma mulher instrumentadora falando para a câmera, em P&B (se houver foto anexada da mentora, use o rosto dela). Ao redor, flutuando em profundidade: fragmentos de fotos P&B de centro cirúrgico (foco cirúrgico de teto, bandeja de instrumentais), alguns desfocados e cortados nas bordas.
+
+Os seis marcadores devem ser idênticos e vazios: nada que indique o conteúdo de cada passo.
+CORES: somente preto, cinzas, azul-marinho, turquesa e um ponto verde-menta. Sem laranja, dourado ou bege.
+SEM texto, letras, números ou logotipos em lugar nenhum.
+COMPOSIÇÃO: a faixa de baixo da imagem desvanece para o preto, para encaixar no card.

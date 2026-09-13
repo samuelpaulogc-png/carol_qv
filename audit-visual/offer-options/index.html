@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sua vaga — oferta premium · rodada 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080C22;--bg-2:#0C1236;--surface:#141C4A;--surface-2:#1D2864;--line:#2A3574;--cream:#ECF0F8;--muted:#8794AC;--mint:#2AD2C1;--mint-bright:#45E4D3;--mint-deep:#1AA99B;--virada:#00FB8A;--copy:rgba(236,240,248,.82);--ease-out:cubic-bezier(.22,1,.36,1);--maxw:1160px;--section-space:clamp(64px,6.1vw,88px);--section-title:clamp(1.875rem,3.4vw,3rem)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{background:var(--bg);color:var(--cream);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  ul{list-style:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ===== moldura do comparador ===== */
+  .intro{padding:36px 0 20px}
+  .intro h1{font-family:'Bricolage Grotesque',sans-serif;font-size:1.375rem;font-weight:600;margin-bottom:6px}
+  .intro p{color:var(--muted);font-size:.9375rem;max-width:820px}
+  .jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .jump a{padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--cream);text-decoration:none;font-size:.875rem;transition:border-color .2s}
+  .jump a:hover{border-color:var(--mint)}
+  .jump b{color:var(--mint-bright)}
+  /* seletor fixo da estrutura do preço (vale para B e C) */
+  .picker{position:sticky;top:0;z-index:30;background:rgba(8,12,34,.9);backdrop-filter:blur(10px);border-block:1px solid var(--line)}
+  .picker .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-block:12px}
+  .picker p{font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .picker div{display:flex;flex-wrap:wrap;gap:8px}
+  .picker button{font:inherit;font-size:.875rem;color:var(--cream);background:none;padding:8px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+  .picker button b{color:var(--mint-bright);margin-right:6px}
+  .picker button:hover{border-color:var(--mint-deep)}
+  .picker button[aria-pressed="true"]{background:var(--mint);border-color:var(--mint);color:#06122E}
+  .picker button[aria-pressed="true"] b{color:#06122E}
+  .picker button:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+  .label{border-top:1px solid var(--line);background:var(--bg)}
+  .label .wrap{padding-block:14px;display:grid;gap:2px}
+  .label b{font-family:'Bricolage Grotesque',sans-serif;font-size:1.0625rem;font-weight:600}
+  .label b span{color:var(--mint-bright)}
+  .label small{color:var(--muted);font-size:.875rem;line-height:1.5;max-width:860px}
+
+  /* ===== base da seção (igual à página) ===== */
+  .offer{position:relative;padding-block:var(--section-space);background:var(--bg-2);border-block:1px solid var(--line);overflow:hidden}
+  .offer::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 480px at 50% 30%,rgba(42,210,193,.10),transparent 62%)}
+  .offer>*{position:relative}
+  .head{max-width:760px;margin:0 auto 44px;text-align:center}
+  .kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);font-weight:600;margin-bottom:16px}
+  h2{font-family:'Bricolage Grotesque',sans-serif;font-size:var(--section-title);font-weight:600;line-height:1.13;letter-spacing:-.025em;text-wrap:balance}
+  .serif{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--mint-bright)}
+  h3{font-family:'Bricolage Grotesque',sans-serif;font-size:1.375rem;font-weight:500;letter-spacing:-.01em}
+
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;color:#06122E;background:linear-gradient(180deg,var(--mint-bright),var(--mint) 55%,var(--mint-deep));padding:20px 32px;min-height:62px;border-radius:100px;border:2px solid transparent;box-shadow:0 14px 34px -12px rgba(42,210,193,.5),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .16s ease,filter .16s ease,box-shadow .16s ease;text-align:center;line-height:1.3;text-decoration:none;overflow:hidden;isolation:isolate}
+  .btn:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(42,210,193,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+  .btn:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+  .btn svg{flex:none;width:20px;height:20px;transition:transform .35s var(--ease-out)}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:30%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg) translateX(0);transition:transform .8s var(--ease-out)}
+  .btn:hover::after{transform:skewX(-18deg) translateX(520%)}
+
+  .old{color:#8794AC;text-decoration:line-through;font-size:.9375rem;letter-spacing:.02em}
+  .new{display:flex;align-items:flex-start;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;line-height:.9;letter-spacing:-.045em;color:var(--cream)}
+  .new .cur{font-size:.36em;letter-spacing:-.01em;color:var(--muted);margin:.22em .12em 0 0;font-weight:500}
+  .new small{font-size:.32em;letter-spacing:0;color:var(--muted);font-weight:500;margin:.2em 0 0 .06em}
+  .parc{color:var(--mint-bright);font-size:.9375rem;font-weight:600}
+  .chk{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(42,210,193,.14);color:var(--mint-bright);border:1px solid rgba(42,210,193,.35)}
+  .chk svg{width:14px;height:14px}
+  .item strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.125rem;font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--cream)}
+  .item span{color:var(--copy);font-size:.9375rem;line-height:1.55}
+  .bonus-lines{display:block}
+  .bonus-lines i{display:block;font-style:normal}
+  .bonus-art{background:radial-gradient(260px 180px at 55% 50%,rgba(42,210,193,.16),transparent 70%),linear-gradient(rgba(42,210,193,.06) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(42,210,193,.06) 1px,transparent 1px) 0 0/28px 28px,var(--bg);display:grid;place-items:center}
+  .bonus-art svg{width:100%;height:100%}
+
+  /* ================= blocos de preço (1, 2, 3) — embutidos na B e na C ================= */
+  .price-slot{container-type:inline-size;flex:1;min-width:0}
+  .pb .old{font-size:.8125rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(135,148,172,.7)}
+  .pb .amount{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap}
+  .pb .amount .cur{font-size:.4em;font-weight:500;letter-spacing:0;color:var(--muted);margin-right:.22em}
+  .pb .amount .cents{font-size:.4em;font-weight:500;letter-spacing:0;color:var(--muted)}
+  .pb .parc{font-size:.9375rem;font-weight:400;color:var(--copy)}
+  .pb .parc b{font-weight:600;color:var(--mint-bright)}
+  .pb .btn{font-size:1rem;padding:18px 30px;min-height:60px;border:0;box-shadow:0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
+  .pb .btn:hover{box-shadow:0 14px 30px -16px rgba(42,210,193,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+  .pb .btn::after{display:none}
+  .pb .btn svg{width:18px;height:18px}
+
+  /* 1 — duas colunas com fio */
+  .pb.p1{display:grid;grid-template-columns:auto 1px minmax(0,1fr);align-items:center;gap:56px;padding:44px 56px;border-top:1px solid var(--line);background:var(--bg-2)}
+  .pb.p1 .rule{align-self:stretch;background:var(--line)}
+  .pb.p1 .amount{font-size:4.5rem;margin:10px 0 12px}
+  .pb.p1 .btn{justify-self:center;width:min(100%,460px)}
+  /* 2 — centralizado sóbrio */
+  .pb.p2{position:relative;display:grid;justify-items:center;text-align:center;padding:52px 56px 56px;border-top:1px solid var(--line);background:var(--bg-2)}
+  .pb.p2::before{content:"";position:absolute;top:-1px;left:50%;width:56px;height:2px;margin-left:-28px;background:var(--mint)}
+  .pb.p2 .amount{font-size:5rem;margin:12px 0}
+  .pb.p2 .btn{margin-top:28px;min-width:min(100%,480px)}
+  /* 3 — faixa compacta */
+  .pb.p3{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:32px 40px 32px 56px;border-top:1px solid var(--line);background:var(--surface)}
+  .pb.p3 .price{display:flex;align-items:flex-end;gap:28px}
+  .pb.p3 .amount{font-size:4rem}
+  .pb.p3 .side{display:grid;gap:4px;padding:0 0 8px 28px;border-left:1px solid var(--line)}
+  .pb.p3 .btn{flex:none}
+
+  @container (max-width:560px){
+    .pb.p1{grid-template-columns:1fr;gap:24px;padding:28px 24px}
+    .pb.p1 .rule{height:1px;align-self:auto}
+    .pb.p1 .amount{font-size:3.75rem}
+    .pb.p2{padding:36px 24px 30px}
+    .pb.p2 .amount{font-size:3.75rem}
+    .pb.p2 .btn{width:100%;min-width:0}
+    .pb.p3{flex-direction:column;align-items:stretch;gap:22px;padding:26px 24px 24px}
+    .pb.p3 .price{justify-content:space-between;gap:16px}
+    .pb.p3 .amount{font-size:3.25rem}
+    .pb.p3 .side{padding:0 0 4px 16px}
+    .pb.p3 .side .parc{font-size:.875rem;line-height:1.4}
+    .pb .btn{font-size:.9375rem;padding-inline:18px;gap:8px}
+    .pb.p1 .btn,.pb.p3 .btn{width:100%}
+  }
+
+  /* ================= A — ingresso (entregas → preço) ================= */
+  .ticket{position:relative;max-width:680px;margin:0 auto;border-radius:28px;background:linear-gradient(180deg,var(--surface) 0%,var(--bg-2) 62%);border:1px solid rgba(42,210,193,.3);box-shadow:0 60px 120px -50px rgba(0,0,0,.9)}
+  .ticket::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(460px 240px at 50% 0,rgba(42,210,193,.14),transparent 70%)}
+  .t-body{position:relative;padding:40px 44px 30px}
+  .t-body h3{margin-bottom:22px}
+  .t-list li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:center;padding:16px 0;border-top:1px solid rgba(42,53,116,.7)}
+  .t-list li:first-child{border-top:0;padding-top:0}
+  .t-thumb{position:relative;width:120px;height:80px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .t-thumb img{width:100%;height:100%;object-fit:cover}
+  .t-thumb .chk{position:absolute;right:6px;bottom:6px;width:22px;height:22px;background:var(--mint);color:var(--bg);border:0}
+  .t-thumb .chk svg{width:12px;height:12px}
+  .t-cut{position:relative;height:30px}
+  .t-cut::before{content:"";position:absolute;left:36px;right:36px;top:50%;border-top:1.5px dashed rgba(135,148,172,.38)}
+  .t-cut i{position:absolute;top:0;width:30px;height:30px;border-radius:50%;background:var(--bg-2);border:1px solid rgba(42,210,193,.3)}
+  .t-cut i:first-child{left:-16px;clip-path:inset(0 0 0 50%)}
+  .t-cut i:last-child{right:-16px;clip-path:inset(0 50% 0 0)}
+  .t-buy{position:relative;display:grid;justify-items:center;text-align:center;padding:30px 44px 40px;border-radius:0 0 28px 28px;background:radial-gradient(380px 200px at 50% 100%,rgba(42,210,193,.14),transparent 70%),rgba(8,12,34,.55)}
+  .t-buy .new{font-size:clamp(4.5rem,11vw,6.5rem);margin:12px 0 12px}
+  .t-buy .btn{width:100%;margin-top:28px}
+
+  /* ================= B — vitrine em um bloco só ================= */
+  .vb .head{text-align:left;margin-left:0}
+  .vb h3{margin-bottom:20px}
+  .vitrine{position:relative;border-radius:28px;border:1px solid var(--line);background:var(--bg);overflow:hidden;box-shadow:0 60px 120px -50px rgba(0,0,0,.9)}
+  .vrow{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:290px}
+  .vrow+.vrow{border-top:1px solid var(--line)}
+  .vrow.flip .v-media{order:2}
+  .v-media{position:relative;overflow:hidden}
+  .v-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out)}
+  .vrow:hover .v-media img{transform:scale(1.03)}
+  .v-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 55%,var(--bg))}
+  .vrow.flip .v-media::after{background:linear-gradient(270deg,transparent 55%,var(--bg))}
+  .v-body{display:flex;flex-direction:column;justify-content:center;padding:48px 64px}
+  /* título com o destaque em itálico da marca e filete turquesa que cresce no hover */
+  .v-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.875rem,3vw,2.5rem);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--cream);text-wrap:balance}
+  .v-title .serif{font-weight:500;letter-spacing:-.015em}
+  .v-title::after{content:"";display:block;width:32px;height:2px;margin:24px 0 20px;background:var(--mint);transition:width .6s var(--ease-out)}
+  .vrow:hover .v-title::after{width:72px}
+  .v-desc{font-size:1.125rem;line-height:1.65;color:var(--copy);max-width:32ch;text-wrap:pretty}
+  .v-desc b{font-weight:600;color:var(--cream)}
+  .v-bonus{max-width:36ch}
+  .v-bonus li{position:relative;padding:12px 0 12px 26px;font-size:1.0625rem;line-height:1.5;color:var(--copy)}
+  .v-bonus li+li{border-top:1px solid rgba(42,53,116,.8)}
+  .v-bonus li:first-child{padding-top:0}
+  .v-bonus li::before{content:"";position:absolute;left:0;top:calc(12px + .75em);width:12px;height:1.5px;background:var(--mint)}
+  .v-bonus li:first-child::before{top:.75em}
+  .op{position:absolute;left:50%;top:-17px;z-index:2;width:34px;height:34px;margin-left:-17px;display:grid;place-items:center;border-radius:50%;background:var(--bg-2);border:1px solid rgba(42,210,193,.5);color:var(--mint-bright);font-family:'Bricolage Grotesque',sans-serif;font-size:1.125rem;font-weight:500;line-height:1;box-shadow:0 0 0 6px var(--bg)}
+
+  /* ================= C — cartão com capa ================= */
+  .starter{position:relative;max-width:1080px;margin:0 auto;border-radius:30px;padding:1px;background:linear-gradient(160deg,rgba(42,210,193,.55),rgba(42,53,116,.9) 30%,rgba(42,53,116,.6) 70%,rgba(42,210,193,.35));box-shadow:0 70px 140px -60px rgba(0,0,0,.95),0 0 80px -40px rgba(42,210,193,.35)}
+  .s-inner{border-radius:29px;overflow:hidden;background:var(--bg)}
+  .s-hero{position:relative;height:clamp(320px,36vw,440px);overflow:hidden}
+  .s-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.02)}
+  .s-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 1%,rgba(8,12,34,.6) 36%,rgba(8,12,34,0) 68%),linear-gradient(90deg,rgba(8,12,34,.75),rgba(8,12,34,0) 58%),radial-gradient(120% 90% at 50% 40%,transparent 60%,rgba(8,12,34,.5))}
+  .s-title{position:absolute;left:56px;bottom:36px;z-index:2;max-width:640px}
+  .s-title .kicker{margin-bottom:12px}
+  .s-title h2{font-size:clamp(2.25rem,4.2vw,3.5rem)}
+  .s-chips{position:absolute;top:24px;left:24px;z-index:2;display:flex;flex-wrap:wrap;gap:8px}
+  .s-chips span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(8,12,34,.55);border:1px solid rgba(236,240,248,.18);backdrop-filter:blur(8px);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cream)}
+  .s-chips span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint)}
+  .s-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .s-incl{padding:40px 48px 44px 56px}
+  .s-incl .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:24px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .s-incl .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+  .s-incl li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:start;padding:18px 0}
+  .s-incl li+li{border-top:1px solid rgba(42,53,116,.7)}
+  .s-incl li:first-child{padding-top:0}
+  .s-num{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--line);color:var(--mint-bright);font-family:'Bricolage Grotesque',sans-serif;font-size:.875rem;font-weight:600;letter-spacing:.04em}
+  .s-incl strong{font-size:1.1875rem}
+  /* coluna do preço: o bloco escolhido ocupa a coluna inteira, sem caixa interna */
+  .s-buy{display:flex;border-left:1px solid var(--line)}
+  /* grid: centraliza só na vertical (justify-content encolheria a coluna); flex em coluna: justify-content */
+  .s-buy .pb{height:100%;border-top:0;align-content:center}
+  .s-buy .pb.p3{justify-content:center}
+  .s-buy .pb.p2::before{top:0}
+
+  @media (max-width:900px){
+    .vrow,.vrow.flip{grid-template-columns:1fr}
+    .vrow.flip .v-media{order:0}
+    .v-media{aspect-ratio:16/9}
+    .v-media::after,.vrow.flip .v-media::after{background:linear-gradient(0deg,var(--bg),transparent 45%)}
+    .v-body{padding:6px 24px 32px}
+    .s-body{grid-template-columns:1fr}
+    .s-incl{padding:32px 24px 28px}
+    .s-buy{border-left:0;border-top:1px solid var(--line)}
+    .s-title{left:24px;right:24px;bottom:24px}
+    .s-chips{top:16px;left:16px}
+  }
+  @media (max-width:560px){
+    .t-body{padding:30px 20px 22px}
+    .t-list li{grid-template-columns:84px minmax(0,1fr);gap:14px}
+    .t-thumb{width:84px;height:60px}
+    .t-cut::before{left:22px;right:22px}
+    .t-buy{padding:24px 20px 28px}
+    .btn{font-size:.95rem;padding:18px 18px;gap:8px}
+    .btn svg{width:18px;height:18px}
+    .s-hero{height:300px}
+    .s-chips span{font-size:.6875rem;padding:6px 11px}
+    .s-incl li{grid-template-columns:38px minmax(0,1fr);gap:14px}
+    .s-num{width:38px;height:38px;border-radius:10px}
+    /* seletor compacto no celular: uma linha com rolagem lateral, sem ocupar a tela */
+    .picker p{display:none}
+    .picker .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-block:10px}
+    .picker .wrap::-webkit-scrollbar{display:none}
+    .picker div{flex-wrap:nowrap}
+    .picker button{white-space:nowrap;padding:7px 12px;font-size:.8125rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap intro">
+  <h1>Sua vaga · rodada 3 (só a oferta)</h1>
+  <p>O bloco de preço agora está embutido na B e na C. Use o seletor fixo abaixo para trocar a estrutura (1, 2 ou 3) e compare rolando a própria seção, no desktop e no celular. A escolha vale para as duas versões ao mesmo tempo.</p>
+  <nav class="jump">
+    <a href="#b"><b>B</b> Vitrine em um bloco</a>
+    <a href="#c"><b>C</b> Cartão com capa</a>
+    <a href="#a"><b>A</b> Ingresso</a>
+  </nav>
+</header>
+
+<div class="picker" role="group" aria-label="Estrutura do bloco de preço">
+  <div class="wrap">
+    <p>Estrutura do preço (B e C)</p>
+    <div>
+      <button type="button" data-pick="p1" aria-pressed="true"><b>1</b>Duas colunas com fio</button>
+      <button type="button" data-pick="p2" aria-pressed="false"><b>2</b>Centralizado sóbrio</button>
+      <button type="button" data-pick="p3" aria-pressed="false"><b>3</b>Faixa compacta</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= B ================= -->
+<div class="label" id="b"><div class="wrap">
+  <b><span>B</span> Vitrine em um bloco só</b>
+  <small>Sem os números acima dos títulos e sem “Sua vaga”. Títulos com o destaque em itálico da marca, filete turquesa entre título e descrição, descrições maiores com a informação-chave em peso e o bônus em lista com fios. O preço segue o seletor.</small>
+</div></div>
+<section class="offer vb">
+  <div class="wrap">
+    <div class="head"><h2>Entre para o <span class="serif">Gancho da Virada</span></h2></div>
+    <h3>Você recebe:</h3>
+    <div class="vitrine">
+      <article class="vrow">
+        <figure class="v-media"><img src="../../assets/images/how-aulas-900.webp" alt="" width="900" height="507" loading="lazy"></figure>
+        <div class="v-body">
+          <h4 class="v-title">3 Aulas de <span class="serif">Preparação</span></h4>
+          <p class="v-desc"><b>Acesso imediato</b> após a confirmação da inscrição.</p>
+        </div>
+      </article>
+      <article class="vrow flip">
+        <span class="op" aria-hidden="true">+</span>
+        <figure class="v-media"><img src="../../assets/images/how-encontro-900.webp" alt="" width="900" height="507" loading="lazy"></figure>
+        <div class="v-body">
+          <h4 class="v-title">Encontro Ao Vivo — <span class="serif">Os 6 Passos da Virada</span></h4>
+          <p class="v-desc"><b>24 de setembro às 20h.</b> Online e ao vivo.</p>
+        </div>
+      </article>
+      <article class="vrow">
+        <span class="op" aria-hidden="true">+</span>
+        <figure class="v-media bonus-art" data-bonus></figure>
+        <div class="v-body">
+          <h4 class="v-title"><span class="serif">Bônus</span></h4>
+          <ul class="v-bonus">
+            <li>1 dia de Vlog no Centro Cirúrgico</li>
+            <li>E-book "Checklist Cirúrgico"</li>
+            <li>Mapa da Jornada.</li>
+          </ul>
+        </div>
+      </article>
+      <div class="price-slot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<div class="label" id="c"><div class="wrap">
+  <b><span>C</span> Cartão com capa</b>
+  <small>Capa com o título, entregas numeradas à esquerda e o preço na coluna da direita (no celular, embaixo), sem a caixa interna e sem o ícone de raio. A estrutura do preço segue o seletor.</small>
+</div></div>
+<section class="offer">
+  <div class="wrap">
+    <article class="starter">
+      <div class="s-inner">
+        <header class="s-hero">
+          <img src="../../assets/images/how-encontro.webp" alt="" width="1600" height="900" loading="lazy">
+          <div class="s-chips"><span>24 de setembro · 20h</span><span>Online e ao vivo</span></div>
+          <div class="s-title"><p class="kicker">Sua vaga</p><h2>Entre para o <span class="serif">Gancho da Virada</span></h2></div>
+        </header>
+        <div class="s-body">
+          <div class="s-incl">
+            <p class="eyebrow">Você recebe:</p>
+            <ul>
+              <li class="item"><span class="s-num">01</span><div><strong>3 Aulas de Preparação</strong><span>Acesso imediato após a confirmação da inscrição.</span></div></li>
+              <li class="item"><span class="s-num">02</span><div><strong>Encontro Ao Vivo — Os 6 Passos da Virada</strong><span>24 de setembro às 20h. Online e ao vivo.</span></div></li>
+              <li class="item"><span class="s-num">03</span><div><strong>Bônus</strong><span class="bonus-lines"><i>1 dia de Vlog no Centro Cirúrgico</i><i>• E-book "Checklist Cirúrgico"</i><i>• Mapa da Jornada.</i></span></div></li>
+            </ul>
+          </div>
+          <div class="s-buy"><div class="price-slot"></div></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= A ================= -->
+<div class="label" id="a"><div class="wrap">
+  <b><span>A</span> Ingresso · entregas primeiro, preço fechando</b>
+  <small>Sem mudança nesta rodada (o seletor não se aplica aqui).</small>
+</div></div>
+<section class="offer">
+  <div class="wrap">
+    <div class="head"><p class="kicker">Sua vaga</p><h2>Entre para o <span class="serif">Gancho da Virada</span></h2></div>
+    <article class="ticket">
+      <div class="t-body">
+        <h3>Você recebe:</h3>
+        <ul class="t-list">
+          <li class="item">
+            <div class="t-thumb"><img src="../../assets/images/how-aulas-900.webp" alt="" width="900" height="507"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+            <div><strong>3 Aulas de Preparação</strong><span>Acesso imediato após a confirmação da inscrição.</span></div>
+          </li>
+          <li class="item">
+            <div class="t-thumb"><img src="../../assets/images/how-encontro-900.webp" alt="" width="900" height="507"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+            <div><strong>Encontro Ao Vivo — Os 6 Passos da Virada</strong><span>24 de setembro às 20h. Online e ao vivo.</span></div>
+          </li>
+          <li class="item">
+            <div class="t-thumb bonus-art" data-bonus></div>
+            <div><strong>Bônus</strong><span class="bonus-lines"><i>1 dia de Vlog no Centro Cirúrgico</i><i>• E-book "Checklist Cirúrgico"</i><i>• Mapa da Jornada.</i></span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="t-cut" aria-hidden="true"><i></i><i></i></div>
+      <div class="t-buy">
+        <div class="old">DE R$ 297,00</div>
+        <div class="new"><span class="cur">R$</span>47<small>,00</small></div>
+        <div class="parc">ou em até 12x no cartão</div>
+        <a href="#" class="btn">QUERO PARTICIPAR DO GANCHO DA VIRADA</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ilustração atual do bônus (mesmo SVG da página) -->
+<template id="bonus-svg">
+<svg viewBox="0 0 300 184" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid meet">
+  <path d="m140 46 51-13 61 15v94l-61-15-51 13Z" fill="#FFFFFF" stroke="#1D2864" stroke-width="2"/>
+  <path d="M191 34v93" stroke="#DBE2F0" stroke-width="2"/><path d="M158 113c-12-21 60-12 47-41s23-14 27-7" stroke="#0C7D6F" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="159" cy="112" r="4" fill="#24B7D3"/><circle cx="231" cy="66" r="4" fill="#00FB8A"/>
+  <rect x="47" y="34" width="79" height="120" rx="6" fill="#1D2864"/><path d="M57 34v120" stroke="#2AD2C1" stroke-width="2"/>
+  <path d="m72 62 5 5 10-12m-15 33 5 5 10-12m-15 33 5 5 10-12" stroke="#2AD2C1" stroke-width="2"/><path d="M96 62h17M96 88h17M96 114h17" stroke="#ECF0F8" stroke-width="2"/>
+  <rect x="109" y="86" width="48" height="80" rx="8" fill="#080C22" stroke="#6F7F90" stroke-width="2"/><rect x="115" y="96" width="36" height="53" rx="3" fill="#141C4A"/><path d="m128 113 13 9-13 9Z" fill="#2AD2C1"/><path d="M128 157h10" stroke="#8794AC" stroke-width="2" stroke-linecap="round"/>
+</svg>
+</template>
+<script>
+(() => {
+  const art = document.getElementById('bonus-svg');
+  document.querySelectorAll('[data-bonus]').forEach(slot => slot.appendChild(art.content.cloneNode(true)));
+  document.addEventListener('click', e => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
+
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>';
+  const cta = '<a href="#" class="btn">QUERO PARTICIPAR DO GANCHO DA VIRADA ' + arrow + '</a>';
+  const amount = '<p class="amount"><span class="cur">R$</span>47<span class="cents">,00</span></p>';
+  const old = '<p class="old">DE R$ 297,00</p>';
+  const parc = '<p class="parc">ou em até <b>12x</b> no cartão</p>';
+  const BLOCKS = {
+    p1: '<div class="pb p1"><div>' + old + amount + parc + '</div><span class="rule" aria-hidden="true"></span>' + cta + '</div>',
+    p2: '<div class="pb p2">' + old + amount + parc + cta + '</div>',
+    p3: '<div class="pb p3"><div class="price">' + amount + '<div class="side">' + old + parc + '</div></div>' + cta + '</div>'
+  };
+  const slots = document.querySelectorAll('.price-slot');
+  const picks = document.querySelectorAll('[data-pick]');
+  const choose = key => {
+    slots.forEach(slot => { slot.innerHTML = BLOCKS[key]; });
+    picks.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.pick === key)));
+    try { localStorage.setItem('price-block', key); } catch (err) {}
+  };
+  picks.forEach(btn => btn.addEventListener('click', () => choose(btn.dataset.pick)));
+  let saved = 'p1';
+  try { saved = localStorage.getItem('price-block') || 'p1'; } catch (err) {}
+  choose(BLOCKS[saved] ? saved : 'p1');
+})();
+</script>
+</body>
+</html>

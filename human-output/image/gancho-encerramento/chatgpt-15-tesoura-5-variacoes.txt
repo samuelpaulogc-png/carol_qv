@@ -1,0 +1,96 @@
+Cenário 15 · Cinco variações da passagem da tesoura para outra pessoa (13/09)
+Uso: fundo da seção final inteira (encerramento + rodapé), com título, texto e botão CENTRALIZADOS por cima.
+Cada variação tem versão desktop (16:9) e, logo abaixo, versão celular (9:16) para gerar na mesma conversa.
+Opcional: anexar assets/images/Ultima_Secao.png para manter luvas, aventais e cores da imagem atual.
+
+Faixas medidas na página:
+- Desktop: título e parágrafo de 15% a 64% da altura; botão de 68% a 75%; rodapé de 83% a 100%.
+- Celular: título e parágrafo de 12% a 56%; botão de 60% a 70%; rodapé de 74% a 100%.
+
+
+=== 1 · SOBRE O OMBRO DE QUEM RECEBE ===
+
+--- Desktop (16:9) ---
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo da seção final de um site premium; o texto do site ficará centralizado por cima.
+
+CENA: sala de cirurgia em penumbra. A câmera está logo atrás do ombro da profissional iniciante, que aparece DE COSTAS e desfocada no canto inferior esquerdo (ombro, touca e avental azul-escuro vistos por trás). Ela estende a mão enluvada para a direita. No terço direito da imagem, a instrumentadora experiente, enquadrada só do peito até a cintura (a borda de cima corta na altura dos ombros), passa a ela uma tesoura cirúrgica de aço. O ponto de foco é a tesoura no instante da passagem, pequena na imagem. Ao fundo, desfocados: mesa cirúrgica vazia e preparada, braço do foco cirúrgico, monitores com telas escuras, portas duplas.
+
+POSIÇÕES: do topo até dois terços da altura, a sala em penumbra, sem pontos de luz fortes. A passagem da tesoura fica no terço direito, entre 62% e 78% da altura; é o ponto mais claro. A base escurece para quase preto.
+
+LUZ E CORES: low key, fundo quase preto azul-marinho, luz fria com halo turquesa (#2AD2C1) no aço e no contorno das luvas. Somente preto, azul-marinho, cinzas frios, aço e turquesa; luvas neutras, nada amarelado; sem luz quente, sem névoa, sem raios. Profundidade de campo realista, vinheta, grão fino.
+REGRAS: nenhum rosto; só as duas profissionais; sem paciente e sem sangue; sem texto, letras, números, nomes, telas legíveis ou logotipos. Aparência de foto real, não ilustração nem 3D.
+
+--- Celular (9:16) ---
+Agora gere a mesma cena em formato vertical 9:16, com as mesmas pessoas, a mesma sala, a mesma luz e as mesmas cores. Do topo até 56% da altura: o fundo da sala (braço do foco, monitores escuros, portas) em penumbra, sem pontos fortes. Entre 60% e 72%, no centro horizontal: a passagem da tesoura, pequena, como ponto mais claro, com a mão da experiente vindo da direita. De 74% até o fim: o ombro e a touca da iniciante, de costas e desfocados, escurecendo para quase preto. Mesmas regras: nenhum rosto, sem cores quentes, sem texto. Aparência de foto real.
+
+
+=== 2 · VISTA DE CIMA, SOBRE A MESA DE INSTRUMENTAÇÃO ===
+
+--- Desktop (16:9) ---
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo da seção final de um site premium; o texto do site ficará centralizado por cima.
+
+CENA: vista de cima, com a câmera no teto olhando reto para baixo. A imagem inteira é preenchida pela mesa de instrumentação e, ao lado, parte da mesa cirúrgica, ambas cobertas por campo cirúrgico azul-escuro liso. Instrumentais de aço organizados em fileiras perto das bordas. Dois braços enluvados, com mangas de avental azul-escuro, entram pelas bordas opostas: um pela direita, estendendo uma tesoura cirúrgica; outro pela esquerda, com a mão aberta para recebê-la. Não se vê nenhuma cabeça, só braços e mãos. A passagem fica pequena na imagem.
+
+POSIÇÕES: do topo até dois terços da altura, o campo azul-escuro liso, quase sem objetos e sem reflexos fortes; os instrumentais ficam nas bordas laterais e na base. A passagem da tesoura fica no centro horizontal, entre 72% e 82% da altura; é o ponto mais claro. A base escurece para quase preto.
+
+LUZ E CORES: low key; luz fria vinda de cima, fora de cena, com halo turquesa (#2AD2C1) no aço e nas luvas. Somente preto, azul-marinho, cinzas frios, aço e turquesa; luvas neutras, nada amarelado; sem luz quente, sem névoa, sem raios. Vinheta, grão fino.
+REGRAS: nenhum rosto ou cabeça; sem paciente e sem sangue; sem texto, letras, números ou logotipos. Aparência de foto real, não ilustração nem 3D.
+
+--- Celular (9:16) ---
+Agora gere a mesma cena em formato vertical 9:16, vista de cima, com o mesmo campo, os mesmos instrumentais, a mesma luz e as mesmas cores. Do topo até 56% da altura: campo azul-escuro liso, com instrumentais só nas bordas, em penumbra. Entre 60% e 72%, no centro: a passagem da tesoura, pequena, como ponto mais claro, com um braço entrando pela direita e o outro por baixo, pela esquerda. De 74% até o fim: as mangas dos aventais e fileiras de instrumentais escurecendo para quase preto. Mesmas regras: nenhum rosto, sem cores quentes, sem texto. Aparência de foto real.
+
+
+=== 3 · INSTRUMENTAIS DESFOCADOS EM PRIMEIRO PLANO ===
+
+--- Desktop (16:9) ---
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo da seção final de um site premium; o texto do site ficará centralizado por cima.
+
+CENA: a câmera está baixa, rente à mesa de instrumentação. Na base da imagem, em primeiro plano, instrumentais de aço muito desfocados (bokeh frio e escuro). No plano médio, nítida e pequena, a passagem de uma tesoura cirúrgica: a mão enluvada de uma instrumentadora experiente, vinda da direita, entrega a tesoura à mão aberta de uma profissional iniciante, vinda da esquerda. As duas aparecem só dos antebraços até o peito, em avental azul-escuro, cortadas pela borda de cima. Atrás, desfocada e em penumbra, a sala de cirurgia: mesa cirúrgica preparada e vazia, braço do foco cirúrgico, aparelho de anestesia, suportes de soro, portas duplas.
+
+POSIÇÕES: do topo até dois terços da altura, a sala desfocada em penumbra, sem pontos de luz fortes. A passagem da tesoura fica no centro horizontal, entre 70% e 80% da altura; é o ponto mais claro e nítido. De 82% até a base, os instrumentais desfocados escurecendo para quase preto.
+
+LUZ E CORES: low key, fundo quase preto azul-marinho, luz fria com halo turquesa (#2AD2C1) no aço e no contorno das luvas. Somente preto, azul-marinho, cinzas frios, aço e turquesa; luvas neutras, nada amarelado; sem luz quente, sem névoa, sem raios. Profundidade de campo bem rasa, vinheta, grão fino.
+REGRAS: nenhum rosto; só as duas profissionais; sem paciente e sem sangue; sem texto, letras, números, nomes, telas legíveis ou logotipos. Aparência de foto real, não ilustração nem 3D.
+
+--- Celular (9:16) ---
+Agora gere a mesma cena em formato vertical 9:16, com a mesma câmera baixa, a mesma luz e as mesmas cores. Do topo até 56% da altura: a sala desfocada (braço do foco, suportes de soro, portas) em penumbra, sem pontos fortes. Entre 60% e 72%, no centro: a passagem da tesoura, pequena e nítida, como ponto mais claro. De 74% até o fim: instrumentais de aço muito desfocados em primeiro plano, escurecendo para quase preto. Mesmas regras: nenhum rosto, sem cores quentes, sem texto. Aparência de foto real.
+
+
+=== 4 · A PASSAGEM SOB O FOCO, SALA NO ESCURO ===
+
+--- Desktop (16:9) ---
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo da seção final de um site premium; o texto do site ficará centralizado por cima.
+
+CENA: uma sala de cirurgia quase toda no escuro. Um único foco cirúrgico aceso, no canto superior direito e parcialmente cortado pela borda, projeta um círculo de luz fria que cai só sobre o ponto da passagem, embaixo. Dentro desse círculo, a mão enluvada de uma instrumentadora experiente entrega uma tesoura cirúrgica de aço à mão aberta de uma profissional iniciante. Das duas só se veem as mãos, os antebraços e as mangas do avental azul-escuro saindo da luz e sumindo na sombra; o resto do corpo fica fora do enquadramento ou no escuro total. Fora do círculo de luz, a sala aparece só por contornos fracos: mesa cirúrgica, monitores apagados, suportes de soro, portas ao fundo. Clima de "momento em cena".
+
+POSIÇÕES: do topo até dois terços da altura, a sala em escuro profundo com contornos suaves; o foco no canto superior direito tem brilho contido e NÃO projeta feixe visível. O círculo de luz com a passagem da tesoura fica no centro horizontal, entre 72% e 84% da altura, pequeno. A base escurece para quase preto.
+
+LUZ E CORES: low key extremo; luz branca fria com halo turquesa (#2AD2C1). Somente preto, azul-marinho, cinzas frios, aço e turquesa; luvas neutras, nada amarelado; sem luz quente, sem névoa, sem raios. Vinheta forte, grão fino.
+REGRAS: nenhum rosto; só as duas profissionais; sem paciente e sem sangue; sem texto, letras, números ou logotipos. Aparência de foto real, não ilustração nem 3D.
+
+--- Celular (9:16) ---
+Agora gere a mesma cena em formato vertical 9:16, com a mesma sala no escuro, a mesma luz e as mesmas cores. No topo, levemente à direita, o foco cirúrgico aceso, cortado pela borda, com brilho contido e sem feixe. Do topo até 56% da altura: escuro profundo com contornos fracos da sala. Entre 60% e 72%, no centro: o círculo de luz com a passagem da tesoura, pequeno, como ponto mais claro. De 74% até o fim: as mangas dos aventais sumindo na sombra, quase preto. Mesmas regras: nenhum rosto, sem cores quentes, sem texto. Aparência de foto real.
+
+
+=== 5 · MÃOS EM SILHUETA CONTRA A LUZ DA SALA ===
+
+--- Desktop (16:9) ---
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo da seção final de um site premium; o texto do site ficará centralizado por cima.
+
+CENA: contraluz. Ao fundo da sala de cirurgia, desfocado, um brilho turquesa suave e baixo (a luz refletida do campo cirúrgico e dos monitores). Na frente desse brilho, em SILHUETA escura com contorno fino de luz nas bordas, a passagem de uma tesoura cirúrgica: a mão enluvada de uma instrumentadora experiente, vinda da direita, entrega a tesoura à mão aberta de uma profissional iniciante, vinda da esquerda. A silhueta da tesoura fica bem recortada contra a luz. Das duas só aparecem mãos, antebraços e mangas do avental, entrando pelas bordas laterais. Acima, a sala em penumbra: braço do foco cirúrgico apagado, suportes de soro, contornos de equipamentos.
+
+POSIÇÕES: do topo até dois terços da altura, a sala em penumbra escura, sem pontos de luz fortes. O brilho turquesa de fundo é uma faixa horizontal baixa, entre 68% e 84% da altura, e a silhueta da passagem fica no centro, dentro dessa faixa, pequena. A base escurece para quase preto.
+
+LUZ E CORES: low key, contraluz frio, halo turquesa (#2AD2C1) desenhando o contorno das luvas e da tesoura. Somente preto, azul-marinho, cinzas frios, aço e turquesa; sem luz quente, sem névoa, sem raios. Profundidade de campo rasa, vinheta, grão fino.
+REGRAS: nenhum rosto; só as mãos das duas profissionais; sem paciente e sem sangue; sem texto, letras, números, telas legíveis ou logotipos. Aparência de foto real, não ilustração nem 3D.
+
+--- Celular (9:16) ---
+Agora gere a mesma cena em formato vertical 9:16, com o mesmo contraluz, a mesma silhueta e as mesmas cores. Do topo até 56% da altura: a sala em penumbra escura (braço do foco apagado, suportes de soro), sem pontos fortes. Entre 58% e 74%: a faixa de brilho turquesa ao fundo com a silhueta da passagem da tesoura, pequena, no centro, com uma mão vindo da direita e a outra de baixo, pela esquerda. De 76% até o fim: as mangas dos aventais em sombra, quase preto. Mesmas regras: nenhum rosto, sem cores quentes, sem texto. Aparência de foto real.
+
+
+=== SE PRECISAR CORRIGIR (vale para todas) ===
+- Mãos grandes demais: "afaste a câmera; a mão e a tesoura devem ser pequenas na imagem, com o cenário em volta".
+- Rosto aparecendo: "nenhum rosto; corte as pessoas na altura dos ombros ou deixe só braços e mãos".
+- Luz forte no meio: "deixe a parte de cima e o meio em penumbra; o ponto mais claro fica na passagem da tesoura, embaixo".
+- Instrumento errado: "o objeto entregue é uma tesoura cirúrgica de aço, reta, de pontas finas".
+- Cores quentes: "refaça sem nenhuma luz quente, só azul-marinho e turquesa".

@@ -1,0 +1,10 @@
+Crie uma fotografia horizontal 16:9, realista e editorial, para ser o fundo escuro da seção final de um site premium. O texto do site ficará centralizado por cima, então a imagem precisa ser calma, escura e sem elementos chamativos no centro.
+
+CENA: vista exatamente de cima (flat lay, câmera a 90 graus) de uma mesa de instrumentação cirúrgica coberta por um campo cirúrgico azul-escuro, quase preto. Instrumentais de aço (pinças, tesouras, porta-agulhas, afastadores) estão organizados em fileiras paralelas perfeitas, com espaçamento regular, ocupando as laterais e as bordas de cima e de baixo da imagem. No meio, uma faixa livre de tecido atravessa a mesa da esquerda para a direita, e sobre ela corre uma linha fina de luz turquesa, como um feixe de luz projetado, que desenha um caminho contínuo e suave de uma borda à outra. Nada de gente, só a mesa.
+
+LUZ E CLIMA: low key, iluminação lateral suave e fria. O aço dos instrumentais reflete pontos discretos de luz turquesa (#2AD2C1). A linha de luz no centro é o elemento mais claro, mas fina e contida, sem brilho exagerado nem névoa.
+
+COMPOSIÇÃO: simétrica e ordenada. O centro horizontal, onde ficará o título, é a faixa mais limpa e escura, só com a linha de luz. As bordas escurecem em vinheta. Foco nítido em toda a mesa, textura do tecido visível, grão fotográfico fino.
+
+CORES: somente preto, azul-marinho, cinzas frios, aço e turquesa; no máximo um ponto mínimo verde-menta (#00FB8A) no fim da linha de luz, na borda direita. Sem laranja, amarelo, dourado, bege, vermelho ou rosa. Sem sangue.
+SEM texto, letras, números, etiquetas ou logotipos em lugar nenhum. Sem pessoas. Aparência de foto real, não de ilustração nem 3D.

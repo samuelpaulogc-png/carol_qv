@@ -1,0 +1,10 @@
+Crie uma fotografia horizontal 16:9, cinematográfica e realista, para ser o fundo escuro da seção final de um site premium. O texto do site ficará centralizado por cima, então a imagem precisa ser calma e escura, com o caminho de luz organizando a composição.
+
+CENA: vista de cima, em plongée alto e inclinado, de um longo corredor hospitalar vazio à noite. O corredor atravessa a imagem na diagonal suave, do canto inferior esquerdo até o fundo à direita. No chão encerado, uma faixa estreita de luz turquesa, como uma linha de guia embutida no piso, percorre todo o corredor e leva até uma porta dupla ao fundo, entreaberta, de onde sai a mesma luz turquesa. Paredes, portas laterais e teto quase apagados, só insinuados. Nenhuma pessoa na cena.
+
+LUZ E CLIMA: low key, quase tudo em azul-marinho profundo e preto. A única luz é a linha turquesa (#2AD2C1) no chão e o brilho da porta ao fundo, refletindo no piso. Brilho contido, sem névoa, sem raios exagerados.
+
+COMPOSIÇÃO: o caminho de luz desenha uma linha elegante que conduz o olhar até a porta; o centro da imagem, onde fica o título, precisa ser escuro e limpo, com a linha passando abaixo dele. Vinheta forte nas bordas. Grão fotográfico fino, sensação de arquitetura minimalista.
+
+CORES: somente preto, azul-marinho, cinzas frios e turquesa; no máximo um reflexo mínimo verde-menta (#00FB8A) na porta ao fundo. Sem laranja, amarelo, dourado, bege, vermelho ou rosa.
+SEM texto, letras, números, placas, setas, sinalização ou logotipos em lugar nenhum. Sem pessoas. Aparência de foto real, não de ilustração nem 3D.

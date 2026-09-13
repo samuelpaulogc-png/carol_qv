@@ -1,0 +1,33 @@
+Cenário 13 · Opção 2 · Mãos passando o instrumental — versão VERTICAL só para o celular (13/09)
+Uso: fundo da seção final no celular. O desktop continua com a imagem atual (assets/images/Ultima_Secao.png → encerramento-maos.webp).
+Motivo: a entrega do instrumental é uma ação horizontal (uma mão de cada lado). No celular a seção é quase três vezes mais alta que larga, então a imagem 16:9 é cortada nas laterais e mostra só a pinça.
+
+ANTES DE ENVIAR: anexe a imagem atual (assets/images/Ultima_Secao.png) para o ChatGPT manter o mesmo estilo, as mesmas luvas, aventais, luz e cores.
+
+Faixas medidas na página no celular:
+- título e parágrafo de 12% a 56% da altura; botão de 60% a 70%; rodapé de 74% a 100%.
+Regra: nada muito claro atrás do título e do parágrafo. A entrega do instrumental fica na altura do botão.
+
+
+=== PROMPT (9:16 vertical) ===
+
+Usando a imagem anexada como referência de estilo (mesma iluminação, mesmas luvas, mesmos aventais azul-escuros, mesmo instrumental de aço, mesmas cores e mesmo clima), crie uma nova fotografia VERTICAL 9:16, cinematográfica e realista, para ser o fundo da seção final de um site premium visto no celular. O texto do site ficará centralizado por cima, da parte de cima até pouco mais da metade da altura.
+
+CENA: close só de mãos e antebraços, em um centro cirúrgico escuro, com a mesma cena da imagem anexada reorganizada na vertical. A mão enluvada de uma instrumentadora experiente entra pela LATERAL DIREITA e estende o instrumental cirúrgico; as mãos enluvadas de uma profissional iniciante vêm de BAIXO, pela esquerda, e se abrem para recebê-lo. O instrumental está no centro horizontal, no instante em que passa de uma mão para a outra, sem ainda ter sido entregue. Os antebraços e as mangas dos aventais continuam em direção às bordas direita e inferior, preenchendo a parte de baixo da imagem. Nenhum rosto aparece.
+
+POSIÇÕES:
+- Do topo até cerca de 56% da altura: fundo da sala de cirurgia muito desfocado e escuro, com um brilho turquesa suave e difuso de um foco de luz fora de cena no alto, e formas vagas de equipamentos em bokeh. Penumbra, sem pontos de luz fortes, porque o título e o texto ficarão ali.
+- Entre 58% e 72% da altura: o momento da entrega, com as pontas dos dedos das duas mãos e o instrumental, que recebe o brilho mais forte da imagem, um reflexo turquesa contido no aço.
+- De 74% até o fim: os antebraços, os punhos das luvas e as mangas dos aventais, em sombra, com contorno fino de luz, escurecendo para quase preto, porque o rodapé do site ficará ali.
+
+LUZ E CLIMA: low key, fundo quase preto azul-marinho. Luz lateral turquesa fria (#2AD2C1) desenhando o contorno das luvas e brilhando no instrumental. Sem névoa, sem raios.
+
+CORES: somente preto, azul-marinho, cinzas frios, aço e turquesa; luvas em tom neutro claro ou azulado, nada amarelado. Sem laranja, amarelo, dourado, bege, vermelho ou rosa. Sem sangue.
+SEM texto, letras, números ou logotipos em lugar nenhum. Sem rostos. Aparência de foto real, não de ilustração nem 3D.
+
+
+=== SE PRECISAR CORRIGIR ===
+- Mãos no meio da imagem: "desça a entrega do instrumental para a faixa entre 58% e 72% da altura e deixe a parte de cima escura".
+- Parte de baixo vazia: "prolongue os antebraços e as mangas até a borda de baixo, em sombra".
+- Estilo diferente do anexo: "mantenha exatamente a luz, as luvas, os aventais e as cores da imagem anexada".
+- Cores quentes: "refaça sem nenhuma luz quente, só azul-marinho e turquesa".

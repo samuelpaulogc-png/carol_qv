@@ -1,0 +1,19 @@
+  /* Perguntas — leitura contínua e tipografia, sem caixas. */
+  .pain-diagnostic{max-width:860px;min-height:0;margin:0 auto;padding:0;background:none;border:0;border-radius:0;overflow:visible;box-shadow:none}
+  .pain-diagnostic-copy{display:block;padding:0;color:var(--cream)}
+  .pain-sub{max-width:740px;margin:0 0 32px;padding:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.375rem,2.4vw,1.875rem);font-weight:500;line-height:1.35;letter-spacing:-.015em;color:var(--muted);text-wrap:pretty}
+  .pain-sub .serif{color:var(--mint-bright)}
+  .pain-question-groups{padding:0;background:none;border:0;border-top:1px solid var(--line)}
+  .pain-question-card{margin:0;padding:22px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;color:var(--cream)}
+  .pain-question-card p{margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.0625rem,1.7vw,1.375rem);font-weight:500;line-height:1.45;letter-spacing:-.01em}
+  .pain-close{display:block;max-width:780px;margin:36px 0 0;padding:4px 0 4px 24px;border-left:2px solid var(--mint);font-size:1rem;line-height:1.6;color:var(--muted)}
+  .pain-close-context{display:block;margin-bottom:12px}
+  .pain-close b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:500;line-height:1.4;letter-spacing:-.01em;color:var(--cream)}
+  .pain-close .em{color:var(--mint-bright)}
+  .pain-diagnostic-visual{display:none}
+  @media(max-width:560px){
+    .pain-sub{font-size:1.375rem;margin-bottom:26px;line-height:1.4}
+    .pain-question-card{padding:19px 0}
+    .pain-close{padding-left:18px;margin-top:28px;font-size:.925rem}
+    .pain-close b{font-size:1.25rem;line-height:1.45}
+  }

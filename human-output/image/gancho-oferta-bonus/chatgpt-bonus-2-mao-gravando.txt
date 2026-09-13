@@ -1,0 +1,30 @@
+Bônus · Ideia 2 · Mão enluvada gravando o centro cirúrgico com o celular (13/09)
+Uso: capa da faixa "Bônus" da oferta. Mesma linguagem das capas how-aulas e how-encontro.
+Dica: anexe how-aulas.webp e how-encontro.webp (assets/images/) como referência de estilo — só do estilo, sem copiar pessoas, mapa ou composição.
+
+
+=== PROMPT (16:9 horizontal) ===
+
+Crie uma imagem horizontal 16:9 para a faixa de um site escuro, no estilo de colagem editorial de tecnologia (capa de módulo de curso premium), seguindo exatamente o estilo das imagens anexadas.
+
+ESTILO: fundo azul-marinho quase preto (#080C22) com uma grade fina e discreta de linhas azuladas, como papel milimetrado. Todas as fotos e objetos em preto e branco de alto contraste, com textura de retícula de meio-tom, como xerox. A ÚNICA cor forte é o turquesa (#2AD2C1), usada em linhas finas de neon, molduras e ícones. Brilho contido, sem névoa.
+
+CENA: em primeiro plano, vinda da borda de baixo à esquerda, uma MÃO com luva cirúrgica, em P&B, segurando um CELULAR na vertical, como quem está gravando. O celular fica no centro-esquerda, grande e nítido, com moldura fina de neon turquesa. Na tela, a sala de cirurgia vista pela câmera do celular, em P&B: foco cirúrgico de teto aceso, mesa cirúrgica preparada, instrumentais, profissionais de costas e desfocados, sem rostos visíveis. Sobre a imagem da tela, apenas ícones de interface turquesa: um pequeno ponto aceso no canto de cima (gravando) e uma barra de progresso embaixo.
+Atrás e ao redor do celular, flutuando em profundidade e levemente inclinados, três cartões holográficos com moldura de neon turquesa:
+- um cartão de CHECKLIST com linhas cinza sem texto e caixinhas, algumas com check turquesa aceso;
+- a CAPA de um e-book em P&B, com a ilustração de um instrumental cirúrgico e sem nenhum título;
+- um MINI MAPA dobrado em P&B com uma trilha pontilhada turquesa simples entre dois pontos, sem cadeados e sem batimento.
+Ao fundo, a sala de cirurgia real em P&B, bem desfocada e escura, continuando a cena da tela do celular. Alguns elementos desfocados e cortados nas bordas, sombras suaves.
+
+COMPOSIÇÃO: a mão e o celular ficam do centro para a esquerda; os cartões se espalham em volta, sem encostar na borda direita. O quarto DIREITO da imagem fica mais vazio e escuro, porque essa borda desvanece no site. A faixa de baixo da imagem desvanece para o preto (a mão pode entrar por baixo, sumindo no escuro).
+
+CORES: somente preto, cinzas, azul-marinho e turquesa; luva em cinza claro, nada amarelado. Sem laranja, dourado, bege, rosa, vermelho ou verde-limão.
+SEM texto, letras, números, "REC" ou logotipos em lugar nenhum. SEM rostos visíveis.
+
+
+=== SE PRECISAR CORRIGIR ===
+- Texto aparecendo: "remova todo texto; checklist, capa do e-book e tela do celular só com linhas, ícones e fotos".
+- Mão ou celular grandes demais, cobrindo tudo: "afaste um pouco; o celular ocupa no máximo um terço da largura, com os cartões visíveis em volta".
+- Rosto aparecendo na tela: "as pessoas na tela ficam de costas e desfocadas; nenhum rosto".
+- Mapa parecido com o do encontro: "mapa pequeno, trilha pontilhada simples, sem cadeados e sem batimento".
+- Cores quentes: "refaça sem nenhuma cor quente, só preto, cinzas, azul-marinho e turquesa".
