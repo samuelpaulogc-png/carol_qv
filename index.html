@@ -458,7 +458,7 @@
   /* ===== Ritmo de fundos por seção — navy base ↔ navy band (padrão da referência) =====
      base  = var(--bg)   #080C22
      band  = var(--bg-2) #0C1236 + border-block 1px var(--line) */
-  .hero      {background:#080C22 url('assets/images/Image - Hero.png') center/cover no-repeat}
+  .hero      {background:#080C22 url('assets/images/Image - Hero.webp') center/cover no-repeat}
   .pain      {background:var(--bg)}
   .sec-how   {background:var(--bg)}
   .sec-proof {background:var(--bg)}
@@ -724,8 +724,9 @@
     .hero .cta-group{align-items:stretch;width:100%}
     .hero-cta-slot .btn{width:100%}
     .hero-top{gap:24px}
-    /* celular: foto vertical própria (Hero_Mobile.webp, convertida de Hero_Mobile.png); o computador continua com Image - Hero.png */
-    .hero-mobile-art{order:2;height:420px;margin-bottom:0;background-image:url('assets/images/Hero_Mobile.webp');background-position:center 85%;background-size:cover;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+    /* celular: foto vertical própria (Hero_Mobile1.webp, convertida de Hero_Mobile1.png); o computador continua com Image - Hero.webp */
+    /* recorte proporcional à largura: corta o escuro de cima da foto para a Carol ficar perto do botão; a base continua no mesmo ponto (atrás do vídeo) */
+    .hero-mobile-art{order:2;height:auto;aspect-ratio:100/95;margin-top:-8px;margin-bottom:0;background-image:url('assets/images/Hero_Mobile1.webp');background-position:center 88%;background-size:cover;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
     
     .pain-concept{--orb:min(320px,78vw);margin:44px auto 40px}
     .pain-concept h2{font-size:1.875rem}
@@ -1538,7 +1539,7 @@
       </div>
       <div class="pain-diagnostic-visual" aria-hidden="true">
         <div class="pain-single-image">
-          <img src="assets/images/dor-portas-recorte.png" alt="" width="1122" height="1402" loading="lazy" decoding="async">
+          <img src="assets/images/dor-portas-recorte.webp" alt="" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
       </div>
       </div>

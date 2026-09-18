@@ -1,9 +1,0 @@
-Crie uma imagem horizontal 16:9 para o topo de um card de site escuro, no estilo de colagem editorial de tecnologia (capa de módulo de curso premium).
-
-ESTILO: fundo azul-marinho quase preto (#080C22) com uma grade fina e discreta de linhas azuladas, como papel milimetrado. Todas as fotos em preto e branco de alto contraste, com textura de retícula de meio-tom, como xerox. A ÚNICA cor forte é o turquesa (#2AD2C1), usada em linhas finas de neon, molduras e ícones. Brilho contido, sem névoa.
-
-CENA: no centro-esquerda, uma tela grande de tablet inclinada em perspectiva, com moldura fina de neon turquesa. Dentro dela, foto P&B de uma instrumentadora cirúrgica com touca e roupa privativa, olhando para a câmera, expressão segura, meio corpo (se houver foto anexada da mentora, use o rosto dela). Ao redor, flutuando em profundidade, duas telas menores com imagens P&B desfocadas de centro cirúrgico e um botão de play turquesa em cada — três telas no total, a principal maior. Entre elas, pequenos cartões de interface flutuando: barra de progresso turquesa, ícone de play, ícone de check. Alguns elementos desfocados e cortados nas bordas, sombras suaves.
-
-CORES: somente preto, cinzas, azul-marinho e turquesa. Sem laranja, dourado, bege ou verde-limão.
-SEM texto, letras, números ou logotipos em lugar nenhum.
-COMPOSIÇÃO: a faixa de baixo da imagem desvanece para o preto, para encaixar no card.
