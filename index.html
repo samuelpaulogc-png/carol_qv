@@ -724,7 +724,8 @@
     .hero .cta-group{align-items:stretch;width:100%}
     .hero-cta-slot .btn{width:100%}
     .hero-top{gap:24px}
-    .hero-mobile-art{order:2;height:280px;margin-bottom:0;background-image:url('assets/images/Image - Hero.png');background-position:80% center;background-size:auto 100%;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+    /* celular: foto vertical própria (Hero_Mobile.webp, convertida de Hero_Mobile.png); o computador continua com Image - Hero.png */
+    .hero-mobile-art{order:2;height:420px;margin-bottom:0;background-image:url('assets/images/Hero_Mobile.webp');background-position:center 85%;background-size:cover;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
     
     .pain-concept{--orb:min(320px,78vw);margin:44px auto 40px}
     .pain-concept h2{font-size:1.875rem}
@@ -1368,14 +1369,82 @@
  .motion-ready .closing-photo img{transform:none;transition:none}
 }
 </style>
+<style id="css-proposta">
+/* ===== abertura (proposta aplicada em 15/09, variações A) ===== */
+/* ---------- 1. Hero: a foto se dissolve no fundo, sem corte seco ---------- */
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,12,34,0) 0%,rgba(8,12,34,.7) 58%,#080C22 100%)}
+/* ---------- 2. Mesmo fundo contínuo, sem brilho próprio na seção seguinte ---------- */
+/* flow-root: impede que a margem negativa do vídeo "vaze" e suba a seção inteira por cima da foto */
+.pain{display:flow-root;background:#080C22;padding-top:0;z-index:2}
+.pain.band::before{display:none}
+/* ---------- 3. Vídeo: ponte entre a hero e a dor ---------- */
+.pain .video-intro{position:relative}
+.pain .video-block{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"frame frame" "title cta";align-items:center;column-gap:32px;row-gap:22px;margin:0 auto;text-align:left}
+.pain .video-frame{grid-area:frame;width:100%;max-width:none;margin:0;border-radius:16px;border:1px solid rgba(236,240,248,.12);
+  background:#0C1236;box-shadow:0 48px 96px -48px rgba(0,0,0,.9)}
+.pain .video-frame .halo{background:radial-gradient(circle at 50% 45%,rgba(42,210,193,.07),transparent 60%)}
+.pain .play{box-shadow:none}
+.pain .play::before{content:none}
+.pain .video-title{grid-area:title;margin:0;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82)}
+.pain .video-block>div:last-child{grid-area:cta;margin-top:0!important}
+/* botão secundário: mesmo texto, contorno, não compete com o CTA da hero */
+.pain .video-block .btn{background:transparent;color:#ECF0F8;border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 26px;font-size:.9375rem}
+.pain .video-block .btn:hover{background:rgba(42,210,193,.1);border-color:#2AD2C1;color:#45E4D3;transform:none;box-shadow:none;filter:none}
+/* ---------- 4. Sem ECG divisório nem luz girando no aro ---------- */
+.pain .pain-ecg{display:none}
+.pain .orb-arc-track{display:none}
+/* ---------- 5. Dor: sem cartão, perguntas em lista com filete ---------- */
+.pain .pain-sub .serif{color:inherit}
+.pain .pain-diagnostic{background:none;border:0;border-radius:0;overflow:visible;box-shadow:none}
+.pain .pain-diagnostic-visual{background:none}
+.pain .pain-question-groups{gap:0;border-top:1px solid rgba(236,240,248,.10)}
+.pain .pain-question-card{min-height:0;padding:15px 0;background:none;border-radius:0;border-bottom:1px solid rgba(236,240,248,.10)}
+.pain .pain-question-card p{font-size:1.0625rem;line-height:1.45}
+/* ---------- Desktop e tablet: zigue-zague no mesmo eixo da hero ---------- */
+@media (min-width:761px){
+  .hero{padding-bottom:clamp(128px,11vw,168px)}
+  .pain .video-intro{margin-top:calc(-1 * clamp(88px,8vw,120px));padding-bottom:clamp(96px,9vw,128px)}
+  .pain .video-block{max-width:880px}
+  /* orbe à esquerda, título à direita (mesma grade 5/7 do diagnóstico, espelhada) */
+  .pain .pain-concept{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;column-gap:clamp(40px,6vw,88px);
+    max-width:none;min-height:0;margin:0 0 clamp(72px,7vw,112px);text-align:left;overflow:visible}
+  .pain .concept-orb{width:100%;max-width:400px;margin:0}
+  .pain .pain-concept-copy{margin:0;padding:0;max-width:none}
+  .pain .pain-concept h2{margin:0;max-width:17ch;text-align:left;font-size:clamp(2rem,3.6vw,3.25rem);line-height:1.1}
+  .pain .pain-concept h2 .serif{margin-top:.22em;line-height:1.12}
+  /* texto à esquerda, portas à direita */
+  .pain .pain-diagnostic{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:clamp(40px,6vw,88px);max-width:none;margin:0}
+  .pain .pain-diagnostic-copy{padding:0;gap:28px;align-content:center}
+  .pain .pain-diagnostic-visual{min-height:clamp(440px,40vw,560px)}
+  .pain .pain-single-image{inset:0 0 -24px 0}
+}
+/* ---------- Celular ---------- */
+@media (max-width:760px){
+  .pain .video-intro{margin-top:-56px;padding-bottom:64px}
+  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "title" "cta";row-gap:16px}
+  .pain .video-block>div:last-child{width:100%}
+  .pain .video-block .btn{width:100%}
+  .pain .pain-concept{--orb:min(300px,76vw);margin:0 0 48px;text-align:left}
+  .pain .concept-orb{margin:0}
+  .pain .pain-concept-copy{margin-top:calc(var(--orb) * -.24)}
+  .pain .pain-concept h2{margin:0;max-width:none;text-align:left}
+  .pain .pain-diagnostic-copy{padding-bottom:0}
+}
+@media (max-width:560px){
+  .hero::after{display:none}
+  /* no celular a hero não tem foto de fundo */
+  .hero-mobile-art{margin-bottom:0}
+}
+</style>
 </head>
 <body>
 
 <!-- ===== TOP MARQUEE ===== -->
 <div class="topbar">
   <div class="marquee" aria-hidden="true">
-    <span>ENCONTRO AO VIVO <b>24 DE SETEMBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
-    <span>ENCONTRO AO VIVO <b>24 DE SETEMBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
+    <span>ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
+    <span>ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
   </div>
 </div>
 
@@ -1575,7 +1644,7 @@
         <div class="how-art"><img src="assets/images/how-encontro.webp" srcset="assets/images/how-encontro-900.webp 900w, assets/images/how-encontro.webp 1672w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1160px) calc(50vw - 36px), 544px" alt="Mapa dobrado com uma linha de batimento passando por seis cadeados fechados e Carol falando numa tela ao vivo" width="1672" height="941" loading="lazy" decoding="async"></div>
         <h3>Encontro Ao Vivo — <span>Os 6 Passos da Virada</span></h3>
         <p>É aqui que eu vou revelar o mapa. Vamos percorrer os 6 passos, entender como eles se conectam e ajudar você a identificar em qual ponto dessa jornada está hoje.</p>
-        <span class="badge">24 de setembro • 20h • Online e ao vivo</span>
+        <span class="badge">22 de outubro • 20h • Online e ao vivo</span>
       </div>
     </div>
     <div class="how-cta reveal"><a href="#oferta" class="btn">QUERO ESTAR NO ENCONTRO AO VIVO</a></div>
@@ -1700,7 +1769,7 @@
           <figure class="ov-media"><img src="assets/images/how-encontro.webp" srcset="assets/images/how-encontro-900.webp 900w, assets/images/how-encontro.webp 1672w" sizes="(max-width: 900px) calc(100vw - 50px), 555px" alt="" width="1672" height="941" loading="lazy" decoding="async"></figure>
           <div class="ov-body">
             <h4 class="ov-title">Encontro Ao Vivo — <span class="serif">Os 6 Passos da Virada</span></h4>
-            <p class="ov-desc"><b>24 de setembro às 20h.</b> Online e ao vivo.</p>
+            <p class="ov-desc"><b>22 de outubro às 20h.</b> Online e ao vivo.</p>
           </div>
         </article>
         <article class="ov-row">
@@ -1795,7 +1864,7 @@
   <div class="wrap">
     <div class="foot-row">
       <div class="brand">Gancho da Virada</div>
-      <p>Encontro ao vivo em 24 de setembro, às 20h — online e ao vivo.</p>
+      <p>Encontro ao vivo em 22 de outubro, às 20h — online e ao vivo.</p>
     </div>
     <p class="legal">Este conteúdo tem caráter educativo e de direcionamento. Não há garantia de contratação, equipe, cirurgia ou prazo para resultados. Resultados podem variar de pessoa para pessoa.</p>
   </div>
