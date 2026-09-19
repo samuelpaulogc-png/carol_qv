@@ -139,8 +139,6 @@
   .light .map-endpoint.end{color:var(--virada)}
   .light .node .disc{background:radial-gradient(circle at 35% 30%,var(--surface-2),var(--bg-2));border-color:var(--line)}
   .light .node .disc svg{color:var(--muted)}
-  .light .node:hover .disc{border-color:var(--mint);box-shadow:0 0 24px -6px rgba(42,210,193,.55)}
-  .light .node:hover .disc svg{color:var(--mint-bright)}
   .light .node .num{background:var(--bg);border-color:var(--mint);color:var(--mint-bright)}
   .light .grid{opacity:.5;background-image:
       linear-gradient(rgba(42,210,193,.06) 1px, transparent 1px),
@@ -184,15 +182,17 @@
     background:linear-gradient(180deg,var(--mint-bright),var(--mint) 55%,var(--mint-deep));
     padding:20px 36px;min-height:60px;border-radius:100px;border:2px solid transparent;cursor:pointer;
     box-shadow:0 14px 34px -12px rgba(42,210,193,.5), inset 0 1px 0 rgba(255,255,255,.4);
-    transition:transform .16s ease, filter .16s ease, box-shadow .16s ease;
+    transition:transform var(--motion-press) var(--ease-out),filter var(--motion-press) ease;
     text-align:center;line-height:1.2;text-decoration:none;
   }
-  .btn:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(42,210,193,.6), inset 0 1px 0 rgba(255,255,255,.4)}
+  @media(hover:hover) and (pointer:fine){
+    .btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
+  }
+  .btn:active,.btn.is-pressed{transform:scale(.97)}
   .btn-ghost{
     background:transparent;color:var(--cream);border:1px solid var(--line);
     box-shadow:none;flex-direction:row;gap:8px;
   }
-  .btn-ghost:hover{border-color:var(--mint);color:var(--mint-bright);box-shadow:none;transform:translateY(-2px)}
 
   .center{text-align:center}
   .lead{color:var(--muted);font-size:1.08rem}
@@ -204,9 +204,9 @@
     border-bottom:1px solid var(--line);
     overflow:hidden;
   }
-  .marquee{display:flex;white-space:nowrap;will-change:transform;animation:marq 32s linear infinite}
+  .marquee{display:flex;width:max-content;white-space:nowrap;animation:marq 32s linear infinite}
   .marquee>span{
-    display:inline-flex;align-items:center;gap:14px;padding:10px 0;
+    display:inline-flex;flex:none;min-width:100vw;justify-content:space-around;align-items:center;gap:14px;padding:10px 0;
     font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;
   }
   .marquee span b{color:var(--cream);font-weight:700}
@@ -305,9 +305,10 @@
     background:linear-gradient(180deg,var(--mint-bright),var(--mint-deep));
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 12px 40px -6px rgba(42,210,193,.6);
-    transition:transform .3s;
+    transition:transform var(--motion-press) var(--ease-out);
   }
-  .play:hover{transform:scale(1.08)}
+  @media(hover:hover) and (pointer:fine){.play:hover{transform:scale(1.03)}}
+  .play:active,.play.is-pressed{transform:scale(.97)}
   .play::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(42,210,193,.4);animation:ring 2.4s infinite}
   @keyframes ring{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.35);opacity:0}}
   .play svg{width:30px;height:30px;color:#06122E;margin-left:5px}
@@ -373,8 +374,6 @@
     transition:transform .3s, border-color .3s, box-shadow .3s;
   }
   .node .disc svg{width:24px;height:24px;color:var(--muted)}
-  .node:hover .disc{transform:translateY(-5px);border-color:var(--mint);box-shadow:0 0 26px -4px rgba(42,210,193,.5)}
-  .node:hover .disc svg{color:var(--mint-bright)}
   .node .num{
     position:absolute;top:-8px;right:-8px;width:26px;height:26px;border-radius:50%;
     background:var(--bg);border:1px solid var(--mint);color:var(--mint-bright);
@@ -398,7 +397,6 @@
     position:relative;overflow:hidden;
     transition:transform .35s, border-color .35s;
   }
-  .hcard:hover{transform:translateY(-6px);border-color:rgba(42,210,193,.4)}
   .hcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mint),transparent)}
   .hcard .step-tag{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);font-weight:700;margin-bottom:18px}
   .hcard .ico{width:52px;height:52px;border-radius:14px;background:rgba(42,210,193,.1);border:1px solid rgba(42,210,193,.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
@@ -537,7 +535,7 @@
   :root{
     --teal-ink:#45E4D3;--on-dark:#ECF0F8;
     --space-1:8px;--space-2:16px;--space-3:24px;--space-4:32px;--space-6:48px;
-    --motion-fast:220ms;--motion-enter:650ms;
+    --motion-fast:220ms;--motion-enter:350ms;--motion-press:160ms;--motion-hover:200ms;
     --ease-out:cubic-bezier(.22,1,.36,1);
   }
   html{scroll-padding-top:76px}
@@ -552,10 +550,12 @@
   .hero-cta-slot{display:block;max-width:100%}
   .hero .cta-group{transform:none;opacity:1}
   .hero .cta-group .btn{max-width:100%}
-  .motion-ready .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--motion-enter) var(--ease-out),transform var(--motion-enter) var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
-  .motion-ready .reveal.in-view{opacity:1;transform:none}
+  /* A transição só existe no estado visível: esconder é instantâneo. Se ela valesse também para
+     esconder, o texto da abertura (já calculado visível antes do .motion-ready) nunca animava. */
+  .motion-ready .reveal{opacity:0;transform:translateY(12px)}
+  .motion-ready .reveal.in-view{opacity:1;transform:none;transition:opacity var(--motion-enter) var(--ease-out),transform var(--motion-enter) var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
   .motion-ready .hero .cta-group{opacity:1;transform:none;transition:none}
-  .d1{--reveal-delay:80ms}.d2{--reveal-delay:160ms}.d3{--reveal-delay:240ms}.d4{--reveal-delay:100ms}
+  .d1{--reveal-delay:40ms}.d2{--reveal-delay:80ms}.d3{--reveal-delay:120ms}.d4{--reveal-delay:0ms}
 
   /* Fotografias do banco indicado no briefing. */
   .pain .video-intro{padding-bottom:var(--space-6)}
@@ -940,14 +940,14 @@
 #como-funciona .sec-head{max-width:none;text-align:left;margin:0 0 40px}
 #como-funciona .sec-head h2{max-width:800px;font-size:clamp(2rem,3.4vw,3rem);line-height:1.12;text-wrap:balance}
 #como-funciona .how-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:0}
-#como-funciona .hcard{display:flex;flex-direction:column;padding:0;background:var(--bg-2);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .25s var(--ease-out)}
-#como-funciona .hcard:hover{transform:none;border-color:var(--mint-deep)}
+#como-funciona .hcard{display:flex;flex-direction:column;padding:0;background:var(--bg-2);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:opacity var(--motion-enter) var(--ease-out) var(--reveal-delay,0ms),transform var(--motion-enter) var(--ease-out) var(--reveal-delay,0ms),border-color var(--motion-hover) ease}
+@media(hover:hover) and (pointer:fine){#como-funciona .hcard:hover{border-color:var(--mint-deep)}}
 #como-funciona .hcard::before{content:none}
 #como-funciona .step-tag{margin:0;padding:28px 32px 0;color:var(--mint-bright);font-size:.75rem;line-height:1.5;letter-spacing:.1em;font-weight:600}
 #como-funciona .how-art{position:relative;margin:0 0 20px;overflow:hidden;background:var(--bg)}
 #como-funciona .how-art::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 58%,var(--bg-2));pointer-events:none}
-#como-funciona .how-art img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .5s var(--ease-out)}
-#como-funciona .hcard:hover .how-art img{transform:scale(1.03)}
+#como-funciona .how-art img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .25s var(--ease-out)}
+@media(hover:hover) and (pointer:fine){#como-funciona .hcard:hover .how-art img{transform:scale(1.03)}}
 @media(prefers-reduced-motion:reduce){#como-funciona .hcard:hover .how-art img{transform:none}}
 #como-funciona .hcard h3{margin:0 32px 14px;min-height:2.3em;font-size:1.75rem;line-height:1.15;font-weight:600;letter-spacing:-.03em;text-wrap:pretty}
 #como-funciona .hcard h3 span{display:block}
@@ -1018,9 +1018,8 @@
 #para-quem .check{grid-column:span 2}
 #para-quem .check:nth-child(-n+2),#para-quem .check:nth-child(n+6){grid-column:span 3}
 #para-quem .check{position:relative;display:flex;flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:16px;min-height:0;padding:26px 0 32px;border:0;border-top:1px solid var(--line);font-size:1.125rem;line-height:1.5;color:var(--cream);text-wrap:pretty}
-/* Filete turquesa no topo de cada critério; percorre a linha no hover. */
-#para-quem .check::before{content:'';position:absolute;top:-1px;left:0;width:32px;height:1px;background:var(--mint);transition:width .6s var(--ease-out)}
-#para-quem .check:hover::before{width:100%}
+/* Filete estático: os critérios são conteúdo de leitura, não controles. */
+#para-quem .check::before{content:'';position:absolute;top:-1px;left:0;width:32px;height:1px;background:var(--mint)}
 #para-quem .check .ck{width:24px;height:24px;flex:none;margin:1px 0 0;border:1px solid rgba(42,210,193,.3);border-radius:50%;background:rgba(42,210,193,.08)}
 #para-quem .check .ck svg{width:12px;height:12px;color:var(--mint-bright)}
 
@@ -1113,15 +1112,16 @@
 /* sem CSS scroll-snap: o Chrome re-encaixa no card antigo quando o snap volta a valer; o JS encaixa na parada */
 .sec-proof .rail{position:relative;align-items:flex-start;gap:24px;padding:10px var(--rail-pad) 24px;scroll-padding-inline:var(--rail-pad);scroll-snap-type:none;cursor:grab;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 91%,transparent);mask-image:linear-gradient(90deg,#000 0,#000 91%,transparent)}
 .sec-proof .rail.is-dragging{cursor:grabbing;user-select:none}
-.sec-proof .shot{position:relative;flex:0 0 auto;width:480px;padding:0;background:#fff;border:1px solid rgba(236,240,248,.16);border-radius:20px;overflow:hidden;cursor:zoom-in;box-shadow:0 34px 70px -34px rgba(0,0,0,.85);transition:transform .35s var(--ease-out),border-color .25s var(--ease-out),box-shadow .35s var(--ease-out)}
+.sec-proof .shot{position:relative;flex:0 0 auto;width:480px;padding:0;background:#fff;border:1px solid rgba(236,240,248,.16);border-radius:20px;overflow:hidden;cursor:zoom-in;box-shadow:0 34px 70px -34px rgba(0,0,0,.85);transition:border-color var(--motion-press) ease}
 .sec-proof .shot img{display:block;width:100%;height:auto}
-.sec-proof .shot:hover{transform:translateY(-6px);border-color:rgba(42,210,193,.55);box-shadow:0 44px 84px -34px rgba(0,0,0,.95)}
+@media(hover:hover) and (pointer:fine){.sec-proof .shot:hover{border-color:rgba(42,210,193,.55)}}
 .sec-proof .shot.is-tall{width:400px}
 .sec-proof .shot.is-tall img{max-height:550px;object-fit:cover;object-position:top center}
 /* dissolve o corte dos prints longos; a leitura completa fica na ampliacao */
 .sec-proof .shot.is-tall::before{content:'';position:absolute;left:0;right:0;bottom:0;height:96px;background:linear-gradient(to top,rgba(255,255,255,.96),rgba(255,255,255,0));pointer-events:none;z-index:1}
 .sec-proof .shot::after{content:'';position:absolute;right:12px;bottom:12px;z-index:2;width:34px;height:34px;border-radius:50%;opacity:0;transform:scale(.9);background:rgba(8,12,34,.85) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232AD2C1' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6M11 8v6M8 11h6'/%3E%3C/svg%3E") center/17px 17px no-repeat;transition:opacity .25s var(--ease-out),transform .25s var(--ease-out)}
-.sec-proof .shot:hover::after,.sec-proof .shot:focus-visible::after{opacity:1;transform:none}
+.sec-proof .shot:focus-visible::after{opacity:1;transform:none;transition:none}
+@media(hover:hover) and (pointer:fine){.sec-proof .shot:hover::after{opacity:1;transform:none}}
 .sec-proof .shot-col{flex:0 0 auto;display:flex;flex-direction:column;gap:20px;width:480px}
 .sec-proof .shot-col .shot{width:100%}
 /* controles: contador, um segmento por parada e setas; o anel da seta "proximo" marca o tempo */
@@ -1132,46 +1132,49 @@
 .sec-proof .rail-steps button{position:relative;flex:1;height:24px;padding:0;border:0;background:none;cursor:pointer}
 .sec-proof .rail-steps button::before,.sec-proof .rail-steps button::after{content:'';position:absolute;left:0;top:50%;height:2px;margin-top:-1px;border-radius:2px}
 .sec-proof .rail-steps button::before{right:0;background:rgba(135,148,172,.26);transition:background .25s var(--ease-out)}
-.sec-proof .rail-steps button::after{width:calc(var(--fill,0) * 100%);background:var(--mint)}
-.sec-proof .rail-steps button:hover::before{background:rgba(135,148,172,.5)}
+.sec-proof .rail-steps button::after{width:100%;transform:scaleX(var(--fill,0));transform-origin:left;background:var(--mint)}
+@media(hover:hover) and (pointer:fine){.sec-proof .rail-steps button:hover::before{background:rgba(135,148,172,.5)}}
 .sec-proof .rail-steps button:focus-visible{outline:2px solid var(--mint);outline-offset:2px;border-radius:4px}
 .sec-proof .rail-btns{display:flex;gap:12px;margin-left:auto}
-.sec-proof .rail-btn{position:relative;width:56px;height:56px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--bg-2);color:var(--cream);cursor:pointer;transition:border-color .3s var(--ease-out),color .3s var(--ease-out),transform .3s var(--ease-out)}
-.sec-proof .rail-btn::before{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(42,210,193,.22),transparent 70%);opacity:0;transform:scale(.4);transition:opacity .35s var(--ease-out),transform .45s var(--ease-out);pointer-events:none}
-.sec-proof .rail-btn:hover,.sec-proof .rail-btn:focus-visible{border-color:var(--mint-deep);color:var(--mint-bright);outline:none}
-.sec-proof .rail-btn:hover::before,.sec-proof .rail-btn:focus-visible::before{opacity:1;transform:none}
-.sec-proof .rail-btn:active{transform:scale(.94)}
+.sec-proof .rail-btn{position:relative;width:56px;height:56px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--bg-2);color:var(--cream);cursor:pointer;transition:border-color var(--motion-hover) ease,color var(--motion-hover) ease,transform var(--motion-press) var(--ease-out)}
+.sec-proof .rail-btn:focus-visible{border-color:var(--mint-deep);color:var(--mint-bright)}
+@media(hover:hover) and (pointer:fine){.sec-proof .rail-btn:hover{border-color:var(--mint-deep);color:var(--mint-bright)}}
+.sec-proof .rail-btn:active,.sec-proof .rail-btn.is-pressed{transform:scale(.97)}
 /* no hover a seta atravessa o botao: sai por um lado e entra pelo outro */
 .sec-proof .rail-arrow{position:relative;width:22px;height:22px;overflow:hidden}
-.sec-proof .rail-arrow svg{position:absolute;inset:0;width:22px;height:22px;transition:transform .45s var(--ease-out)}
+.sec-proof .rail-arrow svg{position:absolute;inset:0;width:22px;height:22px;transition:transform var(--motion-press) var(--ease-out)}
 .sec-proof .rail-btn.next .rail-arrow svg+svg{transform:translateX(-120%)}
 .sec-proof .rail-btn.prev .rail-arrow svg+svg{transform:translateX(120%)}
-.sec-proof .rail-btn.next:hover .rail-arrow svg:first-child{transform:translateX(120%)}
-.sec-proof .rail-btn.prev:hover .rail-arrow svg:first-child{transform:translateX(-120%)}
-.sec-proof .rail-btn:hover .rail-arrow svg+svg{transform:none}
+@media(hover:hover) and (pointer:fine){
+ .sec-proof .rail-btn.next:hover .rail-arrow svg:first-child{transform:translateX(120%)}
+ .sec-proof .rail-btn.prev:hover .rail-arrow svg:first-child{transform:translateX(-120%)}
+ .sec-proof .rail-btn:hover .rail-arrow svg+svg{transform:none}
+}
 .sec-proof .rail-ring{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);transform:rotate(-90deg);pointer-events:none}
 .sec-proof .rail-ring circle{fill:none;stroke:var(--mint);stroke-width:2;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:calc(100 - var(--fill,0) * 100);transition:stroke .3s var(--ease-out)}
 .sec-proof.is-paused .rail-ring circle{stroke:var(--muted)}
 /* ampliacao do print */
 .shot-zoom[hidden]{display:none}
 .shot-zoom{position:fixed;inset:0;z-index:120;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;justify-items:center;gap:clamp(6px,2vw,24px);padding:clamp(16px,4vw,40px);background:rgba(4,7,20,.92);backdrop-filter:blur(10px)}
-.shot-zoom-frame{grid-column:2;margin:0;display:grid;place-items:center;max-width:100%}
+.shot-zoom-frame{grid-column:2;margin:0;display:grid;place-items:center;max-width:100%;touch-action:pan-y pinch-zoom}
 .shot-zoom img{max-width:min(720px,86vw);max-height:82vh;width:auto;height:auto;border-radius:18px;background:#fff;box-shadow:0 50px 110px -30px #000;transition:opacity .18s var(--ease-out),transform .18s var(--ease-out)}
 .shot-zoom.is-swapping img{opacity:0;transform:scale(.985)}
 .shot-zoom-close{position:absolute;top:20px;right:20px;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(236,240,248,.25);border-radius:50%;background:rgba(8,12,34,.75);color:var(--cream);cursor:pointer;transition:border-color .2s,color .2s}
 .shot-zoom-close svg{width:20px;height:20px}
-.shot-zoom-close:hover{border-color:var(--mint);color:var(--mint-bright)}
+@media(hover:hover) and (pointer:fine){.shot-zoom-close:hover{border-color:var(--mint);color:var(--mint-bright)}}
 .shot-zoom-nav{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(236,240,248,.22);border-radius:50%;background:rgba(8,12,34,.6);color:var(--cream);cursor:pointer;transition:border-color .2s,color .2s,background .2s,transform .2s}
 .shot-zoom-nav svg{width:22px;height:22px}
-.shot-zoom-nav:hover{border-color:var(--mint);color:var(--mint-bright);background:rgba(8,12,34,.9);transform:scale(1.06)}
+@media(hover:hover) and (pointer:fine){.shot-zoom-nav:hover{border-color:var(--mint);color:var(--mint-bright);background:rgba(8,12,34,.9)}}
+.shot-zoom-close,.shot-zoom-nav{transition:transform var(--motion-press) var(--ease-out),border-color var(--motion-hover) ease,color var(--motion-hover) ease}
+.shot-zoom-close:active,.shot-zoom-nav:active,.shot-zoom-close.is-pressed,.shot-zoom-nav.is-pressed{transform:scale(.97)}
+.shot-zoom.is-instant img,.shot-zoom.is-instant .shot-zoom-dots span{transition:none}
 .shot-zoom-nav.prev{grid-column:1}
 .shot-zoom-nav.next{grid-column:3}
 .shot-zoom-dots{position:absolute;left:0;right:0;bottom:clamp(14px,3vh,30px);display:flex;justify-content:center;gap:9px}
 .shot-zoom-dots span{width:6px;height:6px;border-radius:50%;background:rgba(236,240,248,.26);transition:background .25s var(--ease-out),transform .25s var(--ease-out)}
 .shot-zoom-dots span.is-active{background:var(--mint);transform:scale(1.6)}
-/* entrada em cascata dos prints quando a seção aparece */
-.motion-ready .sec-proof .rail-wrap .shot{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out),border-color .25s var(--ease-out),box-shadow .35s var(--ease-out)}
-.motion-ready .sec-proof .rail-wrap.in-view .shot{opacity:1;transform:none}
+/* Uma única entrada por print, inclusive quando ele surge na rolagem horizontal. */
+.motion-ready .sec-proof .shot.reveal{transition:opacity var(--motion-enter) var(--ease-out) var(--reveal-delay,0ms),transform var(--motion-enter) var(--ease-out) var(--reveal-delay,0ms),border-color var(--motion-press) ease}
 @media(max-width:900px){
  .sec-proof .shot,.sec-proof .shot-col{width:400px}
  .sec-proof .shot.is-tall{width:340px}
@@ -1206,8 +1209,8 @@
 .offer-sec .ov-row+.ov-row{border-top:1px solid var(--line)}
 .offer-sec .ov-row.flip .ov-media{order:2}
 .offer-sec .ov-media{position:relative;margin:0;overflow:hidden}
-.offer-sec .ov-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out)}
-.offer-sec .ov-row:hover .ov-media img{transform:scale(1.03)}
+.offer-sec .ov-media img{width:100%;height:100%;object-fit:cover;transition:transform .25s var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ov-row:hover .ov-media img{transform:scale(1.03)}}
 .offer-sec .ov-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 55%,var(--bg))}
 .offer-sec .ov-row.flip .ov-media::after{background:linear-gradient(270deg,transparent 55%,var(--bg))}
 /* capa do bônus: celular, e-book e mapa ficam do centro para a esquerda; ancora à esquerda para o corte cair na direita */
@@ -1216,8 +1219,8 @@
 .offer-sec .ov-body{display:flex;flex-direction:column;justify-content:center;padding:48px 64px}
 .offer-sec .ov-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.875rem,3vw,2.5rem);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--cream);text-wrap:balance}
 .offer-sec .ov-title .serif{font-weight:500;letter-spacing:-.015em;color:var(--mint-bright)}
-.offer-sec .ov-title::after{content:"";display:block;width:32px;height:2px;margin:24px 0 20px;background:var(--mint);transition:width .6s var(--ease-out)}
-.offer-sec .ov-row:hover .ov-title::after{width:72px}
+.offer-sec .ov-title::after{content:"";display:block;width:72px;height:2px;margin:24px 0 20px;background:var(--mint);transform:scaleX(.444444);transform-origin:left;transition:transform var(--motion-hover) var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ov-row:hover .ov-title::after{transform:scaleX(1)}}
 .offer-sec .ov-desc{font-size:1.125rem;line-height:1.65;color:var(--copy-readable);max-width:32ch;text-wrap:pretty}
 .offer-sec .ov-desc b{font-weight:600;color:var(--cream)}
 .offer-sec .ov-bonus{max-width:36ch;list-style:none}
@@ -1235,8 +1238,8 @@
 .offer-sec .ov-parc{font-size:.9375rem;color:var(--copy-readable)}
 .offer-sec .ov-parc b{font-weight:600;color:var(--mint-bright)}
 .offer-sec .ov-buy .btn{justify-self:center;width:min(100%,460px);min-height:60px;padding:18px 30px;gap:12px;font-size:1rem;line-height:1.3;box-shadow:0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
-.offer-sec .ov-buy .btn svg{flex:none;width:18px;height:18px;transition:transform .3s var(--ease-out)}
-.offer-sec .ov-buy .btn:hover svg{transform:translateX(3px)}
+.offer-sec .ov-buy .btn svg{flex:none;width:18px;height:18px;transition:transform var(--motion-press) var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ov-buy .btn:hover svg{transform:translateX(3px)}}
 @media(max-width:900px){
  .offer-sec .ov-row,.offer-sec .ov-row.flip{grid-template-columns:minmax(0,1fr)}
  .offer-sec .ov-row.flip .ov-media{order:0}
@@ -1288,8 +1291,8 @@
  .offer-sec .gcert-ring{animation:none}
 }
 
-/* FAQ editorial: título grande fixo à esquerda enquanto as perguntas rolam; filete turquesa
-   que aparece no hover e percorre a linha da pergunta aberta; ícone + que vira −. */
+/* FAQ editorial: título fixo à esquerda, filete para a pergunta aberta e ícone +/−.
+   A pergunta permanece no lugar durante a leitura e o fechamento pode ser revertido. */
 .sec-faq>.wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start}
 .sec-faq .sec-head{position:sticky;top:96px;max-width:none;margin:0;text-align:left}
 .sec-faq .sec-head h2{font-size:clamp(2.25rem,4.2vw,3.75rem);line-height:1.04}
@@ -1297,20 +1300,17 @@
 .sec-faq .sec-head::after{content:"";display:block;width:32px;height:2px;margin-top:28px;background:var(--mint)}
 .sec-faq .faq{position:relative;border-top:1px solid var(--line)}
 .sec-faq .faq:last-child{border-bottom:1px solid var(--line)}
-.sec-faq .faq::before{content:"";position:absolute;left:0;top:-1px;width:0;height:2px;background:var(--mint);transition:width .7s var(--ease-out)}
-.sec-faq .faq:hover::before{width:32px}
-.sec-faq .faq[open]::before{width:100%}
+.sec-faq .faq::before{content:"";position:absolute;left:0;top:-1px;width:100%;height:2px;background:var(--mint);transform:scaleX(0);transform-origin:left;transition:transform var(--motion-fast) var(--ease-out)}
+.sec-faq .faq[open]:not(.is-closing)::before{transform:scaleX(1)}
 .sec-faq .faq summary{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:30px 0;list-style:none;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1875rem,1.7vw,1.4375rem);font-weight:500;line-height:1.35;letter-spacing:-.015em;color:var(--cream)}
 .sec-faq .faq summary::-webkit-details-marker{display:none}
 .sec-faq .faq summary:focus-visible{outline:2px solid var(--mint);outline-offset:4px;border-radius:8px}
-.sec-faq .faq .q{transition:transform .45s var(--ease-out)}
-.sec-faq .faq summary:hover .q{transform:translateX(6px)}
-.sec-faq .faq .pm{position:relative;flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--bg-2);transition:background .35s var(--ease-out),border-color .35s var(--ease-out)}
-.sec-faq .faq .pm::before,.sec-faq .faq .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.75px;margin:-.875px 0 0 -6px;border-radius:2px;background:var(--mint-bright);transition:transform .45s var(--ease-out),background .35s}
+.sec-faq .faq .pm{position:relative;flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--bg-2);transition:background var(--motion-press) ease,border-color var(--motion-press) ease}
+.sec-faq .faq .pm::before,.sec-faq .faq .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.75px;margin:-.875px 0 0 -6px;border-radius:2px;background:var(--mint-bright);transition:transform var(--motion-press) var(--ease-out),background var(--motion-press) ease}
 .sec-faq .faq .pm::after{transform:rotate(90deg)}
-.sec-faq .faq[open] .pm{background:var(--mint);border-color:var(--mint)}
-.sec-faq .faq[open] .pm::before,.sec-faq .faq[open] .pm::after{background:var(--bg)}
-.sec-faq .faq[open] .pm::after{transform:rotate(0)}
+.sec-faq .faq[open]:not(.is-closing) .pm{background:var(--mint);border-color:var(--mint)}
+.sec-faq .faq[open]:not(.is-closing) .pm::before,.sec-faq .faq[open]:not(.is-closing) .pm::after{background:var(--bg)}
+.sec-faq .faq[open]:not(.is-closing) .pm::after{transform:rotate(0)}
 .sec-faq .faq .a{overflow:hidden}
 .sec-faq .faq .a p{max-width:60ch;padding:0 72px 32px 0;font-size:1.0625rem;line-height:1.75;color:var(--copy-readable);text-wrap:pretty}
 .sec-faq .faq .a b{font-weight:600;color:var(--cream)}
@@ -1340,7 +1340,7 @@
 .closing-photo::after{content:"";position:absolute;inset:0;background:
   linear-gradient(180deg,var(--bg) 0%,rgba(8,12,34,.6) 22%,rgba(8,12,34,.55) 44%,rgba(8,12,34,.6) 58%,rgba(8,12,34,.4) 74%,rgba(8,12,34,.82) 90%,var(--bg) 100%),
   radial-gradient(90% 70% at 50% 55%,transparent 35%,rgba(8,12,34,.85) 100%)}
-.motion-ready .closing-photo img{transform:scale(1.08);transition:transform 2.6s var(--ease-out)}
+.motion-ready .closing-photo img{transform:scale(1.03);transition:transform .7s var(--ease-out)}
 .motion-ready .closing-photo.in-view img{transform:none}
 .closing .final{position:relative;z-index:1;padding:clamp(96px,10vw,152px) 0 var(--closing-stage);text-align:center}
 .closing .final .wrap{max-width:980px}
@@ -1391,7 +1391,8 @@
 .pain .video-block>div:last-child{grid-area:cta;margin-top:0!important}
 /* botão secundário: mesmo texto, contorno, não compete com o CTA da hero */
 .pain .video-block .btn{background:transparent;color:#ECF0F8;border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 26px;font-size:.9375rem}
-.pain .video-block .btn:hover{background:rgba(42,210,193,.1);border-color:#2AD2C1;color:#45E4D3;transform:none;box-shadow:none;filter:none}
+@media(hover:hover) and (pointer:fine){.pain .video-block .btn:hover{background:rgba(42,210,193,.1);border-color:#2AD2C1;color:#45E4D3;transform:none;box-shadow:none;filter:none}}
+.pain .video-block .btn:active,.pain .video-block .btn.is-pressed{transform:scale(.97)}
 /* ---------- 4. Sem ECG divisório nem luz girando no aro ---------- */
 .pain .pain-ecg{display:none}
 .pain .orb-arc-track{display:none}
@@ -1402,6 +1403,14 @@
 .pain .pain-question-groups{gap:0;border-top:1px solid rgba(236,240,248,.10)}
 .pain .pain-question-card{min-height:0;padding:15px 0;background:none;border-radius:0;border-bottom:1px solid rgba(236,240,248,.10)}
 .pain .pain-question-card p{font-size:1.0625rem;line-height:1.45}
+/* Seta turquesa antes de cada pergunta (mesmo desenho da seta do botão de compra), alinhada à 1ª linha. */
+.pain .pain-question-card p{display:flex;align-items:flex-start;gap:14px}
+.pain .pain-question-card p::before{content:"";flex:none;width:18px;height:18px;margin-top:calc((1.45em - 18px) / 2);background:var(--mint);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat}
+/* Na entrada em cascata, a seta chega 6px atrás e desliza para o lugar logo depois da pergunta. */
+.motion-ready .pain-question-groups:not(.tx-in) .pain-question-card p::before{transform:translateX(-6px)}
+.motion-ready .pain-question-groups.tx-in .pain-question-card p::before{transition:transform 450ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 120ms)}
 /* ---------- Desktop e tablet: zigue-zague no mesmo eixo da hero ---------- */
 @media (min-width:761px){
   .hero{padding-bottom:clamp(128px,11vw,168px)}
@@ -1437,16 +1446,65 @@
   /* no celular a hero não tem foto de fundo */
   .hero-mobile-art{margin-bottom:0}
 }
+/* Controle único para os movimentos automáticos; feedback de teclado imediato. */
+.btn,.play,.rail-btn,.shot-zoom-nav,.shot-zoom-close,.motion-toggle{touch-action:manipulation}
+.motion-toggle{position:absolute;right:0;top:0;bottom:0;z-index:1;width:44px;display:grid;place-items:center;border:0;border-left:1px solid rgba(8,12,34,.2);background:var(--mint);color:var(--bg);cursor:pointer}
+.motion-toggle[hidden]{display:none}
+.motion-toggle svg{width:16px;height:16px}
+.motion-toggle .resume-icon,.motion-toggle[aria-pressed="true"] .pause-icon{display:none}
+.motion-toggle[aria-pressed="true"] .resume-icon{display:block}
+.motion-toggle:focus-visible{outline:2px solid var(--bg);outline-offset:-5px}
+.motion-paused .marquee{animation-play-state:paused}
+.keyboard-input :is(.btn,.play,.rail-btn,.shot-zoom-nav,.shot-zoom-close,.shot-zoom-dots span,.pm),.keyboard-input .faq::before,.keyboard-input .pm::before,.keyboard-input .pm::after{transition:none!important}
+@media(prefers-reduced-motion:reduce){
+ .is-pressed{transform:none!important}
+ .topbar{position:relative}
+ .marquee{width:100%;white-space:normal}
+ .marquee>span{min-width:0;width:100%;flex-wrap:wrap;justify-content:center;gap:4px 10px;padding:10px 16px;font-size:.6875rem;letter-spacing:.04em}
+ .marquee>span+span,.marquee .sep{display:none}
+ .btn:active,.btn:hover,.pain .video-block .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ov-row:hover .ov-media img,.offer-sec .ov-buy .btn:hover svg{transform:none}
+ .offer-sec .ov-row:hover .ov-title::after{transform:scaleX(.444444)}
+ .sec-proof .rail-btn:hover .rail-arrow svg:first-child{transform:none}
+ .sec-proof .rail-btn:hover .rail-arrow svg+svg{visibility:hidden}
+ .btn,.shot-zoom-close,.shot-zoom-nav,.sec-proof .rail-btn{transition:color 120ms ease,border-color 120ms ease!important}
+}
+/* Textos (19/09): títulos em dois tempos, listas em cascata e preço riscado ao aparecer.
+   Tudo acontece uma vez, ao entrar na tela; sem JS ou com movimento reduzido o estado final é o padrão. */
+/* Como no .reveal, as transições ficam só no estado visível. */
+/* Títulos: a frase em Fraunces chega um instante depois, saindo de um leve desfoque. */
+.motion-ready .reveal:not(.in-view) h2 .serif{opacity:0;filter:blur(4px)}
+.motion-ready .reveal.in-view h2 .serif{transition:opacity 450ms var(--ease-out) 160ms,filter 450ms var(--ease-out) 160ms}
+/* Hero: o sublinhado de "centro cirúrgico" assenta no lugar depois que o título aparece. */
+.motion-ready .hero h1.reveal:not(.in-view) .u-dash{text-decoration-color:rgba(42,210,193,0);text-underline-offset:16px}
+.motion-ready .hero h1.reveal.in-view .u-dash{transition:text-decoration-color 500ms ease 420ms,text-underline-offset 600ms var(--ease-out) 420ms}
+/* Listas: itens entram em sequência quando o grupo chega a 85% da tela (--i vem do JS). */
+.motion-ready .tx-group:not(.tx-in)>*{opacity:0;transform:translateY(8px)}
+.motion-ready .tx-group.tx-in>*{transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms)}
+/* Resultados da Carol: o traço turquesa de cada número se desenha logo depois do número. */
+#carol .auth .n::before{transform-origin:left}
+.motion-ready #carol .auth-cards:not(.tx-in) .auth .n::before{transform:scaleX(0)}
+.motion-ready #carol .auth-cards.tx-in .auth .n::before{transition:transform 500ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 180ms)}
+/* Preço: o valor antigo aparece, é riscado e só então o novo valor sobe. */
+.offer-sec .ov-old{position:relative;width:fit-content;text-decoration:none}
+.offer-sec .ov-old::after{content:"";position:absolute;left:0;right:.08em;top:calc(50% - .5px);height:1px;background:rgba(135,148,172,.7);transform-origin:left}
+.motion-ready .offer-sec .ov-price:not(.tx-in) .ov-old::after{transform:scaleX(0)}
+.motion-ready .offer-sec .ov-price.tx-in .ov-old::after{transition:transform 450ms var(--ease-out) 220ms}
+.motion-ready .offer-sec .ov-price.tx-in>.ov-amount{transition-delay:420ms}
+.motion-ready .offer-sec .ov-price.tx-in>.ov-parc{transition-delay:500ms}
 </style>
 </head>
 <body>
 
 <!-- ===== TOP MARQUEE ===== -->
 <div class="topbar">
-  <div class="marquee" aria-hidden="true">
+  <div class="marquee">
     <span>ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
-    <span>ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
+    <span aria-hidden="true">ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
   </div>
+  <button class="motion-toggle" type="button" aria-label="Pausar animações automáticas" aria-pressed="false" title="Pausar animações automáticas" hidden>
+    <svg class="pause-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
+    <svg class="resume-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="m5 2 8 6-8 6z"/></svg>
+  </button>
 </div>
 
 <!-- ===== BLOCO 01 — HERO ===== -->
@@ -1703,7 +1761,7 @@
       <h2>Quem recebe direção começa a enxergar o mercado <span class="serif">de outra forma.</span></h2>
     </div>
   </div>
-  <div class="rail-wrap reveal">
+  <div class="rail-wrap">
     <div class="rail">
       <button class="shot is-tall" type="button" aria-label="Ampliar print de depoimento">
         <img src="assets/images/provas/prova-8.webp" alt="Print de conversa no WhatsApp: aluna conta que estava perdida, estudou com as dicas e planejou o passo a passo para entrar em campo" width="850" height="956" loading="lazy" decoding="async">
@@ -1874,9 +1932,77 @@
 
 <script>
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const motionEase = getComputedStyle(document.documentElement).getPropertyValue('--ease-out').trim();
+  const shotList = [...document.querySelectorAll('.sec-proof .shot')];
+  shotList.forEach(shot => {
+    shot.classList.add('reveal');
+    const siblings = [...shot.parentElement.children];
+    shot.style.setProperty('--reveal-delay', (shot.parentElement.classList.contains('shot-col') ? siblings.indexOf(shot) * 40 : 0) + 'ms');
+  });
+  // Textos em lista entram em cascata. Um grupo que já era .reveal deixa de ser, para não mover duas vezes.
+  const textGroups = [...document.querySelectorAll('.pain-question-groups,#mapa .lines,#mapa .map-q,#para-quem .checklist,#carol .auth-cards,.offer-sec .ov-bonus,.offer-sec .ov-price')];
+  textGroups.forEach(group => {
+    group.classList.remove('reveal');
+    group.classList.add('tx-group');
+    [...group.children].forEach((item, index) => item.style.setProperty('--i', index));
+  });
   const reveals = document.querySelectorAll('.reveal');
-  const movingSvgs = document.querySelectorAll('svg:has(animateMotion)');
-  let revealObserver;
+  let automaticMotionPaused = false;
+  const motionToggle = document.querySelector('.motion-toggle');
+  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg path,.gcert-ring,svg:has(animateMotion)')];
+  const visibleMotion = new Set('IntersectionObserver' in window ? [] : continuousMotion);
+  const syncContinuousMotion = () => {
+    document.documentElement.classList.toggle('motion-paused', automaticMotionPaused);
+    motionToggle.hidden = motionPreference.matches;
+    motionToggle.setAttribute('aria-pressed', String(automaticMotionPaused));
+    const label = automaticMotionPaused ? 'Retomar animações automáticas' : 'Pausar animações automáticas';
+    motionToggle.setAttribute('aria-label', label);
+    motionToggle.title = label;
+    continuousMotion.forEach(element => {
+      const paused = automaticMotionPaused || motionPreference.matches || document.hidden || !visibleMotion.has(element);
+      if (element.matches('svg:has(animateMotion)')) {
+        if (paused) element.pauseAnimations();
+        else element.unpauseAnimations();
+      } else element.style.animationPlayState = paused ? 'paused' : 'running';
+    });
+    document.dispatchEvent(new Event('automaticmotionchange'));
+  };
+  if ('IntersectionObserver' in window) {
+    const continuousObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleMotion.add(entry.target);
+        else visibleMotion.delete(entry.target);
+      });
+      syncContinuousMotion();
+    });
+    continuousMotion.forEach(element => continuousObserver.observe(element));
+  }
+  motionToggle.addEventListener('click', () => {
+    automaticMotionPaused = !automaticMotionPaused;
+    syncContinuousMotion();
+  });
+  document.addEventListener('visibilitychange', syncContinuousMotion);
+  document.addEventListener('keydown', () => document.documentElement.classList.add('keyboard-input'));
+  document.addEventListener('pointerdown', () => document.documentElement.classList.remove('keyboard-input'), { passive: true });
+  // Em telas de toque, :active pode chegar só ao soltar; confirmar a pressão já no contato.
+  let pressedControl = null;
+  const releasePress = event => {
+    if (!pressedControl || (event?.pointerId != null && event.pointerId !== pressedControl.pointerId)) return;
+    pressedControl.element.classList.remove('is-pressed');
+    pressedControl = null;
+  };
+  document.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.pointerType === 'mouse') return;
+    releasePress();
+    const element = event.target.closest('.btn,.play,.rail-btn,.shot-zoom-close,.shot-zoom-nav');
+    if (!element) return;
+    element.classList.add('is-pressed');
+    pressedControl = { element, pointerId: event.pointerId };
+  }, { passive: true });
+  document.addEventListener('pointerup', releasePress, { passive: true });
+  document.addEventListener('pointercancel', releasePress, { passive: true });
+  window.addEventListener('blur', () => releasePress());
+  let revealObserver, textObserver;
   if ('IntersectionObserver' in window && !motionPreference.matches) {
     revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -1887,18 +2013,28 @@
       });
     }, { threshold: 0.08 });
     reveals.forEach(element => revealObserver.observe(element));
+    // Listas só começam quando estão bem dentro da tela, para a cascata ser vista.
+    textObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('tx-in');
+          textObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -15% 0px' });
+    textGroups.forEach(group => textObserver.observe(group));
     document.documentElement.classList.add('motion-ready');
   } else {
     reveals.forEach(element => element.classList.add('in-view'));
+    textGroups.forEach(group => group.classList.add('tx-in'));
   }
   function applyMotionPreference() {
-    movingSvgs.forEach(svg => {
-      if (motionPreference.matches) svg.pauseAnimations();
-      else svg.unpauseAnimations();
-    });
+    syncContinuousMotion();
     if (motionPreference.matches) {
       reveals.forEach(element => element.classList.add('in-view'));
+      textGroups.forEach(group => group.classList.add('tx-in'));
       revealObserver?.disconnect();
+      textObserver?.disconnect();
     }
   }
   applyMotionPreference();
@@ -1942,12 +2078,12 @@
       if (state.glide) cancelAnimationFrame(state.glide);
       state.glide = null;
     };
-    const glideTo = left => {
+    const glideTo = (left, mode = 'manual') => {
       stopGlide();
       const from = proofRail.scrollLeft;
       const distance = left - from;
-      if (motionPreference.matches || Math.abs(distance) < 2) { proofRail.scrollLeft = left; return; }
-      const duration = Math.min(1400, 700 + Math.abs(distance) * 0.35); // deslize lento e macio
+      if (motionPreference.matches || mode === 'instant' || Math.abs(distance) < 2) { proofRail.scrollLeft = left; return; }
+      const duration = mode === 'auto' ? Math.min(1400, 700 + Math.abs(distance) * 0.35) : 240;
       const start = performance.now();
       const tick = now => {
         const p = Math.min(1, Math.max(0, (now - start) / duration));
@@ -1956,11 +2092,11 @@
       };
       state.glide = requestAnimationFrame(tick);
     };
-    const goTo = i => {
+    const goTo = (i, mode = 'manual') => {
       if (!state.stops.length) return;
       state.index = (i + state.stops.length) % state.stops.length;
       state.t = 0;
-      glideTo(state.stops[state.index]);
+      glideTo(state.stops[state.index], mode);
       render();
     };
 
@@ -1975,7 +2111,7 @@
         const step = document.createElement('button');
         step.type = 'button';
         step.setAttribute('aria-label', 'Ir para o grupo ' + (i + 1) + ' de ' + state.stops.length);
-        step.addEventListener('click', () => goTo(i));
+        step.addEventListener('click', event => goTo(i, event.detail === 0 ? 'instant' : 'manual'));
         stepsHost.appendChild(step);
       });
       shownIndex = -1;
@@ -1983,8 +2119,8 @@
       render();
     };
 
-    nextButton.addEventListener('click', () => goTo(state.index + 1));
-    prevButton.addEventListener('click', () => goTo(state.index - 1));
+    nextButton.addEventListener('click', event => goTo(state.index + 1, event.detail === 0 ? 'instant' : 'manual'));
+    prevButton.addEventListener('click', event => goTo(state.index - 1, event.detail === 0 ? 'instant' : 'manual'));
 
     // arrasto com mouse
     let dragging = false, startX = 0, startLeft = 0, moved = 0;
@@ -2038,12 +2174,14 @@
       clearTimeout(holdTimer);
       state.touch = true; state.hold = true;
     }, { passive: true });
-    proofRail.addEventListener('touchend', () => {
+    const endTouch = () => {
       state.touch = false;
       clearTimeout(settleTimer);
       settleTimer = setTimeout(settle, 180);
       holdTimer = setTimeout(() => { state.hold = false; }, 2500);
-    }, { passive: true });
+    };
+    proofRail.addEventListener('touchend', endTouch, { passive: true });
+    proofRail.addEventListener('touchcancel', endTouch, { passive: true });
 
     railWrap.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') state.hover = true; });
     railWrap.addEventListener('pointerleave', () => { state.hover = false; });
@@ -2055,7 +2193,11 @@
     // relogio do avanco: so roda com a secao na tela
     let running = false, last = 0;
     const loop = now => {
-      if (!state.visible) { running = false; return; }
+      if (!state.visible || document.hidden || motionPreference.matches || automaticMotionPaused) {
+        proofSection.classList.add('is-paused');
+        running = false;
+        return;
+      }
       const dt = Math.min(0.05, Math.max(0, (now - last) / 1000));
       last = now;
       const paused = state.hover || state.focus || state.hold || state.touch || state.drag || document.hidden
@@ -2063,23 +2205,35 @@
       proofSection.classList.toggle('is-paused', paused);
       if (!paused && !state.glide && state.stops.length > 1) {
         state.t = Math.min(1, state.t + dt / DWELL);
-        if (state.t >= 1) goTo(state.index + 1);
+        if (state.t >= 1) goTo(state.index + 1, 'auto');
         else render();
       }
       requestAnimationFrame(loop);
     };
     const startLoop = () => {
-      if (running) return;
+      if (running || !state.visible || document.hidden || motionPreference.matches || automaticMotionPaused) return;
       running = true;
       last = performance.now();
       requestAnimationFrame(loop);
     };
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(([entry]) => {
-        state.visible = entry.isIntersecting;
+        state.visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
         if (state.visible) startLoop();
       }, { threshold: 0.35 }).observe(proofRail);
     } else startLoop();
+    document.addEventListener('automaticmotionchange', () => {
+      if (motionPreference.matches) {
+        stopGlide();
+        proofRail.scrollLeft = state.stops[state.index] || 0;
+      } else if (automaticMotionPaused || document.hidden) {
+        stopGlide();
+        state.index = nearestStop();
+        state.t = 0;
+        render();
+      }
+      startLoop();
+    });
 
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -2094,131 +2248,180 @@
   }
 
   const zoomLayer = document.getElementById('shot-zoom');
-  const shotList = [...document.querySelectorAll('.sec-proof .shot')];
   if (zoomLayer && shotList.length) {
     const zoomImage = zoomLayer.querySelector('img');
     const zoomClose = zoomLayer.querySelector('.shot-zoom-close');
     const zoomDots = zoomLayer.querySelector('.shot-zoom-dots');
+    const zoomFrame = zoomLayer.querySelector('.shot-zoom-frame');
     const navButtons = [...zoomLayer.querySelectorAll('.shot-zoom-nav')];
-    const calmMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let current = 0;
-    let lastFocused = null;
+    const effects = new Set();
+    let current = 0, displayed = 0, revision = 0;
+    let swapTimer, swapFrame, lastFocused, previousOverflow;
+    let closing = false;
 
     shotList.forEach(() => zoomDots.appendChild(document.createElement('span')));
     const dots = [...zoomDots.children];
-
-    const paint = index => {
+    const source = index => {
       const image = shotList[index].querySelector('img');
-      zoomImage.src = image.currentSrc || image.src;
+      return { src: image.currentSrc || image.src, alt: image.alt };
+    };
+    const paint = index => {
+      const image = source(index);
+      zoomImage.src = image.src;
       zoomImage.alt = image.alt;
       dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
-      current = index;
+      displayed = index;
     };
-
-    const show = (index, animate) => {
-      const next = (index + shotList.length) % shotList.length;
-      if (!animate || calmMotion.matches) { paint(next); return; }
-      zoomLayer.classList.add('is-swapping');
-      setTimeout(() => {
-        paint(next);
-        requestAnimationFrame(() => zoomLayer.classList.remove('is-swapping'));
-      }, 160);
+    const cancelPending = () => {
+      revision++;
+      clearTimeout(swapTimer);
+      cancelAnimationFrame(swapFrame);
+      effects.forEach(effect => effect.cancel());
+      effects.clear();
     };
-
-    // o print sai do lugar dele no carrossel e cresce ate o centro (e volta ao fechar)
-    const travel = (cardImage, reverse) => {
-      if (calmMotion.matches || !cardImage || !zoomImage.getBoundingClientRect().width) return null;
-      const from = cardImage.getBoundingClientRect();
+    const animate = (element, frames, duration, done) => {
+      const effect = element.animate(frames, { duration, easing: motionEase, fill: 'both' });
+      effects.add(effect);
+      effect.onfinish = () => {
+        effects.delete(effect);
+        if (done) done();
+        // O estado final j? est? no CSS; liberar o efeito permite a pr?xima transi??o.
+        effect.cancel();
+      };
+      return effect;
+    };
+    const travel = (index, reverse, initial, done) => {
+      const from = shotList[index].querySelector('img').getBoundingClientRect();
       const to = zoomImage.getBoundingClientRect();
-      if (!from.width || !to.width) return null;
+      if (!from.width || !to.width || from.right <= 0 || from.left >= innerWidth || from.bottom <= 0 || from.top >= innerHeight) return false;
       const card = {
         transform: 'translate(' + ((from.left + from.width / 2) - (to.left + to.width / 2)) + 'px,'
           + ((from.top + from.height / 2) - (to.top + to.height / 2)) + 'px) scale('
           + (from.width / to.width) + ',' + (from.height / to.height) + ')',
-        opacity: 0.5,
-        borderRadius: '28px'
+        opacity: 0.5
       };
-      const centre = { transform: 'none', opacity: 1, borderRadius: '18px' };
-      return zoomImage.animate(reverse ? [centre, card] : [card, centre], {
-        duration: reverse ? 300 : 420,
-        easing: 'cubic-bezier(.22,1,.36,1)',
-        fill: 'both'
-      });
+      const centre = { transform: 'none', opacity: 1 };
+      animate(zoomImage, reverse ? [initial || centre, card] : [card, centre], reverse ? 240 : 420, done);
+      return true;
     };
-    const fade = reverse => {
-      if (calmMotion.matches) return null;
-      return zoomLayer.animate(reverse ? [{ opacity: 1 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: 1 }],
-        { duration: reverse ? 260 : 300, easing: 'ease-out', fill: 'both' });
+    const instantPaint = index => {
+      zoomLayer.classList.add('is-instant');
+      zoomLayer.classList.remove('is-swapping');
+      paint(index);
+      void zoomImage.offsetWidth;
+      zoomLayer.classList.remove('is-instant');
     };
-
-    const openZoom = shot => {
+    const show = (index, withMotion = true) => {
+      if (zoomLayer.hidden || closing) return;
+      current = (index + shotList.length) % shotList.length;
+      cancelPending();
+      const ticket = revision;
+      if (!withMotion || motionPreference.matches) { instantPaint(current); return; }
+      const next = current;
+      const preload = new Image();
+      preload.src = source(next).src;
+      const ready = preload.decode().catch(() => {});
+      zoomLayer.classList.add('is-swapping');
+      swapTimer = setTimeout(async () => {
+        await ready;
+        if (ticket !== revision || zoomLayer.hidden || closing) return;
+        paint(next);
+        swapFrame = requestAnimationFrame(() => {
+          if (ticket === revision) zoomLayer.classList.remove('is-swapping');
+        });
+      }, 180);
+    };
+    const openZoom = (shot, withMotion) => {
+      cancelPending();
+      closing = false;
       lastFocused = shot;
-      paint(shotList.indexOf(shot));
+      previousOverflow = document.body.style.overflow;
+      current = shotList.indexOf(shot);
+      instantPaint(current);
       zoomLayer.hidden = false;
       document.body.style.overflow = 'hidden';
-      zoomClose.focus();
-      // dispara na hora: depender de requestAnimationFrame deixa a animação refem do render
-      let started = false;
+      zoomClose.focus({ preventScroll: true });
+      if (!withMotion || motionPreference.matches) return;
+      const ticket = revision;
+      animate(zoomLayer, [{ opacity: 0 }, { opacity: 1 }], 250);
       const run = () => {
-        if (started) return;
-        started = true;
-        void zoomImage.offsetWidth; // força o layout antes de medir
-        fade(false);
-        travel(shot.querySelector('img'), false);
+        if (ticket !== revision || zoomLayer.hidden || closing) return;
+        travel(current, false);
       };
       if (zoomImage.complete && zoomImage.naturalWidth) run();
-      else zoomImage.addEventListener('load', run, { once: true });
-      setTimeout(run, 80);
+      else zoomImage.decode().then(run).catch(() => {});
     };
     const finishClose = () => {
       zoomLayer.hidden = true;
+      cancelPending();
+      closing = false;
       zoomLayer.classList.remove('is-swapping');
       zoomImage.removeAttribute('src');
-      document.body.style.overflow = '';
-      if (lastFocused) lastFocused.focus();
+      document.body.style.overflow = previousOverflow || '';
+      lastFocused?.focus({ preventScroll: true });
     };
-    const closeZoom = () => {
-      if (zoomLayer.hidden) return;
-      const back = travel(shotList[current].querySelector('img'), true);
-      fade(true);
-      if (back) back.onfinish = finishClose;
-      else finishClose();
+    const closeZoom = (withMotion = true) => {
+      if (zoomLayer.hidden || closing) return;
+      const initial = { transform: getComputedStyle(zoomImage).transform, opacity: getComputedStyle(zoomImage).opacity };
+      const backdropOpacity = getComputedStyle(zoomLayer).opacity;
+      cancelPending();
+      closing = true;
+      zoomLayer.classList.add('is-instant');
+      zoomLayer.classList.remove('is-swapping');
+      void zoomImage.offsetWidth;
+      zoomLayer.classList.remove('is-instant');
+      if (!withMotion || motionPreference.matches) { finishClose(); return; }
+      animate(zoomLayer, [{ opacity: backdropOpacity }, { opacity: 0 }], 240, finishClose);
+      if (!travel(displayed, true, initial)) {
+        animate(zoomImage, [initial, { transform: 'scale(.97)', opacity: 0 }], 240);
+      }
     };
 
-    shotList.forEach((shot, index) => {
-      shot.style.transitionDelay = (index * 70) + 'ms';
-      shot.addEventListener('click', () => openZoom(shot));
-    });
+    shotList.forEach(shot => shot.addEventListener('click', event => openZoom(shot, event.detail !== 0)));
     navButtons.forEach(button => button.addEventListener('click', event => {
       event.stopPropagation();
-      show(current + (button.classList.contains('next') ? 1 : -1), true);
+      show(current + (button.classList.contains('next') ? 1 : -1), event.detail !== 0);
     }));
     zoomLayer.addEventListener('click', event => {
-      if (event.target === zoomLayer || event.target.closest('.shot-zoom-close')) closeZoom();
+      if (event.target === zoomLayer || event.target.closest('.shot-zoom-close')) closeZoom(event.detail !== 0);
     });
 
-    // deslize no celular
+    // Um gesto horizontal troca o print; gestos verticais e multitoque n?o navegam.
     let swipeStart = null;
-    zoomLayer.addEventListener('pointerdown', event => { swipeStart = event.clientX; });
-    zoomLayer.addEventListener('pointerup', event => {
-      if (swipeStart === null) return;
-      const delta = event.clientX - swipeStart;
-      swipeStart = null;
-      if (Math.abs(delta) > 40) show(current + (delta < 0 ? 1 : -1), true);
+    zoomFrame.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || event.pointerType === 'mouse' || swipeStart) return;
+      swipeStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      zoomFrame.setPointerCapture(event.pointerId);
     });
+    zoomFrame.addEventListener('pointerup', event => {
+      if (!swipeStart || swipeStart.id !== event.pointerId) return;
+      const delta = event.clientX - swipeStart.x;
+      const vertical = event.clientY - swipeStart.y;
+      swipeStart = null;
+      if (Math.abs(delta) > 40 && Math.abs(delta) > Math.abs(vertical)) show(current + (delta < 0 ? 1 : -1));
+    });
+    zoomFrame.addEventListener('pointercancel', () => { swipeStart = null; });
+    zoomFrame.addEventListener('lostpointercapture', () => { swipeStart = null; });
 
+    motionPreference.addEventListener('change', () => {
+      if (!motionPreference.matches || zoomLayer.hidden) return;
+      if (closing) finishClose();
+      else show(current, false);
+    });
     document.addEventListener('keydown', event => {
       if (zoomLayer.hidden) return;
-      if (event.key === 'Escape') closeZoom();
-      if (event.key === 'ArrowRight') show(current + 1, true);
-      if (event.key === 'ArrowLeft') show(current - 1, true);
+      if (['Escape', 'ArrowRight', 'ArrowLeft'].includes(event.key)) event.preventDefault();
+      if (event.key === 'Escape') {
+        if (closing) finishClose();
+        else closeZoom(false);
+      }
+      if (event.key === 'ArrowRight') show(current + 1, false);
+      if (event.key === 'ArrowLeft') show(current - 1, false);
       if (event.key === 'Tab') {
-        // mantem o foco dentro da camada
         const focusables = [zoomClose, ...navButtons].filter(el => el.offsetParent !== null);
         const at = focusables.indexOf(document.activeElement);
-        const step = event.shiftKey ? -1 : 1;
         event.preventDefault();
-        focusables[(at + step + focusables.length) % focusables.length].focus();
+        focusables[(at + (event.shiftKey ? -1 : 1) + focusables.length) % focusables.length].focus();
       }
     });
   }
@@ -2227,27 +2430,40 @@
   document.querySelector('.play')?.addEventListener('click',()=>{
     alert('Insira aqui o embed do vídeo principal (YouTube/Vimeo/Panda). Este é um placeholder.');
   });
-  // FAQ: abre e fecha a resposta com altura animada (sem animação com movimento reduzido)
+  // FAQ: a altura é a única animação de layout; cliques revertem do ponto atual.
   document.querySelectorAll('.sec-faq .faq').forEach(item => {
     const summary = item.querySelector('summary');
     const answer = item.querySelector('.a');
+    let effect = null;
+    let expanded = item.open;
+    const settle = () => {
+      item.open = expanded;
+      item.classList.remove('is-closing');
+      effect?.cancel();
+      effect = null;
+    };
     summary.addEventListener('click', event => {
-      if (motionPreference.matches || !answer.animate) return;
+      if (!answer.animate) return;
       event.preventDefault();
-      if (item.dataset.busy) return;
-      item.dataset.busy = '1';
-      if (!item.open) {
-        item.open = true;
-        const height = answer.scrollHeight;
-        const opening = answer.animate([{ height: '0px', opacity: 0 }, { height: height + 'px', opacity: 1 }], { duration: 460, easing: 'cubic-bezier(.22,1,.36,1)' });
-        opening.onfinish = opening.oncancel = () => { delete item.dataset.busy; };
-      } else {
-        const height = answer.scrollHeight;
-        // fill: forwards segura a altura zero até o <details> fechar, sem piscar a resposta
-        const closing = answer.animate([{ height: height + 'px', opacity: 1 }, { height: '0px', opacity: 0 }], { duration: 320, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
-        closing.onfinish = () => { item.open = false; closing.cancel(); delete item.dataset.busy; };
-      }
+      expanded = effect ? !expanded : !item.open;
+      if (motionPreference.matches || event.detail === 0) { settle(); return; }
+      const height = item.open ? answer.getBoundingClientRect().height : 0;
+      const opacity = item.open ? getComputedStyle(answer).opacity : 0;
+      effect?.cancel();
+      item.open = true;
+      item.classList.toggle('is-closing', !expanded);
+      effect = answer.animate([
+        { height: height + 'px', opacity },
+        { height: (expanded ? answer.scrollHeight : 0) + 'px', opacity: expanded ? 1 : 0 }
+      ], { duration: expanded ? 220 : 160, easing: motionEase, fill: 'both' });
+      effect.onfinish = settle;
+      // Ao abrir do zero, o texto da resposta desce 6px junto com a altura, como se desdobrasse.
+      if (expanded && height === 0) answer.firstElementChild?.animate([{ transform: 'translateY(-6px)' }, { transform: 'none' }], { duration: 260, easing: motionEase });
     });
+    motionPreference.addEventListener('change', () => {
+      if (motionPreference.matches && effect) settle();
+    });
+    window.addEventListener('resize', () => { if (effect) settle(); });
   });
 </script>
 </body>

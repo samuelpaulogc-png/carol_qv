@@ -4,6 +4,31 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Textos: animações de entrada (skill emil-design-eng) — 19/09/2026
+
+- Pedido do usuário: auditar os textos com a skill do Emil Kowalski e aplicar animações sutis. Copy intacta; só CSS no fim do bloco `css-proposta` e JS junto do observador de entrada.
+- Títulos `h2`: a frase em Fraunces (`.serif`) entra 160 ms depois do título, saindo de `blur(4px)` (450 ms).
+- Hero: o sublinhado de “centro cirúrgico” assenta no lugar (offset 16→8 px e cor surgindo, 600 ms, 420 ms após o título). Continua `text-decoration`, com o recorte nas descendentes preservado.
+- Listas em cascata (60 ms entre itens, 8 px, 400 ms), disparadas quando o grupo chega a 85% da tela, via classes `.tx-group`/`.tx-in` dadas pelo JS: perguntas da dor, “Talvez…” e perguntas do mapa, critérios de público, resultados da Carol (com o traço turquesa se desenhando), bônus e preço. `p.lines` deixou de ser `.reveal` no JS, para não mover duas vezes.
+- Preço: “DE R$ 297,00” é riscado na hora (traço `::after` em `scaleX`, substituindo o `line-through`), depois sobem o R$ 47 e o parcelamento.
+- Dor (pedido do usuário, com print do celular): seta turquesa antes de cada uma das 5 perguntas, com o mesmo desenho da seta do botão de compra. É um `::before` com máscara SVG, 18 px, alinhado à 1ª linha, e o texto quebrado fica recuado. Na cascata, a seta desliza 6 px para o lugar logo depois da pergunta.
+- FAQ: ao abrir, o texto da resposta desce 6 px junto com a altura (260 ms). Comentário com acentos corrompidos corrigido.
+- **Correção:** as transições de `.reveal` passaram para o estado `.in-view`. Antes, o `getComputedStyle` do início do script calculava a página visível antes de `.motion-ready`, e o texto da abertura nunca chegava a animar.
+- Rejeitado de propósito: hover em texto que não é clicável, contagem dos números (10k/20k) e animação no letreiro.
+- Validação: Chrome headless pelo servidor local, capturas no meio e no fim de cada entrada, linha do tempo da abertura medida quadro a quadro, sem overflow em 1440/900/768/375/320, sem erros de console. Movimento reduzido e sem JS mostram tudo no estado final, e o FAQ chama as duas animações. Não testado em celular físico.
+
+## Animações: auditoria aplicada — 19/09/2026
+
+- Após a auditoria, o usuário autorizou aplicar os ajustes de movimento conforme o julgamento do agente. Implementação concentrada em `index.html`, sem dependências novas; copy, links, imagens e placeholders preservados.
+- Entradas: 350 ms / 12 px com a curva `--ease-out` existente; atrasos de 40–120 ms. Corrigido o conflito de transições em “Como funciona”. Cada print de depoimento passa a entrar uma vez quando fica visível, inclusive na rolagem horizontal, sem animar também o contêiner nem atrasar o hover.
+- Botões: pressão em escala .97 / 160 ms, com feedback já no contato em telas de toque e limpeza em cancelamento do gesto. Hovers restritos a mouse; removidos deslocamento das perguntas do FAQ, halo das setas e expansão decorativa dos filetes do checklist. Capas mantêm zoom discreto de 250 ms; filetes da oferta e FAQ usam transform em vez de largura; foto final desacelera em 700 ms / escala 1.03.
+- Letreiro: trilho dimensionado pelo conteúdo e duas repetições iguais, eliminando o salto no ciclo. Botão discreto no canto direito pausa/retoma os movimentos automáticos da página. Com movimento reduzido, a informação do letreiro fica estática, completa e sem duplicação. A primeira repetição também está disponível para leitores de tela.
+- Mantidos o selo giratório, os ECGs e o ritmo lento do autoplay aprovado; efeitos contínuos pausam fora da tela/aba oculta. Navegação manual do carrossel dura 240 ms; teclado é imediato. O controle de pausa também interrompe o autoplay.
+- Ampliação: preservada a viagem do card ao centro em 420 ms; saída em 240 ms. Efeitos WAAPI são liberados ao terminar, permitindo o fade de troca. Comandos rápidos acumulam a posição desejada, operações antigas são canceladas, carregamento da próxima imagem é aguardado e fechar durante entrada/troca não deixa callbacks alterando a camada oculta. Teclado e movimento reduzido são imediatos; swipe horizontal preservado.
+- FAQ: abre em 220 ms e fecha em 160 ms; novos cliques revertem a partir da altura atual. Teclado é imediato. Mudança para movimento reduzido ou redimensionamento finaliza uma expansão em curso sem deixar altura travada.
+- Validação: Chrome pelo servidor local, screenshots desktop/mobile, larguras 320/375/768/1024/1440/1920 sem overflow (`scrollWidth === clientWidth`, incluindo 375 px). Conferidos cliques rápidos, fechamento durante entrada/troca, Enter/Escape/setas, swipe emulado, pressão/cancelamento de toque, pausa/retomada, movimento reduzido inicial e durante interação e fallback sem JavaScript. Sem exceções JS nos cenários monitorados. Comparação com a versão anterior confirmou copy, links e imagens inalterados.
+- Limite da validação: toque emulado; não testado em aparelho físico. Placeholders de conteúdo continuam pendentes como antes.
+
 ## Letreiro: verde-menta trocado por turquesa — 13/09/2026
 
 - O usuário achou que o letreiro podia ter uma cor que combinasse mais. O verde-menta (`--virada`) destoava do turquesa usado em botões, títulos e capas, e o manual reserva o verde para sinais de avanço.
