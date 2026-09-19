@@ -4,6 +4,16 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Movimento inspirado no noho.ink — 19/09/2026
+
+- O usuário pediu uma auditoria do https://noho.ink/ com a skill do Emil e autorizou aplicar o que fizesse sentido, sem deixar a página pesada. O noho usa Webflow, GSAP, ScrollTrigger, SplitText e Lenis. Descartados: tela de carregamento de ~3 s com rolagem travada, rolagem suavizada (Lenis), cursor magnético, proteção de tela, fotos trocando dentro da frase e letreiro gigante no rodapé (seria um elemento novo; fica como sugestão).
+- **Títulos linha a linha** (h1 da hero e todos os h2): o JS espera as fontes (máx. 1,5 s), quebra o título nas linhas que o navegador desenhou e recria os `<span>` de estilo em cada linha (`.tl-line` > `.tl-in`). Cada linha sobe de dentro de uma fresta (112% → 0, 800 ms, `--ease-reveal` = cubic-bezier(.19,1,.22,1), 90 ms entre linhas). Depois da entrada, o HTML original volta, então o texto quebra normalmente em qualquer largura. Refaz as linhas ao mudar a largura ou quando uma fonte termina de carregar, só nos títulos que ainda não entraram.
+- Classe dos títulos: `.ln-title` (não usar `.tl`, que já é o canto do certificado da garantia). Enquanto divididos, `.is-split` vira coluna flex para as margens negativas das linhas não colapsarem; alturas conferidas iguais antes e depois em 1440 e 375 px.
+- Substitui o desfoque da frase em itálico (rodada anterior). O sublinhado da hero agora assenta 700 ms após as linhas subirem.
+- `.sec-head`, `.mentor-heading` e `.forwhom` deixaram de ser `.reveal`, porque título e listas já têm entrada própria.
+- **Fotos subindo na moldura:** capas de “Como funciona” e da oferta (recorte abrindo de baixo + 8%, 1 s, mantendo o zoom do hover) e retrato da Carol (só o recorte, com cantos de 16 px, para a moldura turquesa continuar para fora).
+- Sem biblioteca nova (~5 KB de JS). Validação: Chrome headless, capturas no meio e no fim das entradas em desktop e 375 px, sem overflow em 1440/900/768/375/320, sem erros de console. Sem JS ou com movimento reduzido nada é dividido e tudo aparece; a troca de preferência durante a visita (simulada) restaura títulos e mostra as fotos.
+
 ## Textos: animações de entrada (skill emil-design-eng) — 19/09/2026
 
 - Pedido do usuário: auditar os textos com a skill do Emil Kowalski e aplicar animações sutis. Copy intacta; só CSS no fim do bloco `css-proposta` e JS junto do observador de entrada.
