@@ -1,0 +1,28 @@
+EDITAR O SELO ANEXADO — trocar cores e palavras para a página do Gancho da Virada
+(anexe a imagem do selo antes de enviar este prompt)
+
+Edite a imagem anexada. Mantenha exatamente a mesma forma, as mesmas proporções e a mesma diagramação do selo: a borda externa ondulada, o anel do texto curvo, a linha pontilhada interna e o disco central. Não redesenhe o selo, não mude o formato das ondas, não mude a posição dos elementos. Altere apenas as cores e as palavras, como descrito abaixo. Entregue em 1:1, alta resolução, fundo transparente (PNG).
+
+CORES (substituir o laranja e o branco):
+- Borda externa ondulada: turquesa luminoso #2AD2C1.
+- Anel do texto curvo: azul-marinho #0C1236, com as letras em creme claro #ECF0F8.
+- Linha pontilhada interna: creme claro #ECF0F8.
+- Disco central: azul-marinho quase preto #080C22.
+- Números e palavras do centro: turquesa claro #45E4D3.
+Nenhum laranja, vermelho, dourado ou prateado deve permanecer na imagem.
+
+PALAVRAS (trocar todos os textos, mantendo a mesma posição e o mesmo estilo de letra):
+- No anel de cima, acompanhando a curva: GARANTIA DE SATISFAÇÃO TOTAL
+- No anel de baixo, acompanhando a curva: GANCHO DA VIRADA
+- No disco central, na linha grande: 7
+- No disco central, na linha de baixo: DIAS
+Todas em maiúsculas, com os acentos corretos em SATISFAÇÃO. As letras precisam sair nítidas, bem formadas, alinhadas na curva e com o mesmo espaçamento do original. Não deixe nenhuma palavra do selo original na imagem.
+
+DETALHES:
+- Troque as duas estrelinhas dos lados por pequenos losangos em creme claro #ECF0F8.
+- Mantenha a leve profundidade do original (sombra interna entre anel e disco, sombra suave por baixo do selo).
+- Sem textura de papel, sem aspecto envelhecido, sem brilho metálico estourado.
+
+NÃO INCLUA: nenhuma outra palavra ou número; nada de "100%", "DINHEIRO DE VOLTA", "GARANTIDO", "MONEY BACK" ou frases parecidas; sem fita, laço, coroa de louros, cadeado, escudo, polegar para cima; sem logotipo, marca d'água ou assinatura.
+
+SE AS LETRAS SAÍREM TORTAS: refaça mantendo só a forma e o "7 DIAS" no centro, sem o texto curvo do anel. As palavras do anel eu resolvo depois, direto no site.

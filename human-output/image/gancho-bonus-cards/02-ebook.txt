@@ -1,0 +1,13 @@
+BÔNUS 02 — E-book "Checklist Cirúrgico"
+
+Crie uma imagem horizontal 16:9, em alta resolução, no estilo de uma colagem tridimensional escura.
+
+Cena: um e-book de checklist cirúrgico. No centro, um tablet na horizontal, flutuando, levemente inclinado, com a tela mostrando a página de um livro aberto: do lado esquerdo, a fotografia em preto e branco de instrumentais cirúrgicos alinhados sobre o campo estéril; do lado direito, uma lista de itens representada apenas por quadradinhos de marcação e por linhas cinza simulando texto, sem nenhuma palavra legível. Alguns quadradinhos aparecem marcados com um "V" de confirmação, e os de baixo ainda vazios. Flutuando em volta do tablet, duas ou três páginas soltas do mesmo checklist, mais finas e menores, em profundidades diferentes, e um pequeno ícone de download em forma de seta para baixo dentro de um quadrado de cantos arredondados.
+
+Estilo: toda a fotografia em preto e branco, com contraste alto e granulação fina de filme. O fundo é um centro cirúrgico bem escuro e desfocado, com o foco cirúrgico aceso ao longe funcionando como única fonte de luz. Sobre o fundo, uma malha de grade fina, quase invisível, como uma planta técnica.
+
+Cor: o único tom colorido é um turquesa luminoso (#2AD2C1), usado apenas nos contornos finos do tablet e das páginas, nas marcas de confirmação e no ícone de download. Todo o resto é preto e branco sobre um azul-marinho quase preto (#080C22). Sem verde, sem laranja, sem vermelho, sem nenhuma outra cor.
+
+Composição: o assunto ocupa o terço superior e o centro da imagem. A metade de baixo fica mais escura e vazia, escurecendo até quase o preto na borda inferior. O canto superior esquerdo deve ficar limpo, sem nenhum elemento importante. Profundidade de campo suave, com o fundo mais desfocado que os objetos da frente.
+
+Não inclua: nenhum texto, letra, número, palavra, legenda, logotipo, marca ou marca d'água — as linhas da lista são apenas traços cinza, nunca letras; nada de sangue, ferida ou procedimento explícito; nenhuma pessoa em primeiro plano.

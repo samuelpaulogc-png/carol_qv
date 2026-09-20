@@ -1,0 +1,31 @@
+SELO DE GARANTIA — formato clássico de selo, nas cores da página
+
+Crie uma imagem quadrada 1:1, em alta resolução, de um selo de garantia visto de frente, centralizado, em estilo de emblema gráfico (vetor com leve profundidade), fundo transparente.
+
+Formato: um selo circular com a borda externa ondulada, em pétalas arredondadas regulares, no formato clássico de selo de garantia. Dentro dele, um disco central escuro, separado da borda por um anel mais claro. Entre o disco e o anel, uma linha pontilhada fina acompanhando toda a circunferência, como um picote de selo.
+
+Texto (exatamente estas palavras, todas em maiúsculas, sem nenhuma outra palavra na imagem):
+- No anel, acompanhando a curva: "GARANTIA DE SATISFAÇÃO TOTAL" na metade de cima e "GANCHO DA VIRADA" na metade de baixo.
+- No disco central, em duas linhas, grandes e centralizadas: "7" bem grande na primeira linha e "DIAS" logo abaixo.
+- Entre o começo e o fim do texto curvo, dos dois lados, um pequeno losango como separador.
+Tipografia sem serifa, geométrica, de traço grosso e espaçamento largo entre as letras. Todas as letras nítidas, bem formadas e perfeitamente alinhadas na curva. Acentos corretos em "SATISFAÇÃO".
+
+Cores (somente estas):
+- Borda ondulada e anel: turquesa luminoso (#2AD2C1).
+- Disco central: azul-marinho quase preto (#080C22).
+- O "7" e a palavra "DIAS": turquesa claro (#45E4D3) sobre o disco escuro.
+- O texto curvo no anel: azul-marinho escuro sobre o turquesa.
+- Linha pontilhada e losangos: creme claro (#ECF0F8).
+Sem laranja, sem vermelho, sem dourado, sem prateado, sem degradê colorido.
+
+Acabamento: gráfico e limpo, com leve profundidade — uma sombra interna sutil separando o disco do anel e uma sombra externa suave por baixo do selo. Nada de textura de papel, nada de aspecto envelhecido, nada de brilho metálico estourado.
+
+Enquadramento: o selo ocupa cerca de 85% da largura, centralizado, com respiro igual dos quatro lados. Fundo transparente (PNG). Se não for possível transparente, fundo azul-marinho liso #080C22.
+
+Não inclua: nenhuma palavra além das indicadas acima; nada de "100%", "dinheiro de volta", "money back", "satisfaction guaranteed" ou qualquer outra frase; sem fita, laço, coroa de louros, estrelas, coroa, polegar para cima, cadeado, escudo; sem logotipo, marca, marca d'água ou assinatura; sem pessoas ou cenário.
+
+VARIAÇÃO A — invertida: borda ondulada e anel em azul-marinho (#080C22) com o texto curvo em turquesa, e o disco central turquesa com o "7 DIAS" em azul-marinho. Mesmo desenho.
+
+VARIAÇÃO B — sem a marca: no anel, só "GARANTIA DE SATISFAÇÃO TOTAL" em cima e o losango separador embaixo, sem "GANCHO DA VIRADA".
+
+SE O TEXTO SAIR TORTO OU COM ERRO: gere o selo sem nenhuma palavra — só a borda ondulada, o anel, a linha pontilhada e o "7" grande no centro. As palavras eu coloco depois, por cima, no próprio site.

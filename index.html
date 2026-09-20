@@ -1203,49 +1203,81 @@
 /* Oferta: vitrine em um bloco. Cada entrega com capa, título com destaque em itálico,
    filete turquesa e descrição; o preço fecha o bloco em duas colunas separadas por fio. */
 .offer-sec .sec-head{max-width:860px;text-align:left;margin-left:0}
-.offer-sec .offer-list>h3{font-size:1.375rem;font-weight:500;line-height:1.3;letter-spacing:-.01em;margin-bottom:20px}
+/* O "Você recebe:" foi para o título da seção; as duas entregas ficam lado a lado, ocupando a largura. */
+.offer-sec .offer-list{--ov-pad:clamp(28px,3.4vw,56px)}
 .offer-sec .ov{position:relative;border:1px solid var(--line);border-radius:28px;background:var(--bg);overflow:hidden;box-shadow:0 60px 120px -50px rgba(0,0,0,.9)}
-.offer-sec .ov-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:290px}
-.offer-sec .ov-row+.ov-row{border-top:1px solid var(--line)}
-.offer-sec .ov-row.flip .ov-media{order:2}
-.offer-sec .ov-media{position:relative;margin:0;overflow:hidden}
-.offer-sec .ov-media img{width:100%;height:100%;object-fit:cover;transition:transform .25s var(--ease-out)}
-@media(hover:hover) and (pointer:fine){.offer-sec .ov-row:hover .ov-media img{transform:scale(1.03)}}
-.offer-sec .ov-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 55%,var(--bg))}
-.offer-sec .ov-row.flip .ov-media::after{background:linear-gradient(270deg,transparent 55%,var(--bg))}
-/* capa do bônus: celular, e-book e mapa ficam do centro para a esquerda; ancora à esquerda para o corte cair na direita */
-.offer-sec .ov-media-bonus img{object-position:0% 50%}
-.offer-sec .ov-op{position:absolute;left:50%;top:-17px;z-index:2;width:34px;height:34px;margin-left:-17px;display:grid;place-items:center;border-radius:50%;background:var(--bg-2);border:1px solid rgba(42,210,193,.5);color:var(--mint-bright);font-family:'Bricolage Grotesque',sans-serif;font-size:1.125rem;font-weight:500;line-height:1;box-shadow:0 0 0 6px var(--bg)}
-.offer-sec .ov-body{display:flex;flex-direction:column;justify-content:center;padding:48px 64px}
-.offer-sec .ov-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.875rem,3vw,2.5rem);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--cream);text-wrap:balance}
-.offer-sec .ov-title .serif{font-weight:500;letter-spacing:-.015em;color:var(--mint-bright)}
-.offer-sec .ov-title::after{content:"";display:block;width:72px;height:2px;margin:24px 0 20px;background:var(--mint);transform:scaleX(.444444);transform-origin:left;transition:transform var(--motion-hover) var(--ease-out)}
-@media(hover:hover) and (pointer:fine){.offer-sec .ov-row:hover .ov-title::after{transform:scaleX(1)}}
-.offer-sec .ov-desc{font-size:1.125rem;line-height:1.65;color:var(--copy-readable);max-width:32ch;text-wrap:pretty}
-.offer-sec .ov-desc b{font-weight:600;color:var(--cream)}
-.offer-sec .ov-bonus{max-width:36ch;list-style:none}
-.offer-sec .ov-bonus li{position:relative;padding:12px 0 12px 26px;font-size:1.0625rem;line-height:1.5;color:var(--copy-readable)}
-.offer-sec .ov-bonus li+li{border-top:1px solid rgba(42,53,116,.8)}
-.offer-sec .ov-bonus li:first-child{padding-top:0}
-.offer-sec .ov-bonus li::before{content:"";position:absolute;left:0;top:calc(12px + .75em);width:12px;height:1.5px;background:var(--mint)}
-.offer-sec .ov-bonus li:first-child::before{top:.75em}
-.offer-sec .ov-buy{display:grid;grid-template-columns:auto 1px minmax(0,1fr);align-items:center;gap:56px;padding:44px 56px;border-top:1px solid var(--line);background:var(--bg-2)}
-.offer-sec .ov-rule{align-self:stretch;background:var(--line)}
+/* Entregas principais: lista curta, porque as capas já aparecem em "Como funciona". */
+/* Duas entregas em blocos próprios, na mesma linguagem dos cards de "Como funciona" — sem fio ligando. */
+/* As linhas vêm do grid de fora (subgrid): o título mais alto define a altura dos dois,
+   e as descrições começam na mesma linha nos dois blocos. */
+.offer-sec .ov-core{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:auto auto;column-gap:clamp(18px,2vw,24px);row-gap:10px}
+.offer-sec .ov-core li{position:relative;display:grid;grid-row:span 2;grid-template-rows:subgrid;
+  grid-template-columns:auto minmax(0,1fr);column-gap:16px;
+  padding:clamp(26px,2.6vw,32px) clamp(26px,2.6vw,34px) clamp(28px,2.8vw,34px);
+  background:linear-gradient(180deg,var(--surface),var(--bg-2) 66%);border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 30px 60px -48px #000;transition:border-color var(--motion-hover) ease}
+.offer-sec .ov-core li::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(120% 70% at 18% -20%,rgba(42,210,193,.16),transparent 60%)}
+.offer-sec .ov-core li>*{position:relative;z-index:1}
+@media(hover:hover) and (pointer:fine){.offer-sec .ov-core li:hover{border-color:rgba(42,210,193,.45)}}
+.offer-sec .ov-core .ck{grid-row:span 2;position:relative;width:32px;height:32px;margin-top:.02em;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,var(--surface-2),var(--bg-2) 74%);border:1px solid var(--mint-deep);
+  box-shadow:0 0 0 5px rgba(42,210,193,.05),inset 0 1px 0 rgba(236,240,248,.10),0 10px 22px -14px rgba(0,0,0,.9)}
+.offer-sec .ov-core .ck svg{position:absolute;inset:0;margin:auto;width:15px;height:15px;color:var(--mint-bright)}
+.offer-sec .ov-core .ck svg path{stroke-dasharray:100;stroke-dashoffset:0}
+.motion-ready .offer-sec .ov-core:not(.tx-in) .ck svg path{stroke-dashoffset:100}
+.motion-ready .offer-sec .ov-core.tx-in .ck svg path{transition:stroke-dashoffset 520ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 200ms)}
+.offer-sec .ov-core h4{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.25rem,2vw,1.625rem);font-weight:600;line-height:1.22;letter-spacing:-.015em;color:var(--cream);text-wrap:pretty}
+.offer-sec .ov-core h4 .serif{font-weight:500;letter-spacing:-.01em;color:var(--mint-bright)}
+.offer-sec .ov-core p{font-size:1.0625rem;line-height:1.55;color:var(--copy-readable);text-wrap:pretty}
+.offer-sec .ov-core p b{font-weight:600;color:var(--cream)}
+/* Bônus: o destaque da seção, em faixas largas com a imagem sangrando na borda. */
+/* "Bônus" abre o bloco em largura total e os cards vêm logo abaixo. */
+.offer-sec .ovb-head{margin:clamp(48px,5.5vw,76px) 0 clamp(20px,2.4vw,28px)}
+.offer-sec .ovb-head h4{max-width:26ch;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.5rem,2.4vw,1.875rem);font-weight:600;line-height:1.22;letter-spacing:-.02em;color:var(--cream);text-wrap:pretty}
+.offer-sec .ovb-head h4 .serif{font-weight:500;letter-spacing:-.015em;color:var(--mint-bright)}
+.offer-sec .ovb-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;min-height:clamp(200px,20vw,264px)}
+.offer-sec .ovb-row.flip{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.offer-sec .ovb-row+.ovb-row{border-top:1px solid var(--line)}
+/* Conector "+" sobre a divisória, somando um bônus ao outro. */
+.offer-sec .ovb-op{position:absolute;left:50%;top:-18px;z-index:2;width:36px;height:36px;margin-left:-18px;
+  display:grid;place-items:center;border-radius:50%;background:var(--bg-2);border:1px solid rgba(42,210,193,.5);
+  color:var(--mint-bright);font-family:'Bricolage Grotesque',sans-serif;font-size:1.125rem;font-weight:500;line-height:1;
+  box-shadow:0 0 0 6px var(--bg)}
+.offer-sec .ovb-text{padding:clamp(26px,3vw,40px) 0 clamp(26px,3vw,40px) var(--ov-pad)}
+.offer-sec .ovb-row.flip .ovb-text{padding-left:clamp(20px,2vw,32px);padding-right:var(--ov-pad)}
+.offer-sec .ovb-num{display:block;margin-bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.2em;color:var(--mint)}
+.offer-sec .ovb-text h5{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.375rem,2.4vw,2rem);font-weight:600;line-height:1.16;letter-spacing:-.025em;color:var(--cream);text-wrap:pretty}
+.offer-sec .ovb-art{position:relative;margin:0;align-self:stretch;overflow:hidden}
+.offer-sec .ovb-art img{width:100%;height:100%;object-fit:cover;transition:transform .35s var(--ease-out);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 34%);mask-image:linear-gradient(90deg,transparent,#000 34%)}
+.offer-sec .ovb-row.flip .ovb-art img{-webkit-mask-image:linear-gradient(270deg,transparent,#000 34%);mask-image:linear-gradient(270deg,transparent,#000 34%)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ovb-row:hover .ovb-art img{transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.offer-sec .ovb-row:hover .ovb-art img{transform:none}}
+/* Preço: valor e botão na mesma linha, sem coluna vazia. */
+.offer-sec .ov-buy{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,64px);
+  padding:clamp(28px,3.2vw,44px) var(--ov-pad);border-top:1px solid var(--line);
+  background:radial-gradient(120% 160% at 0% 0%,rgba(42,210,193,.09),transparent 58%),var(--bg-2)}
+.offer-sec .ov-rule{display:none}
 .offer-sec .ov-old{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(135,148,172,.7)}
-.offer-sec .ov-amount{margin:10px 0 12px;font-family:'Bricolage Grotesque',sans-serif;font-size:4.5rem;font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap}
+.offer-sec .ov-amount{margin:8px 0 10px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.5rem,6vw,5.25rem);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap}
 .offer-sec .ov-amount .cur,.offer-sec .ov-amount .cents{font-size:.4em;font-weight:500;letter-spacing:0;color:var(--muted)}
 .offer-sec .ov-amount .cur{margin-right:.22em}
 .offer-sec .ov-parc{font-size:.9375rem;color:var(--copy-readable)}
 .offer-sec .ov-parc b{font-weight:600;color:var(--mint-bright)}
-.offer-sec .ov-buy .btn{justify-self:center;width:min(100%,460px);min-height:60px;padding:18px 30px;gap:12px;font-size:1rem;line-height:1.3;box-shadow:0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
+.offer-sec .ov-buy .btn{justify-self:stretch;width:100%;min-height:60px;padding:18px 30px;gap:12px;font-size:1rem;line-height:1.3;box-shadow:0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
 .offer-sec .ov-buy .btn svg{flex:none;width:18px;height:18px;transition:transform var(--motion-press) var(--ease-out)}
 @media(hover:hover) and (pointer:fine){.offer-sec .ov-buy .btn:hover svg{transform:translateX(3px)}}
 @media(max-width:900px){
- .offer-sec .ov-row,.offer-sec .ov-row.flip{grid-template-columns:minmax(0,1fr)}
- .offer-sec .ov-row.flip .ov-media{order:0}
- .offer-sec .ov-media{aspect-ratio:16/9}
- .offer-sec .ov-media::after,.offer-sec .ov-row.flip .ov-media::after{background:linear-gradient(0deg,var(--bg),transparent 45%)}
- .offer-sec .ov-body{padding:6px 24px 32px}
+ .offer-sec .ov-core{grid-template-columns:minmax(0,1fr);grid-template-rows:none;gap:14px}
+ .offer-sec .ov-core li{grid-row:auto;grid-template-rows:auto auto;column-gap:14px;row-gap:8px;padding:22px 20px 24px;border-radius:16px}
+ .offer-sec .ovb-head{margin:clamp(36px,7vw,48px) 0 18px}
+ .offer-sec .ovb-row,.offer-sec .ovb-row.flip{grid-template-columns:minmax(0,1fr)}
+ .offer-sec .ovb-art{order:-1;aspect-ratio:16/9}
+ .offer-sec .ovb-art img,.offer-sec .ovb-row.flip .ovb-art img{-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
+ .offer-sec .ovb-text,.offer-sec .ovb-row.flip .ovb-text{padding:0 var(--ov-pad) clamp(24px,4vw,32px)}
+ .offer-sec .ov-buy{grid-template-columns:minmax(0,1fr);gap:22px}
  .offer-sec .ov-buy{grid-template-columns:minmax(0,1fr);gap:24px;padding:28px 24px}
  .offer-sec .ov-rule{height:1px;align-self:auto}
  .offer-sec .ov-amount{font-size:3.75rem}
@@ -1462,8 +1494,7 @@
  .marquee{width:100%;white-space:normal}
  .marquee>span{min-width:0;width:100%;flex-wrap:wrap;justify-content:center;gap:4px 10px;padding:10px 16px;font-size:.6875rem;letter-spacing:.04em}
  .marquee>span+span,.marquee .sep{display:none}
- .btn:active,.btn:hover,.pain .video-block .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ov-row:hover .ov-media img,.offer-sec .ov-buy .btn:hover svg{transform:none}
- .offer-sec .ov-row:hover .ov-title::after{transform:scaleX(.444444)}
+ .btn:active,.btn:hover,.pain .video-block .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ovb-row:hover .ovb-art img,.offer-sec .ov-buy .btn:hover svg{transform:none}
  .sec-proof .rail-btn:hover .rail-arrow svg:first-child{transform:none}
  .sec-proof .rail-btn:hover .rail-arrow svg+svg{visibility:hidden}
  .btn,.shot-zoom-close,.shot-zoom-nav,.sec-proof .rail-btn{transition:color 120ms ease,border-color 120ms ease!important}
@@ -1486,8 +1517,8 @@
 .motion-ready .hero h1.ln-title:not(.tx-in) .u-dash{text-decoration-color:rgba(42,210,193,0);text-underline-offset:16px}
 .motion-ready .hero h1.ln-title.tx-in .u-dash{transition:text-decoration-color 500ms ease 700ms,text-underline-offset 600ms var(--ease-out) 700ms}
 /* Fotos: sobem de dentro da própria moldura (recorte abrindo de baixo para cima + deslocamento de 8%). */
-.motion-ready :is(#como-funciona .how-art,.offer-sec .ov-media):not(.tx-in) img{clip-path:inset(100% 0 0 0);translate:0 8%}
-.motion-ready #como-funciona .how-art.tx-in img,.motion-ready .offer-sec .ov-media.tx-in img{transition:clip-path 1s var(--ease-reveal),translate 1s var(--ease-reveal),transform .25s var(--ease-out)}
+.motion-ready :is(#como-funciona .how-art,.offer-sec .ovb-art):not(.tx-in) img{clip-path:inset(100% 0 0 0);translate:0 8%}
+.motion-ready #como-funciona .how-art.tx-in img,.motion-ready .offer-sec .ovb-art.tx-in img{transition:clip-path 1s var(--ease-reveal),translate 1s var(--ease-reveal),transform .25s var(--ease-out)}
 /* Retrato da Carol: sem deslocamento (a moldura turquesa fica para fora); só o recorte, com os cantos. */
 .motion-ready #carol .mentor-portrait:not(.tx-in) img{clip-path:inset(100% 0 0 0 round 16px)}
 .motion-ready #carol .mentor-portrait.tx-in img{clip-path:inset(0 0 0 0 round 16px);transition:clip-path 1.1s var(--ease-reveal) 120ms}
@@ -1825,38 +1856,41 @@
 <section class="sec offer-sec light gelo" id="oferta">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>Entre para o <span class="serif">Gancho da Virada</span></h2>
+      <h2>Entre para o <span class="serif">Gancho da Virada</span> e receba:</h2>
     </div>
     <div class="offer-list reveal">
-      <h3>Você recebe:</h3>
+      <ul class="ov-core">
+        <li>
+          <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" d="M20 6 9 17l-5-5"/></svg></span>
+          <h4>3 Aulas de <span class="serif">Preparação</span></h4>
+          <p><b>Acesso imediato</b> após a confirmação da inscrição.</p>
+        </li>
+        <li>
+          <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" d="M20 6 9 17l-5-5"/></svg></span>
+          <h4>Encontro Ao Vivo — <span class="serif">Os 6 Passos da Virada</span></h4>
+          <p><b>22 de outubro às 20h.</b> Online e ao vivo.</p>
+        </li>
+      </ul>
+      <div class="ovb-head">
+        <h4>E ainda leva <span class="serif">três bônus</span> junto com a sua inscrição:</h4>
+      </div>
       <div class="ov">
-        <article class="ov-row">
-          <figure class="ov-media"><img src="assets/images/how-aulas.webp" srcset="assets/images/how-aulas-900.webp 900w, assets/images/how-aulas.webp 1672w" sizes="(max-width: 900px) calc(100vw - 50px), 555px" alt="" width="1672" height="941" loading="lazy" decoding="async"></figure>
-          <div class="ov-body">
-            <h4 class="ov-title">3 Aulas de <span class="serif">Preparação</span></h4>
-            <p class="ov-desc"><b>Acesso imediato</b> após a confirmação da inscrição.</p>
-          </div>
+        <div class="ovb-list">
+        <article class="ovb-row">
+          <div class="ovb-text"><span class="ovb-num">01</span><h5>1 dia de Vlog no Centro Cirúrgico</h5></div>
+          <figure class="ovb-art"><img src="assets/images/bonus-vlog.webp" srcset="assets/images/bonus-vlog-900.webp 900w, assets/images/bonus-vlog.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 600px" alt="Celular mostrando Carol em roupa privativa no centro cirúrgico, cercado por cenas do dia e uma câmera de vlog" width="1672" height="941" loading="lazy" decoding="async"></figure>
         </article>
-        <article class="ov-row flip">
-          <span class="ov-op" aria-hidden="true">+</span>
-          <figure class="ov-media"><img src="assets/images/how-encontro.webp" srcset="assets/images/how-encontro-900.webp 900w, assets/images/how-encontro.webp 1672w" sizes="(max-width: 900px) calc(100vw - 50px), 555px" alt="" width="1672" height="941" loading="lazy" decoding="async"></figure>
-          <div class="ov-body">
-            <h4 class="ov-title">Encontro Ao Vivo — <span class="serif">Os 6 Passos da Virada</span></h4>
-            <p class="ov-desc"><b>22 de outubro às 20h.</b> Online e ao vivo.</p>
-          </div>
+        <article class="ovb-row flip">
+          <span class="ovb-op" aria-hidden="true">+</span>
+          <figure class="ovb-art"><img src="assets/images/bonus-ebook.webp" srcset="assets/images/bonus-ebook-900.webp 900w, assets/images/bonus-ebook.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 600px" alt="Tablet com o e-book aberto: instrumentais cirúrgicos de um lado e um checklist com itens marcados do outro" width="1672" height="941" loading="lazy" decoding="async"></figure>
+          <div class="ovb-text"><span class="ovb-num">02</span><h5>E-book "Checklist Cirúrgico"</h5></div>
         </article>
-        <article class="ov-row">
-          <span class="ov-op" aria-hidden="true">+</span>
-          <figure class="ov-media ov-media-bonus"><img src="assets/images/oferta-bonus.webp" srcset="assets/images/oferta-bonus-900.webp 900w, assets/images/oferta-bonus.webp 1672w" sizes="(max-width: 900px) calc(100vw - 50px), 555px" alt="" width="1672" height="941" loading="lazy" decoding="async"></figure>
-          <div class="ov-body">
-            <h4 class="ov-title"><span class="serif">Bônus</span></h4>
-            <ul class="ov-bonus">
-              <li>1 dia de Vlog no Centro Cirúrgico</li>
-              <li>E-book "Checklist Cirúrgico"</li>
-              <li>Mapa da Jornada.</li>
-            </ul>
-          </div>
+        <article class="ovb-row">
+          <span class="ovb-op" aria-hidden="true">+</span>
+          <div class="ovb-text"><span class="ovb-num">03</span><h5>Mapa da Jornada.</h5></div>
+          <figure class="ovb-art"><img src="assets/images/bonus-mapa.webp" srcset="assets/images/bonus-mapa-900.webp 900w, assets/images/bonus-mapa.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 600px" alt="Mapa de papel dobrado com um caminho pontilhado turquesa passando por pontos de parada até um destino aceso, ao lado de uma bússola" width="1672" height="941" loading="lazy" decoding="async"></figure>
         </article>
+        </div>
         <div class="ov-buy">
           <div class="ov-price">
             <p class="ov-old">DE R$ 297,00</p>
@@ -1954,7 +1988,7 @@
     shot.style.setProperty('--reveal-delay', (shot.parentElement.classList.contains('shot-col') ? siblings.indexOf(shot) * 40 : 0) + 'ms');
   });
   // Textos em lista entram em cascata. Um grupo que já era .reveal deixa de ser, para não mover duas vezes.
-  const textGroups = [...document.querySelectorAll('.pain-question-groups,#mapa .lines,#mapa .map-q,#para-quem .checklist,#carol .auth-cards,.offer-sec .ov-bonus,.offer-sec .ov-price')];
+  const textGroups = [...document.querySelectorAll('.pain-question-groups,#mapa .lines,#mapa .map-q,#para-quem .checklist,#carol .auth-cards,.offer-sec .ov-core,.offer-sec .ovb-list,.offer-sec .ov-price')];
   textGroups.forEach(group => {
     group.classList.remove('reveal');
     group.classList.add('tx-group');
@@ -1963,7 +1997,7 @@
   // Títulos linha a linha e fotos subindo na moldura. Blocos que só tinham o título e conteúdo já animado
   // deixam de ser .reveal, para nada mover duas vezes.
   const titles = [...document.querySelectorAll('.hero h1, section h2')];
-  const media = [...document.querySelectorAll('#como-funciona .how-art, .offer-sec .ov-media, #carol .mentor-portrait')];
+  const media = [...document.querySelectorAll('#como-funciona .how-art, .offer-sec .ovb-art, #carol .mentor-portrait')];
   titles.forEach(title => {
     title.classList.remove('reveal');
     title.classList.add('ln-title');
@@ -2182,18 +2216,27 @@
     const nextButton = proofSection.querySelector('.rail-btn.next');
     const prevButton = proofSection.querySelector('.rail-btn.prev');
     const zoomOverlay = document.getElementById('shot-zoom');
-    const DWELL = 5; // segundos em cada parada
-    const state = { stops: [], index: 0, t: 0, hover: false, hold: false, touch: false, drag: false, visible: !('IntersectionObserver' in window), glide: null };
+    const SPEED = 24; // px por segundo: leitura calma, sem pressa
+    const EDGE = 150;  // px de desaceleracao antes de virar
+    const state = { stops: [], index: 0, dir: 1, pos: null, edgeRest: 0, lastAuto: -1, hover: false, hold: false, touch: false, drag: false, visible: !('IntersectionObserver' in window), glide: null };
     const pad2 = n => String(n).padStart(2, '0');
     const nearestStop = () => state.stops.reduce((best, left, i) =>
       Math.abs(left - proofRail.scrollLeft) < Math.abs(state.stops[best] - proofRail.scrollLeft) ? i : best, 0);
 
     let shownIndex = -1;
+    const progress = () => {
+      const max = proofRail.scrollWidth - proofRail.clientWidth;
+      return max > 0 ? Math.min(1, Math.max(0, proofRail.scrollLeft / max)) : 0;
+    };
+    // os segmentos e o anel da seta mostram o quanto do trilho ja passou
     const render = () => {
+      const p = progress();
+      const total = state.stops.length || 1;
       [...stepsHost.children].forEach((step, i) => {
-        step.style.setProperty('--fill', i < state.index ? 1 : i === state.index ? state.t : 0);
+        step.style.setProperty('--fill', Math.min(1, Math.max(0, p * total - i)));
       });
-      nextButton.style.setProperty('--fill', state.t);
+      nextButton.style.setProperty('--fill', p);
+      state.index = nearestStop();
       if (shownIndex !== state.index || countLabel.dataset.total !== String(state.stops.length)) {
         shownIndex = state.index;
         countLabel.dataset.total = state.stops.length;
@@ -2226,7 +2269,6 @@
     const goTo = (i, mode = 'manual') => {
       if (!state.stops.length) return;
       state.index = (i + state.stops.length) % state.stops.length;
-      state.t = 0;
       glideTo(state.stops[state.index], mode);
       render();
     };
@@ -2296,7 +2338,7 @@
     };
     proofRail.addEventListener('scroll', () => {
       if (state.glide || state.drag) return;
-      state.t = 0;
+      if (Math.abs(proofRail.scrollLeft - state.lastAuto) < 1.5) return; // veio do avanco continuo
       clearTimeout(settleTimer);
       settleTimer = setTimeout(settle, 180);
     }, { passive: true });
@@ -2334,11 +2376,23 @@
       const paused = state.hover || state.focus || state.hold || state.touch || state.drag || document.hidden
         || motionPreference.matches || (zoomOverlay && !zoomOverlay.hidden);
       proofSection.classList.toggle('is-paused', paused);
-      if (!paused && !state.glide && state.stops.length > 1) {
-        state.t = Math.min(1, state.t + dt / DWELL);
-        if (state.t >= 1) goTo(state.index + 1, 'auto');
-        else render();
+      const max = proofRail.scrollWidth - proofRail.clientWidth;
+      if (!paused && !state.glide && max > 4) {
+        if (state.edgeRest > 0) state.edgeRest = Math.max(0, state.edgeRest - dt);
+        else {
+          // a posicao vive aqui: lida de volta do navegador, o avanco de fracao de pixel se perdia
+          if (state.pos === null || Math.abs(state.pos - proofRail.scrollLeft) > 2) state.pos = proofRail.scrollLeft;
+          // desacelera so perto da ponta para onde esta indo, e volta pelo mesmo caminho, sem salto
+          const ahead = state.dir > 0 ? max - state.pos : state.pos;
+          const slow = Math.min(1, Math.max(.25, ahead / EDGE));
+          state.pos += SPEED * slow * state.dir * dt;
+          if (state.pos >= max) { state.pos = max; state.dir = -1; state.edgeRest = 1.2; }
+          else if (state.pos <= 0) { state.pos = 0; state.dir = 1; state.edgeRest = 1.2; }
+          proofRail.scrollLeft = state.pos;
+          state.lastAuto = proofRail.scrollLeft;
+        }
       }
+      render();
       requestAnimationFrame(loop);
     };
     const startLoop = () => {
@@ -2359,8 +2413,6 @@
         proofRail.scrollLeft = state.stops[state.index] || 0;
       } else if (automaticMotionPaused || document.hidden) {
         stopGlide();
-        state.index = nearestStop();
-        state.t = 0;
         render();
       }
       startLoop();

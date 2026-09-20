@@ -1,0 +1,19 @@
+SELO DE GARANTIA — substitui a medalha atual da seção de garantia
+
+Crie uma imagem quadrada 1:1, em alta resolução, de um único objeto centralizado: um selo de garantia premium, fotografado em estúdio.
+
+Objeto: uma medalha circular vista de frente, levemente inclinada, como uma peça sólida de metal escuro. O corpo é de metal escovado em azul-marinho quase preto, com a borda externa chanfrada em várias facetas que pegam a luz. Dentro da borda, dois anéis finos gravados em baixo relevo, concêntricos, e entre eles uma faixa de micro-ranhuras regulares, como o serrilhado de uma moeda. No centro, em relevo alto e polido, o número 7 em uma serifa elegante de contraste alto, com brilho de metal turquesa. Nenhum outro número, letra ou palavra em lugar nenhum da peça.
+
+Material e luz: metal escuro fosco no corpo, com um filete turquesa luminoso correndo pela borda interna, como se a peça tivesse luz própria. Uma luz principal suave vindo de cima à esquerda, um contraluz turquesa marcando o contorno direito e um reflexo longo e discreto atravessando a superfície. Pequenas imperfeições de metal real: poeira fina, micro-riscos, uma leve variação de brilho entre o polido e o escovado.
+
+Fundo: azul-marinho quase preto, liso, sem textura e sem cenário — só um halo turquesa bem suave atrás da medalha e uma sombra difusa embaixo dela. A peça deve flutuar, sem apoio, sem pedestal e sem mesa.
+
+Cor: só existe o turquesa (#2AD2C1) e os cinzas do metal escuro sobre o fundo azul-marinho (#080C22). Sem dourado, sem prateado brilhante, sem verde, sem vermelho, sem nenhuma outra cor.
+
+Enquadramento: a medalha ocupa cerca de 80% da largura da imagem, centralizada, com respiro igual dos quatro lados. Foco nítido na peça inteira, profundidade de campo suave só no halo do fundo.
+
+Não inclua: nenhum texto, letra, palavra, sigla, logotipo, marca, marca d'água, data ou assinatura; nada de fita, laço, coroa de louros, estrelas, joia, brilho estourado ou reflexo colorido; nada de pessoas, mãos ou cenário.
+
+VARIAÇÃO A — sem número: no lugar do 7 em relevo, um traço de confirmação (check) simples, de pontas arredondadas, em metal turquesa polido. Todo o resto igual.
+
+VARIAÇÃO B — mais gráfica: a medalha fica mais fina, quase uma ficha, e os anéis gravados viram uma única linha de batimento cardíaco (ECG) percorrendo a circunferência interna, em turquesa aceso. O 7 continua no centro.

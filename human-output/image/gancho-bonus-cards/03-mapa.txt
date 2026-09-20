@@ -1,0 +1,13 @@
+BÔNUS 03 — Mapa da Jornada
+
+Crie uma imagem horizontal 16:9, em alta resolução, no estilo de uma colagem tridimensional escura.
+
+Cena: um mapa de percurso. No centro, um mapa de papel dobrado, flutuando, visto em perspectiva, com as dobras marcadas e a textura do papel visível. Sobre o mapa corre um caminho pontilhado que atravessa a superfície de um canto ao outro, passando por seis pontos de parada iguais, pequenos e discretos, sem nada escrito. O ponto final do caminho é um pequeno círculo aceso, o mais luminoso da imagem, como um destino alcançado. Ao redor do mapa, flutuando em profundidades diferentes, dois ou três recortes retangulares finos mostrando trechos ampliados do mesmo caminho, com cantos arredondados, e uma pequena bússola vista de cima.
+
+Estilo: toda a fotografia em preto e branco, com contraste alto e granulação fina de filme. O fundo é um centro cirúrgico bem escuro e desfocado, com o foco cirúrgico aceso ao longe funcionando como única fonte de luz. Sobre o fundo, uma malha de grade fina, quase invisível, como uma planta técnica.
+
+Cor: o único tom colorido é um turquesa luminoso (#2AD2C1), usado apenas no caminho pontilhado, nos seis pontos de parada, no ponto final aceso, nos contornos finos dos recortes e na agulha da bússola. Todo o resto é preto e branco sobre um azul-marinho quase preto (#080C22). Sem verde, sem laranja, sem vermelho, sem nenhuma outra cor.
+
+Composição: o assunto ocupa o terço superior e o centro da imagem. A metade de baixo fica mais escura e vazia, escurecendo até quase o preto na borda inferior. O canto superior esquerdo deve ficar limpo, sem nenhum elemento importante. Profundidade de campo suave, com o fundo mais desfocado que os objetos da frente.
+
+Não inclua: nenhum texto, letra, número, palavra, nome de lugar, legenda, rosa dos ventos com letras, logotipo, marca ou marca d'água; nenhuma etiqueta nos seis pontos de parada; nada de sangue, ferida ou procedimento explícito; nenhuma pessoa.

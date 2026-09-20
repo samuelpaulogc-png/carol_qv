@@ -1,0 +1,16 @@
+BÔNUS 01 — 1 dia de Vlog no Centro Cirúrgico
+(anexe uma foto da Carol como referência de rosto antes de enviar o prompt)
+
+Crie uma imagem horizontal 16:9, em alta resolução, no estilo de uma colagem tridimensional escura.
+
+Cena: um dia de bastidores dentro de um centro cirúrgico, contado como um vlog. No centro, um celular na vertical, flutuando, visto levemente de lado, com a tela mostrando uma instrumentadora em roupa privativa dentro do centro cirúrgico — use a foto de referência para o rosto dela. A tela do celular tem um botão de play circular e uma barra de progresso fina na parte de baixo. Ao redor do celular, flutuando em profundidades diferentes e menores que ele, três quadros retangulares de vídeo com cantos arredondados, cada um mostrando um momento diferente do mesmo dia: a mesa de instrumentais sendo preparada, a equipe se paramentando e o foco cirúrgico sendo ajustado. Ao lado, um pequeno estabilizador de câmera flutuando e um ponto luminoso de gravação.
+
+Estilo: toda a fotografia em preto e branco, com contraste alto e granulação fina de filme. O fundo é um centro cirúrgico bem escuro e desfocado, com o foco cirúrgico aceso ao longe funcionando como única fonte de luz. Sobre o fundo, uma malha de grade fina, quase invisível, como uma planta técnica.
+
+Cor: o único tom colorido é um turquesa luminoso (#2AD2C1), usado apenas nos contornos finos dos quadros e do celular, no botão de play, na barra de progresso e no ponto de gravação. Todo o resto é preto e branco sobre um azul-marinho quase preto (#080C22). Sem verde, sem laranja, sem vermelho, sem nenhuma outra cor.
+
+Composição: o assunto ocupa o terço superior e o centro da imagem. A metade de baixo fica mais escura e vazia, escurecendo até quase o preto na borda inferior. O canto superior esquerdo deve ficar limpo, sem nenhum elemento importante. Profundidade de campo suave, com o fundo mais desfocado que os objetos da frente.
+
+Não inclua: nenhum texto, letra, número, palavra, legenda, logotipo, marca ou marca d'água; nada de sangue, ferida ou procedimento explícito; nada de rosto de outras pessoas reconhecíveis além da referência.
+
+VARIAÇÃO SEM ROSTO: se preferir não usar o rosto da Carol, troque a tela do celular por uma instrumentadora vista de costas ou de máscara, enquadrada dos ombros para cima, sem rosto reconhecível. O resto do prompt continua igual.

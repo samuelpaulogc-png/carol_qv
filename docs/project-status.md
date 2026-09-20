@@ -4,6 +4,42 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carrossel de depoimentos: avanço contínuo — 20/09/2026
+
+- Pedido do usuário: movimento contínuo e suave, no lugar do avanço guiado de parada em parada (versão B escolhida em 12/09).
+- O trilho desliza a 24 px/s. Nas pontas desacelera nos últimos 150 px, descansa 1,2 s e volta pelo mesmo caminho — sem o salto de volta ao início.
+- Pausas inalteradas: mouse, foco de teclado, toque (+2,5 s), arrasto, ampliação aberta, aba oculta, seção fora da tela, movimento reduzido e o botão de pausa do letreiro. Setas e segmentos continuam; o preenchimento dos segmentos e do anel da seta agora mostra a posição no trilho, não o tempo até a próxima parada.
+- **Armadilha:** ler `scrollLeft` de volta a cada quadro perde o avanço de fração de pixel (0,08 px/quadro é arredondado para zero e o trilho não sai do lugar). A posição vive em `state.pos` e só depois é escrita no trilho; `state.lastAuto` distingue a rolagem do próprio carrossel da rolagem do usuário.
+- Validação: medições a cada 250 ms no desktop e no celular, pausa/retomada por mouse e toque, inversão na ponta, setas, movimento reduzido e sem JS (trilho parado, 7 prints acessíveis), sem overflow, sem erros de console.
+
+## Oferta: reestruturação premium — 20/09/2026
+
+- Várias rodadas com o usuário até chegar aqui. O que incomodava: excesso de fios horizontais, coluna de rótulo vazia à esquerda, repetição entre título e "Você recebe:" e cards pequenos demais.
+- **Título absorveu o rótulo:** "Entre para o *Gancho da Virada* e receba:" (mudança de copy autorizada pelo usuário). O `<h3>Você recebe:</h3>` foi removido.
+- **Entregas em dois blocos lado a lado** (`.ov-core`), com fundo em degradê, borda, raio 18px, sombra e brilho turquesa no canto — mesma linguagem dos cards de "Como funciona". O check virou disco de 32px com o traço em SVG se desenhando na entrada, no desenho dos nós do mapa. As linhas do grid vêm do contêiner (`subgrid`), então os títulos ocupam a mesma altura e as descrições alinham; no celular cada bloco volta a ter a altura do próprio conteúdo.
+- **Bônus:** frase "E ainda leva *três bônus* junto com a sua inscrição:" (copy nova, evitando prazo ou promessa que a página não faz) em largura total, e as três faixas em ziguezague — imagem à direita no 01 e no 03, à esquerda no 02 —, com o conector "+" sobre cada divisória.
+- **Preço:** valor e botão na mesma linha (o fio vertical e a coluna vazia saíram), valor até 5,25rem e brilho turquesa no canto do bloco.
+- Imagens dos bônus aplicadas (`bonus-vlog`, `bonus-ebook`, `bonus-mapa`, com `-900`), geradas pelo usuário a partir dos prompts em `human-output/image/gancho-bonus-cards/`.
+- Comparadores usados e mantidos fora do commit: `audit-visual/offer-bonus/` e `audit-visual/offer-premium/`.
+
+## Selo de garantia: em decisão — 20/09/2026
+
+- Prompts em `human-output/image/gancho-garantia/`: selo premium em metal (01), selo clássico ondulado (02) e edição de um selo existente trocando cores e palavras (03). A copy do selo usa as palavras da página ("GARANTIA DE SATISFAÇÃO TOTAL", "7 DIAS"); evitado "100% dinheiro de volta", que promete mais do que o texto da garantia.
+- O usuário gerou o selo e ele foi convertido para `assets/images/garantia-selo.webp` (73 KB) e `-320.webp` (32 KB), com o transparente em volta recortado. **Ainda não aplicado na página.**
+- Comparador em `audit-visual/garantia-selo/` com três opções: medalha atual, imagem gerada e uma versão desenhada em SVG. Recomendação: a imagem gerada, por ter profundidade e tipografia mais encorpada. Falta decidir também o movimento (selo parado, anel girando atrás ou giro na entrada).
+- `.gitignore` passou a excluir `audit-visual/` e qualquer pasta `originais/` (os PNGs de origem, de 1,3 a 1,8 MB cada, ficam só no disco).
+
+## Oferta: foco nos bônus, em cards — 19/09/2026
+
+- Pedido da expert: as 3 aulas e o encontro já aparecem como cards em "Como funciona", então a oferta passa a destacar os bônus. O usuário escolheu, no comparador, a versão "Três cards" e pediu um layout menos simples.
+- **Entregas principais:** viram `ul.ov-core`, duas linhas com check turquesa, filete de 32px no topo de cada linha, título em Bricolage (com o trecho em Fraunces itálico) e a descrição abaixo. Copy idêntica à das faixas antigas; nada foi reescrito.
+- **Bônus:** título `Bônus` com fio turquesa que se dissolve à direita e, dentro da caixa `.ov`, três `article.ovb-card` (fundo em degradê surface→bg-2, brilho turquesa no topo, borda, sombra funda, raio 16px). Cada card tem capa 16:9 com a imagem dissolvendo no card, etiqueta `01/02/03` em cápsula com desfoque no canto e o nome do bônus com filete turquesa. No hover (só mouse) a borda acende e a capa dá zoom de 3%, como em "Como funciona". Até 900px vira uma coluna.
+- **Imagens aplicadas em 19/09:** o usuário gerou as três no ChatGPT com os prompts de `human-output/image/gancho-bonus-cards/` (vlog com a Carol na tela do celular, tablet com o checklist, mapa dobrado com o caminho pontilhado). Convertidas para `assets/images/bonus-vlog.webp`, `bonus-ebook.webp` e `bonus-mapa.webp` (e `-900`), ~80 KB cada em 1672×941 e ~35 KB em 900×507. Os PNGs originais (1,7 MB cada) saíram de `assets/` e ficaram em `human-output/image/gancho-bonus-cards/originais/`, fora do commit. O espaço reservado `.ovb-slot` continua no CSS, caso alguma capa precise ser trocada.
+- Entrada: os cards entram em cascata (`.ovb-cards` virou `tx-group`) e as capas sobem na moldura (`.ovb-art` entrou na lista de mídia) assim que as imagens existirem.
+- **CSS removido** (as faixas antigas deixaram de existir): `.ov-row`, `.ov-media`, `.ov-media-bonus`, `.ov-op`, `.ov-body`, `.ov-title`, `.ov-desc`, `.ov-bonus` e suas regras em media query e em movimento reduzido. `assets/images/oferta-bonus.webp` (e `-900`) ficou órfã — pode virar a capa de um dos bônus.
+- Comparador em `audit-visual/offer-bonus/` (página real em iframe, seletor com atual / três cards / cards altos / destaque + dois). **Não commitado**, para não ir ao ar junto com a página.
+- Validação: Chrome headless, capturas em 1440 e 390px, sem overflow em 1440/1200/900/768/375/320, sem erros de console.
+
 ## Movimento inspirado no noho.ink — 19/09/2026
 
 - O usuário pediu uma auditoria do https://noho.ink/ com a skill do Emil e autorizou aplicar o que fizesse sentido, sem deixar a página pesada. O noho usa Webflow, GSAP, ScrollTrigger, SplitText e Lenis. Descartados: tela de carregamento de ~3 s com rolagem travada, rolagem suavizada (Lenis), cursor magnético, proteção de tela, fotos trocando dentro da frase e letreiro gigante no rodapé (seria um elemento novo; fica como sugestão).
