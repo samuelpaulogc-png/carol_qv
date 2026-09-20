@@ -2003,6 +2003,25 @@
     title.classList.add('ln-title');
     if (title.parentElement.matches('.sec-head, .mentor-heading, .forwhom')) title.parentElement.classList.remove('reveal');
   });
+  // Números de autoridade: contam de zero até o valor real ao entrar na tela. O texto final é o do HTML.
+  const countUp = element => {
+    const final = element.textContent;
+    const parts = final.match(/^(\d+)(.*)$/);
+    if (!parts) return;
+    const target = Number(parts[1]);
+    const suffix = parts[2];
+    // trava a largura durante a contagem, senão "0" → "10" empurra o rótulo
+    const width = element.getBoundingClientRect().width;
+    if (width) element.style.minWidth = width + 'px';
+    const start = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - start) / 900);
+      element.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else { element.textContent = final; element.style.minWidth = ''; }
+    };
+    requestAnimationFrame(step);
+  };
   const titleSource = new Map();
   // Quebra o título nas linhas que o navegador desenhou, recriando em cada linha os <span> de estilo.
   const splitTitle = title => {
@@ -2161,6 +2180,11 @@
           entry.target.classList.add('tx-in');
           textObserver.unobserve(entry.target);
           if (entry.target.classList.contains('ln-title')) settleTitle(entry.target);
+          if (entry.target.matches('#carol .auth-cards')) {
+            entry.target.querySelectorAll('.auth .n').forEach((number, index) => {
+              setTimeout(() => countUp(number), index * 60 + 160);
+            });
+          }
         }
       });
     }, { rootMargin: '0px 0px -15% 0px' });

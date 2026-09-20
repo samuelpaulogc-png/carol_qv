@@ -4,6 +4,14 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Números de autoridade: contagem na entrada — 20/09/2026
+
+- Pedido do usuário. Os três números (`#carol .auth .n`) contam de zero até o valor real em 900 ms, com desaceleração, 60 ms entre um e outro, na mesma cascata do traço turquesa que já existia.
+- Os valores finais saem do próprio HTML (`9 anos`, `10k`, `20k`): o script lê o texto, anima e devolve o texto original no fim. Se os números mudarem no HTML, a animação acompanha.
+- A largura de cada número é travada durante a contagem ("0" e "10k" têm larguras diferentes), então o rótulo abaixo não se mexe. Medido: 184/159/159 px antes, durante e depois.
+- Com movimento reduzido ou sem JS, aparecem prontos. Acontece uma vez, quando a faixa entra na tela.
+- Ressalva registrada: na auditoria do noho.ink a contagem tinha sido desaconselhada (clichê e atrapalha a leitura); ficou curta e discreta a pedido do usuário.
+
 ## Carrossel de depoimentos: avanço contínuo — 20/09/2026
 
 - Pedido do usuário: movimento contínuo e suave, no lugar do avanço guiado de parada em parada (versão B escolhida em 12/09).
