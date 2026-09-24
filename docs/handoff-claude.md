@@ -76,6 +76,9 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 ### Mapa (`#mapa`)
 - Painel integrado: título, introdução, ECG horizontal com 6 nós travados no desktop, vertical no celular, reflexões/perguntas e CTA. Não executar scripts de preview que sobrescrevam a página.
 - **Referências do usuário (24/09):** o painel virou vidro (print 1): navy translúcido com desfoque, borda turquesa que acende nos cantos, brilho interno e um filete curto acima do título.
+  - **Luz só por dentro** (ajuste do usuário, com setas no print 2): fora do painel não há brilho, só uma sombra escura de profundidade. Saíram o brilho turquesa externo e as duas manchas de luz do fundo da seção.
+  - A borda real é transparente (`background-clip:padding-box`) e a linha visível é uma só, o anel em `.wrap::after`. Ela acende no canto de cima à esquerda, na lateral esquerda (~36%), no meio da base e no canto de baixo à direita.
+  - A luz desses pontos entra no vidro por `.wrap::before` (`z-index:-1`, abaixo do conteúdo), com tamanhos menores até 760px.
   - O percurso segue o print 2: linha com brilho, nós com anel turquesa aceso **sem o cadeado**, e uma haste com ponto até “PASSO 0X”. No computador, pontos acesos nas pontas da linha (os marcadores dos rótulos saem).
   - Fio vertical entre as duas colunas de texto.
   - As 3 perguntas em linhas com seta turquesa no fim.

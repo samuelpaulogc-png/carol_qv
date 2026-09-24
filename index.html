@@ -939,13 +939,28 @@
 
 /* Mapa (24/09, referências do usuário): painel de vidro (print 1) e percurso luminoso (print 2).
    Fontes, tamanhos e pesos iguais aos de antes; só superfície, brilho, pontos e ícones. */
-#mapa::before{background:radial-gradient(700px 420px at 12% 18%,rgba(42,210,193,.10),transparent 65%),radial-gradient(760px 480px at 90% 86%,rgba(40,116,252,.10),transparent 65%)}
-#mapa > .wrap{background:radial-gradient(120% 55% at 50% 0,rgba(42,210,193,.09),transparent 62%),linear-gradient(180deg,rgba(29,40,100,.62),rgba(12,18,54,.74));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(42,210,193,.22);
-  box-shadow:0 0 70px -24px rgba(42,210,193,.4),inset 0 1px 0 rgba(255,255,255,.07),inset 0 0 90px -50px rgba(42,210,193,.35),0 50px 100px -50px rgba(0,0,0,.9)}
-/* Borda que acende nos cantos (mais forte no alto à esquerda), como no vidro da referência. */
+/* Luz só por dentro (ajuste do usuário, 24/09): fora do painel fica o navy da seção, sem brilho em volta.
+   A borda é uma linha fina única (a borda real fica transparente) que acende no canto de cima à esquerda, na
+   lateral esquerda, no meio da base e no canto de baixo à direita; a luz desses pontos entra no vidro. */
+#mapa > .wrap{background:radial-gradient(120% 55% at 50% 0,rgba(42,210,193,.08),transparent 62%),linear-gradient(180deg,rgba(29,40,100,.62),rgba(12,18,54,.74));background-clip:padding-box;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 0 26px -4px rgba(42,210,193,.22),inset 0 0 90px -40px rgba(42,210,193,.25),0 40px 90px -50px rgba(0,0,0,.9)}
+#mapa > .wrap::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(280px 200px at 0 0,rgba(42,210,193,.16),transparent 70%),radial-gradient(110px 300px at 0 36%,rgba(42,210,193,.11),transparent 72%),
+    radial-gradient(260px 220px at 0 100%,rgba(42,210,193,.09),transparent 70%),radial-gradient(50% 90px at 50% 100%,rgba(69,228,211,.16),transparent 75%),
+    radial-gradient(300px 220px at 100% 100%,rgba(42,210,193,.18),transparent 70%)}
 #mapa > .wrap::after{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;padding:1px;pointer-events:none;
-  background:linear-gradient(135deg,rgba(69,228,211,.95),rgba(42,210,193,.18) 28%,rgba(42,210,193,.06) 55%,rgba(42,210,193,.18) 80%,rgba(69,228,211,.6));
+  background:radial-gradient(220px 160px at 0 0,rgba(110,236,226,.95),transparent 72%),radial-gradient(70px 260px at 0 36%,rgba(69,228,211,.8),transparent 72%),
+    radial-gradient(36% 60px at 50% 100%,rgba(140,245,236,1),transparent 75%),radial-gradient(240px 170px at 100% 100%,rgba(69,228,211,.95),transparent 72%),
+    radial-gradient(200px 120px at 100% 0,rgba(69,228,211,.5),transparent 72%),rgba(42,210,193,.24);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+@media(max-width:760px){
+ #mapa > .wrap::before{background:radial-gradient(180px 150px at 0 0,rgba(42,210,193,.15),transparent 70%),radial-gradient(70px 240px at 0 22%,rgba(42,210,193,.1),transparent 72%),
+    radial-gradient(60% 70px at 50% 100%,rgba(69,228,211,.15),transparent 75%),radial-gradient(190px 160px at 100% 100%,rgba(42,210,193,.17),transparent 70%)}
+ #mapa > .wrap::after{background:radial-gradient(150px 120px at 0 0,rgba(110,236,226,.95),transparent 72%),radial-gradient(50px 220px at 0 22%,rgba(69,228,211,.8),transparent 72%),
+    radial-gradient(45% 50px at 50% 100%,rgba(140,245,236,1),transparent 75%),radial-gradient(160px 130px at 100% 100%,rgba(69,228,211,.95),transparent 72%),
+    radial-gradient(130px 100px at 100% 0,rgba(69,228,211,.5),transparent 72%),rgba(42,210,193,.24)}
+}
 /* Filete curto acima do título. */
 #mapa .sec-head::before{content:"";display:block;width:64px;height:2px;margin:0 auto 26px;background:linear-gradient(90deg,transparent,var(--mint),transparent)}
 /* Percurso: linha com brilho, nós com anel aceso, sem o cadeado. */

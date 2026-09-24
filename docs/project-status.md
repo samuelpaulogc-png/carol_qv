@@ -4,6 +4,17 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa: luz do vidro por dentro, não por fora — 24/09/2026
+
+- Pedido do usuário, com setas no print 2 (canto de cima à esquerda, lateral esquerda, meio da base, canto de baixo à direita): “o blur tá aplicado na parte externa e na referência na parte interna”.
+- **Causa:** o painel tinha um brilho turquesa em volta (`box-shadow` externo de 70px), e o fundo da seção tinha duas manchas de luz ao lado dele. Por dentro, a cor era uniforme. A borda também era dupla: a real, fixa, e o anel com gradiente por cima.
+- **Feito:**
+  - Sem luz do lado de fora: só uma sombra escura de profundidade.
+  - Uma única linha de borda, fina e nítida: a borda real ficou transparente e o anel mostra a linha, acendendo nos pontos das setas.
+  - Por dentro, a luz desses pontos entra no vidro (camada abaixo do conteúdo), com brilho interno suave em toda a volta.
+  - No celular, os mesmos pontos em tamanho menor.
+- **Verificado** em 1358 e 375px, com recortes nos pontos das setas antes e depois; sem overflow e sem erros.
+
 ## Mapa: painel de vidro e percurso luminoso — 24/09/2026
 
 - **Pedido do usuário**, com duas versões geradas: do print 1, o layout do cartão (glassmorphism); do print 2, o estilo interno (os 6 passos e as 3 perguntas com ícone no fim). A seção de baixo dos prints foi ignorada, como pedido.
