@@ -42,7 +42,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Exceção pedida pelo usuário (24/09): no celular (360–560px) o kicker da hero diminui com a largura (~10,5px em 375px, até 12px) para ficar em duas linhas. Abaixo de 360px continua com 12px, em três.
 - Fontes fixas: Bricolage Grotesque (títulos), Fraunces itálico (destaques), Hanken Grotesk (corpo). Use os tokens existentes (`--bg`, `--bg-2`, `--surface`, `--navy`, `--line`, `--cream`, `--muted`, `--mint`, `--mint-bright`, `--mint-deep`, `--virada`, `--copy-readable`, `--ease-out`).
 - **A página inteira é escura.** Classes `.light`, `.gelo` e `.branco` são nomes históricos. O `AGENTS.md` ainda fala em “ritmo dark/light” — isso está desatualizado; não restaure fundos claros.
-- Verde-menta (`--virada`) só em sinais de avanço (destino do mapa, “acesso imediato”). Destaques gerais em turquesa.
+- Verde-menta (`--virada`) só em sinais de avanço (destino do mapa) e no check do aviso de inscrição. Destaques gerais em turquesa. A etiqueta “Acesso imediato” de “Como funciona” era verde-menta e passou a turquesa a pedido do usuário (24/09); não voltar com o verde nela.
 - Botões no mesmo padrão arredondado (pill).
 - Evitar “cara de IA”: sem texto em degradê multicolor, aurora, status dot pulsante.
 
@@ -104,7 +104,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 
 ### Como funciona (`#como-funciona`)
 - Capas fotográficas geradas no ChatGPT com a Carol como referência (estilo colagem P&B com retícula, grade fina e neon turquesa): `assets/images/how-aulas.webp` e `how-encontro.webp`, com versões `-900` via `srcset`. Prompts em `human-output/image/gancho-como-funciona/`.
-- Cards com raio 16px, capa dissolvendo no card, zoom de 3% no hover, títulos 600, rodapé como etiqueta com borda (verde-menta em “Acesso imediato”, turquesa na data).
+- Cards com raio 16px, capa dissolvendo no card, zoom de 3% no hover, títulos 600, rodapé como etiqueta com borda, turquesa nas duas. A etiqueta “Acesso imediato” era verde-menta com ícone de raio; a pedido do usuário (24/09, com print), ficou igual à da data, “22 de outubro • 20h • Online e ao vivo”, e perdeu o ícone. As regras `.badge.mint` saíram.
 - Celular (≤560px): capas em 4:3, `object-position` 45% no card 1 e 75% no card 2.
 - A Oferta continua usando os SVGs antigos `how-preparation.svg` e `how-live-map.svg` de propósito.
 

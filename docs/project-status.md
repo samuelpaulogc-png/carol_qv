@@ -4,6 +4,12 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Como funciona: etiqueta “Acesso imediato” em turquesa — 24/09/2026
+
+- **Pedido do usuário**, com print dos dois cards: dar à etiqueta “ACESSO IMEDIATO” (card da esquerda) a cor da etiqueta “22 de outubro • 20h • Online e ao vivo” (card da direita) e tirar o ícone de raio.
+- **Feito:** a etiqueta perdeu a classe `mint` e o SVG do raio e usa o estilo da etiqueta da data: texto `--mint-bright`, borda `rgba(42,210,193,.35)` e fundo `rgba(42,210,193,.08)`. As regras `.badge.mint`, sem outro uso na página, foram removidas. O texto não mudou.
+- **Conferido** em 1358, 1440, 900, 768, 375 e 320px: estilo calculado das duas etiquetas idêntico (cor, borda, fundo, fonte, espaçamento, cantos) e mesma altura quando ficam em uma linha. Sem overflow e sem erros no console.
+
 ## Mapa: pulso fluido nas pontas do ECG — 24/09/2026
 
 - **Pedido do usuário**, com setas nos picos e vales: “precisa ficar mais suave ainda… por conta desses trajetos pequenos ainda tá muito rígido”.
