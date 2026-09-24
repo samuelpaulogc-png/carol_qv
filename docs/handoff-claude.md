@@ -134,12 +134,16 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
     - O fio de 1px no topo é a borda do `#para-quem`, o mesmo divisor do mapa e da oferta, e foi mantido.
   - Dentro da faixa: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).
 - **Abaixo:** narrativa à esquerda (frase de abertura em destaque, dois parágrafos) e retrato `assets/Foto-427-683x1024.webp` à direita. O retrato sobe para dentro da faixa, é `position:sticky` no desktop, tem moldura turquesa deslocada atrás, cantos 20px, vinheta e leve ajuste de cor.
-  - **Borda acesa (24/09, referência do usuário com setas na borda do retrato):** `span.mentor-rim` por cima da foto, com fio turquesa de 1px, pontos de luz no canto de cima à direita, nas laterais e nos cantos de baixo, e brilho em volta por `drop-shadow`. Aparece depois que a foto sobe; com movimento reduzido, já aparece pronta. O usuário pediu para **não mudar o tamanho da foto nem mexer ou engrossar a moldura deslocada**: as duas continuam iguais (conferido de 320 a 1920px).
-  - **Pontos de luz leves (ajustes do usuário, 24/09):** o usuário pediu pontos “mais fortes, destacadas”, como na referência. Depois achou a versão com núcleo branco e rastros de luz “extremamente forte… horrível” e pediu “algo leve, suave”.
-    - Hoje `span.mentor-flare` tem só um brilho turquesa difuso (alfa .18–.22), espalhado ao longo da borda, em cinco pontos: canto de cima à direita, laterais a 35% da altura, base a 34% da largura e canto de baixo à direita.
-    - O fio da borda (`.mentor-rim`) fica um pouco mais claro nesses mesmos pontos.
-    - **Não voltar** com núcleos brancos, rastros ou brilhos em estrela.
-    - A caixa passa 48px da foto. Por isso `#carol` tem `overflow-x:clip`: sem ele, o celular teria rolagem lateral. O `clip` não quebra o `sticky` do retrato.
+  - **Borda da foto (24/09, referência do usuário e três ajustes):**
+    - Hoje é um fio turquesa nítido de 1px (`--mint-bright`, `.mentor-rim`), **sem brilho nem desfoque**. Ele engrossa um pouco (2px, `.mentor-rim-bold`: segundo anel mascarado) em cinco pontos: canto de cima à direita, laterais a 35% da altura, base a 34% da largura e canto de baixo à direita. Nesses pontos o trecho grosso volta aos poucos para o fio fino.
+    - O caminho até aqui:
+      1. Borda com brilho em volta.
+      2. “Pontos de luz mais fortes”: núcleo branco e rastros. O usuário achou “extremamente forte… horrível”.
+      3. Brilho difuso e leve.
+      4. Pedido final: “eu não quero blur, deixe a borda um pouquinho mais grossa em alguns pontos estratégicos. Somente isso.”
+    - **Não voltar** com brilho, halo, desfoque, núcleos ou rastros na borda.
+    - Aparece depois que a foto sobe; com movimento reduzido, já aparece pronta.
+    - O usuário pediu para **não mudar o tamanho da foto nem mexer ou engrossar a moldura deslocada**: as duas continuam iguais, conferido de 320 a 1920px.
 - **Citação final** “Ter um mapa muda completamente…” em **vidro escuro com borda turquesa acesa** (fundo da referência do usuário, 24/09), texto turquesa `--mint-bright` (contraste 10,6:1) e ícone de batimento **animado** também turquesa (SVG `.quote-ecg`, traço se desenhando em loop de 4s; estático com movimento reduzido).
   - A borda é sombra interna (`inset 0 0 0 1px`), então o bloco tem o mesmo tamanho de antes. Fonte, tamanho e peso não mudaram.
   - Na referência, o ícone fica à esquerda do texto; aqui continua acima, porque o pedido foi só o fundo.

@@ -4,6 +4,24 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carol: borda do retrato sem brilho, mais grossa em pontos escolhidos — 24/09/2026
+
+- **Pedido do usuário:** “ainda tá ruim, eu não quero blur, deixe a borda um pouquinho mais grossa em alguns pontos estratégicos. Somente isso.”
+- **Removido:**
+  - O `drop-shadow` do fio, que fazia o brilho em volta.
+  - Os brilhos difusos: o `span.mentor-flare` saiu.
+  - Os pontos mais claros no degradê do fio.
+  - O `overflow-x:clip` de `#carol`, que só existia por causa do brilho que passava da foto.
+- **Feito:**
+  - O fio é turquesa `--mint-bright` sólido, 1px, nítido.
+  - Um segundo anel de 2px (`span.mentor-rim-bold`), com a mesma cor, só aparece em cinco pontos, por máscara de elipses: canto de cima à direita, laterais a 35% da altura, base a 34% da largura e canto de baixo à direita.
+  - No centro de cada ponto a borda tem 2px, e o trecho grosso volta aos poucos para o fio de 1px.
+- **Conferido:**
+  - De 320 a 1920px: foto, retrato e citação com as mesmas medidas, moldura deslocada igual, sem overflow e sem erros.
+  - Borda sem `filter`.
+  - Com movimento reduzido, a borda aparece pronta.
+  - Ampliação dos pontos: 2px nos pontos e 1px no resto.
+
 ## Carol: pontos de luz da borda suavizados — 24/09/2026
 
 - **Pedido do usuário**, com print da versão anterior: “ficou extremamente forte, eu quero algo leve, suave, desse jeito tá horrível”.
