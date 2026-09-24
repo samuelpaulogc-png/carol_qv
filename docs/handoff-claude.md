@@ -86,10 +86,16 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Fontes, tamanhos e pesos iguais aos de antes. O cadeado saiu por seguir a referência; volta removendo `#mapa .node .disc svg{display:none}`.
 - **Celular (24/09, pedidos do usuário):**
   - **Bolinha na linha (computador e celular):** percorre a linha em SMIL. Era a isso que o usuário se referia ao pedir “a animação” no celular: antes ela só existia no SVG do computador.
-    - Cada SVG tem o traçado em `<defs>` (`#ecgRouteDesk`, `#ecgRouteMob`, `pathLength="1"`). A bolinha anda por `<mpath>`, e o rastro são 4 `<use>` do mesmo traçado com traço curto animado em `stroke-dashoffset`, tudo no mesmo relógio.
-    - **Movimento suave (pedido do usuário, 24/09, com o guia `apple-design`):** ciclo de 4,2s. São 3,5s de percurso com aceleração e freada por igual (`keySplines .45 .05 .55 .95`; no meio do tempo, meio do caminho) e 0,7s de pausa.
-    - A bolinha entra em fade (0,3s) e sai em fade ao chegar em “PRIMEIRA OPORTUNIDADE”, sem o salto do fim para o começo.
-    - O rastro que se apaga atrás dela tem 1,5% / 3,5% / 6% / 9% do traçado, com opacidades .8 / .4 / .22 / .12. Antes era linear de 3,4s, sem pausa e com salto.
+    - Cada SVG tem o traçado em `<defs>` (`#ecgRouteDesk`, `#ecgRouteMob`, `pathLength="1"`). O rastro são 4 `<use>` desse traçado exato, com traço curto animado.
+    - A bolinha anda por `<mpath>` num caminho arredondado criado pelo JS (`#…Ball`, desvio padrão de 8 unidades no computador e 5 no celular). Os picos do computador ficam mais agudos na tela.
+    - **Movimento fluido (pedidos do usuário, 24/09: “mais suave e menos rígida”, depois “os trajetos pequenos ainda estão rígidos”):**
+      - O JS `tunePulse` calcula as tabelas SMIL uma vez, no ocioso, só para o SVG visível. Sem JS fica a versão declarada no HTML, que é mais simples.
+      - A velocidade é limitada pela curva (≤ √(GRIP/curvatura), como aceleração lateral) e só muda aos poucos (`RAMP`): a bolinha freia antes de cada ponta e retoma depois.
+      - No percurso inteiro, sai devagar (10% do tempo) e chega devagar (12%), em cruzeiro no meio. O ciclo tem 5s: 4,2s de percurso e 0,8s de pausa.
+      - A bolinha entra e sai em fade.
+      - O rastro vai de onde a bolinha estava 300/190/110/50ms antes até onde ela está, então encurta nas pontas e estica nos trechos rápidos.
+      - Resultado: o maior giro de direção entre quadros caiu de 137° para 60° no computador e de 108° para 40° no celular. A bolinha passa a ~6px das pontas no computador (dentro do halo) e ~2,6px no celular; o rastro acende a ponta exata.
+    - **Armadilha:** não amostrar o traçado com `getPointAtLength` em laço (milhares de chamadas travavam a página: 1,9s no computador, 8,6s num celular lento). O `tunePulse` lê o atributo `d` (M, L, H, V, C) e achata as curvas ele mesmo: 21ms e 75ms.
     - A bolinha é feita de traços com `vector-effect:non-scaling-stroke`, para ficar redonda nos dois SVGs, que esticam diferente na largura e na altura: um `<circle>` ficava oval, 12,7×8px em 430px no celular e 8,8×9,8px no computador.
     - O brilho da bolinha vem de dois anéis translúcidos, sem `filter`, porque num elemento tão pequeno o filtro é recortado e a bolinha some. O rastro tem brilho só no computador.
     - Pausa fora da tela e com “Pausar animações automáticas” (pega o `svg:has(animateMotion)`). `.ecg-run` e `.ecg-pulse` somem com movimento reduzido.

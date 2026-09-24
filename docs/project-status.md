@@ -4,6 +4,25 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa: pulso fluido nas pontas do ECG — 24/09/2026
+
+- **Pedido do usuário**, com setas nos picos e vales: “precisa ficar mais suave ainda… por conta desses trajetos pequenos ainda tá muito rígido”.
+- **Causa medida:** a bolinha andava em velocidade constante pelo traçado e virava de uma vez em cada ponta. Congelando o relógio a cada 1/60s: giro de até 137° entre dois quadros no computador (12 quadros acima de 60°) e 108° no celular (10 quadros).
+- **Feito** (JS `tunePulse`, que calcula as tabelas SMIL uma vez, no ocioso, só para o SVG visível):
+  - Velocidade limitada pela curva, com freada e retomada graduais, como algo físico numa curva fechada.
+  - Bolinha num caminho arredondado; o rastro continua na linha exata e acende cada ponta.
+  - Rastro por tempo: 50–300ms atrás da bolinha, encurtando nas pontas.
+  - Saída e chegada suaves, com cruzeiro no meio. Ciclo de 5s: 4,2s de percurso e 0,8s de pausa.
+- **Tentativas intermediárias**, com a medição a cada passo:
+  - Freada suavizada demais ficava diluída (125°).
+  - Com a ease global (rápida no meio), as pontas do meio continuavam rápidas (108°).
+  - Só arredondar mais fazia o rastro cortar os picos. Por isso a bolinha e o rastro foram separados.
+- **Resultado:**
+  - Maior giro entre quadros de 60° no computador (1 quadro) e 40° no celular (nenhum acima de 60°).
+  - O rastro fica a ≤0,8px da bolinha durante o percurso.
+- **Desempenho:** a primeira versão amostrava o traçado com `getPointAtLength` e travava a página (1,9s no computador; 8,6s com CPU 4x mais lenta). Lendo o `d` e achatando as curvas no JS, caiu para 21ms e 75ms.
+- **Continua valendo:** pausa fora da tela e com o botão de pausa; some com movimento reduzido; sem JS fica a versão simples declarada no SVG; sem erros.
+
 ## Mapa: pulso mais suave e menos rígido (computador e celular) — 24/09/2026
 
 - **Pedido do usuário:** “deixe mais suave e menos rígida a animação” da bolinha, no computador e no celular, com a skill da Emil se precisasse.
