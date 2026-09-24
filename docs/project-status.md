@@ -4,6 +4,15 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carol: pontos de luz da borda suavizados — 24/09/2026
+
+- **Pedido do usuário**, com print da versão anterior: “ficou extremamente forte, eu quero algo leve, suave, desse jeito tá horrível”.
+- **Feito:**
+  - Saíram os núcleos brancos, os rastros de luz (horizontais, ao longo das bordas e o diagonal do canto de baixo) e o `::before`.
+  - Nos mesmos cinco pontos ficou só um brilho turquesa difuso, de alfa .18 a .22. Nas laterais e na base ele se espalha ao longo da borda (elipses de 26×60px e 60×26px); nos cantos, é redondo (44 e 48px).
+  - O fio da borda continua um pouco mais claro nesses pontos, como na versão anterior a esta.
+- **Conferido** em 1358 e 375px: mesmas medidas da foto, do retrato e da citação, sem overflow e sem erros.
+
 ## Carol: pontos de luz mais fortes na borda do retrato — 24/09/2026
 
 - **Pedido do usuário**, com a referência marcada: “em alguns pontos da imagem as luzes são mais fortes, destacadas”.

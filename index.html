@@ -1169,28 +1169,17 @@
 #carol .mentor-rim::before{content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;
   background:radial-gradient(130px 110px at 100% 0,#B8FFF7,rgba(184,255,247,0) 72%),radial-gradient(80px 150px at 0 35%,rgba(166,255,244,.95),rgba(166,255,244,0) 72%),radial-gradient(80px 150px at 100% 35%,rgba(166,255,244,.95),rgba(166,255,244,0) 72%),radial-gradient(150px 80px at 34% 100%,rgba(166,255,244,.95),rgba(166,255,244,0) 72%),radial-gradient(150px 120px at 100% 100%,#B8FFF7,rgba(184,255,247,0) 72%),rgba(42,210,193,.55);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
-/* Pontos de luz mais fortes, como na referência (ajuste do usuário, 24/09): núcleo branco, halo turquesa e rastro
-   cruzando a borda. Ficam no canto de cima à direita, nas laterais a 35% da altura, na base a 34% da largura e no
-   canto de baixo à direita, onde o rastro é diagonal. A caixa passa 48px da foto; #carol recorta o que sair da tela. */
+/* Pontos de luz um pouco mais claros, como na referência, mas leves (ajuste do usuário, 24/09: “algo leve, suave”):
+   só um brilho difuso, espalhado ao longo da borda, no canto de cima à direita, nas laterais a 35% da altura, na base
+   a 34% da largura e no canto de baixo à direita. A caixa passa 48px da foto; #carol recorta o que sair da tela. */
 #carol .mentor-flare{--o:48px;--y:calc(var(--o) + (100% - var(--o) * 2) * .35);--x:calc(var(--o) + (100% - var(--o) * 2) * .34);
   position:absolute;inset:calc(var(--o) * -1);z-index:2;pointer-events:none;mix-blend-mode:screen;
   background:
-    radial-gradient(circle 5px at calc(100% - var(--o) - 6px) calc(var(--o) + 6px),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
-    radial-gradient(circle 4px at var(--o) var(--y),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
-    radial-gradient(circle 4px at calc(100% - var(--o)) var(--y),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
-    radial-gradient(circle 4px at var(--x) calc(100% - var(--o)),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
-    radial-gradient(circle 5px at calc(100% - var(--o) - 6px) calc(100% - var(--o) - 6px),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
-    radial-gradient(38px 1.5px at calc(100% - var(--o) - 22px) calc(var(--o) + .5px),rgba(215,255,251,.95),rgba(69,228,211,0)),
-    radial-gradient(1.5px 38px at calc(100% - var(--o) - .5px) calc(var(--o) + 22px),rgba(215,255,251,.95),rgba(69,228,211,0)),
-    radial-gradient(40px 1.5px at var(--o) var(--y),rgba(215,255,251,.95),rgba(69,228,211,0)),
-    radial-gradient(44px 1.5px at calc(100% - var(--o)) var(--y),rgba(215,255,251,.95),rgba(69,228,211,0)),
-    radial-gradient(48px 1.5px at var(--x) calc(100% - var(--o) - .5px),rgba(215,255,251,.95),rgba(69,228,211,0)),
-    radial-gradient(circle 34px at calc(100% - var(--o) - 6px) calc(var(--o) + 6px),rgba(69,228,211,.5),rgba(69,228,211,0)),
-    radial-gradient(circle 26px at var(--o) var(--y),rgba(69,228,211,.45),rgba(69,228,211,0)),
-    radial-gradient(circle 26px at calc(100% - var(--o)) var(--y),rgba(69,228,211,.45),rgba(69,228,211,0)),
-    radial-gradient(circle 26px at var(--x) calc(100% - var(--o)),rgba(69,228,211,.45),rgba(69,228,211,0)),
-    radial-gradient(circle 38px at calc(100% - var(--o) - 6px) calc(100% - var(--o) - 6px),rgba(69,228,211,.5),rgba(69,228,211,0))}
-#carol .mentor-flare::before{content:'';position:absolute;right:calc(var(--o) + 6px - 75px);bottom:calc(var(--o) + 6px - 1.5px);width:150px;height:3px;transform:rotate(45deg);background:radial-gradient(closest-side,rgba(225,255,252,.95),rgba(69,228,211,.4) 50%,rgba(69,228,211,0))}
+    radial-gradient(44px 44px at calc(100% - var(--o) - 6px) calc(var(--o) + 6px),rgba(69,228,211,.22),rgba(69,228,211,0)),
+    radial-gradient(26px 60px at var(--o) var(--y),rgba(69,228,211,.18),rgba(69,228,211,0)),
+    radial-gradient(26px 60px at calc(100% - var(--o)) var(--y),rgba(69,228,211,.18),rgba(69,228,211,0)),
+    radial-gradient(60px 26px at var(--x) calc(100% - var(--o)),rgba(69,228,211,.18),rgba(69,228,211,0)),
+    radial-gradient(48px 48px at calc(100% - var(--o) - 6px) calc(100% - var(--o) - 6px),rgba(69,228,211,.22),rgba(69,228,211,0))}
 .motion-ready #carol .mentor-portrait:not(.tx-in) :is(.mentor-rim,.mentor-flare){opacity:0}
 .motion-ready #carol .mentor-portrait.tx-in :is(.mentor-rim,.mentor-flare){transition:opacity .9s var(--ease-out) .7s}
 #carol .mentor-content{grid-column:1;grid-row:1;min-width:0;padding-top:48px}
