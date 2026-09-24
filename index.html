@@ -1487,17 +1487,18 @@
 .pain .pain-ecg{display:none}
 .pain .orb-arc-track{display:none}
 /* ---------- 5. Dor: sem cartão, perguntas em lista com filete ---------- */
-.pain .pain-sub .serif{color:inherit}
+/* “o certificado não responde”: itálico turquesa, como na referência do usuário (24/09). */
+.pain .pain-sub .serif{color:var(--mint-bright)}
 .pain .pain-diagnostic{background:none;border:0;border-radius:0;overflow:visible;box-shadow:none}
 .pain .pain-diagnostic-visual{background:none}
 .pain .pain-question-groups{gap:0;border-top:1px solid rgba(236,240,248,.10)}
 .pain .pain-question-card{min-height:0;padding:15px 0;background:none;border-radius:0;border-bottom:1px solid rgba(236,240,248,.10)}
 .pain .pain-question-card p{font-size:1.0625rem;line-height:1.45}
-/* Seta turquesa antes de cada pergunta (mesmo desenho da seta do botão de compra), alinhada à 1ª linha. */
+/* Seta turquesa num anel antes de cada pergunta, alinhado à 1ª linha (referência do usuário, 24/09). */
 .pain .pain-question-card p{display:flex;align-items:flex-start;gap:14px}
-.pain .pain-question-card p::before{content:"";flex:none;width:18px;height:18px;margin-top:calc((1.45em - 18px) / 2);background:var(--mint);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat}
+.pain .pain-question-card p::before{content:"";flex:none;box-sizing:border-box;width:24px;height:24px;margin-top:calc((1.45em - 24px) / 2);border:1px solid rgba(42,210,193,.5);border-radius:50%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2345E4D3' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12m-5-5 5 5-5 5'/%3E%3C/svg%3E") center/15px no-repeat,rgba(42,210,193,.08);
+  box-shadow:0 0 12px -3px rgba(42,210,193,.55)}
 /* Na entrada em cascata, a seta chega 6px atrás e desliza para o lugar logo depois da pergunta. */
 .motion-ready .pain-question-groups:not(.tx-in) .pain-question-card p::before{transform:translateX(-6px)}
 .motion-ready .pain-question-groups.tx-in .pain-question-card p::before{transition:transform 450ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 120ms)}
