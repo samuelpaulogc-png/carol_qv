@@ -4,6 +4,22 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carol: pontos de luz mais fortes na borda do retrato — 24/09/2026
+
+- **Pedido do usuário**, com a referência marcada: “em alguns pontos da imagem as luzes são mais fortes, destacadas”.
+- **Na referência**, a borda é um fio fino com pontos de luz concentrados: núcleo claro, halo e rastro atravessando a borda.
+  - Os pontos ficam no canto de cima à direita, nas duas laterais a cerca de 35% da altura, na base a um terço da largura e no canto de baixo à direita, onde o rastro é diagonal.
+  - A versão anterior espalhava o brilho em trechos longos da borda.
+- **Feito:**
+  - Novo `span.mentor-flare` (`aria-hidden`, `mix-blend-mode:screen`) com núcleo, rastro e halo nesses cinco pontos. No canto de baixo, rastro diagonal em `::before`.
+  - Os pontos mais claros do fio (`.mentor-rim`) foram alinhados a essas posições e ficaram mais curtos.
+  - Surge junto com a borda, depois de a foto subir, e sem animação com movimento reduzido.
+  - Um brilho em estrela no canto de cima foi testado e tirado.
+- **Rolagem lateral:** a caixa dos pontos passa 48px da foto, e no celular a foto fica a 24px da tela. `#carol` ganhou `overflow-x:clip`, que recorta sem criar área de rolagem, então o `sticky` do retrato continua igual (medido antes e depois).
+- **Conferido** em 1920, 1440, 1358, 900, 768, 375 e 320px:
+  - Retrato, foto e citação com as mesmas medidas, e moldura deslocada igual.
+  - Sem overflow e sem erros no console.
+
 ## Carol: citação em vidro escuro e borda acesa no retrato — 24/09/2026
 
 - **Pedido do usuário**, com duas referências marcadas com setas:

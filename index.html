@@ -1144,7 +1144,7 @@
 }
 
 /* Carol: imagem de equipe em toda a largura + retrato, trajetória e resultados. */
-#carol{position:relative;isolation:isolate;background:var(--bg-2);padding:0 0 88px}
+#carol{position:relative;isolation:isolate;overflow-x:clip;background:var(--bg-2);padding:0 0 88px}
 /* Duotone navy: a foto entra por luminosidade sobre o navy, com grão para disfarçar a baixa resolução. */
 #carol .mentor-banner{position:relative;isolation:isolate;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
 #carol .mentor-banner>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(1) contrast(1.18) brightness(.95);mix-blend-mode:luminosity;opacity:.52}
@@ -1167,10 +1167,32 @@
    em volta. Fica por cima da foto, sem mudar o tamanho dela nem a moldura deslocada. */
 #carol .mentor-rim{position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;filter:drop-shadow(0 0 1px rgba(166,255,244,.95)) drop-shadow(0 0 7px rgba(69,228,211,.7)) drop-shadow(0 0 18px rgba(42,210,193,.32))}
 #carol .mentor-rim::before{content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;
-  background:radial-gradient(180px 140px at 100% 0,#B8FFF7,rgba(184,255,247,0) 72%),radial-gradient(110px 200px at 0 50%,rgba(69,228,211,.95),rgba(69,228,211,0) 72%),radial-gradient(110px 200px at 100% 56%,rgba(69,228,211,.85),rgba(69,228,211,0) 72%),radial-gradient(190px 140px at 0 100%,#8FF5EA,rgba(143,245,234,0) 72%),radial-gradient(210px 150px at 100% 100%,#B8FFF7,rgba(184,255,247,0) 72%),rgba(42,210,193,.55);
+  background:radial-gradient(130px 110px at 100% 0,#B8FFF7,rgba(184,255,247,0) 72%),radial-gradient(80px 150px at 0 35%,rgba(166,255,244,.95),rgba(166,255,244,0) 72%),radial-gradient(80px 150px at 100% 35%,rgba(166,255,244,.95),rgba(166,255,244,0) 72%),radial-gradient(150px 80px at 34% 100%,rgba(166,255,244,.95),rgba(166,255,244,0) 72%),radial-gradient(150px 120px at 100% 100%,#B8FFF7,rgba(184,255,247,0) 72%),rgba(42,210,193,.55);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
-.motion-ready #carol .mentor-portrait:not(.tx-in) .mentor-rim{opacity:0}
-.motion-ready #carol .mentor-portrait.tx-in .mentor-rim{transition:opacity .9s var(--ease-out) .7s}
+/* Pontos de luz mais fortes, como na referência (ajuste do usuário, 24/09): núcleo branco, halo turquesa e rastro
+   cruzando a borda. Ficam no canto de cima à direita, nas laterais a 35% da altura, na base a 34% da largura e no
+   canto de baixo à direita, onde o rastro é diagonal. A caixa passa 48px da foto; #carol recorta o que sair da tela. */
+#carol .mentor-flare{--o:48px;--y:calc(var(--o) + (100% - var(--o) * 2) * .35);--x:calc(var(--o) + (100% - var(--o) * 2) * .34);
+  position:absolute;inset:calc(var(--o) * -1);z-index:2;pointer-events:none;mix-blend-mode:screen;
+  background:
+    radial-gradient(circle 5px at calc(100% - var(--o) - 6px) calc(var(--o) + 6px),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
+    radial-gradient(circle 4px at var(--o) var(--y),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
+    radial-gradient(circle 4px at calc(100% - var(--o)) var(--y),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
+    radial-gradient(circle 4px at var(--x) calc(100% - var(--o)),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
+    radial-gradient(circle 5px at calc(100% - var(--o) - 6px) calc(100% - var(--o) - 6px),#fff,rgba(200,255,250,.85) 35%,rgba(69,228,211,0)),
+    radial-gradient(38px 1.5px at calc(100% - var(--o) - 22px) calc(var(--o) + .5px),rgba(215,255,251,.95),rgba(69,228,211,0)),
+    radial-gradient(1.5px 38px at calc(100% - var(--o) - .5px) calc(var(--o) + 22px),rgba(215,255,251,.95),rgba(69,228,211,0)),
+    radial-gradient(40px 1.5px at var(--o) var(--y),rgba(215,255,251,.95),rgba(69,228,211,0)),
+    radial-gradient(44px 1.5px at calc(100% - var(--o)) var(--y),rgba(215,255,251,.95),rgba(69,228,211,0)),
+    radial-gradient(48px 1.5px at var(--x) calc(100% - var(--o) - .5px),rgba(215,255,251,.95),rgba(69,228,211,0)),
+    radial-gradient(circle 34px at calc(100% - var(--o) - 6px) calc(var(--o) + 6px),rgba(69,228,211,.5),rgba(69,228,211,0)),
+    radial-gradient(circle 26px at var(--o) var(--y),rgba(69,228,211,.45),rgba(69,228,211,0)),
+    radial-gradient(circle 26px at calc(100% - var(--o)) var(--y),rgba(69,228,211,.45),rgba(69,228,211,0)),
+    radial-gradient(circle 26px at var(--x) calc(100% - var(--o)),rgba(69,228,211,.45),rgba(69,228,211,0)),
+    radial-gradient(circle 38px at calc(100% - var(--o) - 6px) calc(100% - var(--o) - 6px),rgba(69,228,211,.5),rgba(69,228,211,0))}
+#carol .mentor-flare::before{content:'';position:absolute;right:calc(var(--o) + 6px - 75px);bottom:calc(var(--o) + 6px - 1.5px);width:150px;height:3px;transform:rotate(45deg);background:radial-gradient(closest-side,rgba(225,255,252,.95),rgba(69,228,211,.4) 50%,rgba(69,228,211,0))}
+.motion-ready #carol .mentor-portrait:not(.tx-in) :is(.mentor-rim,.mentor-flare){opacity:0}
+.motion-ready #carol .mentor-portrait.tx-in :is(.mentor-rim,.mentor-flare){transition:opacity .9s var(--ease-out) .7s}
 #carol .mentor-content{grid-column:1;grid-row:1;min-width:0;padding-top:48px}
 /* Números sob o título, dentro da faixa, na mesma largura da primeira coluna. */
 #carol .auth-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:calc((100% - 72px)*.6);padding:28px 0 0;margin:36px 0 0;border-top:1px solid rgba(236,240,248,.16)}
@@ -2004,6 +2026,7 @@
     <figure class="mentor-portrait">
       <img src="assets/Foto-427-683x1024.webp" alt="Carol no centro cirúrgico" width="683" height="1024" loading="lazy" decoding="async">
       <span class="mentor-rim" aria-hidden="true"></span>
+      <span class="mentor-flare" aria-hidden="true"></span>
     </figure>
     <div class="mentor-content">
       <div class="mentor-story"><p><span class="mentor-opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>

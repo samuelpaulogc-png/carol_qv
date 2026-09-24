@@ -135,6 +135,11 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Dentro da faixa: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).
 - **Abaixo:** narrativa à esquerda (frase de abertura em destaque, dois parágrafos) e retrato `assets/Foto-427-683x1024.webp` à direita. O retrato sobe para dentro da faixa, é `position:sticky` no desktop, tem moldura turquesa deslocada atrás, cantos 20px, vinheta e leve ajuste de cor.
   - **Borda acesa (24/09, referência do usuário com setas na borda do retrato):** `span.mentor-rim` por cima da foto, com fio turquesa de 1px, pontos de luz no canto de cima à direita, nas laterais e nos cantos de baixo, e brilho em volta por `drop-shadow`. Aparece depois que a foto sobe; com movimento reduzido, já aparece pronta. O usuário pediu para **não mudar o tamanho da foto nem mexer ou engrossar a moldura deslocada**: as duas continuam iguais (conferido de 320 a 1920px).
+  - **Pontos de luz mais fortes (ajuste do usuário, 24/09, com a mesma referência):**
+    - `span.mentor-flare` tem núcleo branco, halo turquesa e rastro cruzando a borda, em cinco pontos: canto de cima à direita (rastros ao longo das duas bordas), laterais a 35% da altura (rastro horizontal), base a 34% da largura e canto de baixo à direita (rastro diagonal, `::before`).
+    - O fio da borda (`.mentor-rim`) ficou mais claro nesses mesmos pontos.
+    - A caixa passa 48px da foto. Por isso `#carol` tem `overflow-x:clip`: sem ele, o celular teria rolagem lateral. O `clip` não quebra o `sticky` do retrato (conferido).
+    - Um brilho em estrela no canto de cima foi testado e tirado, por parecer enfeite.
 - **Citação final** “Ter um mapa muda completamente…” em **vidro escuro com borda turquesa acesa** (fundo da referência do usuário, 24/09), texto turquesa `--mint-bright` (contraste 10,6:1) e ícone de batimento **animado** também turquesa (SVG `.quote-ecg`, traço se desenhando em loop de 4s; estático com movimento reduzido).
   - A borda é sombra interna (`inset 0 0 0 1px`), então o bloco tem o mesmo tamanho de antes. Fonte, tamanho e peso não mudaram.
   - Na referência, o ícone fica à esquerda do texto; aqui continua acima, porque o pedido foi só o fundo.
