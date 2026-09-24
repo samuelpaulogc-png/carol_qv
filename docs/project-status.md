@@ -4,6 +4,13 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Aviso de inscrição: prévia mais rápida; nomes fictícios recusados — 24/09/2026
+
+- O usuário disse que o aviso “ainda não tá aparecendo” e pediu nomes fictícios (“pode fazer com nomes aleatórios, mas bonitos”).
+- **Por que não aparecia:** no endereço normal, a lista `#compras-reais` está vazia, então o aviso não é ativado. Isso é de propósito. Na prévia (`?compras=exemplo`), o primeiro aviso só vinha 9–14s após abrir a página e depois de passar do vídeo.
+- **Feito:** na prévia, o primeiro aviso agora vem ~2s após abrir (até 3s depois de rolar para além do vídeo). Medido em tempo real, rolando como uma pessoa: 2,3s no computador (1358×650) e na hora no celular (375×667). Sem o parâmetro, continua sem aparecer.
+- **Não feito:** preencher a lista com nomes inventados. Seria escrever compras que não aconteceram para convencer quem visita, o que o CDC trata como publicidade enganosa (art. 37) e o manual veta como “urgência falsa” (§12). A lista continua esperando nomes de compras reais.
+
 ## Aviso de inscrição (“<nome> garantiu vaga na turma”) — 24/09/2026
 
 - **Pedido do usuário**, com print de exemplo: um aviso “simulando que pessoas estão comprando”, que apareça “de forma leve e sutil em alguns momentos” e não a todo momento.

@@ -48,7 +48,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 ### Compliance (atenção)
 - `brand-guide.md` §13 pede ressalva junto de depoimentos. O usuário removeu a da seção de depoimentos; **a única ressalva da página agora é a do rodapé** (“Não há garantia de contratação, equipe, cirurgia ou prazo para resultados. Resultados podem variar de pessoa para pessoa.”). Não remova a do rodapé sem nova autorização.
 - Os prints de depoimentos mostram pessoas reais (fotos de perfil, rosto, mensagens privadas). Foi pedido ao usuário que confirme a autorização delas; ainda sem resposta.
-- **Aviso de inscrição: só compras reais.** O usuário pediu o aviso “simulando que pessoas estão comprando” (24/09). Não preencha a lista com nomes inventados: aviso de compra que não aconteceu é publicidade enganosa (CDC art. 37), e o manual veta “urgência falsa” (§12). Isso foi explicado ao usuário. Use só o primeiro nome de quem comprou de fato, tirado da plataforma de checkout.
+- **Aviso de inscrição: só compras reais.** O usuário pediu o aviso “simulando que pessoas estão comprando” (24/09). Não preencha a lista com nomes inventados: aviso de compra que não aconteceu é publicidade enganosa (CDC art. 37), e o manual veta “urgência falsa” (§12). Isso foi explicado ao usuário. Ele insistiu no mesmo dia (“eu quero fictício, pode fazer com nomes aleatórios, mas bonitos”), e o pedido foi recusado pelo mesmo motivo. Use só o primeiro nome de quem comprou de fato, tirado da plataforma de checkout.
 
 ## Estado atual por seção
 
@@ -138,7 +138,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 ### Aviso de inscrição (toda a página, 24/09)
 - Pedido do usuário, com print de exemplo (caixa verde com check, “**Stella** garantiu vaga na turma”): aparecer “de forma leve e sutil em alguns momentos”, sem atrapalhar.
 - **Visual:** cartão fixo no canto de baixo à esquerda (24px; 16px até 560px), navy `.95` com desfoque de 16px, borda turquesa fina e cantos de 14px. À esquerda, um check verde-menta (o manual reserva o verde para ícones de sucesso) que se desenha ao aparecer. Nome em creme 700, resto em creme `.8`, na Hanken do corpo (15px; 14px no celular). À direita, um “×” discreto. Entra subindo 12px e sai em fade (450ms); com movimento reduzido, só aparece e some.
-- **Dados:** `<script type="application/json" id="compras-reais">` no fim do `<body>`, com uma lista de primeiros nomes (`["Stella", "Mariana"]`). Vazia, o aviso nem é ativado (o `div.buy-toast` fica com `hidden`). Prévia do visual: `?compras=exemplo` no endereço usa Stella, Mariana, Letícia e Rafael, e nunca aparece para quem visita sem o parâmetro.
+- **Dados:** `<script type="application/json" id="compras-reais">` no fim do `<body>`, com uma lista de primeiros nomes (`["Stella", "Mariana"]`). Vazia, o aviso nem é ativado (o `div.buy-toast` fica com `hidden`). Prévia do visual: `?compras=exemplo` no endereço usa Stella, Mariana, Letícia e Rafael, e nunca aparece para quem visita sem o parâmetro. Na prévia, o primeiro aviso vem ~2s após abrir (na prática, até 3s depois de a pessoa rolar para além do vídeo); o resto segue o ritmo real.
 - **Ritmo:**
   - O primeiro aparece 9–14s após abrir a página, e só depois de a pessoa rolar 60% da altura da tela (nunca na primeira dobra).
   - Cada aviso fica 5,5s na tela, com 38–64s de intervalo.

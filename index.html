@@ -2042,7 +2042,8 @@
 <!-- Aviso de inscrição (24/09). De vez em quando mostra "<nome> garantiu vaga na turma" no canto de baixo.
      Os nomes saem da lista abaixo e precisam ser de compras reais, tirados da plataforma de checkout
      (só o primeiro nome, ex.: ["Stella", "Mariana"]). Lista vazia = o aviso não aparece.
-     Para ver o visual antes das vendas, abra a página com ?compras=exemplo no endereço. -->
+     Para ver o visual antes das vendas, abra a página com ?compras=exemplo no endereço e role até passar do vídeo:
+     o primeiro aviso aparece em ~3s. -->
 <script type="application/json" id="compras-reais">[]</script>
 <div class="buy-toast" hidden>
   <svg class="bt-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="m7.5 12.3 3.1 3.1 6-6.4" pathLength="1"/></svg>
@@ -2750,7 +2751,10 @@
   // Espera com a aba oculta, a ampliação aberta ou as animações automáticas pausadas.
   const buyToast = document.querySelector('.buy-toast');
   if (buyToast) {
-    const FIRST = [9000, 14000]; // ms até o primeiro, desde a abertura da página
+    // Prévia do visual antes das vendas: só com ?compras=exemplo no endereço, nunca para quem visita.
+    // Nela o primeiro aviso vem logo que a pessoa rola a página; o resto segue o ritmo real.
+    const preview = new URLSearchParams(location.search).get('compras') === 'exemplo';
+    const FIRST = preview ? [1500, 2500] : [9000, 14000]; // ms até o primeiro, desde a abertura da página
     const GAP = [38000, 64000];  // ms entre um aviso e o próximo
     const ON_SCREEN = 5500;
     const LIMIT = 4;
@@ -2758,8 +2762,6 @@
     const nameSlot = buyToast.querySelector('.bt-name');
     const message = buyToast.querySelector('.bt-msg');
     const live = document.querySelector('.bt-live');
-    // Prévia do visual antes das vendas: só com ?compras=exemplo no endereço, nunca para quem visita.
-    const preview = new URLSearchParams(location.search).get('compras') === 'exemplo';
     let names = [];
     try { names = JSON.parse(document.getElementById('compras-reais')?.textContent || '[]'); }
     catch (error) { console.warn('Lista #compras-reais inválida:', error); }
