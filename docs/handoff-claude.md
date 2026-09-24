@@ -136,14 +136,18 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Rodapé: sobre a mesma foto, com marca e data na mesma linha e ressalva legal (`.legal`) mais legível. A ressalva continua obrigatória.
 
 ### Aviso de inscrição (toda a página, 24/09)
-- Pedido do usuário, com print de exemplo (caixa verde com check, “**Stella** garantiu vaga na turma”): aparecer “de forma leve e sutil em alguns momentos”, sem atrapalhar.
+- Pedido do usuário, com print de exemplo (caixa verde com check, “**Stella** garantiu vaga na turma”): aparecer “de forma leve e sutil em alguns momentos”, sem atrapalhar. Depois (24/09), pediu que voltasse a aparecer quando a pessoa sobe a página, “sem lotar a tela, mas com sensação de constância”.
 - **Visual:** cartão fixo no canto de baixo à esquerda (24px; 16px até 560px), navy `.95` com desfoque de 16px, borda turquesa fina e cantos de 14px. À esquerda, um check verde-menta (o manual reserva o verde para ícones de sucesso) que se desenha ao aparecer. Nome em creme 700, resto em creme `.8`, na Hanken do corpo (15px; 14px no celular). À direita, um “×” discreto. Entra subindo 12px e sai em fade (450ms); com movimento reduzido, só aparece e some.
-- **Dados:** `<script type="application/json" id="compras-reais">` no fim do `<body>`, com uma lista de primeiros nomes (`["Stella", "Mariana"]`). Vazia, o aviso nem é ativado (o `div.buy-toast` fica com `hidden`). Prévia do visual: `?compras=exemplo` no endereço usa Stella, Mariana, Letícia e Rafael, e nunca aparece para quem visita sem o parâmetro. Na prévia, o primeiro aviso vem ~2s após abrir (na prática, até 3s depois de a pessoa rolar para além do vídeo); o resto segue o ritmo real.
-- **Ritmo:**
-  - O primeiro aparece 9–14s após abrir a página, e só depois de a pessoa rolar 60% da altura da tela (nunca na primeira dobra).
-  - Cada aviso fica 5,5s na tela, com 38–64s de intervalo.
-  - No máximo 4 por visita, em ordem sorteada e sem repetir nome.
-- **Nunca cobre** `.btn`, `.video-frame`, `.rail-nav` nem as perguntas do FAQ. Antes de aparecer, mede a área com o nome da vez; se algo estiver embaixo, tenta de novo em 3s. Se a rolagem trouxer um desses para baixo dele, sai antes da hora.
+- **Dados:** `<script type="application/json" id="compras-reais">` no fim do `<body>`, com uma lista de primeiros nomes (`["Stella", "Mariana"]`). Vazia, o aviso nem é ativado (o `div.buy-toast` fica com `hidden`). Prévia do visual: `?compras=exemplo` no endereço usa Stella, Mariana, Letícia e Rafael, e nunca aparece para quem visita sem o parâmetro. Na prévia, o primeiro aviso vem ~3s após abrir, e os 4 nomes recomeçam em nova ordem (sem repetir o último), para mostrar o ritmo.
+- **Ritmo (constância, 24/09):**
+  - O primeiro aparece 6–10s após abrir a página, em qualquer ponto dela, inclusive no topo.
+  - Cada aviso fica 5s na tela, e o próximo vem 15–25s depois. Um de cada vez.
+  - Até 12 por visita, em ordem sorteada. Com compras reais, nenhum nome se repete na visita: com 3 compras, são 3 avisos.
+  - Antes era: primeiro só depois de rolar 60% da tela, 5,5s na tela, 38–64s de intervalo e no máximo 4. O usuário viu só um e pediu constância.
+- **Nunca cobre** `.btn`, `.rail-nav` nem as perguntas do FAQ. O `.video-frame` também é evitado, mas só quando metade dele ou mais está na tela, quando alguém pode estar assistindo; só a borda de cima aparecendo lá embaixo não conta.
+  - Antes de aparecer, mede a área com o nome da vez; se algo estiver embaixo, tenta de novo em 2s.
+  - Se a rolagem trouxer um desses para baixo dele, sai antes da hora.
+  - No topo, aparece em 375, 390, 1358 (650 e 760 de altura) e 1920px. Em 1440×900 espera rolar, porque o vídeo fica mais da metade na tela.
 - **Espera** com a aba oculta, com a ampliação dos prints aberta e com “Pausar animações automáticas” ligado (se for pausado com o aviso na tela, ele sai). Com o mouse ou o foco em cima, fica; ao sair, some em 2,5s.
 - **“×”:** fecha e encerra os avisos na sessão (`sessionStorage` `avisos-fechados`); é o mecanismo de parar exigido pela WCAG 2.2.2.
 - **Leitor de tela:** o texto visível é `aria-hidden`, e o anúncio vai por `p.bt-live` (`role="status"`), uma vez por aviso.

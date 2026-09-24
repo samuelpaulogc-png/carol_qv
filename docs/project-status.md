@@ -4,6 +4,24 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Aviso de inscrição com ritmo constante — 24/09/2026
+
+- Pedido do usuário: “só aparece uma vez, eu quero que se a pessoa subir a página novamente apareça de novo. Eu não quero algo lotando a tela, mas que dê a sensação de constância.”
+- **Antes:** primeiro só depois de rolar 60% da tela, 5,5s na tela, 38–64s de intervalo, no máximo 4 por visita.
+- **Agora:**
+  - Primeiro em 6–10s (~3s na prévia), em qualquer ponto da página, inclusive no topo.
+  - Um de cada vez: 5s na tela e 15–25s até o próximo; até 12 por visita.
+  - Com compras reais, cada nome aparece uma vez por visita. A prévia recomeça os 4 nomes de exemplo sem repetir o último.
+  - Continua sem cobrir botões, os controles do carrossel e as perguntas do FAQ. O vídeo agora só é evitado quando metade dele ou mais está na tela: só a borda aparecendo lá embaixo impedia o aviso no topo em 1358px.
+- **Verificação:**
+  - 46 testes com relógio simulado.
+  - 12 avisos em 8 minutos, com intervalos de 15,2 a 25,0s e 5s na tela.
+  - Ao subir a página, volta em 18–23s, com outro nome.
+  - Com 3 compras reais, 3 avisos com nomes diferentes; o primeiro em 9,1s.
+  - Com a lista vazia, nada aparece.
+  - Pausa, ampliação, “×”, teclado e movimento reduzido também verificados.
+  - Sem overflow de 320 a 1920px e sem erros no console.
+
 ## Aviso de inscrição: prévia mais rápida; nomes fictícios recusados — 24/09/2026
 
 - O usuário disse que o aviso “ainda não tá aparecendo” e pediu nomes fictícios (“pode fazer com nomes aleatórios, mas bonitos”).
