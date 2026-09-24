@@ -1407,8 +1407,13 @@
 @media (min-width:561px){
   .hero{--hero-photo:max(56.28vw,720px)}
   .hero::before{content:"";position:absolute;left:0;right:0;top:0;height:var(--hero-photo);z-index:0;pointer-events:none;
-    background:linear-gradient(180deg,rgba(8,12,34,0) 62%,rgba(8,12,34,.72) 76%,rgba(8,12,34,.94) 88%,#080C22 100%),
+    background:linear-gradient(180deg,rgba(8,12,34,0) 64%,rgba(8,12,34,.88) 71%,rgba(8,12,34,.96) 82%,#080C22 100%),
       url('assets/images/Image - Hero.webp') center top/cover no-repeat}
+  /* Abaixo dos braços da Carol (65% da foto), a foto desfoca e escurece em azul-marinho: o corpo dela, atrás do
+     título e do texto ao lado do vídeo, não disputa com as letras. A borda de cima se dissolve. */
+  .hero::after{content:"";position:absolute;left:0;right:0;top:calc(var(--hero-photo) * .64);height:calc(var(--hero-photo) * .36);z-index:0;pointer-events:none;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000 16%);mask-image:linear-gradient(180deg,transparent,#000 16%)}
 }
 /* ---------- 2. Mesmo fundo contínuo, sem brilho próprio na seção seguinte ---------- */
 .pain{display:flow-root;background:#080C22;padding-top:0;z-index:2}

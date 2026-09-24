@@ -4,6 +4,16 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Hero: desfoque azul abaixo dos braços da Carol — 24/09/2026
+
+- Pedido do usuário (print com setas): o corpo da Carol aparecia atrás do título “Entenda em poucos minutos…” e podia disputar com ele. Ele sugeriu “blur azul ou sei lá”.
+- **Primeira tentativa, descartada:** mancha oval desfocada atrás da coluna de texto. Deixava uma borda oval visível e não cobria o título em 1920px, onde a Carol fica maior.
+- **Aplicado:**
+  - a dissolução da foto ficou mais curta, de transparente em 64% a .88 de azul-marinho em 71% da altura (antes começava em 62% e chegava a .72 em 76%);
+  - `.hero::after` desfoca a foto (`backdrop-filter: blur(14px)`) em toda a largura a partir de 64%, com a borda de cima se dissolvendo.
+  - Os braços, que terminam em 65%, continuam nítidos.
+- Contraste no pior ponto: título de 6,4:1 para ≥10,2:1; parágrafos ≥11,6:1 (1920 a 961px). Celular sem mudança: até 560px a hero não tem essa foto.
+
 ## Hero + vídeo no layout do protótipo do usuário — 24/09/2026
 
 - O usuário gerou no ChatGPT um protótipo em imagem (prompt escrito nesta sessão) e pediu o layout “na linha desse”. Instrução: implementar só o código e não se preocupar com fundos.
