@@ -4,6 +4,21 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Citação: linha de batimento no celular — 24/09/2026
+
+- **Relato do usuário:** “no mobile eu creio que essa animação parou de funcionar”, com print da linha de batimento da citação.
+- **Investigação:**
+  - No Chromium com emulação de celular (375px) e no computador, a animação rodava: desenha, segura, apaga e recomeça.
+  - O único ponto frágil era o controle de animações contínuas, que observava o `<path>` de dentro do SVG com `IntersectionObserver`. Esse é o caso menos confiável, sobretudo no Safari do iPhone. Se o `path` não for detectado na tela, o controle deixa a animação pausada.
+  - Não há WebKit instalado neste ambiente para confirmar no Safari.
+- **Feito:** o controle passa a observar o `<svg class="quote-ecg">` e aplica o `animation-play-state` ao `path`.
+- **Conferido** em 375 e 1358px:
+  - Anima na tela, pausa fora dela e volta ao reaparecer.
+  - O botão de pausa para e retoma.
+  - Com movimento reduzido, a linha fica parada e inteira (opacidade .6) e o botão some.
+  - Sem erros.
+- **Fica parada de propósito:** com movimento reduzido no aparelho, ou depois de um toque no botão de pausa (‖) do letreiro.
+
 ## Carol: borda do retrato sem brilho, mais grossa em pontos escolhidos — 24/09/2026
 
 - **Pedido do usuário:** “ainda tá ruim, eu não quero blur, deixe a borda um pouquinho mais grossa em alguns pontos estratégicos. Somente isso.”

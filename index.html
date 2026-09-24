@@ -2339,7 +2339,9 @@
   const reveals = document.querySelectorAll('.reveal');
   let automaticMotionPaused = false;
   const motionToggle = document.querySelector('.motion-toggle');
-  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg path,.gcert-ring,svg:has(animateMotion)')];
+  // A linha de batimento da citação é observada pelo <svg>, não pelo <path>: a caixa do SVG é detectada na tela em
+  // qualquer navegador, e o estado de pausa vai para o <path>, que é quem anima.
+  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg,.gcert-ring,svg:has(animateMotion)')];
   const visibleMotion = new Set('IntersectionObserver' in window ? [] : continuousMotion);
   const syncContinuousMotion = () => {
     document.documentElement.classList.toggle('motion-paused', automaticMotionPaused);
@@ -2353,7 +2355,7 @@
       if (element.matches('svg:has(animateMotion)')) {
         if (paused) element.pauseAnimations();
         else element.unpauseAnimations();
-      } else element.style.animationPlayState = paused ? 'paused' : 'running';
+      } else (element.matches('.quote-ecg') ? element.querySelector('path') : element).style.animationPlayState = paused ? 'paused' : 'running';
     });
     document.dispatchEvent(new Event('automaticmotionchange'));
   };

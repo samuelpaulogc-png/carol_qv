@@ -225,6 +225,9 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - **Cache do servidor local:** navegar para a mesma URL pode manter o HTML antigo. Use `?v=...` para forçar a versão nova antes de medir.
 - **Painel oculto também congela `resize` e IntersectionObserver.** Depois de emular outro tamanho, dispare `dispatchEvent(new Event('resize'))`. Para testar deslizes, troque `requestAnimationFrame` por `setTimeout` antes do clique.
 - **Playwright + letreiro fixo:** `page.click('.motion-toggle')` rola a página para cima (o botão é sticky); um clique de verdade não rola. Volte à posição antes de medir.
+- **IntersectionObserver em elemento de dentro de SVG** (`path`, `g`) é o ponto menos confiável, sobretudo no Safari do iPhone. Se não for detectado na tela, o controle de animações contínuas deixa a animação pausada. Observe o `<svg>` e aplique o estado ao filho. A linha de batimento da citação (`.quote-ecg`) passou a ser assim em 24/09, depois de o usuário relatar que ela parou no celular.
+  - Ela fica parada de propósito com movimento reduzido no aparelho: no iPhone, Ajustes > Acessibilidade > Movimento; no Android, “Remover animações”.
+  - Também fica parada depois de um toque no botão de pausa (‖) do letreiro.
 - **Aviso de inscrição nos testes:** entra num momento sorteado e fica só 5,5s. Com `page.clock`, avance em passos e confira durante; num instante fixo ele pode já ter ido embora.
 
 ## Como verificar neste ambiente
