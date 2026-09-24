@@ -4,6 +4,22 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carol: foto nova da turma na faixa — 24/09/2026
+
+- **Pedido do usuário**, com a imagem anexada: trocar a foto atual por essa. É a mesma foto da turma (Carol de avental azul e touca rosa, braços abertos), agora numa sala cirúrgica azul com focos acesos, sem a parede branca e sem a marca do hospital.
+- **Feito:**
+  - `assets/images/carol-equipe.webp` (1448×1086, 199 KB) entrou no lugar de `assets/hero-equipe.webp` (1024×683) em `#carol .mentor-banner`. É a cópia que veio pelo chat; o original do usuário deve ser maior.
+  - O tratamento da seção é o mesmo: cinza, luminosidade sobre o navy, opacidade .52, grão e degradês.
+- **Enquadramento:** `object-position` passou de `center 42%` para `center 30%` acima de 760px.
+  - A foto nova é 4:3 e a antiga era 3:2. Com 42%, as cabeças de trás eram cortadas no alto em 1920 e 2560px, e o fim de “mostrar” passava sobre o rosto da Carol de 1358 a 1920px.
+  - Com 30%, as cabeças aparecem inteiras e o rosto da Carol fica ao lado de “esse caminho?”.
+  - O celular não mudou: recorte próprio, centralizado.
+- **Mantido:** `assets/hero-equipe.webp`, a foto real, continua no disco sem uso.
+- **Opção mostrada, não aplicada:** a foto nas cores originais (sem cinza, opacidade .62).
+- **Conferido:**
+  - Enquadramento em 2560, 1920, 1440, 1358, 1024, 900 e 768px.
+  - Na página final, em 1440, 1358, 900, 768, 375 e 320px: imagem carregada em 1448×1086, sem overflow, sem erros no console nem requisições com falha. Os números terminam em 9 anos / 10k / 20k.
+
 ## Como funciona: etiqueta “Acesso imediato” em turquesa — 24/09/2026
 
 - **Pedido do usuário**, com print dos dois cards: dar à etiqueta “ACESSO IMEDIATO” (card da esquerda) a cor da etiqueta “22 de outubro • 20h • Online e ao vivo” (card da direita) e tirar o ícone de raio.

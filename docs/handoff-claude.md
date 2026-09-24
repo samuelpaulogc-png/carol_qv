@@ -121,7 +121,12 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - **Da referência, ficou de fora** por ser texto ou peso de fonte, e não layout: o kicker “O GANCHO DA VIRADA” acima do título e os trechos em negrito dentro dos critérios. Só com pedido do usuário.
 
 ### Carol (`#carol`)
-- **Faixa superior** com `assets/hero-equipe.webp` (Carol com a turma) em duotone navy (`mix-blend-mode:luminosity`), grão SVG e degradês. Dentro dela: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).
+- **Faixa superior** com `assets/images/carol-equipe.webp` (Carol com a turma, 1448×1086) em duotone navy (`mix-blend-mode:luminosity`), grão SVG e degradês.
+  - **Foto trocada a pedido do usuário (24/09):** é a mesma foto da turma, numa versão nova enviada pelo usuário, com sala cirúrgica azul e focos acesos no fundo, sem a parede branca e sem a marca do hospital. O arquivo veio pelo chat, reduzido; se o original for maior, basta trocar mantendo o nome.
+  - Enquadramento `center 30%` acima de 760px (era 42% com a foto antiga, que era 3:2). Com 42%, a foto nova (4:3) cortava as cabeças de trás em telas largas, e o fim de “mostrar” passava sobre o rosto da Carol. O celular mantém o recorte próprio.
+  - A foto real, `assets/hero-equipe.webp`, continua no disco sem uso, para voltar se preciso.
+  - Mostrada ao usuário e **não aplicada**: a foto nas cores originais (sem cinza, opacidade .62).
+  - Dentro da faixa: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).
 - **Abaixo:** narrativa à esquerda (frase de abertura em destaque, dois parágrafos) e retrato `assets/Foto-427-683x1024.webp` à direita. O retrato sobe para dentro da faixa, é `position:sticky` no desktop, tem moldura turquesa deslocada atrás, cantos 20px, vinheta e leve ajuste de cor.
 - **Citação final** “Ter um mapa muda completamente…” em bloco turquesa sólido com texto navy (contraste 9,78:1) e ícone de batimento **animado** (SVG `.quote-ecg`, traço se desenhando em loop de 4s; estático com movimento reduzido).
 - **Celular:** título e resultados descem na faixa (padding-top 260px) para mostrar os rostos da turma; degradê de baixo para cima; retrato 4:5 com moldura de 14px.
@@ -234,7 +239,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - Confirmação jurídica da remoção do aviso de depoimentos (§13 do manual).
 - Conteúdo real: vídeo principal, link do checkout, resposta sobre gravação. (Parcelamento definido em 24/09: 6x de R$ 8,82.)
 - Nomes de compras reais para o aviso de inscrição (`#compras-reais`), quando as vendas começarem. Até lá, o aviso fica desligado.
-- Fotos originais em alta resolução de `hero-equipe.webp` (1024×683) e `Foto-427-683x1024.webp` (683×1024), usadas grandes na seção da Carol.
+- Foto original em alta resolução de `Foto-427-683x1024.webp` (683×1024), usada grande na seção da Carol. A faixa da equipe já usa a foto nova (`carol-equipe.webp`, 1448×1086, cópia do chat); se o arquivo original for maior, trocar mantendo o nome.
 
 **Técnicas (não feitas, sugeridas)**
 - Peso: `Image - Hero.png` (1,6 MB, carregada como background CSS, atrasa o LCP) e `dor-portas-recorte.png` (1,9 MB) — converter para WebP.
