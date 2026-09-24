@@ -33,6 +33,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - **Alterações de copy já autorizadas:**
   - Garantia (13/09): título “7 dias de garantia” trocado por “Garantia de satisfação total”, a pedido expresso do usuário. O texto circular da medalha (“7 dias de garantia · …”) e o parágrafo com as condições de 7 dias continuam iguais.
   - Hero → vídeo (24/09): os parágrafos “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” saíram da hero e foram para o bloco do vídeo, depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”, a pedido expresso do usuário. Texto idêntico; não voltar com eles para a hero.
+  - Preço (24/09): a pedido do usuário (“o preço precisa ser alterado para 6x de R$ 8,82”), o valor em destaque passou de “R$ 47,00” para “6x de R$ 8,82”. A linha de baixo passou de “ou em até 12x no cartão” (a confirmar) para “ou R$ 47,00 à vista”, para o preço à vista continuar informado. No parcelado, 6 × R$ 8,82 = R$ 52,92 (juros do cartão).
   - Aviso de inscrição (24/09): “<nome> garantiu vaga na turma”, texto do exemplo que o usuário enviou ao pedir o aviso. Os nomes vêm só de compras reais (ver “Aviso de inscrição” abaixo).
 - Nunca revele nomes ou conteúdo dos 6 passos. Não invente métricas nem altere condições comerciais.
 
@@ -111,7 +112,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
     - bônus com capa própria `assets/images/oferta-bonus.webp` (e `-900`), gerada no ChatGPT a partir de `Bônus.png` no estilo das capas (celular com vlog, e-book com checklist, mapa com trilha pontilhada); `object-position` à esquerda. Prompts em `human-output/image/gancho-oferta-bonus/`. O SVG antigo e a regra `.ov-bonus-art` foram removidos (13/09).
   - Conectores "+" (`.ov-op`) sobre as linhas divisórias.
   - Títulos `h4.ov-title` com trecho em Fraunces itálico turquesa, filete turquesa de 32px que cresce no hover, descrição com a informação-chave em peso, bônus em lista com traço.
-  - O preço fecha o bloco (`.ov-buy`): "DE R$ 297,00", "R$ 47,00" na mesma linha de base, "ou em até **12x** no cartão" (a confirmar), fio vertical e botão de 460px com seta. No celular (≤900px) tudo empilha e o fio fica horizontal.
+  - O preço fecha o bloco (`.ov-buy`): "DE R$ 297,00", "**6x de R$ 8,82**" em destaque (desde 24/09; "6x de R$" e ",82" pequenos, "8" grande, como era o "R$ 47,00"), "ou **R$ 47,00** à vista" embaixo, fio vertical e botão de 460px com seta. No celular (≤900px) tudo empilha e o fio fica horizontal.
   - Checkout ainda `href="#"` (`#checkout-link`).
   - As capas repetem as de "Como funciona", e o bônus não tem foto (sugestão pendente: gerar capa própria).
   - CSS antigo da oferta (`.offer-box`, `.incl*`, `.plus`, `.price`, `.offer-purchase`, `.bonus-line`) foi removido.
@@ -197,7 +198,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 **Aguardando o usuário**
 - Autorização das pessoas que aparecem nos prints de depoimentos.
 - Confirmação jurídica da remoção do aviso de depoimentos (§13 do manual).
-- Conteúdo real: vídeo principal, link do checkout, resposta sobre gravação, condição de parcelamento.
+- Conteúdo real: vídeo principal, link do checkout, resposta sobre gravação. (Parcelamento definido em 24/09: 6x de R$ 8,82.)
 - Nomes de compras reais para o aviso de inscrição (`#compras-reais`), quando as vendas começarem. Até lá, o aviso fica desligado.
 - Fotos originais em alta resolução de `hero-equipe.webp` (1024×683) e `Foto-427-683x1024.webp` (683×1024), usadas grandes na seção da Carol.
 

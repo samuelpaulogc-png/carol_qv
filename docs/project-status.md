@@ -4,6 +4,19 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Preço: 6x de R$ 8,82 — 24/09/2026
+
+- Pedido do usuário: “O preço precisa ser alterado para 6 x de R$ 8,82.”
+- **Antes:** “DE R$ 297,00” · **R$ 47,00** · “ou em até 12x no cartão” (parcelamento a confirmar).
+- **Agora:** “DE R$ 297,00” · **6x de R$ 8,82** · “ou **R$ 47,00** à vista”.
+  - Mesmo estilo de antes: “6x de R$” e “,82” pequenos, “8” grande em Bricolage, e o valor à vista em turquesa como estava o “12x”.
+  - O R$ 47,00 continua informado como preço à vista.
+  - 6 × R$ 8,82 = R$ 52,92 no parcelado (juros do cartão).
+- **Verificado** em 1440, 1358, 900, 768, 375 e 320px:
+  - o valor cabe na linha (232px em 1358; 222px em 320);
+  - sem overflow e sem erros;
+  - a animação de entrada (preço antigo riscado, valor subindo) segue igual.
+
 ## Aviso de inscrição fica na tela durante a rolagem — 24/09/2026
 
 - Pedido do usuário: no celular, ao deslizar depois que o aviso aparecia, ele sumia; ele quer que continue aparecendo pelo período, “que nem no PC”.
