@@ -85,7 +85,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 ### Público (`#para-quem`)
 - **Layout da referência do usuário (24/09):**
   - Título grande à esquerda-topo e **sete critérios iguais** em **cartões de vidro**: navy translúcido, borda fina, cantos de 12px.
-  - Cada cartão tem, no topo, um filete turquesa que se dissolve em ~40% da largura, com brilho. O check fica num anel de 44px (40px no celular) com leve brilho, seguido de um fio vertical e do texto.
+  - Cada cartão tem, no topo, um filete turquesa desenhado sobre a própria borda: começa no canto, acompanha a curva de 12px e se dissolve para a direita (~45% da largura) e para baixo na lateral, com brilho. Ajuste do usuário (24/09): antes o filete começava 14px depois do canto. O check fica num anel de 44px (40px no celular) com leve brilho, seguido de um fio vertical e do texto.
   - Fontes, tamanhos e pesos iguais aos de antes: 18px, e 16px a partir de 1000px para baixo. Os cartões não reagem ao hover, porque são leitura.
 - **Grade:** 2 · 3 · 2 acima de 1100px; de 761 a 1100px, duas colunas com o sétimo na largura toda; até 760px, uma coluna.
 - **Fundo:**
