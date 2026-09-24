@@ -996,6 +996,30 @@
 @media(max-width:760px){
  #mapa .sec-head::before{margin-left:0}
 }
+@media(max-width:760px){
+ /* PASSO 06: a linha desce do nó e termina logo abaixo dele; o rótulo fica 12px mais baixo que os outros para não
+    encostar na ponta da linha, e “PRIMEIRA OPORTUNIDADE” desce o mesmo tanto. A haste desse nó ficaria sob a linha. */
+ #mapa .node:nth-child(6) .lbl{top:calc(100% + 36px)}
+ #mapa .node:nth-child(6)::after{content:none}
+ #mapa .ecg-track{margin-bottom:38px}
+ /* Entrada do mapa no celular: a linha se desenha de cima para baixo (2,4s, velocidade constante) e cada passo acende
+    quando ela chega nele (3%, 22%, 40%, 58%, 77% e 95% do traçado). Começa com o topo do percurso no meio da tela, ou
+    quando a pessoa para de rolar com ele acima de 75% (classe .is-drawn, pelo JS). Sem JS ou com movimento reduzido, tudo aparece. */
+ #mapa .node:nth-child(1){--at:.08s}
+ #mapa .node:nth-child(2){--at:.52s}
+ #mapa .node:nth-child(3){--at:.96s}
+ #mapa .node:nth-child(4){--at:1.4s}
+ #mapa .node:nth-child(5){--at:1.84s}
+ #mapa .node:nth-child(6){--at:2.28s}
+ .motion-ready #mapa .ecg-mobile path{stroke-dasharray:1;stroke-dashoffset:1}
+ .motion-ready #mapa .map-stage.is-drawn .ecg-mobile path{stroke-dashoffset:0;transition:stroke-dashoffset 2.4s linear}
+ .motion-ready #mapa .map-stage:not(.is-drawn) .node,.motion-ready #mapa .map-stage:not(.is-drawn) .map-endpoint.end{opacity:0}
+ .motion-ready #mapa .map-stage:not(.is-drawn) .node .disc{scale:.55}
+ .motion-ready #mapa .map-stage:not(.is-drawn) .map-endpoint.end{translate:0 6px}
+ .motion-ready #mapa .map-stage.is-drawn .node{transition:opacity .35s var(--ease-out) var(--at)}
+ .motion-ready #mapa .map-stage.is-drawn .node .disc{transition:scale .55s cubic-bezier(.34,1.56,.64,1) var(--at),border-color var(--motion-fast) var(--ease-out)}
+ .motion-ready #mapa .map-stage.is-drawn .map-endpoint.end{transition:opacity .4s var(--ease-out) 2.4s,translate .5s var(--ease-out) 2.4s}
+}
 @media(prefers-reduced-motion:reduce){#mapa .ecg-pulse{display:none}}
 
 /* Como funciona: capas próprias e leitura em duas etapas. */
@@ -1834,7 +1858,7 @@
 
         <svg class="ecg-mobile" viewBox="0 0 300 450" preserveAspectRatio="none" aria-hidden="true">
           <defs><linearGradient id="mobileJourney" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#24B7D3"/><stop offset="1" stop-color="#30EFAD"/></linearGradient></defs>
-          <path d="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450" fill="none" stroke="url(#mobileJourney)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path pathLength="1" d="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450" fill="none" stroke="url(#mobileJourney)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div class="nodes">
           <div class="node" style="animation-delay:.3s">
@@ -2359,6 +2383,32 @@
       });
     }, { rootMargin: '0px 0px -15% 0px' });
     enterTargets.forEach(element => textObserver.observe(element));
+    // Mapa no celular: a linha se desenha e os passos acendem quando o topo do percurso chega ao meio da tela, com a
+    // pessoa já dentro do mapa. Se ela parar de rolar antes disso (0,6s) com o topo acima de 75% da tela, como quem
+    // chega pelo botão "QUERO CONHECER OS 6 PASSOS", o desenho começa ali. A animação existe só até 760px, no CSS.
+    const mapStage = document.querySelector('#mapa .map-stage');
+    const mapTrack = mapStage?.querySelector('.ecg-track');
+    if (mapTrack) {
+      let near = false, restTimer = 0;
+      const rest = () => { clearTimeout(restTimer); if (near) restTimer = setTimeout(draw, 600); };
+      const drawObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) draw();
+      }, { rootMargin: '0px 0px -50% 0px' });
+      const nearObserver = new IntersectionObserver(entries => {
+        near = entries.some(entry => entry.isIntersecting);
+        rest();
+      }, { rootMargin: '0px 0px -25% 0px' });
+      function draw() {
+        mapStage.classList.add('is-drawn');
+        clearTimeout(restTimer);
+        drawObserver.disconnect();
+        nearObserver.disconnect();
+        window.removeEventListener('scroll', rest);
+      }
+      drawObserver.observe(mapTrack);
+      nearObserver.observe(mapTrack);
+      window.addEventListener('scroll', rest, { passive: true });
+    }
     document.documentElement.classList.add('motion-ready');
     // As linhas só podem ser medidas com as fontes finais; o título fica invisível até lá (no máximo 1,5 s).
     const titleFonts = document.fonts ? Promise.all(['600 1em "Bricolage Grotesque"', 'italic 500 1em Fraunces'].map(font => document.fonts.load(font))) : null;

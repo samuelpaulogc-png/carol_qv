@@ -84,6 +84,11 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - As 3 perguntas em linhas com seta turquesa no fim.
   - “QUERO DESCOBRIR” ganhou seta.
   - Fontes, tamanhos e pesos iguais aos de antes. O cadeado saiu por seguir a referência; volta removendo `#mapa .node .disc svg{display:none}`.
+- **Celular (24/09, pedidos do usuário):**
+  - **Animação:** a linha vertical se desenha de cima para baixo (2,4s, velocidade constante, `pathLength="1"`) e cada passo acende quando ela chega (atrasos `--at` de .08s a 2,28s, medidos no traçado). O disco cresce de .55 com leve sobra, e “PRIMEIRA OPORTUNIDADE” aparece no fim.
+  - **Gatilho** (classe `.is-drawn` na `.map-stage`): o topo do percurso chega ao meio da tela, ou a pessoa para de rolar 0,6s com ele acima de 75%. Assim também começa ao chegar pelo botão “QUERO CONHECER OS 6 PASSOS”, que para com o topo em 54–68% da tela.
+  - Antes, o mapa só tinha a entrada comum (fade de 350ms com 8% visível) e ela acabava antes de a pessoa ver. Sem JS ou com movimento reduzido, tudo aparece; no computador nada mudou.
+  - **PASSO 06:** a linha desce do nó 6 e terminava dentro do rótulo. Agora o rótulo fica 12px mais baixo que os outros e a haste desse nó sai; “PRIMEIRA OPORTUNIDADE” desceu o mesmo tanto (gap de 14px mantido).
 
 ### Como funciona (`#como-funciona`)
 - Capas fotográficas geradas no ChatGPT com a Carol como referência (estilo colagem P&B com retícula, grade fina e neon turquesa): `assets/images/how-aulas.webp` e `how-encontro.webp`, com versões `-900` via `srcset`. Prompts em `human-output/image/gancho-como-funciona/`.

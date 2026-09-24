@@ -4,6 +4,21 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa no celular: PASSO 06 mais baixo e desenho quando a pessoa está no mapa — 24/09/2026
+
+- **Pedido do usuário:** “PASSO 06” estava colado ao ponto final dos passos no celular (abaixar um pouco, sem exagerar), e a animação do mapa precisava começar quando a pessoa já atravessou um pouco do mapa, para ver com facilidade.
+- **PASSO 06:**
+  - A linha que desce do nó 6 terminava 4px dentro do rótulo. O rótulo desceu 12px e agora começa 8px abaixo do fim da linha.
+  - A haste desse nó, que ficava sob a linha, saiu.
+  - “PRIMEIRA OPORTUNIDADE” desceu os mesmos 12px (gap de 14px mantido).
+- **Animação:**
+  - O mapa só tinha a entrada comum (fade de 350ms disparado com 8% visível), que acabava antes de a pessoa ver. Agora, no celular, a linha se desenha de cima para baixo em 2,4s e cada passo acende quando ela chega (frações medidas no traçado: 3%, 22%, 40%, 58%, 77%, 95%). “PRIMEIRA OPORTUNIDADE” aparece no fim.
+  - Começa com o topo do percurso no meio da tela, ou quando a pessoa para de rolar 0,6s com ele acima de 75%.
+- **Verificado em tempo real:**
+  - Rolando, o desenho começou com o topo em 45% da tela; parando em 61%, começou 0,5s depois.
+  - Pelo botão “QUERO CONHECER OS 6 PASSOS”, começou em 375×667, 360×740, 390×844 e 430×932.
+  - Computador sem mudança; movimento reduzido e sem JS mostram tudo; sem overflow e sem erros.
+
 ## Mapa: luz do vidro por dentro, não por fora — 24/09/2026
 
 - Pedido do usuário, com setas no print 2 (canto de cima à esquerda, lateral esquerda, meio da base, canto de baixo à direita): “o blur tá aplicado na parte externa e na referência na parte interna”.
