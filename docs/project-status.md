@@ -4,6 +4,26 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carol: citação em vidro escuro e borda acesa no retrato — 24/09/2026
+
+- **Pedido do usuário**, com duas referências marcadas com setas:
+  - Aplicar à citação “Ter um mapa muda completamente…” o fundo da referência.
+  - Aplicar ao retrato a estilização da borda, “sem mexer na largura e altura da imagem” e sem mexer nem engrossar o estilo sutil que ela já tinha.
+- **Citação:**
+  - Saiu o bloco turquesa sólido e entrou vidro escuro: brilho turquesa no canto de cima à esquerda sobre azul-marinho translúcido.
+  - Borda turquesa de 1px feita com sombra interna, com brilho suave dentro e fora. O bloco mantém o tamanho de antes.
+  - Texto e ícone de batimento passaram de navy para `--mint-bright`, como na referência (texto 10,6:1 sobre o fundo novo). Fonte, tamanho, peso e posição do ícone (acima do texto) não mudaram.
+- **Retrato:**
+  - Novo `span.mentor-rim` (`aria-hidden`) por cima da foto, com um fio de 1px em anel (máscara `xor`): turquesa `.55` com pontos de luz no canto de cima à direita, nas duas laterais e nos cantos de baixo.
+  - Brilho em volta com três `drop-shadow` (1px, 7px e 18px), mais forte nos pontos de luz.
+  - Surge 0,7s depois de a foto subir; sem animação com movimento reduzido.
+  - Tamanho da foto, moldura deslocada (`::before`, 1px `rgba(42,210,193,.5)`) e fio interno sutil (`::after`) seguem iguais.
+- **Conferido**, antes e depois, em 1920, 1440, 1358, 900, 768, 375 e 320px:
+  - Retrato, foto e citação com as mesmas medidas.
+  - Moldura deslocada igual.
+  - Sem overflow e sem erros no console.
+  - Com movimento reduzido, a borda aparece pronta e o ícone fica parado.
+
 ## Carol: transição suave entre a foto e o fundo — 24/09/2026
 
 - **Pedido do usuário**, com print da base da faixa da equipe: “adicione um pouco de blur entre a imagem e o fundo para não ficar um corte seco e sim algo suave”.

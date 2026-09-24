@@ -134,7 +134,11 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
     - O fio de 1px no topo é a borda do `#para-quem`, o mesmo divisor do mapa e da oferta, e foi mantido.
   - Dentro da faixa: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).
 - **Abaixo:** narrativa à esquerda (frase de abertura em destaque, dois parágrafos) e retrato `assets/Foto-427-683x1024.webp` à direita. O retrato sobe para dentro da faixa, é `position:sticky` no desktop, tem moldura turquesa deslocada atrás, cantos 20px, vinheta e leve ajuste de cor.
-- **Citação final** “Ter um mapa muda completamente…” em bloco turquesa sólido com texto navy (contraste 9,78:1) e ícone de batimento **animado** (SVG `.quote-ecg`, traço se desenhando em loop de 4s; estático com movimento reduzido).
+  - **Borda acesa (24/09, referência do usuário com setas na borda do retrato):** `span.mentor-rim` por cima da foto, com fio turquesa de 1px, pontos de luz no canto de cima à direita, nas laterais e nos cantos de baixo, e brilho em volta por `drop-shadow`. Aparece depois que a foto sobe; com movimento reduzido, já aparece pronta. O usuário pediu para **não mudar o tamanho da foto nem mexer ou engrossar a moldura deslocada**: as duas continuam iguais (conferido de 320 a 1920px).
+- **Citação final** “Ter um mapa muda completamente…” em **vidro escuro com borda turquesa acesa** (fundo da referência do usuário, 24/09), texto turquesa `--mint-bright` (contraste 10,6:1) e ícone de batimento **animado** também turquesa (SVG `.quote-ecg`, traço se desenhando em loop de 4s; estático com movimento reduzido).
+  - A borda é sombra interna (`inset 0 0 0 1px`), então o bloco tem o mesmo tamanho de antes. Fonte, tamanho e peso não mudaram.
+  - Na referência, o ícone fica à esquerda do texto; aqui continua acima, porque o pedido foi só o fundo.
+  - Antes era um bloco turquesa sólido com texto navy (9,78:1).
 - **Celular:** título e resultados descem na faixa (padding-top 260px) para mostrar os rostos da turma; degradê de baixo para cima; retrato 4:5 com moldura de 14px.
 - `carol-retrato.jpg` continua no disco mas não é usado (tem ao fundo uma TV de outra marca).
 
@@ -227,7 +231,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 ## Comparadores e arquivos de apoio
 
 - `audit-visual/audience-options/` — 3 versões (V1 Diagnóstico, V2 Editorial, V3 Percurso) de público + Carol; serviu de base para a versão atual.
-- `audit-visual/quote-options/` — 4 variações da citação final; o usuário acabou pedindo o bloco turquesa.
+- `audit-visual/quote-options/` — 4 variações da citação final; o usuário acabou pedindo o bloco turquesa, trocado em 24/09 pelo vidro escuro da referência.
 - `audit-visual/proof-carousel/` — 3 versões do carrossel de depoimentos (A fluxo contínuo, B passo a passo guiado, C duas faixas); o usuário escolheu a **B**, já na página.
 - `audit-visual/offer-options/` — 3 versões da oferta "Sua vaga" (A ingresso, B vitrine, C cartão com capa), baseadas nas referências Claude Economy e Human Academy. Rodada 2 (13/09): só oferta, sem garantia, entregas antes do preço; aguardando escolha. A garantia será tratada depois.
 - `audit-visual/guarantee-options/` — garantia embutida abaixo do fim da oferta real, com seletor: 0 atual, 1 numeral editorial (“7” em Fraunces itálico, fio, filete, linha de ECG sutil), 2 certificado (moldura dupla, cantos turquesa, anéis finos, medalha com texto circular), 3 imagem + texto (mesmo formato das faixas da oferta, espaço tracejado para imagem a gerar). Copy idêntica. O usuário escolheu a **2** com o selo girando; já está na página.
