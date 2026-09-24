@@ -4,6 +4,20 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Aviso de inscrição fica na tela durante a rolagem — 24/09/2026
+
+- Pedido do usuário: no celular, ao deslizar depois que o aviso aparecia, ele sumia; ele quer que continue aparecendo pelo período, “que nem no PC”.
+- **Causa:** se a rolagem trouxesse um botão, o vídeo, o carrossel ou o FAQ para baixo do aviso, ele saía antes da hora. No celular o aviso ocupa quase a largura toda e os botões também, então qualquer deslizada fazia isso.
+- **Feito:**
+  - A saída antecipada foi removida: depois de aparecer, o aviso fica os 5s.
+  - Ele continua não *surgindo* em cima de botões ou do vídeo.
+  - Em tela de toque, o texto do aviso deixa o toque passar (`pointer-events:none`), então um botão que fique embaixo continua funcionando; só o “×” responde.
+- **Verificação:**
+  - Em tempo real, deslizando 60px a cada 100ms: o aviso ficou na tela em todas as 46 amostras e saiu após 5,0s (375×667 e 390×844).
+  - Com relógio simulado, sobre botão ou vídeo, ele sai só aos 5s (4,98s).
+  - Tocar no texto do aviso sobre “QUERO CONHECER OS 6 PASSOS” leva a `#mapa`.
+  - O “×” responde ao toque, e no computador o mouse ainda segura o aviso.
+
 ## Aviso de inscrição com ritmo constante — 24/09/2026
 
 - Pedido do usuário: “só aparece uma vez, eu quero que se a pessoa subir a página novamente apareça de novo. Eu não quero algo lotando a tela, mas que dê a sensação de constância.”

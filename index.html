@@ -1575,6 +1575,12 @@
 .buy-toast[hidden]{display:none}
 .buy-toast{position:fixed;left:24px;bottom:24px;z-index:70;display:flex;align-items:center;gap:12px;max-width:min(380px,calc(100vw - 32px));padding:10px 8px 10px 12px;border:1px solid rgba(42,210,193,.26);border-radius:14px;background:rgba(12,18,54,.95);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 24px 48px -24px rgba(0,0,0,.9);opacity:0;visibility:hidden;transform:translateY(12px);pointer-events:none;transition:opacity 450ms var(--ease-out),transform 450ms var(--ease-out),visibility 0s linear 450ms}
 .buy-toast.is-on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+/* Em tela de toque o aviso fica na tela durante a rolagem; para não travar um botão que passe embaixo,
+   o toque atravessa o texto e só o "×" responde. */
+@media (hover:none),(pointer:coarse){
+ .buy-toast.is-on{pointer-events:none}
+ .buy-toast.is-on .bt-close{pointer-events:auto}
+}
 .bt-ic{flex:none;width:30px;height:30px;fill:none;stroke:var(--virada);stroke-linecap:round;stroke-linejoin:round}
 .bt-ic circle{stroke-width:1.5;stroke-opacity:.45}
 /* O check se desenha ao aparecer; parado (movimento reduzido), fica inteiro. */
@@ -2747,7 +2753,8 @@
     window.addEventListener('resize', () => { if (effect) settle(); });
   });
   // Aviso de inscrição: um nome por vez, da lista de compras reais (#compras-reais), num ritmo constante:
-  // a cada 15–25s, em qualquer parte da página (também ao voltar para o topo), nunca sobre botões ou o vídeo.
+  // a cada 15–25s, em qualquer parte da página (também ao voltar para o topo). Não surge sobre botões ou o vídeo;
+  // depois de surgir, fica os 5s mesmo com a rolagem (no toque, o que está embaixo continua clicável).
   // Espera com a aba oculta, a ampliação aberta ou as animações automáticas pausadas; o "×" encerra de vez.
   const buyToast = document.querySelector('.buy-toast');
   if (buyToast) {
@@ -2780,7 +2787,7 @@
     try { closed = !preview && sessionStorage.getItem('avisos-fechados') === '1'; } catch (error) {}
     // Com compras reais, cada aviso é uma pessoa diferente: nenhum nome se repete na mesma visita.
     const total = preview ? LIMIT : Math.min(LIMIT, names.length);
-    let shown = 0, queue = [], pending = '', last = '', showTimer = 0, hideTimer = 0, clearTimer = 0, held = false, lastCheck = 0;
+    let shown = 0, queue = [], pending = '', last = '', showTimer = 0, hideTimer = 0, clearTimer = 0, held = false;
     const nextName = () => {
       if (!queue.length) {
         queue = shuffle(names);
@@ -2840,14 +2847,6 @@
       hide();
       try { sessionStorage.setItem('avisos-fechados', '1'); } catch (error) {}
     });
-    // Se a rolagem trouxer um botão para baixo do aviso, ele sai antes da hora.
-    window.addEventListener('scroll', () => {
-      if (!isOn() || held) return;
-      const now = performance.now();
-      if (now - lastCheck < 150) return;
-      lastCheck = now;
-      if (coversSomething()) hide();
-    }, { passive: true });
     document.addEventListener('automaticmotionchange', () => { if (automaticMotionPaused) hide(); });
     if (total && !closed) {
       buyToast.hidden = false;

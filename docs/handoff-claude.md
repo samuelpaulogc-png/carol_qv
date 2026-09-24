@@ -146,7 +146,8 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Antes era: primeiro só depois de rolar 60% da tela, 5,5s na tela, 38–64s de intervalo e no máximo 4. O usuário viu só um e pediu constância.
 - **Nunca cobre** `.btn`, `.rail-nav` nem as perguntas do FAQ. O `.video-frame` também é evitado, mas só quando metade dele ou mais está na tela, quando alguém pode estar assistindo; só a borda de cima aparecendo lá embaixo não conta.
   - Antes de aparecer, mede a área com o nome da vez; se algo estiver embaixo, tenta de novo em 2s.
-  - Se a rolagem trouxer um desses para baixo dele, sai antes da hora.
+  - Depois de aparecer, fica os 5s mesmo com a rolagem, no celular e no computador (pedido do usuário, 24/09). Antes, saía se um botão passasse embaixo, e no celular sumia a cada deslizada.
+  - Em tela de toque (`hover:none` ou `pointer:coarse`), o aviso na tela tem `pointer-events:none`: o toque no texto chega ao botão embaixo, e só o “×” responde. No computador, o mouse em cima continua segurando o aviso.
   - No topo, aparece em 375, 390, 1358 (650 e 760 de altura) e 1920px. Em 1440×900 espera rolar, porque o vídeo fica mais da metade na tela.
 - **Espera** com a aba oculta, com a ampliação dos prints aberta e com “Pausar animações automáticas” ligado (se for pausado com o aviso na tela, ele sai). Com o mouse ou o foco em cima, fica; ao sair, some em 2,5s.
 - **“×”:** fecha e encerra os avisos na sessão (`sessionStorage` `avisos-fechados`); é o mecanismo de parar exigido pela WCAG 2.2.2.
