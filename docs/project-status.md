@@ -4,6 +4,13 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Hero: mais respiro entre o botão e o vídeo — 24/09/2026
+
+- Pedido do usuário (print com setas): o vídeo e o texto ao lado estavam próximos demais do botão “QUERO PARTICIPAR”. Ele pediu mais respiro sem mexer no desfoque.
+- Acima de 760px o espaço entre a hero e a linha do vídeo virou `--hero-gap: clamp(56px, 6vw, 96px)` (antes, 40px fixos). Ele também entra na altura mínima do `.hero-top`, para o texto continuar centralizado nas telas largas.
+- Medido entre “Vagas limitadas…” e o topo do vídeo: 81px em 1358px (antes ~40), 87px em 1440, 61px em 1024, 57px em 768 e 166px em 1920. Celular sem mudança.
+- O desfoque continua preso à foto. Com a linha mais baixa, o título fica ainda mais dentro da área escurecida. Sem overflow.
+
 ## Hero: desfoque azul abaixo dos braços da Carol — 24/09/2026
 
 - Pedido do usuário (print com setas): o corpo da Carol aparecia atrás do título “Entenda em poucos minutos…” e podia disputar com ele. Ele sugeriu “blur azul ou sei lá”.

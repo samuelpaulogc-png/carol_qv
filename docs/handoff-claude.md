@@ -57,6 +57,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Foto: deixou de ser o fundo da seção e virou a camada `.hero::before`, com altura `--hero-photo: max(56.28vw, 720px)` (proporção 1672×941). A Carol mantém o enquadramento em qualquer largura. Até 560px continua a `Hero_Mobile1.webp` abaixo do texto.
   - Abaixo dos braços da Carol, a foto desfoca e escurece em azul-marinho (pedido do usuário, com print, para o corpo dela não disputar com o título ao lado do vídeo). O escurecimento vai de 0 em 64% a .88 em 71% da altura da foto; `.hero::after` aplica `backdrop-filter: blur(14px)` numa faixa que começa em 64% e se dissolve em cima.
   - O bloco do vídeo fica **dentro da hero**, na primeira dobra (ver abaixo). Acima de 760px, `.hero-top` tem altura mínima para o vídeo começar logo abaixo dos braços da Carol (69% da foto; os braços terminam em 65%).
+  - Respiro entre o botão da hero e o vídeo: `--hero-gap: clamp(56px, 6vw, 96px)` acima de 760px (81px na tela do usuário, 1358px). Antes era 40px; o usuário achou o vídeo próximo demais do botão (24/09).
 
 ### Vídeo + diagnóstico
 - Vídeo ainda é placeholder (botão de play dispara `alert()` — remover antes de publicar). Imagem do diagnóstico: `assets/images/dor-portas-recorte.png`. Orbe com arco animado acima do título “A formação te ensinou a instrumentar…”.

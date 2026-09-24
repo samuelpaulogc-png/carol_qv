@@ -1473,9 +1473,11 @@
 /* ---------- Desktop e tablet: zigue-zague no mesmo eixo da hero ---------- */
 @media (min-width:761px){
   /* A linha do vídeo começa logo abaixo dos braços da Carol (65% da altura da foto): o texto ocupa no mínimo esse
-     espaço (menos o respiro do topo e os 40px até o vídeo) e fica centralizado nele. */
-  .hero{--hero-pad:clamp(40px,4vw,56px);padding:var(--hero-pad) 0 clamp(96px,9vw,128px)}
-  .hero-top{min-height:calc(var(--hero-photo) * .69 - var(--hero-pad) - 40px);align-content:center}
+     espaço (menos o respiro do topo e o respiro até o vídeo) e fica centralizado nele.
+     Respiro entre o botão e o vídeo: 56 a 96px (antes 40px, pedido do usuário em 24/09). */
+  .hero{--hero-pad:clamp(40px,4vw,56px);--hero-gap:clamp(56px,6vw,96px);padding:var(--hero-pad) 0 clamp(96px,9vw,128px)}
+  .hero-inner{gap:var(--hero-gap)}
+  .hero-top{min-height:calc(var(--hero-photo) * .69 - var(--hero-pad) - var(--hero-gap));align-content:center}
   /* orbe à esquerda, título à direita (mesma grade 5/7 do diagnóstico, espelhada) */
   .pain .pain-concept{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;column-gap:clamp(40px,6vw,88px);
     max-width:none;min-height:0;margin:0 0 clamp(72px,7vw,112px);text-align:left;overflow:visible}
