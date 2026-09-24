@@ -4,6 +4,26 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## FAQ recriada com aparência premium — 24/09/2026
+
+- **Pedido do usuário:** briefing detalhado com referência, para recriar a seção em código, leve e responsiva.
+  - Fundo só em CSS, com “?” decorativo em contorno e linha de batimento discreta.
+  - Coluna do título com rótulo “DÚVIDAS FREQUENTES”.
+  - Perguntas em cartões numerados com botão circular.
+  - Uma resposta aberta por vez.
+  - Sem foto, sem textos novos além dos pedidos e com os textos do FAQ intactos.
+- **Feito:**
+  - A marcação, o CSS e o JS do FAQ foram substituídos (detalhes no handoff).
+  - O CSS anterior do FAQ saiu; os estados `.is-closing` e a animação de altura foram mantidos.
+  - O acordeão passou a exclusivo pelo JS. O atributo `name` do `<details>` fecharia as outras sem animação, por isso não foi usado.
+- **Conferido:**
+  - Perguntas, respostas e título iguais aos do commit anterior, texto a texto.
+  - Em 1920, 1440, 1358, 1024, 900, 768, 375 e 320px: sem overflow, sem texto cortado e sem erros. Duas colunas até 981px e uma coluna abaixo.
+  - Cliques: abrir a 3 com a 1 aberta fecha a 1 animando. Cliques rápidos em 2 e 4 deixam só a 4 aberta. Clicar na aberta fecha.
+  - Teclado: Enter abre e fecha na hora, também uma por vez. O “×” fica girado 45°.
+  - Com movimento reduzido: tudo sem animação, ainda uma por vez.
+  - Contraste: rótulo 6,3:1, número 11,6:1, pergunta 16:1, resposta 10,9:1.
+
 ## Citação: linha de batimento no celular — 24/09/2026
 
 - **Relato do usuário:** “no mobile eu creio que essa animação parou de funcionar”, com print da linha de batimento da citação.

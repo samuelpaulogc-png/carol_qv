@@ -35,6 +35,10 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Hero → vídeo (24/09): os parágrafos “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” saíram da hero e foram para o bloco do vídeo, depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”, a pedido expresso do usuário. Texto idêntico; não voltar com eles para a hero.
   - Preço (24/09): a pedido do usuário (“o preço precisa ser alterado para 6x de R$ 8,82”), o valor em destaque passou de “R$ 47,00” para “6x de R$ 8,82”. A linha de baixo passou de “ou em até 12x no cartão” (a confirmar) para “ou R$ 47,00 à vista”, para o preço à vista continuar informado. No parcelado, 6 × R$ 8,82 = R$ 52,92 (juros do cartão).
   - Aviso de inscrição (24/09): “<nome> garantiu vaga na turma”, texto do exemplo que o usuário enviou ao pedir o aviso. Os nomes vêm só de compras reais (ver “Aviso de inscrição” abaixo).
+  - FAQ (24/09):
+    - O rótulo “Dúvidas frequentes” (em caixa alta via CSS) acima de “Ficou com alguma dúvida?” e os números 01–06 antes das perguntas vieram do pedido expresso do usuário ao recriar a seção pela referência.
+    - O rótulo substitui a remoção do kicker “Dúvidas” de 13/09.
+    - Perguntas, respostas e título não mudaram (conferido texto a texto).
 - Nunca revele nomes ou conteúdo dos 6 passos. Não invente métricas nem altere condições comerciais.
 
 ### Identidade
@@ -180,11 +184,25 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Título `h4#garantia-titulo` e o texto de sempre, tudo centralizado.
   - Com `prefers-reduced-motion`, o anel fica parado e legível. A copy da garantia não mudou.
   - CSS antigo (`.guarantee`, `.seal`) removido de todas as camadas.
-- **FAQ (13/09, versão 1 "editorial com filete" do comparador `audit-visual/faq-options/`):**
-  - Sem kicker. Título grande (até 3,75rem) fixo à esquerda (`position:sticky; top:96px`) com filete turquesa abaixo; perguntas em `<details class="faq">` à direita.
-  - Cada pergunta: `summary` com `.q` (avança 6px no hover) e `.pm` (círculo com “+” que vira “−”, turquesa quando aberto). Filete turquesa no topo da linha: 32px no hover, largura toda quando aberta.
-  - Resposta em `.a > p`, com altura animada via Web Animations no JS (460ms abrindo, 320ms fechando com `fill:forwards`); sem animação com `prefers-reduced-motion`.
-  - ≤900px: uma coluna, título sem sticky. Resposta de “O encontro ficará gravado?” ainda é `[DEFINIR RESPOSTA]`.
+- **FAQ (24/09, recriada pela referência do usuário, “aparência premium e sofisticada”):** é uma pausa sem foto entre a oferta e o encerramento.
+  - **Fundo só em CSS:** navy `#080C22`, luz turquesa muito leve no canto de baixo à esquerda, azul discreto no alto e vinheta nas bordas.
+  - **Arte em SVG inline (`aria-hidden`):**
+    - Um “?” grande em contorno na coluna da esquerda: dois traços numa máscara, cor `rgba(42,210,193,.13)`.
+    - Uma linha de batimento fina, em degradê que some nas pontas e com brilho só no pico. Ela vai do canto de baixo à esquerda até os cartões.
+    - Não há grão nem foto.
+  - **Computador:**
+    - Container de 1232px (1184 de conteúdo), colunas 40/60, padding vertical `clamp(96px,9.4vw,132px)`. O título não é mais sticky.
+    - Na coluna da esquerda: filete, “DÚVIDAS FREQUENTES” (Hanken 12px, 500, tracking .32em, `--muted`, 6,3:1), o título de sempre (mesmos tamanhos) e um filete de 40px abaixo.
+  - **Cartões (`details.faq`):**
+    - Fundo sólido um pouco mais claro que a seção (`#0C1233`→`#0A0F2C`). É sólido de propósito: a linha de batimento termina atrás do cartão, como na referência.
+    - Borda de 1px azulada (`.17`), raio de 14px e 14px entre os cartões.
+    - Em cada linha: número `01`–`06` (`span.faq-n`, `aria-hidden`, Bricolage 18px turquesa), divisória de 1px, a pergunta (fonte de sempre) e um botão circular de 44px. O “+” gira 45° e vira “×”.
+    - Hover: borda turquesa e leve luz interna. Aberto: borda turquesa `.4`.
+    - A resposta alinha com a pergunta; no celular, ocupa a largura do cartão.
+  - **Uma aberta por vez:** abrir uma pergunta fecha a outra com a mesma animação de altura (Web Animations). Pelo teclado e com movimento reduzido, abre sem animação. Os cartões entram em sequência (`.tx-group`).
+  - **Até 980px:** uma coluna, título primeiro, “?” menor no alto à direita e batimento na base.
+  - **Até 560px:** padding de 72/88px e cartões mais compactos (número de 22px, botão de 34px). As fontes são as de antes: pergunta em 1.125rem, resposta em 1rem.
+  - A resposta de “O encontro ficará gravado?” continua `[DEFINIR RESPOSTA]`.
 - **Encerramento + rodapé (13/09, versão B “foto de fundo” de `audit-visual/closing-options/`):**
   - Estrutura: ambos dentro de `div.closing`. **Em teste (13/09):** equipe de costas sob o foco cirúrgico, `assets/images/encerramento-pessoas.webp` (e `-900`) no desktop e `encerramento-pessoas-m.webp` (e `-m-600`) até 560px via `<source>`; originais `Pessoas_D.png`/`Pessoas_M.png`. Opacidade 1, saturação .9, `mask-image` apagando os 12% de cima da foto. Testadas antes e ainda no disco: tesoura (`encerramento-tesoura*.webp`, de `Tesoura_D/M.png`) e mãos (`encerramento-maos.webp`, de `Ultima_Secao.png`).
   - Posição da equipe: palco `clamp(180px,16vw,240px)` (206px no celular) e foto descendo 6% (4% no celular; 7% até 360px), altura pedida pelo usuário depois de ver 12%/9%. Para compensar, o degradê do meio foi escurecido (`.6` 22% · `.55` 44% · `.6` 58% · `.4` 74%), levando o parágrafo a ~5,9 no desktop; em teste, aguardando aprovação do usuário. Com a tesoura os valores eram 3,5% / 5% / 6,5%, para a passagem ficar entre o botão e o rodapé. As medidas abaixo sobre `--photo-shift:0%` valem para a imagem das mãos.
