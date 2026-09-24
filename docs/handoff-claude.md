@@ -33,6 +33,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - **Alterações de copy já autorizadas:**
   - Garantia (13/09): título “7 dias de garantia” trocado por “Garantia de satisfação total”, a pedido expresso do usuário. O texto circular da medalha (“7 dias de garantia · …”) e o parágrafo com as condições de 7 dias continuam iguais.
   - Hero → vídeo (24/09): os parágrafos “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” saíram da hero e foram para o bloco do vídeo, depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”, a pedido expresso do usuário. Texto idêntico; não voltar com eles para a hero.
+  - Aviso de inscrição (24/09): “<nome> garantiu vaga na turma”, texto do exemplo que o usuário enviou ao pedir o aviso. Os nomes vêm só de compras reais (ver “Aviso de inscrição” abaixo).
 - Nunca revele nomes ou conteúdo dos 6 passos. Não invente métricas nem altere condições comerciais.
 
 ### Identidade
@@ -47,6 +48,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 ### Compliance (atenção)
 - `brand-guide.md` §13 pede ressalva junto de depoimentos. O usuário removeu a da seção de depoimentos; **a única ressalva da página agora é a do rodapé** (“Não há garantia de contratação, equipe, cirurgia ou prazo para resultados. Resultados podem variar de pessoa para pessoa.”). Não remova a do rodapé sem nova autorização.
 - Os prints de depoimentos mostram pessoas reais (fotos de perfil, rosto, mensagens privadas). Foi pedido ao usuário que confirme a autorização delas; ainda sem resposta.
+- **Aviso de inscrição: só compras reais.** O usuário pediu o aviso “simulando que pessoas estão comprando” (24/09). Não preencha a lista com nomes inventados: aviso de compra que não aconteceu é publicidade enganosa (CDC art. 37), e o manual veta “urgência falsa” (§12). Isso foi explicado ao usuário. Use só o primeiro nome de quem comprou de fato, tirado da plataforma de checkout.
 
 ## Estado atual por seção
 
@@ -133,6 +135,20 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Animação: aproximação suave ao entrar; parada com movimento reduzido.
   - Rodapé: sobre a mesma foto, com marca e data na mesma linha e ressalva legal (`.legal`) mais legível. A ressalva continua obrigatória.
 
+### Aviso de inscrição (toda a página, 24/09)
+- Pedido do usuário, com print de exemplo (caixa verde com check, “**Stella** garantiu vaga na turma”): aparecer “de forma leve e sutil em alguns momentos”, sem atrapalhar.
+- **Visual:** cartão fixo no canto de baixo à esquerda (24px; 16px até 560px), navy `.95` com desfoque de 16px, borda turquesa fina e cantos de 14px. À esquerda, um check verde-menta (o manual reserva o verde para ícones de sucesso) que se desenha ao aparecer. Nome em creme 700, resto em creme `.8`, na Hanken do corpo (15px; 14px no celular). À direita, um “×” discreto. Entra subindo 12px e sai em fade (450ms); com movimento reduzido, só aparece e some.
+- **Dados:** `<script type="application/json" id="compras-reais">` no fim do `<body>`, com uma lista de primeiros nomes (`["Stella", "Mariana"]`). Vazia, o aviso nem é ativado (o `div.buy-toast` fica com `hidden`). Prévia do visual: `?compras=exemplo` no endereço usa Stella, Mariana, Letícia e Rafael, e nunca aparece para quem visita sem o parâmetro.
+- **Ritmo:**
+  - O primeiro aparece 9–14s após abrir a página, e só depois de a pessoa rolar 60% da altura da tela (nunca na primeira dobra).
+  - Cada aviso fica 5,5s na tela, com 38–64s de intervalo.
+  - No máximo 4 por visita, em ordem sorteada e sem repetir nome.
+- **Nunca cobre** `.btn`, `.video-frame`, `.rail-nav` nem as perguntas do FAQ. Antes de aparecer, mede a área com o nome da vez; se algo estiver embaixo, tenta de novo em 3s. Se a rolagem trouxer um desses para baixo dele, sai antes da hora.
+- **Espera** com a aba oculta, com a ampliação dos prints aberta e com “Pausar animações automáticas” ligado (se for pausado com o aviso na tela, ele sai). Com o mouse ou o foco em cima, fica; ao sair, some em 2,5s.
+- **“×”:** fecha e encerra os avisos na sessão (`sessionStorage` `avisos-fechados`); é o mecanismo de parar exigido pela WCAG 2.2.2.
+- **Leitor de tela:** o texto visível é `aria-hidden`, e o anúncio vai por `p.bt-live` (`role="status"`), uma vez por aviso.
+- **Contraste**, mesmo sobre os prints brancos: texto ≥9,5:1, nome ≥14:1, “×” ≥5,2:1, anel do check ≥3,3:1.
+
 ## Armadilhas técnicas já encontradas (não repita)
 
 - **`[hidden]` vs `display`:** uma classe com `display:grid` vence o `display:none` do atributo `hidden`. A camada de ampliação ficou aberta e desfocou a página inteira. Sempre pareie com `.classe[hidden]{display:none}`.
@@ -144,6 +160,8 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - **`.reveal` sobrescreve `transform`:** a regra de entrada define `transform` em `.reveal`/`.in-view`. Não centralize com `transform:translateX(-50%)` um elemento que também tem `.reveal` (a foto do encerramento ficou deslocada para a direita). Use `inset`, margens ou a propriedade `translate`.
 - **Cache do servidor local:** navegar para a mesma URL pode manter o HTML antigo. Use `?v=...` para forçar a versão nova antes de medir.
 - **Painel oculto também congela `resize` e IntersectionObserver.** Depois de emular outro tamanho, dispare `dispatchEvent(new Event('resize'))`. Para testar deslizes, troque `requestAnimationFrame` por `setTimeout` antes do clique.
+- **Playwright + letreiro fixo:** `page.click('.motion-toggle')` rola a página para cima (o botão é sticky); um clique de verdade não rola. Volte à posição antes de medir.
+- **Aviso de inscrição nos testes:** entra num momento sorteado e fica só 5,5s. Com `page.clock`, avance em passos e confira durante; num instante fixo ele pode já ter ido embora.
 
 ## Como verificar neste ambiente
 
@@ -175,6 +193,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - Autorização das pessoas que aparecem nos prints de depoimentos.
 - Confirmação jurídica da remoção do aviso de depoimentos (§13 do manual).
 - Conteúdo real: vídeo principal, link do checkout, resposta sobre gravação, condição de parcelamento.
+- Nomes de compras reais para o aviso de inscrição (`#compras-reais`), quando as vendas começarem. Até lá, o aviso fica desligado.
 - Fotos originais em alta resolução de `hero-equipe.webp` (1024×683) e `Foto-427-683x1024.webp` (683×1024), usadas grandes na seção da Carol.
 
 **Técnicas (não feitas, sugeridas)**

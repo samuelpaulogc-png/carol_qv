@@ -4,6 +4,23 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Aviso de inscrição (“<nome> garantiu vaga na turma”) — 24/09/2026
+
+- **Pedido do usuário**, com print de exemplo: um aviso “simulando que pessoas estão comprando”, que apareça “de forma leve e sutil em alguns momentos” e não a todo momento.
+- **Feito:**
+  - Cartão fixo no canto de baixo à esquerda, no formato do exemplo (check, nome em destaque, “garantiu vaga na turma”) com as cores da página. Detalhes no handoff, seção “Aviso de inscrição”.
+  - Aparece só depois da primeira dobra, 5,5s por vez, com 38–64s de intervalo, e no máximo 4 por visita.
+  - Nunca cobre botões, o vídeo, os controles do carrossel ou as perguntas do FAQ.
+  - Espera com a aba oculta, com a ampliação aberta e com as animações pausadas; o “×” encerra na sessão.
+- **Sem nomes inventados.** Aviso de compra que não aconteceu é publicidade enganosa (CDC art. 37), e o manual veta “urgência falsa” (§12). Por isso:
+  - o aviso lê a lista `#compras-reais` no fim do HTML, com nomes de compras reais;
+  - vazia, ele não aparece;
+  - `?compras=exemplo` mostra uma prévia com quatro nomes de exemplo, só para o usuário ver o visual.
+- **Verificação:**
+  - 49 testes com relógio simulado em 1358 e 375px: ritmo, bloqueios, limite de 4, “×”, pausa, ampliação, teclado e movimento reduzido.
+  - Capturas em 320, 375, 390, 768, 1358, 1440 e 1920px; sem overflow nem erros no console.
+  - Com a lista vazia, todos os elementos ficam na mesma posição da versão anterior (fora os que se movem sozinhos: letreiro e carrossel).
+
 ## Hero: kicker em duas linhas no celular — 24/09/2026
 
 - O usuário perguntou se havia um `<br>` em “Para quem se formou em / instrumentação…” no celular. Não havia: a quebra vinha do `text-wrap: balance` com 12px. Sem o balance, “mercado...” ficaria sozinho na última linha.

@@ -1570,6 +1570,29 @@
 .motion-ready .offer-sec .ov-price.tx-in .ov-old::after{transition:transform 450ms var(--ease-out) 220ms}
 .motion-ready .offer-sec .ov-price.tx-in>.ov-amount{transition-delay:420ms}
 .motion-ready .offer-sec .ov-price.tx-in>.ov-parc{transition-delay:500ms}
+/* Aviso de inscrição (24/09): de vez em quando, no canto de baixo, "<nome> garantiu vaga na turma", no formato do
+   exemplo do usuário com as cores da página. Só com compras reais: a lista fica no fim do HTML; vazia, nada aparece. */
+.buy-toast[hidden]{display:none}
+.buy-toast{position:fixed;left:24px;bottom:24px;z-index:70;display:flex;align-items:center;gap:12px;max-width:min(380px,calc(100vw - 32px));padding:10px 8px 10px 12px;border:1px solid rgba(42,210,193,.26);border-radius:14px;background:rgba(12,18,54,.95);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 24px 48px -24px rgba(0,0,0,.9);opacity:0;visibility:hidden;transform:translateY(12px);pointer-events:none;transition:opacity 450ms var(--ease-out),transform 450ms var(--ease-out),visibility 0s linear 450ms}
+.buy-toast.is-on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+.bt-ic{flex:none;width:30px;height:30px;fill:none;stroke:var(--virada);stroke-linecap:round;stroke-linejoin:round}
+.bt-ic circle{stroke-width:1.5;stroke-opacity:.45}
+/* O check se desenha ao aparecer; parado (movimento reduzido), fica inteiro. */
+.bt-ic path{stroke-width:2;stroke-dasharray:1}
+.buy-toast.is-on .bt-ic path{animation:btCheck 500ms var(--ease-out) 150ms both}
+@keyframes btCheck{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.bt-msg{font-size:.9375rem;line-height:1.35;color:rgba(236,240,248,.8)}
+.bt-msg b{color:var(--cream);font-weight:700}
+.bt-close{flex:none;width:28px;height:28px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:transparent;color:rgba(236,240,248,.55);cursor:pointer;touch-action:manipulation;transition:color var(--motion-hover) ease,background-color var(--motion-hover) ease}
+.bt-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@media(hover:hover) and (pointer:fine){.bt-close:hover{color:var(--cream);background:rgba(236,240,248,.08)}}
+.bt-close:focus-visible{outline:2px solid var(--mint);outline-offset:1px}
+.bt-live{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:560px){
+ .buy-toast{left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));gap:10px;padding:8px 6px 8px 10px}
+ .bt-msg{font-size:.875rem}
+}
+@media(prefers-reduced-motion:reduce){.buy-toast{transform:none}}
 </style>
 </head>
 <body>
@@ -2015,6 +2038,18 @@
   </div>
 </footer>
 </div>
+
+<!-- Aviso de inscrição (24/09). De vez em quando mostra "<nome> garantiu vaga na turma" no canto de baixo.
+     Os nomes saem da lista abaixo e precisam ser de compras reais, tirados da plataforma de checkout
+     (só o primeiro nome, ex.: ["Stella", "Mariana"]). Lista vazia = o aviso não aparece.
+     Para ver o visual antes das vendas, abra a página com ?compras=exemplo no endereço. -->
+<script type="application/json" id="compras-reais">[]</script>
+<div class="buy-toast" hidden>
+  <svg class="bt-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="m7.5 12.3 3.1 3.1 6-6.4" pathLength="1"/></svg>
+  <p class="bt-msg" aria-hidden="true"><b class="bt-name"></b> garantiu vaga na turma</p>
+  <button class="bt-close" type="button" aria-label="Fechar e não mostrar mais estes avisos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+<p class="bt-live" role="status" aria-atomic="true"></p>
 
 <script>
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -2710,6 +2745,95 @@
     });
     window.addEventListener('resize', () => { if (effect) settle(); });
   });
+  // Aviso de inscrição: de vez em quando, um nome da lista de compras reais (#compras-reais).
+  // Só depois da primeira dobra, nunca sobre botões ou o vídeo, no máximo 4 por visita; o "×" encerra de vez.
+  // Espera com a aba oculta, a ampliação aberta ou as animações automáticas pausadas.
+  const buyToast = document.querySelector('.buy-toast');
+  if (buyToast) {
+    const FIRST = [9000, 14000]; // ms até o primeiro, desde a abertura da página
+    const GAP = [38000, 64000];  // ms entre um aviso e o próximo
+    const ON_SCREEN = 5500;
+    const LIMIT = 4;
+    const AVOID = '.btn, .video-frame, .rail-nav, .faq summary';
+    const nameSlot = buyToast.querySelector('.bt-name');
+    const message = buyToast.querySelector('.bt-msg');
+    const live = document.querySelector('.bt-live');
+    // Prévia do visual antes das vendas: só com ?compras=exemplo no endereço, nunca para quem visita.
+    const preview = new URLSearchParams(location.search).get('compras') === 'exemplo';
+    let names = [];
+    try { names = JSON.parse(document.getElementById('compras-reais')?.textContent || '[]'); }
+    catch (error) { console.warn('Lista #compras-reais inválida:', error); }
+    if (preview) names = ['Stella', 'Mariana', 'Letícia', 'Rafael'];
+    names = Array.isArray(names) ? [...new Set(names.filter(name => typeof name === 'string').map(name => name.trim()).filter(Boolean))] : [];
+    for (let i = names.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [names[i], names[j]] = [names[j], names[i]];
+    }
+    let closed = false;
+    try { closed = !preview && sessionStorage.getItem('avisos-fechados') === '1'; } catch (error) {}
+    const total = Math.min(LIMIT, names.length);
+    let shown = 0, showTimer = 0, hideTimer = 0, clearTimer = 0, held = false, lastCheck = 0;
+    const between = ([min, max]) => min + Math.random() * (max - min);
+    const isOn = () => buyToast.classList.contains('is-on');
+    // Escondido, o aviso fica 12px abaixo do lugar final; por isso a folga maior em cima.
+    const coversSomething = () => {
+      const box = buyToast.getBoundingClientRect();
+      return [...document.querySelectorAll(AVOID)].some(element => {
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && rect.top < box.bottom + 12 && rect.bottom > box.top - 24 && rect.left < box.right + 12 && rect.right > box.left - 12;
+      });
+    };
+    const blocked = () => document.hidden || automaticMotionPaused || (zoomLayer && !zoomLayer.hidden) || scrollY < innerHeight * .6 || coversSomething();
+    const hide = () => {
+      clearTimeout(hideTimer);
+      if (!isOn()) return;
+      buyToast.classList.remove('is-on');
+      clearTimer = setTimeout(() => { live.textContent = ''; }, 1000);
+      clearTimeout(showTimer);
+      if (!closed && shown < total) showTimer = setTimeout(show, between(GAP));
+    };
+    // O nome entra antes da checagem para a medida valer para ele; se algo bloquear, tenta de novo em 3s.
+    const show = () => {
+      if (closed || shown >= total) return;
+      nameSlot.textContent = names[shown];
+      if (blocked()) { showTimer = setTimeout(show, 3000); return; }
+      clearTimeout(clearTimer);
+      buyToast.classList.add('is-on');
+      live.textContent = message.textContent;
+      shown++;
+      hideTimer = setTimeout(hide, ON_SCREEN);
+    };
+    // Com o mouse ou o foco em cima, o aviso espera; ao sair, some em 2,5s.
+    const hold = () => { held = true; clearTimeout(hideTimer); };
+    const release = () => {
+      held = false;
+      clearTimeout(hideTimer);
+      if (isOn()) hideTimer = setTimeout(hide, 2500);
+    };
+    buyToast.addEventListener('pointerenter', hold);
+    buyToast.addEventListener('pointerleave', release);
+    buyToast.addEventListener('focusin', hold);
+    buyToast.addEventListener('focusout', event => { if (!buyToast.contains(event.relatedTarget)) release(); });
+    buyToast.querySelector('.bt-close').addEventListener('click', () => {
+      closed = true;
+      clearTimeout(showTimer);
+      hide();
+      try { sessionStorage.setItem('avisos-fechados', '1'); } catch (error) {}
+    });
+    // Se a rolagem trouxer um botão para baixo do aviso, ele sai antes da hora.
+    window.addEventListener('scroll', () => {
+      if (!isOn() || held) return;
+      const now = performance.now();
+      if (now - lastCheck < 150) return;
+      lastCheck = now;
+      if (coversSomething()) hide();
+    }, { passive: true });
+    document.addEventListener('automaticmotionchange', () => { if (automaticMotionPaused) hide(); });
+    if (total && !closed) {
+      buyToast.hidden = false;
+      showTimer = setTimeout(show, between(FIRST));
+    }
+  }
 </script>
 </body>
 </html>
