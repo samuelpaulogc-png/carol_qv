@@ -4,6 +4,21 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Carol: transição suave entre a foto e o fundo — 24/09/2026
+
+- **Pedido do usuário**, com print da base da faixa da equipe: “adicione um pouco de blur entre a imagem e o fundo para não ficar um corte seco e sim algo suave”.
+- **Causa medida** (cor média por linha, 1358px): a última linha da faixa era (18,6 · 23,4 · 50,3) e a seção logo abaixo, (12 · 18 · 54).
+  - O grão, com opacidade .1, clareava a faixa inteira até a borda.
+  - O escurecimento lateral, que ficava acima do degradê de baixo, escurecia a base à esquerda.
+  - No celular, o degrau aparecia dos lados do retrato.
+- **Feito:**
+  - Os degradês de cima e de baixo passaram para cima do escurecimento lateral, então as duas bordas terminam em `--bg-2` puro.
+  - O degradê de baixo ficou mais longo e suave: 1 → .86 (12%) → .6 (28%) → .26 (44%) → 0 (62%).
+  - O grão ganhou `mask-image` e some nos 20% de cima e a partir de 58% da altura.
+  - Novo `span.mentor-blur` (`aria-hidden`), entre a foto e os degradês: `backdrop-filter:blur(12px)` nos 34% de baixo, entrando aos poucos pela máscara. No celular, 10px e 50%. O desfoque começa abaixo do rosto da Carol em todas as larguras e não atinge texto nem retrato.
+- **Resultado:** a última linha da faixa agora é (12 · 18 · 54), a mesma cor da seção de baixo, sem degrau. O maior salto entre linhas vizinhas perto da borda caiu de 6,6 para 1,1 no computador e de 9,0 para 0 na borda, no celular. O degrau de cor no topo também sumiu. Fica só o fio de 1px da borda do `#para-quem`, o mesmo divisor do mapa e da oferta.
+- **Conferido**, antes e depois, em 1920, 1440, 1358, 900, 768, 375 e 320px: sem overflow e sem erros no console. Textos e rosto da Carol continuam nítidos.
+
 ## Carol: foto nova da turma na faixa — 24/09/2026
 
 - **Pedido do usuário**, com a imagem anexada: trocar a foto atual por essa. É a mesma foto da turma (Carol de avental azul e touca rosa, braços abertos), agora numa sala cirúrgica azul com focos acesos, sem a parede branca e sem a marca do hospital.

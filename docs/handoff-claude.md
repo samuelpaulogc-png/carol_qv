@@ -126,6 +126,12 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Enquadramento `center 30%` acima de 760px (era 42% com a foto antiga, que era 3:2). Com 42%, a foto nova (4:3) cortava as cabeças de trás em telas largas, e o fim de “mostrar” passava sobre o rosto da Carol. O celular mantém o recorte próprio.
   - A foto real, `assets/hero-equipe.webp`, continua no disco sem uso, para voltar se preciso.
   - Mostrada ao usuário e **não aplicada**: a foto nas cores originais (sem cinza, opacidade .62).
+  - **Transição sem corte seco (pedido do usuário, 24/09, com print da base da faixa):**
+    - As camadas de cima e de baixo terminam exatamente no `--bg-2` das seções vizinhas. O degradê de baixo passou para cima do escurecimento lateral e ficou mais longo e suave (até 62%).
+    - O grão some perto das bordas (`mask-image`).
+    - Na base, `span.mentor-blur` desfoca a foto aos poucos com `backdrop-filter`: 12px nos 34% de baixo no computador, abaixo do rosto da Carol; 10px e 50% no celular.
+    - Antes, a borda de baixo tinha um degrau de cor (18,23,50 sobre 12,18,54): o grão clareava e o escurecimento lateral escurecia até a última linha.
+    - O fio de 1px no topo é a borda do `#para-quem`, o mesmo divisor do mapa e da oferta, e foi mantido.
   - Dentro da faixa: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).
 - **Abaixo:** narrativa à esquerda (frase de abertura em destaque, dois parágrafos) e retrato `assets/Foto-427-683x1024.webp` à direita. O retrato sobe para dentro da faixa, é `position:sticky` no desktop, tem moldura turquesa deslocada atrás, cantos 20px, vinheta e leve ajuste de cor.
 - **Citação final** “Ter um mapa muda completamente…” em bloco turquesa sólido com texto navy (contraste 9,78:1) e ícone de batimento **animado** (SVG `.quote-ecg`, traço se desenhando em loop de 4s; estático com movimento reduzido).
