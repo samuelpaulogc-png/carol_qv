@@ -1003,15 +1003,21 @@
  #mapa .node:nth-child(6)::after{content:none}
  #mapa .ecg-track{margin-bottom:38px}
 }
-/* Bolinha que percorre a linha do celular, como a do computador (24/09). São traços de tamanho fixo na tela
-   (non-scaling-stroke), para continuar redonda: o SVG do celular estica diferente na largura e na altura. O brilho
-   vem de dois anéis translúcidos, não de filter: num elemento tão pequeno o filtro é recortado e a bolinha some. */
+/* Pulso do mapa, no computador e no celular (24/09). A bolinha é feita de traços de tamanho fixo na tela
+   (non-scaling-stroke), para ficar redonda: os SVGs do mapa esticam diferente na largura e na altura. O brilho vem de
+   dois anéis translúcidos, não de filter: num elemento tão pequeno o filtro é recortado e a bolinha some.
+   Movimento (pedido “mais suave e menos rígida”): acelera e freia por igual em 3,5s (curva .45 .05 .55 .95), entra e sai em fade, descansa 0,7s entre as
+   passagens e deixa um rastro que se apaga (4 trechos sobrepostos da própria linha, mesmo relógio SMIL da bolinha). */
 #mapa .ecg-pulse-dot{filter:none}
 #mapa .ecg-pulse-dot path{fill:none;stroke:var(--mint-bright);stroke-linecap:round;vector-effect:non-scaling-stroke}
 #mapa .ecg-pulse-dot .pulse-halo{stroke-width:22;stroke-opacity:.12}
 #mapa .ecg-pulse-dot .pulse-glow{stroke-width:14;stroke-opacity:.28}
 #mapa .ecg-pulse-dot .pulse-core{stroke-width:9}
-@media(prefers-reduced-motion:reduce){#mapa .ecg-pulse{display:none}}
+#mapa .ecg-tail{fill:none;stroke:var(--mint-bright);stroke-width:3;stroke-linecap:round}
+#mapa .ecg-tails{filter:drop-shadow(0 0 4px rgba(69,228,211,.7))}
+/* No celular a linha não tem brilho, e o filtro seria refeito a cada quadro: o rastro fica só com o traço claro. */
+@media(max-width:760px){#mapa .ecg-tail{stroke-width:2.5}#mapa .ecg-tails{filter:none}}
+@media(prefers-reduced-motion:reduce){#mapa .ecg-pulse,#mapa .ecg-run{display:none}}
 
 /* Como funciona: capas próprias e leitura em duas etapas. */
 #como-funciona{padding:88px 0}
@@ -1842,15 +1848,35 @@
               <stop offset=".7" stop-color="#2AD2C1"/>
               <stop offset="1" stop-color="#30EFAD"/>
             </linearGradient>
+            <path id="ecgRouteDesk" pathLength="1" d="M0 52 H83 C122 52 123 92 154 92 L163 74 L174 111 L185 92 C215 92 215 132 250 132 C288 132 291 92 320 92 L330 74 L341 111 L352 92 C383 92 383 52 417 52 C456 52 458 92 487 92 L496 74 L507 111 L518 92 C547 92 550 132 583 132 C623 132 624 92 654 92 L663 74 L674 111 L685 92 C715 92 717 52 750 52 C789 52 791 92 820 92 L830 74 L841 111 L852 92 C882 92 884 132 917 132 H1000"/>
           </defs>
           <path class="ecg-line" d="M0 52 H83 C122 52 123 92 154 92 L163 74 L174 111 L185 92 C215 92 215 132 250 132 C288 132 291 92 320 92 L330 74 L341 111 L352 92 C383 92 383 52 417 52 C456 52 458 92 487 92 L496 74 L507 111 L518 92 C547 92 550 132 583 132 C623 132 624 92 654 92 L663 74 L674 111 L685 92 C715 92 717 52 750 52 C789 52 791 92 820 92 L830 74 L841 111 L852 92 C882 92 884 132 917 132 H1000"/>
-          <circle class="ecg-pulse" r="4"><animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M0 52 H83 C122 52 123 92 154 92 L163 74 L174 111 L185 92 C215 92 215 132 250 132 C288 132 291 92 320 92 L330 74 L341 111 L352 92 C383 92 383 52 417 52 C456 52 458 92 487 92 L496 74 L507 111 L518 92 C547 92 550 132 583 132 C623 132 624 92 654 92 L663 74 L674 111 L685 92 C715 92 717 52 750 52 C789 52 791 92 820 92 L830 74 L841 111 L852 92 C882 92 884 132 917 132 H1000"/></circle>
+          <!-- Pulso: rastro de luz + bolinha no mesmo relógio (4,2s: 3,5s de percurso com aceleração e freada suaves, 0,7s de pausa). -->
+          <g class="ecg-run">
+            <g class="ecg-tails">
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".12" stroke-dasharray=".09 2" stroke-dashoffset=".09"><animate attributeName="stroke-dashoffset" values=".09;-.91;-.91" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".22" stroke-dasharray=".06 2" stroke-dashoffset=".06"><animate attributeName="stroke-dashoffset" values=".06;-.94;-.94" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".4" stroke-dasharray=".035 2" stroke-dashoffset=".035"><animate attributeName="stroke-dashoffset" values=".035;-.965;-.965" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".8" stroke-dasharray=".015 2" stroke-dashoffset=".015"><animate attributeName="stroke-dashoffset" values=".015;-.985;-.985" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+            </g>
+            <g class="ecg-pulse ecg-pulse-dot"><path class="pulse-halo" d="M0 0h.01"/><path class="pulse-glow" d="M0 0h.01"/><path class="pulse-core" d="M0 0h.01"/><animateMotion keyPoints="0;1;1" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"><mpath href="#ecgRouteDesk"/></animateMotion></g>
+            <animate attributeName="opacity" dur="4.2s" repeatCount="indefinite" calcMode="spline" values="0;1;1;0;0" keyTimes="0;.07;.76;.833;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .6 1;0 0 1 1"/>
+          </g>
         </svg>
 
         <svg class="ecg-mobile" viewBox="0 0 300 450" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="mobileJourney" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#24B7D3"/><stop offset="1" stop-color="#30EFAD"/></linearGradient></defs>
+          <defs><linearGradient id="mobileJourney" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#24B7D3"/><stop offset="1" stop-color="#30EFAD"/></linearGradient><path id="ecgRouteMob" pathLength="1" d="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450"/></defs>
           <path d="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450" fill="none" stroke="url(#mobileJourney)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <g class="ecg-pulse ecg-pulse-dot"><path class="pulse-halo" d="M0 0h.01"/><path class="pulse-glow" d="M0 0h.01"/><path class="pulse-core" d="M0 0h.01"/><animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450"/></g>
+          <g class="ecg-run">
+            <g class="ecg-tails">
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".12" stroke-dasharray=".09 2" stroke-dashoffset=".09"><animate attributeName="stroke-dashoffset" values=".09;-.91;-.91" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".22" stroke-dasharray=".06 2" stroke-dashoffset=".06"><animate attributeName="stroke-dashoffset" values=".06;-.94;-.94" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".4" stroke-dasharray=".035 2" stroke-dashoffset=".035"><animate attributeName="stroke-dashoffset" values=".035;-.965;-.965" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".8" stroke-dasharray=".015 2" stroke-dashoffset=".015"><animate attributeName="stroke-dashoffset" values=".015;-.985;-.985" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+            </g>
+            <g class="ecg-pulse ecg-pulse-dot"><path class="pulse-halo" d="M0 0h.01"/><path class="pulse-glow" d="M0 0h.01"/><path class="pulse-core" d="M0 0h.01"/><animateMotion keyPoints="0;1;1" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"><mpath href="#ecgRouteMob"/></animateMotion></g>
+            <animate attributeName="opacity" dur="4.2s" repeatCount="indefinite" calcMode="spline" values="0;1;1;0;0" keyTimes="0;.07;.76;.833;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .6 1;0 0 1 1"/>
+          </g>
         </svg>
         <div class="nodes">
           <div class="node" style="animation-delay:.3s">

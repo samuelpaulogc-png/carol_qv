@@ -4,6 +4,25 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa: pulso mais suave e menos rígido (computador e celular) — 24/09/2026
+
+- **Pedido do usuário:** “deixe mais suave e menos rígida a animação” da bolinha, no computador e no celular, com a skill da Emil se precisasse.
+  - Não há skill da Emil (Kowalski) no ambiente nem no catálogo de skills do usuário.
+  - Foi usado o guia `apple-design`, que trata de movimento fluido. Trechos aplicados: §11, rastro/motion blur para movimento rápido; §14, sem saltos bruscos de brilho e loop sem ser mecânico.
+- **Antes:** percurso linear de 3,4s, sem pausa, e a bolinha sumia no fim e reaparecia no começo de uma vez. No computador era um `<circle>` levemente oval (8,8×9,8px).
+- **Agora**, com ciclo de 4,2s:
+  - 3,5s de percurso com aceleração e freada por igual;
+  - fade de entrada de 0,3s e fade de saída ao chegar;
+  - 0,7s de pausa entre as passagens;
+  - rastro de luz em 4 trechos sobrepostos da própria linha;
+  - bolinha redonda, com anéis de brilho, igual nos dois.
+  - Uma primeira curva (.42 0 .2 1) chegava a 77% do caminho na metade do tempo e se arrastava no fim; foi trocada por .45 .05 .55 .95 (50% na metade).
+- **Verificado com o relógio congelado:**
+  - A ponta do rastro fica a ≤0,2px da bolinha em todos os instantes, nos dois.
+  - Opacidade .79 em 0,15s, 1 no percurso, .73 em 3,3s e 0 na pausa.
+  - Pausa fora da tela e com o botão do letreiro; some com movimento reduzido; sem erros.
+  - No celular o rastro fica sem filtro de brilho, porque seria refeito a cada quadro.
+
 ## Mapa no celular: bolinha na linha, desenho desfeito — 24/09/2026
 
 - O usuário esclareceu que “a animação” era a bolinha que percorre a linha no computador, e que no celular ela nem existia. Pediu para voltar o mapa como estava, exceto o ajuste do PASSO 06.

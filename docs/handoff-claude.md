@@ -85,10 +85,14 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - “QUERO DESCOBRIR” ganhou seta.
   - Fontes, tamanhos e pesos iguais aos de antes. O cadeado saiu por seguir a referência; volta removendo `#mapa .node .disc svg{display:none}`.
 - **Celular (24/09, pedidos do usuário):**
-  - **Bolinha na linha:** como a do computador, uma bolinha percorre a linha vertical do celular em loop (3,4s, SMIL `animateMotion` num `<g class="ecg-pulse ecg-pulse-dot">`). Era a isso que o usuário se referia ao pedir “a animação” no celular: antes ela só existia no SVG do computador.
-    - Ela é feita de traços com `vector-effect:non-scaling-stroke`, para ficar redonda: o SVG do celular estica diferente na largura e na altura, e um `<circle>` ficava oval (12,7×8px em 430px).
-    - O brilho vem de dois anéis translúcidos, sem `filter`, porque num elemento tão pequeno o filtro é recortado e a bolinha some.
-    - Pausa fora da tela e com “Pausar animações automáticas” (pega o `svg:has(animateMotion)`). Some com movimento reduzido.
+  - **Bolinha na linha (computador e celular):** percorre a linha em SMIL. Era a isso que o usuário se referia ao pedir “a animação” no celular: antes ela só existia no SVG do computador.
+    - Cada SVG tem o traçado em `<defs>` (`#ecgRouteDesk`, `#ecgRouteMob`, `pathLength="1"`). A bolinha anda por `<mpath>`, e o rastro são 4 `<use>` do mesmo traçado com traço curto animado em `stroke-dashoffset`, tudo no mesmo relógio.
+    - **Movimento suave (pedido do usuário, 24/09, com o guia `apple-design`):** ciclo de 4,2s. São 3,5s de percurso com aceleração e freada por igual (`keySplines .45 .05 .55 .95`; no meio do tempo, meio do caminho) e 0,7s de pausa.
+    - A bolinha entra em fade (0,3s) e sai em fade ao chegar em “PRIMEIRA OPORTUNIDADE”, sem o salto do fim para o começo.
+    - O rastro que se apaga atrás dela tem 1,5% / 3,5% / 6% / 9% do traçado, com opacidades .8 / .4 / .22 / .12. Antes era linear de 3,4s, sem pausa e com salto.
+    - A bolinha é feita de traços com `vector-effect:non-scaling-stroke`, para ficar redonda nos dois SVGs, que esticam diferente na largura e na altura: um `<circle>` ficava oval, 12,7×8px em 430px no celular e 8,8×9,8px no computador.
+    - O brilho da bolinha vem de dois anéis translúcidos, sem `filter`, porque num elemento tão pequeno o filtro é recortado e a bolinha some. O rastro tem brilho só no computador.
+    - Pausa fora da tela e com “Pausar animações automáticas” (pega o `svg:has(animateMotion)`). `.ecg-run` e `.ecg-pulse` somem com movimento reduzido.
   - Uma animação de desenho da linha com gatilho no meio da tela chegou a ser feita e foi desfeita a pedido do usuário. O mapa aparece inteiro, como antes.
   - **PASSO 06:** a linha desce do nó 6 e terminava dentro do rótulo. Agora o rótulo fica 12px mais baixo que os outros e a haste desse nó sai; “PRIMEIRA OPORTUNIDADE” desceu o mesmo tanto (gap de 14px mantido).
 
