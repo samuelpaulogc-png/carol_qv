@@ -4,6 +4,16 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Hero: parágrafos movidos para o bloco do vídeo — 24/09/2026
+
+- Pedido expresso do usuário (com print): tirar da hero “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” e colocá-los depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”. Texto e marcação idênticos.
+- **Bloco do vídeo:** `.video-copy` reúne o título e os dois `p.video-desc` (17px no desktop, 16px até 960px, cor `rgba(236,240,248,.84)` como na hero; os `.mk` continuam sem destaque). Acima de 960px: texto à esquerda (até 62ch) e botão à direita, alinhado à base do texto. Até 960px o botão desce para baixo do texto. No DOM o vídeo vem antes do texto, na mesma ordem em que aparece na tela.
+- **Hero:** sem os parágrafos ela encolheria de 843 para ~670px em 1440px. A foto passaria a ser cortada em cima (cabeça da Carol colada no letreiro) e o vídeo cobriria os braços dela. Acima de 760px: `min-height:max(56.28vw,720px)` (proporção da foto) e texto centralizado (`display:grid;align-content:center`). Medido: 1440px 843→810, 1366px 826→769, 1024px 720→720. O vídeo começa na cintura da Carol, como antes. Em 1920px a hero passa a 1081px e mostra a foto inteira; antes a cabeça era cortada pelo letreiro nessa largura.
+- **Celular:** a hero ficou ~290px mais baixa. Em 375px o botão “QUERO PARTICIPAR” (antes em ~803px) e a foto da Carol (antes em 879px, agora em 587px) aparecem na primeira tela.
+- **Correção junto (já existia):** entre 561 e 760px o vídeo sobe 56px sobre a hero, que só tinha 40px de respiro, e cobria “Vagas limitadas para o encontro ao vivo”. Agora `padding-bottom:96px` nessa faixa.
+- CSS morto removido: as regras `.hero .desc` (cinco camadas) e `.hero .desc .mk`.
+- Validação: Chrome headless com servidor local, capturas antes/depois em 1920, 1440, 1366, 1280, 1024, 961, 960, 900, 768, 760, 700, 600, 561, 560, 375 e 320px. Na tela do usuário (1358×607), título, subtítulo, botão e Carol ficam inteiros na primeira tela. Sem overflow e sem erros de console. Com movimento, a hero e o bloco do vídeo entram normalmente; sem JS, tudo visível. As seções abaixo do vídeo têm a mesma geometria (posição e tamanho de todos os elementos iguais, diferença só de subpixel).
+
 ## Números de autoridade: contagem na entrada — 20/09/2026
 
 - Pedido do usuário. Os três números (`#carol .auth .n`) contam de zero até o valor real em 900 ms, com desaceleração, 60 ms entre um e outro, na mesma cascata do traço turquesa que já existia.

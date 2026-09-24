@@ -225,8 +225,6 @@
   .hero-mobile-art{display:none}
   .hero h1{font-size:54px;line-height:1.04;max-width:700px}
   .hero .sub{font-size:21px;color:var(--cream);max-width:600px;font-weight:500}
-  .hero .desc{font-size:16.5px;line-height:1.55;color:var(--muted);max-width:600px}
-  .hero .desc + .desc{margin-top:-8px}
   /* sublinhado contínuo em ponto estratégico da headline */
   .u-dash{text-decoration:underline;text-decoration-style:solid;text-decoration-color:var(--mint);
     text-decoration-thickness:2px;text-underline-offset:8px}
@@ -518,7 +516,6 @@
     }
     .hero h1{font-size:33px;line-height:1.04}
     .hero .sub{font-size:18.5px}
-    .hero .desc{font-size:15.5px}
     .pain-concept h2{font-size:2.2rem}
 
 
@@ -719,7 +716,6 @@
   @media(max-width:560px){
     .hero{padding:28px 0 0}
     .hero-copy{gap:20px}
-    .hero .desc+.desc{margin-top:0}
     .hero .sub{line-height:1.5}
     .hero .cta-group{align-items:stretch;width:100%}
     .hero-cta-slot .btn{width:100%}
@@ -818,20 +814,16 @@
   .hero-copy{gap:24px}
   .hero-copy .eyebrow{max-width:600px;font-size:.8125rem;font-weight:600;letter-spacing:.075em;line-height:1.55;text-wrap:balance;color:var(--cream)}
   .hero .sub{line-height:1.5}
-  .hero .sub .mk,.hero .desc .mk{color:inherit;font-weight:inherit}
-  .hero .desc{font-size:17px;line-height:1.6;color:rgba(236,240,248,.84)}
-  .hero .desc+.desc{margin-top:-12px}
+  .hero .sub .mk{color:inherit;font-weight:inherit}
   .hero .cta-group{margin-top:8px;gap:8px;align-items:flex-start}
   .hero .microcopy{font-size:.8125rem;line-height:1.5}
   @media(min-width:561px) and (max-width:960px){
     .hero-copy{max-width:60%;gap:20px}
     .hero .sub{font-size:19px}
-    .hero .desc{font-size:16px}
   }
   @media(max-width:560px){
     .hero-copy{gap:24px}
     .hero-copy .eyebrow{font-size:.75rem;letter-spacing:.065em;max-width:34em}
-    .hero .desc{font-size:16px;line-height:1.6}
     .hero .cta-group{align-items:stretch;margin-top:4px}
   }
 
@@ -1413,13 +1405,24 @@
 .pain.band::before{display:none}
 /* ---------- 3. Vídeo: ponte entre a hero e a dor ---------- */
 .pain .video-intro{position:relative}
-.pain .video-block{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"frame frame" "title cta";align-items:center;column-gap:32px;row-gap:22px;margin:0 auto;text-align:left}
+.pain .video-block{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"frame frame" "copy cta";align-items:end;column-gap:32px;row-gap:22px;margin:0 auto;text-align:left}
 .pain .video-frame{grid-area:frame;width:100%;max-width:none;margin:0;border-radius:16px;border:1px solid rgba(236,240,248,.12);
   background:#0C1236;box-shadow:0 48px 96px -48px rgba(0,0,0,.9)}
 .pain .video-frame .halo{background:radial-gradient(circle at 50% 45%,rgba(42,210,193,.07),transparent 60%)}
 .pain .play{box-shadow:none}
 .pain .play::before{content:none}
-.pain .video-title{grid-area:title;margin:0;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82)}
+/* Título do vídeo e, abaixo dele, os dois parágrafos que saíram da hero; o botão fecha o bloco à direita. */
+.pain .video-copy{grid-area:copy;display:grid;gap:12px}
+.pain .video-title{margin:0 0 4px;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82)}
+.pain .video-desc{max-width:62ch;font-size:1.0625rem;line-height:1.6;color:rgba(236,240,248,.84);text-wrap:pretty}
+/* mesmo tratamento da hero: os termos marcados não mudam de cor */
+.pain .video-desc .mk{color:inherit;font-weight:inherit}
+/* Até 960px o botão desce para baixo do texto: ao lado dele, a coluna de leitura ficava estreita demais. */
+@media(max-width:960px){
+  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "copy" "cta"}
+  .pain .video-copy{margin-bottom:8px}
+  .pain .video-desc{font-size:1rem}
+}
 .pain .video-block>div:last-child{grid-area:cta;margin-top:0!important}
 /* botão secundário: mesmo texto, contorno, não compete com o CTA da hero */
 .pain .video-block .btn{background:transparent;color:#ECF0F8;border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 26px;font-size:.9375rem}
@@ -1446,6 +1449,11 @@
 /* ---------- Desktop e tablet: zigue-zague no mesmo eixo da hero ---------- */
 @media (min-width:761px){
   .hero{padding-bottom:clamp(128px,11vw,168px)}
+  /* Sem os parágrafos, a hero encurtaria: a foto subiria até o letreiro e o vídeo cobriria os braços da Carol.
+     A altura mínima segue a proporção da foto (1672×941), nunca abaixo de 720px (senão, até ~1280px, a foto
+     encolhe e a Carol encosta no título), e o texto fica centralizado nesse espaço. */
+  .hero{min-height:max(56.28vw,720px);display:grid;align-content:center}
+  .hero>.wrap{width:100%}
   .pain .video-intro{margin-top:calc(-1 * clamp(88px,8vw,120px));padding-bottom:clamp(96px,9vw,128px)}
   .pain .video-block{max-width:880px}
   /* orbe à esquerda, título à direita (mesma grade 5/7 do diagnóstico, espelhada) */
@@ -1464,7 +1472,7 @@
 /* ---------- Celular ---------- */
 @media (max-width:760px){
   .pain .video-intro{margin-top:-56px;padding-bottom:64px}
-  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "title" "cta";row-gap:16px}
+  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "copy" "cta";row-gap:16px}
   .pain .video-block>div:last-child{width:100%}
   .pain .video-block .btn{width:100%}
   .pain .pain-concept{--orb:min(300px,76vw);margin:0 0 48px;text-align:left}
@@ -1472,6 +1480,10 @@
   .pain .pain-concept-copy{margin-top:calc(var(--orb) * -.24)}
   .pain .pain-concept h2{margin:0;max-width:none;text-align:left}
   .pain .pain-diagnostic-copy{padding-bottom:0}
+}
+/* Entre 561 e 760px o vídeo sobe 56px sobre a hero, que só tinha 40px de respiro: cobria "Vagas limitadas...". */
+@media (min-width:561px) and (max-width:760px){
+  .hero{padding-bottom:96px}
 }
 @media (max-width:560px){
   .hero::after{display:none}
@@ -1564,8 +1576,6 @@
         <span class="eyebrow reveal">Para quem se formou em instrumentação cirúrgica, mas ainda não entrou no mercado...</span>
         <h1 class="reveal d1">Você se formou. Mas ainda não conseguiu espaço no <span class="serif accent u-dash">centro cirúrgico</span>?</h1>
         <p class="sub reveal d2">Descubra os <span class="mk">6 passos</span> para sair do zero e construir o caminho até a sua <span class="mk">primeira oportunidade</span> na instrumentação cirúrgica.</p>
-        <p class="desc reveal d2">No <span class="mk">Gancho da Virada</span>, você vai conhecer o mapa que eu gostaria de ter recebido quando comecei: uma jornada construída a partir da minha própria trajetória e que hoje utilizo para direcionar outros instrumentadores.</p>
-        <p class="desc reveal d3">Você recebe acesso imediato a <span class="mk">3 aulas de preparação</span> e participa de um <span class="mk">encontro ao vivo</span>, onde eu vou revelar e ensinar os 6 Passos da Virada.</p>
         <div class="cta-group">
           <div class="hero-cta-slot"><a href="#oferta" class="btn">QUERO PARTICIPAR</a></div>
           <span class="microcopy">
@@ -1584,7 +1594,6 @@
 <section class="sec pain band band-deep">
   <div class="wrap video-intro">
     <div class="video-block reveal d4">
-      <p class="video-title">Entenda em poucos minutos o que é o Gancho da Virada</p>
       <div class="video-frame">
         <div class="halo"></div>
         <!-- INSERIR VÍDEO PRINCIPAL AQUI (substituir este bloco pelo embed/iframe) -->
@@ -1592,6 +1601,12 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         </button>
         <div class="ph">Vídeo principal</div>
+      </div>
+      <!-- Os dois parágrafos vieram da hero (24/09, pedido do usuário): ficam entre o título do vídeo e o botão. -->
+      <div class="video-copy">
+        <p class="video-title">Entenda em poucos minutos o que é o Gancho da Virada</p>
+        <p class="video-desc">No <span class="mk">Gancho da Virada</span>, você vai conhecer o mapa que eu gostaria de ter recebido quando comecei: uma jornada construída a partir da minha própria trajetória e que hoje utilizo para direcionar outros instrumentadores.</p>
+        <p class="video-desc">Você recebe acesso imediato a <span class="mk">3 aulas de preparação</span> e participa de um <span class="mk">encontro ao vivo</span>, onde eu vou revelar e ensinar os 6 Passos da Virada.</p>
       </div>
       <div style="margin-top:30px">
         <a href="#mapa" class="btn">QUERO CONHECER OS 6 PASSOS</a>

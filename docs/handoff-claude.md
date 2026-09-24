@@ -32,6 +32,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - FAQ (13/09): kicker “Dúvidas” acima de “Ficou com alguma dúvida?”. Era o último `.kicker` da página; as regras `.kicker` e `.light .kicker` foram removidas.
 - **Alterações de copy já autorizadas:**
   - Garantia (13/09): título “7 dias de garantia” trocado por “Garantia de satisfação total”, a pedido expresso do usuário. O texto circular da medalha (“7 dias de garantia · …”) e o parágrafo com as condições de 7 dias continuam iguais.
+  - Hero → vídeo (24/09): os parágrafos “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” saíram da hero e foram para o bloco do vídeo, depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”, a pedido expresso do usuário. Texto idêntico; não voltar com eles para a hero.
 - Nunca revele nomes ou conteúdo dos 6 passos. Não invente métricas nem altere condições comerciais.
 
 ### Identidade
@@ -49,9 +50,11 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 
 ### Letreiro e hero
 - Letreiro fixo no topo em **turquesa** (`--mint`, texto navy `--bg`, contraste 10,2:1) desde 13/09; antes era verde-menta (`--virada`), trocado a pedido do usuário pela opção 1 de `audit-visual/topbar-options/`. Hero com fundo `assets/images/Image - Hero.png` preservado por pedido expresso; CTA no padrão dos botões. Sem botão flutuante.
+- Desde 24/09 a hero tem só kicker, título, subtítulo e botão. Acima de 760px ela tem altura mínima `max(56.28vw, 720px)` (proporção da foto 1672×941) com o texto centralizado: sem isso a hero encurtaria, a cabeça da Carol subiria até o letreiro e o vídeo cobriria os braços dela. Entre 561 e 760px, `padding-bottom:96px` para o vídeo não cobrir “Vagas limitadas…”.
 
 ### Vídeo + diagnóstico
 - Vídeo ainda é placeholder (botão de play dispara `alert()` — remover antes de publicar). Imagem do diagnóstico: `assets/images/dor-portas-recorte.png`. Orbe com arco animado acima do título “A formação te ensinou a instrumentar…”.
+- Abaixo do vídeo (`.video-copy`, 24/09): título “Entenda em poucos minutos…” e os dois parágrafos vindos da hero (`.video-desc`, mesma cor da hero, termos `.mk` sem destaque). Acima de 960px o botão fica à direita, alinhado à última linha do texto; até 960px desce para baixo do texto (largura total até 760px).
 
 ### Mapa (`#mapa`)
 - Painel integrado: título, introdução, ECG horizontal com 6 nós travados no desktop, vertical no celular, reflexões/perguntas e CTA. Não executar scripts de preview que sobrescrevam a página.
