@@ -4,6 +4,19 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa no celular: bolinha na linha, desenho desfeito — 24/09/2026
+
+- O usuário esclareceu que “a animação” era a bolinha que percorre a linha no computador, e que no celular ela nem existia. Pediu para voltar o mapa como estava, exceto o ajuste do PASSO 06.
+- **Desfeito:** o desenho da linha no celular, com os passos acendendo e os dois gatilhos (meio da tela e parada de rolagem). O `pathLength` da linha e o JS também saíram. O mapa aparece inteiro, como antes.
+- **Mantido:** PASSO 06 12px mais baixo, sem a haste, e “PRIMEIRA OPORTUNIDADE” descendo o mesmo tanto.
+- **Novo: bolinha no celular**, com o mesmo traçado da linha vertical, loop de 3,4s como no computador.
+  - Feita de traços de tamanho fixo (`non-scaling-stroke`) para ficar redonda: um círculo comum ficava oval, 12,7×8px em 430px de largura.
+  - O brilho vem de dois anéis translúcidos (22px a .12, 14px a .28) em volta do núcleo de 9px. A primeira versão usava `filter`, que num elemento tão pequeno é recortado: a bolinha não aparecia.
+- **Verificado:**
+  - Em 360, 390 e 430px, a bolinha anda, é redonda e tem brilho.
+  - Fica parada fora da tela e com o botão de pausa do letreiro; some com movimento reduzido.
+  - No computador nada mudou; sem erros.
+
 ## Mapa no celular: PASSO 06 mais baixo e desenho quando a pessoa está no mapa — 24/09/2026
 
 - **Pedido do usuário:** “PASSO 06” estava colado ao ponto final dos passos no celular (abaixar um pouco, sem exagerar), e a animação do mapa precisava começar quando a pessoa já atravessou um pouco do mapa, para ver com facilidade.

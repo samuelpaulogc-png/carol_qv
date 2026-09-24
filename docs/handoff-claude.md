@@ -85,9 +85,11 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - “QUERO DESCOBRIR” ganhou seta.
   - Fontes, tamanhos e pesos iguais aos de antes. O cadeado saiu por seguir a referência; volta removendo `#mapa .node .disc svg{display:none}`.
 - **Celular (24/09, pedidos do usuário):**
-  - **Animação:** a linha vertical se desenha de cima para baixo (2,4s, velocidade constante, `pathLength="1"`) e cada passo acende quando ela chega (atrasos `--at` de .08s a 2,28s, medidos no traçado). O disco cresce de .55 com leve sobra, e “PRIMEIRA OPORTUNIDADE” aparece no fim.
-  - **Gatilho** (classe `.is-drawn` na `.map-stage`): o topo do percurso chega ao meio da tela, ou a pessoa para de rolar 0,6s com ele acima de 75%. Assim também começa ao chegar pelo botão “QUERO CONHECER OS 6 PASSOS”, que para com o topo em 54–68% da tela.
-  - Antes, o mapa só tinha a entrada comum (fade de 350ms com 8% visível) e ela acabava antes de a pessoa ver. Sem JS ou com movimento reduzido, tudo aparece; no computador nada mudou.
+  - **Bolinha na linha:** como a do computador, uma bolinha percorre a linha vertical do celular em loop (3,4s, SMIL `animateMotion` num `<g class="ecg-pulse ecg-pulse-dot">`). Era a isso que o usuário se referia ao pedir “a animação” no celular: antes ela só existia no SVG do computador.
+    - Ela é feita de traços com `vector-effect:non-scaling-stroke`, para ficar redonda: o SVG do celular estica diferente na largura e na altura, e um `<circle>` ficava oval (12,7×8px em 430px).
+    - O brilho vem de dois anéis translúcidos, sem `filter`, porque num elemento tão pequeno o filtro é recortado e a bolinha some.
+    - Pausa fora da tela e com “Pausar animações automáticas” (pega o `svg:has(animateMotion)`). Some com movimento reduzido.
+  - Uma animação de desenho da linha com gatilho no meio da tela chegou a ser feita e foi desfeita a pedido do usuário. O mapa aparece inteiro, como antes.
   - **PASSO 06:** a linha desce do nó 6 e terminava dentro do rótulo. Agora o rótulo fica 12px mais baixo que os outros e a haste desse nó sai; “PRIMEIRA OPORTUNIDADE” desceu o mesmo tanto (gap de 14px mantido).
 
 ### Como funciona (`#como-funciona`)
