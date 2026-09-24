@@ -1009,21 +1009,55 @@
  .sec-who .carol-story .hl{font-size:1.125rem}
 }
 
-/* Público: critérios organizados em uma grade, com fechamento em destaque. */
-#para-quem{padding-block:88px 72px}
+/* Público (24/09, pela referência do usuário): título à esquerda e sete critérios em cartões 2 · 3 · 2.
+   Cada cartão: vidro navy com borda fina, filete turquesa que se dissolve no topo, check num anel e fio vertical
+   antes do texto. Tamanhos de texto iguais aos de antes. No alto à direita, a luz de um foco cirúrgico; a foto da
+   sala entra por --who-photo quando existir (ver o comentário no HTML da seção). */
+#para-quem{position:relative;isolation:isolate;overflow:hidden;padding-block:88px 72px}
+#para-quem::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(520px 340px at 84% 4%,rgba(186,236,255,.09),transparent 70%),
+    radial-gradient(900px 620px at 92% 16%,rgba(42,210,193,.07),transparent 66%),
+    linear-gradient(90deg,var(--bg-2) 0%,rgba(12,18,54,.94) 36%,rgba(12,18,54,.6) 68%,rgba(12,18,54,.4) 100%),
+    var(--who-photo,none) right center/cover no-repeat}
 #para-quem .who-layout{gap:0}
 #para-quem .forwhom{display:block;max-width:none}
 #para-quem .forwhom h2{max-width:760px;margin:0 0 44px;text-align:left;font-size:clamp(2.25rem,4vw,3.625rem);font-weight:500;line-height:1.1;letter-spacing:-.035em;text-wrap:balance}
 #para-quem .forwhom h2 .serif{display:block;margin-top:8px}
 /* Sete critérios iguais em 2 · 3 · 2: grade de 6 colunas, cada linha ocupa a largura toda. */
-#para-quem .checklist{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 40px;border:0}
+#para-quem .checklist{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;border:0}
 #para-quem .check{grid-column:span 2}
 #para-quem .check:nth-child(-n+2),#para-quem .check:nth-child(n+6){grid-column:span 3}
-#para-quem .check{position:relative;display:flex;flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:16px;min-height:0;padding:26px 0 32px;border:0;border-top:1px solid var(--line);font-size:1.125rem;line-height:1.5;color:var(--cream);text-wrap:pretty}
-/* Filete estático: os critérios são conteúdo de leitura, não controles. */
-#para-quem .check::before{content:'';position:absolute;top:-1px;left:0;width:32px;height:1px;background:var(--mint)}
-#para-quem .check .ck{width:24px;height:24px;flex:none;margin:1px 0 0;border:1px solid rgba(42,210,193,.3);border-radius:50%;background:rgba(42,210,193,.08)}
-#para-quem .check .ck svg{width:12px;height:12px;color:var(--mint-bright)}
+#para-quem .check{position:relative;display:grid;grid-template-columns:44px 1px minmax(0,1fr);align-items:center;column-gap:20px;min-height:112px;padding:24px;border:1px solid rgba(135,148,172,.18);border-radius:12px;background:linear-gradient(180deg,rgba(20,28,74,.55),rgba(12,18,54,.55));-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 24px 48px -32px rgba(0,0,0,.8);font-size:1.125rem;line-height:1.5;color:var(--cream);text-wrap:pretty}
+/* Filete estático (os critérios são leitura, não controles): turquesa no canto, dissolvendo em ~40% da largura. */
+#para-quem .check::before{content:'';position:absolute;top:-1px;left:14px;width:min(160px,42%);height:1px;background:linear-gradient(90deg,var(--mint),rgba(42,210,193,0));filter:drop-shadow(0 0 4px rgba(42,210,193,.8))}
+#para-quem .check .ck{grid-column:1;grid-row:1;display:grid;place-items:center;width:44px;height:44px;margin:0;border:1px solid rgba(42,210,193,.45);border-radius:50%;background:rgba(42,210,193,.08);box-shadow:0 0 18px -4px rgba(42,210,193,.45),inset 0 0 12px rgba(42,210,193,.12)}
+#para-quem .check .ck svg{width:17px;height:17px;color:var(--mint-bright)}
+/* Fio vertical entre o check e o texto (o texto ocupa a terceira coluna). */
+#para-quem .check::after{content:'';grid-column:2;grid-row:1;width:1px;height:44px;background:rgba(135,148,172,.22)}
+/* Três por linha só cabem a partir de 1101px; abaixo, dois por linha com o sétimo na largura toda. */
+@media(max-width:1100px){
+ #para-quem .checklist{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #para-quem .check:nth-child(n){grid-column:auto}
+ #para-quem .check:nth-child(7){grid-column:1/-1}
+}
+@media(min-width:761px) and (max-width:1000px){
+ #para-quem .check{font-size:1rem}
+}
+@media(max-width:760px){
+ #para-quem{padding-block:56px}
+ #para-quem::before{background:
+    radial-gradient(360px 260px at 88% 0%,rgba(186,236,255,.08),transparent 70%),
+    linear-gradient(180deg,rgba(12,18,54,.55) 0%,var(--bg-2) 55%),
+    var(--who-photo,none) 70% top/auto 60% no-repeat}
+ #para-quem .forwhom h2{font-size:clamp(2rem,6vw,2.75rem);margin-bottom:28px}
+ #para-quem .checklist{grid-template-columns:minmax(0,1fr);gap:14px}
+ #para-quem .check:nth-child(7){grid-column:auto}
+ #para-quem .check{grid-template-columns:40px 1px minmax(0,1fr);column-gap:16px;min-height:0;padding:18px 20px 18px 18px;font-size:1rem}
+ #para-quem .check .ck{width:40px;height:40px}
+ #para-quem .check .ck svg{width:16px;height:16px}
+ #para-quem .check::after{height:40px}
+}
 
 /* Carol: imagem de equipe em toda a largura + retrato, trajetória e resultados. */
 #carol{position:relative;isolation:isolate;background:var(--bg-2);padding:0 0 88px}
@@ -1060,8 +1094,6 @@
 @keyframes quoteEcg{0%{stroke-dashoffset:100;opacity:.25}45%{stroke-dashoffset:0;opacity:.85}72%{stroke-dashoffset:0;opacity:.85}100%{stroke-dashoffset:-100;opacity:.25}}
 @media(prefers-reduced-motion:reduce){#carol .quote-ecg path{stroke-dashoffset:0;opacity:.6}}
 @media(min-width:761px) and (max-width:1000px){
- #para-quem .checklist{column-gap:24px}
- #para-quem .check{font-size:1rem}
  #carol .mentor-banner{min-height:420px}
  #carol .mentor-details{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px}
  #carol h2,#carol .auth-cards{max-width:calc((100% - 40px)*.55)}
@@ -1073,12 +1105,6 @@
  #carol .mentor-story p{font-size:1rem}
 }
 @media(max-width:760px){
- #para-quem{padding-block:56px}
- #para-quem .forwhom h2{font-size:clamp(2rem,6vw,2.75rem);margin-bottom:28px}
- #para-quem .checklist{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
- #para-quem .check{font-size:1rem;gap:12px;padding:20px 0}
- #para-quem .check:nth-child(n){grid-column:auto}
- #para-quem .check:nth-child(7){grid-column:1/-1}
  #carol{padding-bottom:56px}
  #carol .mentor-banner{min-height:390px}
  #carol .mentor-banner>img{height:115%;top:-15%;object-position:50% center}
@@ -1101,10 +1127,6 @@
  #carol .mentor-opening{font-size:1.375rem}
  #carol .mentor-quote{margin-top:28px;padding:22px 22px 24px;border-radius:14px;font-size:1.25rem;line-height:1.42}
  #carol .quote-ecg{width:64px;height:14px;margin-bottom:14px}
-}
-@media(max-width:480px){
- #para-quem .checklist{grid-template-columns:minmax(0,1fr)}
- #para-quem .check{flex-direction:row;gap:14px;align-items:flex-start;padding:18px 0}
 }
 
 
@@ -1823,6 +1845,8 @@
 </section>
 
 <!-- ===== BLOCO 05 — PARA QUEM É + CAROL ===== -->
+<!-- Foto de fundo (sala cirúrgica à direita, como na referência), quando houver:
+     style="--who-photo:url('assets/images/arquivo.webp')" nesta section. Prompt em human-output/image/gancho-para-quem/. -->
 <section class="sec sec-who light branco" id="para-quem">
   <div class="wrap who-layout">
     <div class="forwhom reveal">

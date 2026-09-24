@@ -83,8 +83,16 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - A Oferta continua usando os SVGs antigos `how-preparation.svg` e `how-live-map.svg` de propósito.
 
 ### Público (`#para-quem`)
-- Título grande à esquerda-topo e **sete critérios iguais** (mesmo estilo, sem destaque no sétimo) numa grade de 6 colunas em **2 · 3 · 2** acima de 760px; de 481 a 760px duas colunas com o sétimo na largura toda; até 480px uma coluna.
-- Cada critério: check ao lado do texto, filete turquesa de 32px no topo que percorre a linha no hover.
+- **Layout da referência do usuário (24/09):**
+  - Título grande à esquerda-topo e **sete critérios iguais** em **cartões de vidro**: navy translúcido, borda fina, cantos de 12px.
+  - Cada cartão tem, no topo, um filete turquesa que se dissolve em ~40% da largura, com brilho. O check fica num anel de 44px (40px no celular) com leve brilho, seguido de um fio vertical e do texto.
+  - Fontes, tamanhos e pesos iguais aos de antes: 18px, e 16px a partir de 1000px para baixo. Os cartões não reagem ao hover, porque são leitura.
+- **Grade:** 2 · 3 · 2 acima de 1100px; de 761 a 1100px, duas colunas com o sétimo na largura toda; até 760px, uma coluna.
+- **Fundo:**
+  - Brilho suave de foco cirúrgico no alto à direita.
+  - A foto da sala (como na referência) ainda não existe. Ela entra por `--who-photo` na `section`, e o CSS já escurece da esquerda para a direita.
+  - Prompt em `human-output/image/gancho-para-quem/`.
+- **Da referência, ficou de fora** por ser texto ou peso de fonte, e não layout: o kicker “O GANCHO DA VIRADA” acima do título e os trechos em negrito dentro dos critérios. Só com pedido do usuário.
 
 ### Carol (`#carol`)
 - **Faixa superior** com `assets/hero-equipe.webp` (Carol com a turma) em duotone navy (`mix-blend-mode:luminosity`), grão SVG e degradês. Dentro dela: título “Quem vai te mostrar esse caminho?” e, logo abaixo, os três resultados (divisórias verticais, valor em creme com traço turquesa, rótulo em caixa alta).

@@ -4,6 +4,25 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## “Para quem é” no layout da referência — 24/09/2026
+
+- **Pedido do usuário** (imagem de referência): implementar o layout da referência na seção de público, sem mudar a fonte nem aumentá-la; se a fonte fosse mudar, fazer só o design/layout.
+- A copy da referência é idêntica à da página (título e 7 critérios), e a grade já era 2 · 3 · 2.
+- **Aplicado:**
+  - Cartões de vidro com borda e cantos de 12px.
+  - No topo de cada cartão, um filete turquesa que se dissolve, com brilho.
+  - Check num anel de 44px, fio vertical e texto.
+  - Espaço de 20px entre os cartões.
+  - Luz de foco no alto à direita.
+- **Grade:** 2 · 3 · 2 acima de 1100px (antes, três por linha deixava o texto dos cartões do meio em 4 linhas em 1440px; com o espaço interno ajustado, ficaram 3); duas colunas de 761 a 1100px; uma no celular.
+- **Não aplicado, e por quê:**
+  - Kicker “O GANCHO DA VIRADA” e negritos dentro dos critérios: é texto novo e mudança de peso de fonte (regra “não altere as fontes”).
+  - Foto da sala cirúrgica: não há imagem assim no projeto, e as que existem já são usadas em outras seções. Prompt em `human-output/image/gancho-para-quem/`; a foto entra por `--who-photo`.
+- **Verificado** em 1440, 1358, 1100, 1024, 900, 768, 375 e 320px:
+  - família, tamanho, peso e entrelinha iguais aos de antes em todas as larguras;
+  - sem overflow e sem erros;
+  - as outras seções ficaram iguais, com todos os elementos visíveis na mesma posição relativa. A seção ficou 56px mais alta em 1440px.
+
 ## Preço: 6x de R$ 8,82 — 24/09/2026
 
 - Pedido do usuário: “O preço precisa ser alterado para 6 x de R$ 8,82.”
