@@ -9,6 +9,7 @@ Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/0
 - Pedido do usuário, com imagem de referência: estilizar “o certificado não responde” e as setinhas das perguntas.
 - A frase, que já estava em Fraunces itálico mas na cor do texto, ficou turquesa (`--mint-bright`). Fonte, tamanho e peso não mudaram.
 - As setas das 5 perguntas agora ficam num anel de 24px: borda turquesa, fundo translúcido, leve brilho, seta de 15px. Continuam alinhadas à primeira linha e deslizando 6px na entrada.
+- Ajuste do usuário: o “o” antes de “certificado” saiu do destaque e voltou ao estilo do texto.
 - Verificado em 1358 e 375px, sem overflow.
 
 ## “Para quem é” no layout da referência — 24/09/2026
