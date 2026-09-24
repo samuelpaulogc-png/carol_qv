@@ -37,6 +37,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 
 ### Identidade
 - **NÃO ALTERE AS FONTES** (pedido expresso do usuário em 24/09: “senão vai quebrar a harmonia com o restante do texto”). Vale para família, tamanho, peso e espaçamento. Protótipos gerados por IA podem vir com outra fonte (o de 24/09 trazia título serifado): copie o layout, nunca a tipografia.
+  - Exceção pedida pelo usuário (24/09): no celular (360–560px) o kicker da hero diminui com a largura (~10,5px em 375px, até 12px) para ficar em duas linhas. Abaixo de 360px continua com 12px, em três.
 - Fontes fixas: Bricolage Grotesque (títulos), Fraunces itálico (destaques), Hanken Grotesk (corpo). Use os tokens existentes (`--bg`, `--bg-2`, `--surface`, `--navy`, `--line`, `--cream`, `--muted`, `--mint`, `--mint-bright`, `--mint-deep`, `--virada`, `--copy-readable`, `--ease-out`).
 - **A página inteira é escura.** Classes `.light`, `.gelo` e `.branco` são nomes históricos. O `AGENTS.md` ainda fala em “ritmo dark/light” — isso está desatualizado; não restaure fundos claros.
 - Verde-menta (`--virada`) só em sinais de avanço (destino do mapa, “acesso imediato”). Destaques gerais em turquesa.

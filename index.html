@@ -831,6 +831,11 @@
     .hero-copy .eyebrow{font-size:.75rem;letter-spacing:.065em;max-width:34em}
     .hero .cta-group{align-items:stretch;margin-top:4px}
   }
+  /* Kicker em duas linhas no celular (pedido do usuário, 24/09): o tamanho acompanha a largura, até 12px
+     (~10,5px em 375px). Abaixo de 360px ele já não cabe em duas linhas legíveis e continua com 12px, em três. */
+  @media(min-width:360px) and (max-width:560px){
+    .hero-copy .eyebrow{font-size:clamp(10.25px,calc((100vw - 64px) / 29.5),12px)}
+  }
 
   /* Perguntas — painel navy com a composição de portas escolhida pelo usuário. */
   .pain-diagnostic{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);max-width:1112px;min-height:0;margin:0 auto;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:32px;overflow:hidden;box-shadow:none;scroll-margin-top:72px}

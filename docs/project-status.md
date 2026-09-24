@@ -4,6 +4,14 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Hero: kicker em duas linhas no celular — 24/09/2026
+
+- O usuário perguntou se havia um `<br>` em “Para quem se formou em / instrumentação…” no celular. Não havia: a quebra vinha do `text-wrap: balance` com 12px. Sem o balance, “mercado...” ficaria sozinho na última linha.
+- A pedido dele (“e se diminuir para ficar em duas linhas?”), de 360 a 560px o kicker usa `font-size: clamp(10.25px, calc((100vw - 64px) / 29.5), 12px)`: 10,25px em 360, ~10,5 em 375, ~11,05 em 390 e 12px a partir de ~420. Família, peso e espaçamento continuam os mesmos.
+- A divisão por 29,5, e não por 27,8 (o ajuste exato), deixa margem para o arredondamento da largura das letras. Em 390px, com o ajuste exato, a linha passava 2,5px e voltava a ter três linhas.
+- Abaixo de 360px continua com 12px, em três linhas: em duas, o texto precisaria de ~9px.
+- Verificado em 320, 359, 360, 375, 384, 390, 393, 400, 412, 414, 430, 480 e 560px. Sem overflow.
+
 ## Hero: mais respiro entre o botão e o vídeo — 24/09/2026
 
 - Pedido do usuário (print com setas): o vídeo e o texto ao lado estavam próximos demais do botão “QUERO PARTICIPAR”. Ele pediu mais respiro sem mexer no desfoque.
