@@ -937,6 +937,52 @@
  #mapa .map-action .btn{width:100%;padding-inline:16px}
 }
 
+/* Mapa (24/09, referências do usuário): painel de vidro (print 1) e percurso luminoso (print 2).
+   Fontes, tamanhos e pesos iguais aos de antes; só superfície, brilho, pontos e ícones. */
+#mapa::before{background:radial-gradient(700px 420px at 12% 18%,rgba(42,210,193,.10),transparent 65%),radial-gradient(760px 480px at 90% 86%,rgba(40,116,252,.10),transparent 65%)}
+#mapa > .wrap{background:radial-gradient(120% 55% at 50% 0,rgba(42,210,193,.09),transparent 62%),linear-gradient(180deg,rgba(29,40,100,.62),rgba(12,18,54,.74));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(42,210,193,.22);
+  box-shadow:0 0 70px -24px rgba(42,210,193,.4),inset 0 1px 0 rgba(255,255,255,.07),inset 0 0 90px -50px rgba(42,210,193,.35),0 50px 100px -50px rgba(0,0,0,.9)}
+/* Borda que acende nos cantos (mais forte no alto à esquerda), como no vidro da referência. */
+#mapa > .wrap::after{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(69,228,211,.95),rgba(42,210,193,.18) 28%,rgba(42,210,193,.06) 55%,rgba(42,210,193,.18) 80%,rgba(69,228,211,.6));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+/* Filete curto acima do título. */
+#mapa .sec-head::before{content:"";display:block;width:64px;height:2px;margin:0 auto 26px;background:linear-gradient(90deg,transparent,var(--mint),transparent)}
+/* Percurso: linha com brilho, nós com anel aceso, sem o cadeado. */
+#mapa .ecg-line{stroke-width:2.5;filter:drop-shadow(0 0 5px rgba(42,210,193,.75))}
+#mapa .ecg-pulse{opacity:1;filter:drop-shadow(0 0 6px var(--mint-bright))}
+#mapa .node .disc,#mapa .node:hover .disc{background:radial-gradient(circle at 50% 35%,#172462,var(--bg-2) 72%);border:1.5px solid var(--mint-bright);box-shadow:0 0 18px rgba(42,210,193,.5),0 0 0 5px rgba(42,210,193,.06),inset 0 0 14px rgba(42,210,193,.28)}
+#mapa .node .disc svg{display:none}
+#mapa .node .num{text-shadow:0 0 14px rgba(69,228,211,.45)}
+/* Haste pontilhada com um ponto entre o nó e o rótulo. */
+#mapa .node::after{content:"";position:absolute;left:50%;top:calc(100% + 4px);width:6px;height:15px;transform:translateX(-50%);
+  background:linear-gradient(var(--mint) 50%,transparent 0) 50% 0/1px 3px repeat-y,radial-gradient(circle,var(--mint-bright) 2px,transparent 2.6px) 50% 100%/6px 6px no-repeat;
+  -webkit-mask:linear-gradient(#000 0 0) 50% 0/6px 10px no-repeat,linear-gradient(#000 0 0) 50% 100%/6px 6px no-repeat;mask:linear-gradient(#000 0 0) 50% 0/6px 10px no-repeat,linear-gradient(#000 0 0) 50% 100%/6px 6px no-repeat}
+#mapa .node .lbl{top:calc(100% + 24px)}
+/* As 3 perguntas em linhas, com seta no fim. */
+#mapa .map-q span{display:flex;align-items:center;justify-content:space-between;gap:16px}
+#mapa .map-q span:first-child{border-top:1px solid rgba(135,148,172,.25);padding-top:11px}
+#mapa .map-q span:last-child{border-bottom:1px solid rgba(135,148,172,.25)}
+#mapa .map-q span::after{content:"";flex:none;width:18px;height:18px;background:var(--mint-bright);filter:drop-shadow(0 0 4px rgba(42,210,193,.6));
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat}
+@media(min-width:761px){
+ /* Pontos nas pontas da linha (26% e 66% da altura, como no traçado); os marcadores dos rótulos saem. */
+ #mapa .ecg-track::before,#mapa .ecg-track::after{content:"";position:absolute;z-index:1;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+ #mapa .ecg-track::before{left:0;top:26%;background:var(--cream);box-shadow:0 0 10px 2px rgba(236,240,248,.45)}
+ #mapa .ecg-track::after{left:100%;top:66%;background:var(--mint-bright);box-shadow:0 0 14px 4px rgba(42,210,193,.7)}
+ #mapa .map-endpoint .pin{display:none}
+ /* Fio vertical entre as duas colunas de texto. */
+ #mapa .map-outcome{position:relative}
+ #mapa .map-outcome::before{content:"";position:absolute;top:0;bottom:0;left:-32px;width:1px;background:linear-gradient(transparent,rgba(135,148,172,.3) 10%,rgba(135,148,172,.3) 90%,transparent)}
+}
+@media(min-width:761px) and (max-width:1000px){
+ #mapa .map-outcome::before{left:-18px}
+}
+@media(max-width:760px){
+ #mapa .sec-head::before{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){#mapa .ecg-pulse{display:none}}
+
 /* Como funciona: capas próprias e leitura em duas etapas. */
 #como-funciona{padding:88px 0}
 #como-funciona .sec-head{max-width:none;text-align:left;margin:0 0 40px}
@@ -1819,7 +1865,7 @@
       </div>
       <div class="map-action reveal">
       <span class="map-note">Os 6 passos serão revelados exclusivamente no encontro ao vivo.</span>
-      <a href="#oferta" class="btn">QUERO DESCOBRIR</a>
+      <a href="#oferta" class="btn">QUERO DESCOBRIR <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>

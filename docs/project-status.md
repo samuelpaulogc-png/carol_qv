@@ -4,6 +4,18 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa: painel de vidro e percurso luminoso — 24/09/2026
+
+- **Pedido do usuário**, com duas versões geradas: do print 1, o layout do cartão (glassmorphism); do print 2, o estilo interno (os 6 passos e as 3 perguntas com ícone no fim). A seção de baixo dos prints foi ignorada, como pedido.
+- **Aplicado:**
+  - Painel translúcido com desfoque, borda com gradiente turquesa mais forte nos cantos, brilho interno e externo, filete acima do título, e luzes suaves no fundo da seção para o vidro aparecer.
+  - Linha do ECG com brilho; nós com anel aceso, fundo radial e número com leve brilho; cadeado removido, como na referência.
+  - Haste pontilhada com ponto entre cada nó e o rótulo; pontos acesos nas pontas da linha no computador.
+  - Fio vertical entre as colunas; perguntas com linha em cima e embaixo e chevron turquesa no fim; seta no botão.
+- **Verificado:**
+  - Fontes, tamanhos e pesos iguais aos de antes (perguntas 18px/500, números 24px/500).
+  - Sem overflow e sem erros em 1358, 900 e 375px.
+
 ## Dor: “o certificado não responde” e setas em anel — 24/09/2026
 
 - Pedido do usuário, com imagem de referência: estilizar “o certificado não responde” e as setinhas das perguntas.

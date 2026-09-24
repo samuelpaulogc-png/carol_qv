@@ -75,6 +75,12 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 
 ### Mapa (`#mapa`)
 - Painel integrado: título, introdução, ECG horizontal com 6 nós travados no desktop, vertical no celular, reflexões/perguntas e CTA. Não executar scripts de preview que sobrescrevam a página.
+- **Referências do usuário (24/09):** o painel virou vidro (print 1): navy translúcido com desfoque, borda turquesa que acende nos cantos, brilho interno e um filete curto acima do título.
+  - O percurso segue o print 2: linha com brilho, nós com anel turquesa aceso **sem o cadeado**, e uma haste com ponto até “PASSO 0X”. No computador, pontos acesos nas pontas da linha (os marcadores dos rótulos saem).
+  - Fio vertical entre as duas colunas de texto.
+  - As 3 perguntas em linhas com seta turquesa no fim.
+  - “QUERO DESCOBRIR” ganhou seta.
+  - Fontes, tamanhos e pesos iguais aos de antes. O cadeado saiu por seguir a referência; volta removendo `#mapa .node .disc svg{display:none}`.
 
 ### Como funciona (`#como-funciona`)
 - Capas fotográficas geradas no ChatGPT com a Carol como referência (estilo colagem P&B com retícula, grade fina e neon turquesa): `assets/images/how-aulas.webp` e `how-encontro.webp`, com versões `-900` via `srcset`. Prompts em `human-output/image/gancho-como-funciona/`.
