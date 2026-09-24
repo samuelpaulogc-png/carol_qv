@@ -36,6 +36,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - Nunca revele nomes ou conteúdo dos 6 passos. Não invente métricas nem altere condições comerciais.
 
 ### Identidade
+- **NÃO ALTERE AS FONTES** (pedido expresso do usuário em 24/09: “senão vai quebrar a harmonia com o restante do texto”). Vale para família, tamanho, peso e espaçamento. Protótipos gerados por IA podem vir com outra fonte (o de 24/09 trazia título serifado): copie o layout, nunca a tipografia.
 - Fontes fixas: Bricolage Grotesque (títulos), Fraunces itálico (destaques), Hanken Grotesk (corpo). Use os tokens existentes (`--bg`, `--bg-2`, `--surface`, `--navy`, `--line`, `--cream`, `--muted`, `--mint`, `--mint-bright`, `--mint-deep`, `--virada`, `--copy-readable`, `--ease-out`).
 - **A página inteira é escura.** Classes `.light`, `.gelo` e `.branco` são nomes históricos. O `AGENTS.md` ainda fala em “ritmo dark/light” — isso está desatualizado; não restaure fundos claros.
 - Verde-menta (`--virada`) só em sinais de avanço (destino do mapa, “acesso imediato”). Destaques gerais em turquesa.
@@ -50,11 +51,21 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 
 ### Letreiro e hero
 - Letreiro fixo no topo em **turquesa** (`--mint`, texto navy `--bg`, contraste 10,2:1) desde 13/09; antes era verde-menta (`--virada`), trocado a pedido do usuário pela opção 1 de `audit-visual/topbar-options/`. Hero com fundo `assets/images/Image - Hero.png` preservado por pedido expresso; CTA no padrão dos botões. Sem botão flutuante.
-- Desde 24/09 a hero tem só kicker, título, subtítulo e botão. Acima de 760px ela tem altura mínima `max(56.28vw, 720px)` (proporção da foto 1672×941) com o texto centralizado: sem isso a hero encurtaria, a cabeça da Carol subiria até o letreiro e o vídeo cobriria os braços dela. Entre 561 e 760px, `padding-bottom:96px` para o vídeo não cobrir “Vagas limitadas…”.
+- **Layout do protótipo do usuário (24/09):**
+  - Letreiro: um ícone de linha antes de cada informação (`.mq-item` + `svg.mq-ic`: ao vivo, calendário, relógio, monitor, capelo) e separador também entre “Encontro ao vivo” e a data.
+  - Hero: kicker com filete vertical turquesa, botão “QUERO PARTICIPAR” com seta (`svg.btn-ic`, avança 3px no hover). O texto ocupa no máximo 60% da largura, porque à direita fica a Carol.
+  - Foto: deixou de ser o fundo da seção e virou a camada `.hero::before`, com altura `--hero-photo: max(56.28vw, 720px)` (proporção 1672×941) e dissolução para o navy a partir de 62%. A Carol mantém o enquadramento em qualquer largura. Até 560px continua a `Hero_Mobile1.webp` abaixo do texto.
+  - O bloco do vídeo fica **dentro da hero**, na primeira dobra (ver abaixo). Acima de 760px, `.hero-top` tem altura mínima para o vídeo começar logo abaixo dos braços da Carol (69% da foto; os braços terminam em 65%).
 
 ### Vídeo + diagnóstico
 - Vídeo ainda é placeholder (botão de play dispara `alert()` — remover antes de publicar). Imagem do diagnóstico: `assets/images/dor-portas-recorte.png`. Orbe com arco animado acima do título “A formação te ensinou a instrumentar…”.
-- Abaixo do vídeo (`.video-copy`, 24/09): título “Entenda em poucos minutos…” e os dois parágrafos vindos da hero (`.video-desc`, mesma cor da hero, termos `.mk` sem destaque). Acima de 960px o botão fica à direita, alinhado à última linha do texto; até 960px desce para baixo do texto (largura total até 760px).
+- Bloco do vídeo (`.hero .video-block`, 24/09, dentro da hero):
+  - Acima de 960px, duas colunas: vídeo 16:9 à esquerda, com borda turquesa fina e vinheta. À direita, filete de 32px, título “Entenda em poucos minutos…”, os dois parágrafos vindos da hero (`.video-desc`, termos `.mk` sem destaque) e o botão contornado “QUERO CONHECER OS 6 PASSOS” com seta. O título fica no alto e o botão na base do vídeo.
+  - Até 960px tudo empilha; até 760px o botão ocupa a largura toda; até 560px o vídeo sobe 56px sobre a base da foto da Carol.
+  - Tamanhos e cores de texto são os de antes.
+  - Capa do vídeo, quando houver: `style="--video-poster:url('…')"` no `.video-frame`.
+  - A seção da dor começa depois da hero, sem margem negativa; o respiro vem do `padding-bottom` da hero.
+  - Contraste medido sobre a foto: título ≥6,4:1, parágrafos ≥9,9:1.
 
 ### Mapa (`#mapa`)
 - Painel integrado: título, introdução, ECG horizontal com 6 nós travados no desktop, vertical no celular, reflexões/perguntas e CTA. Não executar scripts de preview que sobrescrevam a página.

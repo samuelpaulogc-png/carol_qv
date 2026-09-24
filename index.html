@@ -211,6 +211,9 @@
   }
   .marquee span b{color:var(--cream);font-weight:700}
   .marquee .sep{color:var(--mint);margin:0 26px}
+  /* cada informação com o seu ícone de linha, na cor do texto */
+  .mq-item{display:inline-flex;align-items:center;gap:10px}
+  .mq-ic{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   @keyframes marq{to{transform:translateX(-50%)}}
 
   /* ===== HERO (duas colunas: texto + imagem) ===== */
@@ -284,8 +287,6 @@
 
   /* video */
   .video-block{margin-top:34px;text-align:center}
-  .pain .video-intro{padding-bottom:72px}
-  .pain .video-block{margin-top:0}
   .pain .pain-ecg{margin:0 auto 52px}
   .video-title{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--cream);margin-bottom:20px}
   .video-frame{
@@ -454,7 +455,7 @@
   /* ===== Ritmo de fundos por seção — navy base ↔ navy band (padrão da referência) =====
      base  = var(--bg)   #080C22
      band  = var(--bg-2) #0C1236 + border-block 1px var(--line) */
-  .hero      {background:#080C22 url('assets/images/Image - Hero.webp') center/cover no-repeat}
+  .hero      {background:#080C22}
   .pain      {background:var(--bg)}
   .sec-how   {background:var(--bg)}
   .sec-proof {background:var(--bg)}
@@ -492,7 +493,6 @@
     .split{grid-template-columns:1fr;gap:48px}
     .carol{order:2}
     .sec{padding:66px 0}
-    .pain .video-intro{padding-bottom:54px}
     .pain .pain-ecg{margin-bottom:36px}
 
 
@@ -555,7 +555,6 @@
   .d1{--reveal-delay:40ms}.d2{--reveal-delay:80ms}.d3{--reveal-delay:120ms}.d4{--reveal-delay:0ms}
 
   /* Fotografias do banco indicado no briefing. */
-  .pain .video-intro{padding-bottom:var(--space-6)}
   /* Composição centrada: orbe em cima, título embaixo — o orbe dissolve na base
      e o título sobe até encostar nele, sem que um cubra o outro. */
   .pain-concept{--orb:min(420px,76vw);display:block;min-height:0;margin:64px auto 64px;max-width:1080px;text-align:center;overflow:visible}
@@ -813,6 +812,8 @@
   /* Hero — hierarquia de texto e CTA, mantendo o fundo existente. */
   .hero-copy{gap:24px}
   .hero-copy .eyebrow{max-width:600px;font-size:.8125rem;font-weight:600;letter-spacing:.075em;line-height:1.55;text-wrap:balance;color:var(--cream)}
+  /* protótipo de 24/09: kicker com filete vertical turquesa (tipografia inalterada) */
+  .hero-copy .eyebrow{padding-left:14px;border-left:2px solid var(--mint)}
   .hero .sub{line-height:1.5}
   .hero .sub .mk{color:inherit;font-weight:inherit}
   .hero .cta-group{margin-top:8px;gap:8px;align-items:flex-start}
@@ -820,6 +821,10 @@
   @media(min-width:561px) and (max-width:960px){
     .hero-copy{max-width:60%;gap:20px}
     .hero .sub{font-size:19px}
+  }
+  /* o texto não passa de 60% da largura: à direita fica a Carol */
+  @media(min-width:961px){
+    .hero-copy{max-width:60%}
   }
   @media(max-width:560px){
     .hero-copy{gap:24px}
@@ -1395,39 +1400,53 @@
 }
 </style>
 <style id="css-proposta">
-/* ===== abertura (proposta aplicada em 15/09, variações A) ===== */
-/* ---------- 1. Hero: a foto se dissolve no fundo, sem corte seco ---------- */
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,12,34,0) 0%,rgba(8,12,34,.7) 58%,#080C22 100%)}
+/* ===== abertura (proposta aplicada em 15/09, variações A; hero + vídeo refeitos em 24/09 pelo protótipo do usuário) ===== */
+/* ---------- 1. Hero: a foto é uma camada no topo que se dissolve no navy ---------- */
+/* A camada segue a proporção da foto (1672×941), nunca abaixo de 720px: a Carol mantém o enquadramento em qualquer
+   largura, e o vídeo, que vem logo abaixo do texto, cai sobre a parte da foto que já escureceu. */
+@media (min-width:561px){
+  .hero{--hero-photo:max(56.28vw,720px)}
+  .hero::before{content:"";position:absolute;left:0;right:0;top:0;height:var(--hero-photo);z-index:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(8,12,34,0) 62%,rgba(8,12,34,.72) 76%,rgba(8,12,34,.94) 88%,#080C22 100%),
+      url('assets/images/Image - Hero.webp') center top/cover no-repeat}
+}
 /* ---------- 2. Mesmo fundo contínuo, sem brilho próprio na seção seguinte ---------- */
-/* flow-root: impede que a margem negativa do vídeo "vaze" e suba a seção inteira por cima da foto */
 .pain{display:flow-root;background:#080C22;padding-top:0;z-index:2}
 .pain.band::before{display:none}
-/* ---------- 3. Vídeo: ponte entre a hero e a dor ---------- */
-.pain .video-intro{position:relative}
-.pain .video-block{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"frame frame" "copy cta";align-items:end;column-gap:32px;row-gap:22px;margin:0 auto;text-align:left}
-.pain .video-frame{grid-area:frame;width:100%;max-width:none;margin:0;border-radius:16px;border:1px solid rgba(236,240,248,.12);
-  background:#0C1236;box-shadow:0 48px 96px -48px rgba(0,0,0,.9)}
-.pain .video-frame .halo{background:radial-gradient(circle at 50% 45%,rgba(42,210,193,.07),transparent 60%)}
-.pain .play{box-shadow:none}
-.pain .play::before{content:none}
-/* Título do vídeo e, abaixo dele, os dois parágrafos que saíram da hero; o botão fecha o bloco à direita. */
-.pain .video-copy{grid-area:copy;display:grid;gap:12px}
-.pain .video-title{margin:0 0 4px;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82)}
-.pain .video-desc{max-width:62ch;font-size:1.0625rem;line-height:1.6;color:rgba(236,240,248,.84);text-wrap:pretty}
-/* mesmo tratamento da hero: os termos marcados não mudam de cor */
-.pain .video-desc .mk{color:inherit;font-weight:inherit}
-/* Até 960px o botão desce para baixo do texto: ao lado dele, a coluna de leitura ficava estreita demais. */
+/* ---------- 3. Vídeo na primeira dobra: vídeo à esquerda; filete, título, texto e botão à direita ---------- */
+.hero .video-block{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,1fr);
+  grid-template-areas:"frame copy" "frame cta";column-gap:clamp(32px,3.6vw,52px);row-gap:24px;margin:0;text-align:left}
+.hero .video-frame{grid-area:frame;align-self:center;width:100%;max-width:none;margin:0;border-radius:18px;
+  border:1px solid rgba(42,210,193,.28);background:var(--video-poster,none) center/cover no-repeat,#0C1236;
+  box-shadow:0 48px 96px -48px rgba(0,0,0,.95),0 0 0 6px rgba(42,210,193,.035)}
+/* vinheta: a capa, quando houver, escurece nas bordas e o play continua em destaque */
+.hero .video-frame::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(8,12,34,.55) 100%)}
+.hero .video-frame .halo{background:radial-gradient(circle at 50% 45%,rgba(42,210,193,.08),transparent 60%)}
+.hero .play{box-shadow:0 14px 40px -12px rgba(42,210,193,.55)}
+.hero .play::before{content:none}
+/* a coluna começa no alto do vídeo e o botão fecha na base dele */
+.hero .video-copy{grid-area:copy;align-self:start;display:grid;gap:12px}
+.hero .video-copy::before{content:"";width:32px;height:2px;margin-bottom:8px;background:var(--mint)}
+/* tamanhos e cores de texto iguais aos de antes: só a posição mudou */
+.hero .video-title{margin:0 0 4px;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82);text-wrap:balance}
+.hero .video-desc{max-width:62ch;font-size:1.0625rem;line-height:1.6;color:rgba(236,240,248,.84);text-wrap:pretty}
+/* os termos marcados não mudam de cor, como no texto de cima */
+.hero .video-desc .mk{color:inherit;font-weight:inherit}
+.hero .video-cta{grid-area:cta;align-self:end}
+/* botão secundário: contorno turquesa, não compete com o botão principal */
+.hero .video-cta .btn{background:transparent;color:var(--cream);border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 24px 14px 30px;font-size:.9375rem}
+@media(hover:hover) and (pointer:fine){.hero .video-cta .btn:hover{background:rgba(42,210,193,.1);border-color:var(--mint);color:var(--mint-bright);transform:none;box-shadow:none;filter:none}}
+.hero .video-cta .btn:active,.hero .video-cta .btn.is-pressed{transform:scale(.97)}
+/* seta dos botões: avança 3px no hover */
+.btn .btn-ic{flex:none;width:18px;height:18px;margin-right:-4px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--motion-press) var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.btn:hover .btn-ic{transform:translateX(3px)}}
+/* Até 960px tudo empilha: vídeo, texto e botão. */
 @media(max-width:960px){
-  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "copy" "cta"}
-  .pain .video-copy{margin-bottom:8px}
-  .pain .video-desc{font-size:1rem}
+  .hero .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "copy" "cta";row-gap:22px}
+  .hero .video-copy{margin-top:8px}
+  .hero .video-desc{font-size:1rem}
 }
-.pain .video-block>div:last-child{grid-area:cta;margin-top:0!important}
-/* botão secundário: mesmo texto, contorno, não compete com o CTA da hero */
-.pain .video-block .btn{background:transparent;color:#ECF0F8;border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 26px;font-size:.9375rem}
-@media(hover:hover) and (pointer:fine){.pain .video-block .btn:hover{background:rgba(42,210,193,.1);border-color:#2AD2C1;color:#45E4D3;transform:none;box-shadow:none;filter:none}}
-.pain .video-block .btn:active,.pain .video-block .btn.is-pressed{transform:scale(.97)}
 /* ---------- 4. Sem ECG divisório nem luz girando no aro ---------- */
 .pain .pain-ecg{display:none}
 .pain .orb-arc-track{display:none}
@@ -1448,14 +1467,10 @@
 .motion-ready .pain-question-groups.tx-in .pain-question-card p::before{transition:transform 450ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 120ms)}
 /* ---------- Desktop e tablet: zigue-zague no mesmo eixo da hero ---------- */
 @media (min-width:761px){
-  .hero{padding-bottom:clamp(128px,11vw,168px)}
-  /* Sem os parágrafos, a hero encurtaria: a foto subiria até o letreiro e o vídeo cobriria os braços da Carol.
-     A altura mínima segue a proporção da foto (1672×941), nunca abaixo de 720px (senão, até ~1280px, a foto
-     encolhe e a Carol encosta no título), e o texto fica centralizado nesse espaço. */
-  .hero{min-height:max(56.28vw,720px);display:grid;align-content:center}
-  .hero>.wrap{width:100%}
-  .pain .video-intro{margin-top:calc(-1 * clamp(88px,8vw,120px));padding-bottom:clamp(96px,9vw,128px)}
-  .pain .video-block{max-width:880px}
+  /* A linha do vídeo começa logo abaixo dos braços da Carol (65% da altura da foto): o texto ocupa no mínimo esse
+     espaço (menos o respiro do topo e os 40px até o vídeo) e fica centralizado nele. */
+  .hero{--hero-pad:clamp(40px,4vw,56px);padding:var(--hero-pad) 0 clamp(96px,9vw,128px)}
+  .hero-top{min-height:calc(var(--hero-photo) * .69 - var(--hero-pad) - 40px);align-content:center}
   /* orbe à esquerda, título à direita (mesma grade 5/7 do diagnóstico, espelhada) */
   .pain .pain-concept{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;column-gap:clamp(40px,6vw,88px);
     max-width:none;min-height:0;margin:0 0 clamp(72px,7vw,112px);text-align:left;overflow:visible}
@@ -1471,24 +1486,19 @@
 }
 /* ---------- Celular ---------- */
 @media (max-width:760px){
-  .pain .video-intro{margin-top:-56px;padding-bottom:64px}
-  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "copy" "cta";row-gap:16px}
-  .pain .video-block>div:last-child{width:100%}
-  .pain .video-block .btn{width:100%}
+  .hero{padding-bottom:64px}
+  .hero .video-block{row-gap:16px}
+  .hero .video-cta .btn{width:100%;padding-inline:18px}
   .pain .pain-concept{--orb:min(300px,76vw);margin:0 0 48px;text-align:left}
   .pain .concept-orb{margin:0}
   .pain .pain-concept-copy{margin-top:calc(var(--orb) * -.24)}
   .pain .pain-concept h2{margin:0;max-width:none;text-align:left}
   .pain .pain-diagnostic-copy{padding-bottom:0}
 }
-/* Entre 561 e 760px o vídeo sobe 56px sobre a hero, que só tinha 40px de respiro: cobria "Vagas limitadas...". */
-@media (min-width:561px) and (max-width:760px){
-  .hero{padding-bottom:96px}
-}
 @media (max-width:560px){
-  .hero::after{display:none}
-  /* no celular a hero não tem foto de fundo */
+  /* no celular a hero não tem foto de fundo; o vídeo sobe 56px sobre a base da foto da Carol */
   .hero-mobile-art{margin-bottom:0}
+  .hero .video-block{margin-top:-96px}
 }
 /* Controle único para os movimentos automáticos; feedback de teclado imediato. */
 .btn,.play,.rail-btn,.shot-zoom-nav,.shot-zoom-close,.motion-toggle{touch-action:manipulation}
@@ -1504,9 +1514,9 @@
  .is-pressed{transform:none!important}
  .topbar{position:relative}
  .marquee{width:100%;white-space:normal}
- .marquee>span{min-width:0;width:100%;flex-wrap:wrap;justify-content:center;gap:4px 10px;padding:10px 16px;font-size:.6875rem;letter-spacing:.04em}
+ .marquee>span{min-width:0;width:100%;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:10px 16px;font-size:.6875rem;letter-spacing:.04em}
  .marquee>span+span,.marquee .sep{display:none}
- .btn:active,.btn:hover,.pain .video-block .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ovb-row:hover .ovb-art img,.offer-sec .ov-buy .btn:hover svg{transform:none}
+ .btn:active,.btn:hover,.btn:hover .btn-ic,.hero .video-cta .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ovb-row:hover .ovb-art img,.offer-sec .ov-buy .btn:hover svg{transform:none}
  .sec-proof .rail-btn:hover .rail-arrow svg:first-child{transform:none}
  .sec-proof .rail-btn:hover .rail-arrow svg+svg{visibility:hidden}
  .btn,.shot-zoom-close,.shot-zoom-nav,.sec-proof .rail-btn{transition:color 120ms ease,border-color 120ms ease!important}
@@ -1554,9 +1564,10 @@
 
 <!-- ===== TOP MARQUEE ===== -->
 <div class="topbar">
+  <!-- Cada informação com um ícone; a segunda repetição existe só para o letreiro rodar sem salto. -->
   <div class="marquee">
-    <span>ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
-    <span aria-hidden="true">ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
+    <span><span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg>ENCONTRO AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></svg>22 DE OUTUBRO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20H</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>ONLINE E AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6 11.5v4.5c3.3 2.7 8.7 2.7 12 0v-4.5M22 9.5v5"/></svg>ACESSO IMEDIATO ÀS 3 AULAS</span> <span class="sep">•</span></span>
+    <span aria-hidden="true"><span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg>ENCONTRO AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></svg>22 DE OUTUBRO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20H</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>ONLINE E AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6 11.5v4.5c3.3 2.7 8.7 2.7 12 0v-4.5M22 9.5v5"/></svg>ACESSO IMEDIATO ÀS 3 AULAS</span> <span class="sep">•</span></span>
   </div>
   <button class="motion-toggle" type="button" aria-label="Pausar animações automáticas" aria-pressed="false" title="Pausar animações automáticas" hidden>
     <svg class="pause-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
@@ -1577,7 +1588,7 @@
         <h1 class="reveal d1">Você se formou. Mas ainda não conseguiu espaço no <span class="serif accent u-dash">centro cirúrgico</span>?</h1>
         <p class="sub reveal d2">Descubra os <span class="mk">6 passos</span> para sair do zero e construir o caminho até a sua <span class="mk">primeira oportunidade</span> na instrumentação cirúrgica.</p>
         <div class="cta-group">
-          <div class="hero-cta-slot"><a href="#oferta" class="btn">QUERO PARTICIPAR</a></div>
+          <div class="hero-cta-slot"><a href="#oferta" class="btn">QUERO PARTICIPAR <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div>
           <span class="microcopy">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
             Vagas limitadas para o encontro ao vivo
@@ -1585,15 +1596,10 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-
-<!-- ===== BLOCO 02 — VÍDEO + A DOR ===== -->
-<section class="sec pain band band-deep">
-  <div class="wrap video-intro">
+    <!-- Vídeo na primeira dobra (24/09, protótipo do usuário): vídeo à esquerda; à direita, título, os dois
+         parágrafos que saíram do texto da hero e o botão. No celular tudo empilha abaixo da foto da Carol. -->
     <div class="video-block reveal d4">
+      <!-- Capa do vídeo, quando houver: style="--video-poster:url('assets/images/arquivo.webp')" neste div. -->
       <div class="video-frame">
         <div class="halo"></div>
         <!-- INSERIR VÍDEO PRINCIPAL AQUI (substituir este bloco pelo embed/iframe) -->
@@ -1602,17 +1608,22 @@
         </button>
         <div class="ph">Vídeo principal</div>
       </div>
-      <!-- Os dois parágrafos vieram da hero (24/09, pedido do usuário): ficam entre o título do vídeo e o botão. -->
       <div class="video-copy">
         <p class="video-title">Entenda em poucos minutos o que é o Gancho da Virada</p>
         <p class="video-desc">No <span class="mk">Gancho da Virada</span>, você vai conhecer o mapa que eu gostaria de ter recebido quando comecei: uma jornada construída a partir da minha própria trajetória e que hoje utilizo para direcionar outros instrumentadores.</p>
         <p class="video-desc">Você recebe acesso imediato a <span class="mk">3 aulas de preparação</span> e participa de um <span class="mk">encontro ao vivo</span>, onde eu vou revelar e ensinar os 6 Passos da Virada.</p>
       </div>
-      <div style="margin-top:30px">
-        <a href="#mapa" class="btn">QUERO CONHECER OS 6 PASSOS</a>
+      <div class="video-cta">
+        <a href="#mapa" class="btn">QUERO CONHECER OS 6 PASSOS <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
+</section>
+
+
+
+<!-- ===== BLOCO 02 — A DOR ===== -->
+<section class="sec pain band band-deep">
   <div class="wrap">
     <div class="hero-ecg pain-ecg reveal" aria-hidden="true">
       <svg viewBox="0 0 600 64" preserveAspectRatio="none">

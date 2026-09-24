@@ -4,7 +4,28 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Hero + vídeo no layout do protótipo do usuário — 24/09/2026
+
+- O usuário gerou no ChatGPT um protótipo em imagem (prompt escrito nesta sessão) e pediu o layout “na linha desse”. Instrução: implementar só o código e não se preocupar com fundos.
+- Durante o trabalho, o usuário pediu: **“NÃO ALTERE AS FONTES. Senão vai quebrar a harmonia com o restante do texto.”** O protótipo trazia o título em fonte serifada; ficou a Bricolage Grotesque. Os ajustes de tamanho e peso feitos no meio do caminho (kicker, subtítulo, texto do vídeo) foram desfeitos. Regra registrada no handoff.
+- **Do protótipo, aplicado:**
+  - ícones no letreiro;
+  - kicker com filete vertical turquesa;
+  - seta nos dois botões;
+  - vídeo na primeira dobra, em duas colunas (vídeo à esquerda; filete, título em itálico, parágrafos e botão contornado à direita, sob a Carol).
+- **Não aplicado (fundo/arte):** capa fotográfica do vídeo e as linhas curvas decorativas. Ficou o gancho `--video-poster` para a capa.
+- **Estrutura:**
+  - o bloco do vídeo saiu da seção da dor e foi para dentro da hero;
+  - a foto virou a camada `.hero::before` (altura `max(56.28vw,720px)`, dissolução a partir de 62%);
+  - `.hero-top` com altura mínima para o vídeo começar a 69% da foto, logo abaixo dos braços da Carol (que terminam em 65%);
+  - texto da hero limitado a 60% da largura;
+  - saíram as regras antigas `.pain .video-*`, `.video-intro`, `.hero::after`, a altura mínima anterior da hero e o `padding-bottom:96px` de 561–760px (não há mais sobreposição).
+- **Medido (1440px):** vídeo 622×350 a 32px abaixo dos braços. Em 1358px (tela do usuário) e 1920px, a mesma relação. Contraste do texto sobre a foto: título ≥6,4:1, parágrafos ≥9,9:1.
+- **Validação:** Chrome headless em 1920, 1440, 1358, 1280, 1024, 961, 900, 768, 600, 375 e 320px, com e sem movimento. Sem overflow e sem erros de console; sem JS, tudo visível. As seções da dor em diante mantêm a mesma geometria, elemento por elemento.
+
 ## Hero: parágrafos movidos para o bloco do vídeo — 24/09/2026
+
+- Substituído no mesmo dia pelo layout do protótipo (entrada acima). Mantido o registro da autorização da mudança de copy.
 
 - Pedido expresso do usuário (com print): tirar da hero “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” e colocá-los depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”. Texto e marcação idênticos.
 - **Bloco do vídeo:** `.video-copy` reúne o título e os dois `p.video-desc` (17px no desktop, 16px até 960px, cor `rgba(236,240,248,.84)` como na hero; os `.mk` continuam sem destaque). Acima de 960px: texto à esquerda (até 62ch) e botão à direita, alinhado à base do texto. Até 960px o botão desce para baixo do texto. No DOM o vídeo vem antes do texto, na mesma ordem em que aparece na tela.
