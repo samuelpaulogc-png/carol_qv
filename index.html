@@ -211,6 +211,9 @@
   }
   .marquee span b{color:var(--cream);font-weight:700}
   .marquee .sep{color:var(--mint);margin:0 26px}
+  /* cada informação com o seu ícone de linha, na cor do texto */
+  .mq-item{display:inline-flex;align-items:center;gap:10px}
+  .mq-ic{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   @keyframes marq{to{transform:translateX(-50%)}}
 
   /* ===== HERO (duas colunas: texto + imagem) ===== */
@@ -225,8 +228,6 @@
   .hero-mobile-art{display:none}
   .hero h1{font-size:54px;line-height:1.04;max-width:700px}
   .hero .sub{font-size:21px;color:var(--cream);max-width:600px;font-weight:500}
-  .hero .desc{font-size:16.5px;line-height:1.55;color:var(--muted);max-width:600px}
-  .hero .desc + .desc{margin-top:-8px}
   /* sublinhado contínuo em ponto estratégico da headline */
   .u-dash{text-decoration:underline;text-decoration-style:solid;text-decoration-color:var(--mint);
     text-decoration-thickness:2px;text-underline-offset:8px}
@@ -286,8 +287,6 @@
 
   /* video */
   .video-block{margin-top:34px;text-align:center}
-  .pain .video-intro{padding-bottom:72px}
-  .pain .video-block{margin-top:0}
   .pain .pain-ecg{margin:0 auto 52px}
   .video-title{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--cream);margin-bottom:20px}
   .video-frame{
@@ -409,7 +408,6 @@
     background:rgba(42,210,193,.1);border:1px solid rgba(42,210,193,.32);color:var(--mint-bright);
     padding:9px 16px;border-radius:100px;
   }
-  .badge.mint{background:rgba(0,251,138,.1);border-color:rgba(0,251,138,.32);color:var(--virada)}
   .how-cta{text-align:center;margin-top:44px}
 
   /* ===== FOR WHOM + CAROL ===== */
@@ -456,7 +454,7 @@
   /* ===== Ritmo de fundos por seção — navy base ↔ navy band (padrão da referência) =====
      base  = var(--bg)   #080C22
      band  = var(--bg-2) #0C1236 + border-block 1px var(--line) */
-  .hero      {background:#080C22 url('assets/images/Image - Hero.webp') center/cover no-repeat}
+  .hero      {background:#080C22}
   .pain      {background:var(--bg)}
   .sec-how   {background:var(--bg)}
   .sec-proof {background:var(--bg)}
@@ -494,7 +492,6 @@
     .split{grid-template-columns:1fr;gap:48px}
     .carol{order:2}
     .sec{padding:66px 0}
-    .pain .video-intro{padding-bottom:54px}
     .pain .pain-ecg{margin-bottom:36px}
 
 
@@ -518,7 +515,6 @@
     }
     .hero h1{font-size:33px;line-height:1.04}
     .hero .sub{font-size:18.5px}
-    .hero .desc{font-size:15.5px}
     .pain-concept h2{font-size:2.2rem}
 
 
@@ -558,7 +554,6 @@
   .d1{--reveal-delay:40ms}.d2{--reveal-delay:80ms}.d3{--reveal-delay:120ms}.d4{--reveal-delay:0ms}
 
   /* Fotografias do banco indicado no briefing. */
-  .pain .video-intro{padding-bottom:var(--space-6)}
   /* Composição centrada: orbe em cima, título embaixo — o orbe dissolve na base
      e o título sobe até encostar nele, sem que um cubra o outro. */
   .pain-concept{--orb:min(420px,76vw);display:block;min-height:0;margin:64px auto 64px;max-width:1080px;text-align:center;overflow:visible}
@@ -719,7 +714,6 @@
   @media(max-width:560px){
     .hero{padding:28px 0 0}
     .hero-copy{gap:20px}
-    .hero .desc+.desc{margin-top:0}
     .hero .sub{line-height:1.5}
     .hero .cta-group{align-items:stretch;width:100%}
     .hero-cta-slot .btn{width:100%}
@@ -817,22 +811,40 @@
   /* Hero — hierarquia de texto e CTA, mantendo o fundo existente. */
   .hero-copy{gap:24px}
   .hero-copy .eyebrow{max-width:600px;font-size:.8125rem;font-weight:600;letter-spacing:.075em;line-height:1.55;text-wrap:balance;color:var(--cream)}
+  /* protótipo de 24/09: kicker com filete vertical turquesa (tipografia inalterada) */
+  .hero-copy .eyebrow{padding-left:14px;border-left:2px solid var(--mint)}
   .hero .sub{line-height:1.5}
-  .hero .sub .mk,.hero .desc .mk{color:inherit;font-weight:inherit}
-  .hero .desc{font-size:17px;line-height:1.6;color:rgba(236,240,248,.84)}
-  .hero .desc+.desc{margin-top:-12px}
+  .hero .sub .mk{color:inherit;font-weight:inherit}
   .hero .cta-group{margin-top:8px;gap:8px;align-items:flex-start}
-  .hero .microcopy{font-size:.8125rem;line-height:1.5}
+  /* CTA integrado: ação turquesa e aviso na base navy, dentro do mesmo link. */
+  .hero .hero-cta-slot{width:340px;max-width:100%}
+  .hero .hero-enroll{display:flex;flex-direction:column;gap:0;width:100%;padding:0;overflow:hidden;border:1px solid rgba(42,210,193,.35);border-radius:22px;background:#0B1830;box-shadow:0 14px 32px -18px rgba(42,210,193,.38)}
+  .hero .hero-enroll-main{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:66px;padding:20px 24px;background:linear-gradient(180deg,var(--mint-bright),var(--mint) 55%,var(--mint-deep));box-shadow:inset 0 1px 0 rgba(255,255,255,.38)}
+  .hero .hero-availability{display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:11px 12px 12px;border-top:1px solid rgba(42,210,193,.15);font-family:'Hanken Grotesk',sans-serif;font-size:.75rem;font-weight:400;line-height:1.45;letter-spacing:.005em;text-transform:none;color:#B9C7DB}
+  .hero .hero-availability-copy{min-width:0;text-wrap:balance}
+  .hero .hero-availability-copy strong{font-weight:600;color:var(--cream)}
+  .hero .hero-enroll:focus-visible{outline:3px solid var(--mint-bright);outline-offset:5px}
   @media(min-width:561px) and (max-width:960px){
     .hero-copy{max-width:60%;gap:20px}
     .hero .sub{font-size:19px}
-    .hero .desc{font-size:16px}
+  }
+  /* o texto não passa de 60% da largura: à direita fica a Carol */
+  @media(min-width:961px){
+    .hero-copy{max-width:60%}
   }
   @media(max-width:560px){
     .hero-copy{gap:24px}
     .hero-copy .eyebrow{font-size:.75rem;letter-spacing:.065em;max-width:34em}
-    .hero .desc{font-size:16px;line-height:1.6}
     .hero .cta-group{align-items:stretch;margin-top:4px}
+    .hero .hero-cta-slot{width:100%}
+  }
+  @media(max-width:360px){
+    .hero .hero-enroll-main{font-size:1rem;padding-inline:18px}
+  }
+  /* Kicker em duas linhas no celular (pedido do usuário, 24/09): o tamanho acompanha a largura, até 12px
+     (~10,5px em 375px). Abaixo de 360px ele já não cabe em duas linhas legíveis e continua com 12px, em três. */
+  @media(min-width:360px) and (max-width:560px){
+    .hero-copy .eyebrow{font-size:clamp(10.25px,calc((100vw - 64px) / 29.5),12px)}
   }
 
   /* Perguntas — painel navy com a composição de portas escolhida pelo usuário. */
@@ -935,6 +947,103 @@
  #mapa .map-action .btn{width:100%;padding-inline:16px}
 }
 
+/* Mapa (24/09, referências do usuário): painel de vidro (print 1) e percurso luminoso (print 2).
+   Fontes, tamanhos e pesos iguais aos de antes; só superfície, brilho, pontos e ícones. */
+/* Luz só por dentro (ajuste do usuário, 24/09): fora do painel fica o navy da seção, sem brilho em volta.
+   A borda é uma linha fina única (a borda real fica transparente) que acende no canto de cima à esquerda, na
+   lateral esquerda, no meio da base e no canto de baixo à direita; a luz desses pontos entra no vidro. */
+/* Carta de navegação (24/09, imagem do usuário): lupa sobre o "você está aqui" à esquerda e rosa dos ventos
+   apontando para a direita. Fica POR BAIXO do navy translúcido de sempre (a imagem por cima ficou forte demais).
+   Largura inteira do card para não cortar a lupa nem a rosa; o alto e a base já vêm dissolvidos no próprio arquivo.
+   No celular, só a parte da lupa, atrás de “FORMAÇÃO” e do passo 1, como no computador. */
+#mapa > .wrap{background:radial-gradient(120% 55% at 50% 0,rgba(42,210,193,.08),transparent 62%),
+    linear-gradient(180deg,rgba(29,40,100,.9),rgba(12,18,54,.95)),
+    url('assets/images/mapa-carta.webp') 50% 30%/100% auto no-repeat;background-clip:padding-box;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 0 26px -4px rgba(42,210,193,.22),inset 0 0 90px -40px rgba(42,210,193,.25),0 40px 90px -50px rgba(0,0,0,.9)}
+#mapa > .wrap::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(280px 200px at 0 0,rgba(42,210,193,.16),transparent 70%),radial-gradient(110px 300px at 0 36%,rgba(42,210,193,.11),transparent 72%),
+    radial-gradient(260px 220px at 0 100%,rgba(42,210,193,.09),transparent 70%),radial-gradient(50% 90px at 50% 100%,rgba(69,228,211,.16),transparent 75%),
+    radial-gradient(300px 220px at 100% 100%,rgba(42,210,193,.18),transparent 70%)}
+#mapa > .wrap::after{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;padding:1px;pointer-events:none;
+  background:radial-gradient(220px 160px at 0 0,rgba(110,236,226,.95),transparent 72%),radial-gradient(70px 260px at 0 36%,rgba(69,228,211,.8),transparent 72%),
+    radial-gradient(36% 60px at 50% 100%,rgba(140,245,236,1),transparent 75%),radial-gradient(240px 170px at 100% 100%,rgba(69,228,211,.95),transparent 72%),
+    radial-gradient(200px 120px at 100% 0,rgba(69,228,211,.5),transparent 72%),rgba(42,210,193,.24);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+@media(max-width:760px){
+ #mapa > .wrap::before{background:radial-gradient(180px 150px at 0 0,rgba(42,210,193,.15),transparent 70%),radial-gradient(70px 240px at 0 22%,rgba(42,210,193,.1),transparent 72%),
+    radial-gradient(60% 70px at 50% 100%,rgba(69,228,211,.15),transparent 75%),radial-gradient(190px 160px at 100% 100%,rgba(42,210,193,.17),transparent 70%)}
+ #mapa > .wrap::after{background:radial-gradient(150px 120px at 0 0,rgba(110,236,226,.95),transparent 72%),radial-gradient(50px 220px at 0 22%,rgba(69,228,211,.8),transparent 72%),
+    radial-gradient(45% 50px at 50% 100%,rgba(140,245,236,1),transparent 75%),radial-gradient(160px 130px at 100% 100%,rgba(69,228,211,.95),transparent 72%),
+    radial-gradient(130px 100px at 100% 0,rgba(69,228,211,.5),transparent 72%),rgba(42,210,193,.24)}
+}
+#mapa .map-stage::before{background:none}
+/* Celular (24/09, imagem vertical do usuário): largura inteira no alto do card, com a lupa e a rosa dos ventos.
+   Navy por cima um pouco mais transparente que no computador (70–80%, prévia 3 escolhida pelo usuário depois de ver a 2).
+   A base da imagem vem dissolvida no próprio arquivo (último terço), para não marcar onde ela termina. */
+@media(max-width:760px){#mapa > .wrap{background-image:radial-gradient(120% 55% at 50% 0,rgba(42,210,193,.08),transparent 62%),
+    linear-gradient(180deg,rgba(29,40,100,.7),rgba(12,18,54,.8)),url('assets/images/mapa-carta-m.webp?v=2');
+  background-position:50% 0,0 0,50% 0;background-size:auto,auto,100% auto;background-repeat:no-repeat}}
+/* Rótulos sobre a imagem: halo navy discreto para continuarem legíveis sobre as partes claras. */
+#mapa :is(.map-endpoint,.node .lbl,.sec-head,.map-reflection>p:first-child){text-shadow:0 0 14px rgba(8,12,34,.95),0 0 4px rgba(8,12,34,.9)}
+/* Filete curto acima do título. */
+#mapa .sec-head::before{content:"";display:block;width:64px;height:2px;margin:0 auto 26px;background:linear-gradient(90deg,transparent,var(--mint),transparent)}
+/* Percurso: linha com brilho, nós com anel aceso, sem o cadeado. */
+#mapa .ecg-line{stroke-width:2.5;filter:drop-shadow(0 0 5px rgba(42,210,193,.75))}
+#mapa .ecg-pulse{opacity:1;filter:drop-shadow(0 0 6px var(--mint-bright))}
+#mapa .node .disc,#mapa .node:hover .disc{background:radial-gradient(circle at 50% 35%,#172462,var(--bg-2) 72%);border:1.5px solid var(--mint-bright);box-shadow:0 0 18px rgba(42,210,193,.5),0 0 0 5px rgba(42,210,193,.06),inset 0 0 14px rgba(42,210,193,.28)}
+#mapa .node .disc svg{display:none}
+#mapa .node .num{text-shadow:0 0 14px rgba(69,228,211,.45)}
+/* Haste pontilhada com um ponto entre o nó e o rótulo. */
+#mapa .node::after{content:"";position:absolute;left:50%;top:calc(100% + 4px);width:6px;height:15px;transform:translateX(-50%);
+  background:linear-gradient(var(--mint) 50%,transparent 0) 50% 0/1px 3px repeat-y,radial-gradient(circle,var(--mint-bright) 2px,transparent 2.6px) 50% 100%/6px 6px no-repeat;
+  -webkit-mask:linear-gradient(#000 0 0) 50% 0/6px 10px no-repeat,linear-gradient(#000 0 0) 50% 100%/6px 6px no-repeat;mask:linear-gradient(#000 0 0) 50% 0/6px 10px no-repeat,linear-gradient(#000 0 0) 50% 100%/6px 6px no-repeat}
+#mapa .node .lbl{top:calc(100% + 24px)}
+/* As 3 perguntas em linhas, com seta no fim. */
+#mapa .map-q span{display:flex;align-items:center;justify-content:space-between;gap:16px}
+#mapa .map-q span:first-child{border-top:1px solid rgba(135,148,172,.25);padding-top:11px}
+#mapa .map-q span:last-child{border-bottom:1px solid rgba(135,148,172,.25)}
+#mapa .map-q span::after{content:"";flex:none;width:18px;height:18px;background:var(--mint-bright);filter:drop-shadow(0 0 4px rgba(42,210,193,.6));
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat}
+@media(min-width:761px){
+ /* Pontos nas pontas da linha (26% e 66% da altura, como no traçado); os marcadores dos rótulos saem. */
+ #mapa .ecg-track::before,#mapa .ecg-track::after{content:"";position:absolute;z-index:1;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+ #mapa .ecg-track::before{left:0;top:26%;background:var(--cream);box-shadow:0 0 10px 2px rgba(236,240,248,.45)}
+ #mapa .ecg-track::after{left:100%;top:66%;background:var(--mint-bright);box-shadow:0 0 14px 4px rgba(42,210,193,.7)}
+ #mapa .map-endpoint .pin{display:none}
+ /* Fio vertical entre as duas colunas de texto. */
+ #mapa .map-outcome{position:relative}
+ #mapa .map-outcome::before{content:"";position:absolute;top:0;bottom:0;left:-32px;width:1px;background:linear-gradient(transparent,rgba(135,148,172,.3) 10%,rgba(135,148,172,.3) 90%,transparent)}
+}
+@media(min-width:761px) and (max-width:1000px){
+ #mapa .map-outcome::before{left:-18px}
+}
+@media(max-width:760px){
+ #mapa .sec-head::before{margin-left:0}
+}
+@media(max-width:760px){
+ /* PASSO 06: a linha desce do nó e termina logo abaixo dele; o rótulo fica 12px mais baixo que os outros para não
+    encostar na ponta da linha, e “PRIMEIRA OPORTUNIDADE” desce o mesmo tanto. A haste desse nó ficaria sob a linha. */
+ #mapa .node:nth-child(6) .lbl{top:calc(100% + 36px)}
+ #mapa .node:nth-child(6)::after{content:none}
+ #mapa .ecg-track{margin-bottom:38px}
+}
+/* Pulso do mapa, no computador e no celular (24/09). A bolinha é feita de traços de tamanho fixo na tela
+   (non-scaling-stroke), para ficar redonda: os SVGs do mapa esticam diferente na largura e na altura. O brilho vem de
+   dois anéis translúcidos, não de filter: num elemento tão pequeno o filtro é recortado e a bolinha some.
+   Movimento (pedido “mais suave e menos rígida”): acelera e freia por igual em 3,5s (curva .45 .05 .55 .95), entra e sai em fade, descansa 0,7s entre as
+   passagens e deixa um rastro que se apaga (4 trechos sobrepostos da própria linha, mesmo relógio SMIL da bolinha). */
+#mapa .ecg-pulse-dot{filter:none}
+#mapa .ecg-pulse-dot path{fill:none;stroke:var(--mint-bright);stroke-linecap:round;vector-effect:non-scaling-stroke}
+#mapa .ecg-pulse-dot .pulse-halo{stroke-width:22;stroke-opacity:.12}
+#mapa .ecg-pulse-dot .pulse-glow{stroke-width:14;stroke-opacity:.28}
+#mapa .ecg-pulse-dot .pulse-core{stroke-width:9}
+#mapa .ecg-tail{fill:none;stroke:var(--mint-bright);stroke-width:3;stroke-linecap:round}
+#mapa .ecg-tails{filter:drop-shadow(0 0 4px rgba(69,228,211,.7))}
+/* No celular a linha não tem brilho, e o filtro seria refeito a cada quadro: o rastro fica só com o traço claro. */
+@media(max-width:760px){#mapa .ecg-tail{stroke-width:2.5}#mapa .ecg-tails{filter:none}}
+@media(prefers-reduced-motion:reduce){#mapa .ecg-pulse,#mapa .ecg-run{display:none}}
+
 /* Como funciona: capas próprias e leitura em duas etapas. */
 #como-funciona{padding:88px 0}
 #como-funciona .sec-head{max-width:none;text-align:left;margin:0 0 40px}
@@ -953,7 +1062,6 @@
 #como-funciona .hcard h3 span{display:block}
 #como-funciona .hcard p{margin:0 32px 28px;max-width:49ch;color:rgba(236,240,248,.82);font-size:1.0625rem;line-height:1.65;text-wrap:pretty}
 #como-funciona .hcard .badge{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin:auto 32px 32px;padding:8px 14px;border:1px solid rgba(42,210,193,.35);border-radius:8px;background:rgba(42,210,193,.08);color:var(--mint-bright);font-size:.6875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.4}
-#como-funciona .hcard .badge.mint{color:var(--virada);border-color:rgba(0,251,138,.35);background:rgba(0,251,138,.07)}
 #como-funciona .how-cta{margin-top:36px}
 @media(max-width:900px) and (min-width:761px){
  #como-funciona .step-tag{padding-inline:24px}
@@ -1007,29 +1115,70 @@
  .sec-who .carol-story .hl{font-size:1.125rem}
 }
 
-/* Público: critérios organizados em uma grade, com fechamento em destaque. */
-#para-quem{padding-block:88px 72px}
+/* Público (24/09, pela referência do usuário): título à esquerda e sete critérios em cartões 2 · 3 · 2.
+   Cada cartão: vidro navy com borda fina, filete turquesa que se dissolve no topo, check num anel e fio vertical
+   antes do texto. Tamanhos de texto iguais aos de antes. No alto à direita, a luz de um foco cirúrgico; a foto da
+   sala entra por --who-photo quando existir (ver o comentário no HTML da seção). */
+#para-quem{position:relative;isolation:isolate;overflow:hidden;padding-block:88px 72px}
+#para-quem::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(520px 340px at 84% 4%,rgba(186,236,255,.09),transparent 70%),
+    radial-gradient(900px 620px at 92% 16%,rgba(42,210,193,.07),transparent 66%),
+    linear-gradient(90deg,var(--bg-2) 0%,rgba(12,18,54,.94) 36%,rgba(12,18,54,.6) 68%,rgba(12,18,54,.4) 100%),
+    var(--who-photo,none) right center/cover no-repeat}
 #para-quem .who-layout{gap:0}
 #para-quem .forwhom{display:block;max-width:none}
 #para-quem .forwhom h2{max-width:760px;margin:0 0 44px;text-align:left;font-size:clamp(2.25rem,4vw,3.625rem);font-weight:500;line-height:1.1;letter-spacing:-.035em;text-wrap:balance}
 #para-quem .forwhom h2 .serif{display:block;margin-top:8px}
 /* Sete critérios iguais em 2 · 3 · 2: grade de 6 colunas, cada linha ocupa a largura toda. */
-#para-quem .checklist{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 40px;border:0}
+#para-quem .checklist{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;border:0}
 #para-quem .check{grid-column:span 2}
 #para-quem .check:nth-child(-n+2),#para-quem .check:nth-child(n+6){grid-column:span 3}
-#para-quem .check{position:relative;display:flex;flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:16px;min-height:0;padding:26px 0 32px;border:0;border-top:1px solid var(--line);font-size:1.125rem;line-height:1.5;color:var(--cream);text-wrap:pretty}
-/* Filete estático: os critérios são conteúdo de leitura, não controles. */
-#para-quem .check::before{content:'';position:absolute;top:-1px;left:0;width:32px;height:1px;background:var(--mint)}
-#para-quem .check .ck{width:24px;height:24px;flex:none;margin:1px 0 0;border:1px solid rgba(42,210,193,.3);border-radius:50%;background:rgba(42,210,193,.08)}
-#para-quem .check .ck svg{width:12px;height:12px;color:var(--mint-bright)}
+#para-quem .check{position:relative;display:grid;grid-template-columns:44px 1px minmax(0,1fr);align-items:center;column-gap:20px;min-height:112px;padding:24px;border:1px solid rgba(135,148,172,.18);border-radius:12px;background:linear-gradient(180deg,rgba(20,28,74,.55),rgba(12,18,54,.55));-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 24px 48px -32px rgba(0,0,0,.8);font-size:1.125rem;line-height:1.5;color:var(--cream);text-wrap:pretty}
+/* Filete estático (os critérios são leitura, não controles): turquesa no canto, dissolvendo em ~40% da largura. */
+/* Desenhado sobre a própria borda: começa no canto, acompanha a curva e some para a direita (e para baixo, na lateral). */
+#para-quem .check::before{content:'';position:absolute;top:-1px;left:-1px;width:min(120px,30%);height:24px;border-top:2px solid var(--mint);border-left:2px solid var(--mint);border-top-left-radius:12px;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 35%,transparent),linear-gradient(180deg,#000 30%,transparent 90%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,#000 35%,transparent),linear-gradient(180deg,#000 30%,transparent 90%);mask-composite:intersect;
+  filter:drop-shadow(0 0 4px rgba(42,210,193,.8))}
+#para-quem .check .ck{grid-column:1;grid-row:1;display:grid;place-items:center;width:44px;height:44px;margin:0;border:1px solid rgba(42,210,193,.45);border-radius:50%;background:rgba(42,210,193,.08);box-shadow:0 0 18px -4px rgba(42,210,193,.45),inset 0 0 12px rgba(42,210,193,.12)}
+#para-quem .check .ck svg{width:17px;height:17px;color:var(--mint-bright)}
+/* Fio vertical entre o check e o texto (o texto ocupa a terceira coluna). */
+#para-quem .check::after{content:'';grid-column:2;grid-row:1;width:1px;height:44px;background:rgba(135,148,172,.22)}
+/* Três por linha só cabem a partir de 1101px; abaixo, dois por linha com o sétimo na largura toda. */
+@media(max-width:1100px){
+ #para-quem .checklist{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #para-quem .check:nth-child(n){grid-column:auto}
+ #para-quem .check:nth-child(7){grid-column:1/-1}
+}
+@media(min-width:761px) and (max-width:1000px){
+ #para-quem .check{font-size:1rem}
+}
+@media(max-width:760px){
+ #para-quem{padding-block:56px}
+ #para-quem::before{background:
+    radial-gradient(360px 260px at 88% 0%,rgba(186,236,255,.08),transparent 70%),
+    linear-gradient(180deg,rgba(12,18,54,.55) 0%,var(--bg-2) 55%),
+    var(--who-photo,none) 70% top/auto 60% no-repeat}
+ #para-quem .forwhom h2{font-size:clamp(2rem,6vw,2.75rem);margin-bottom:28px}
+ #para-quem .checklist{grid-template-columns:minmax(0,1fr);gap:14px}
+ #para-quem .check:nth-child(7){grid-column:auto}
+ #para-quem .check{grid-template-columns:40px 1px minmax(0,1fr);column-gap:16px;min-height:0;padding:18px 20px 18px 18px;font-size:1rem}
+ #para-quem .check .ck{width:40px;height:40px}
+ #para-quem .check .ck svg{width:16px;height:16px}
+ #para-quem .check::after{height:40px}
+}
 
 /* Carol: imagem de equipe em toda a largura + retrato, trajetória e resultados. */
 #carol{position:relative;isolation:isolate;background:var(--bg-2);padding:0 0 88px}
 /* Duotone navy: a foto entra por luminosidade sobre o navy, com grão para disfarçar a baixa resolução. */
 #carol .mentor-banner{position:relative;isolation:isolate;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
-#carol .mentor-banner>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:grayscale(1) contrast(1.18) brightness(.95);mix-blend-mode:luminosity;opacity:.52}
-#carol .mentor-banner::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--bg-2) 0%,rgba(12,18,54,0) 24%),linear-gradient(90deg,rgba(8,12,34,.82) 0%,rgba(8,12,34,.4) 42%,rgba(8,12,34,0) 72%),linear-gradient(0deg,var(--bg-2) 0%,rgba(12,18,54,.6) 28%,rgba(12,18,54,0) 58%);pointer-events:none}
-#carol .mentor-banner::after{content:'';position:absolute;inset:0;z-index:-1;opacity:.1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#carol .mentor-banner>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(1) contrast(1.18) brightness(.95);mix-blend-mode:luminosity;opacity:.52}
+/* Bordas sem corte seco: as camadas de cima e de baixo terminam exatamente no --bg-2 das seções vizinhas,
+   o grão some perto delas e, na base, a foto desfoca aos poucos (abaixo do rosto da Carol) antes de se dissolver. */
+#carol .mentor-banner::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--bg-2) 0%,rgba(12,18,54,0) 24%),linear-gradient(0deg,var(--bg-2) 0%,rgba(12,18,54,.86) 12%,rgba(12,18,54,.6) 28%,rgba(12,18,54,.26) 44%,rgba(12,18,54,0) 62%),linear-gradient(90deg,rgba(8,12,34,.82) 0%,rgba(8,12,34,.4) 42%,rgba(8,12,34,0) 72%);pointer-events:none}
+#carol .mentor-blur{position:absolute;left:0;right:0;bottom:0;height:34%;z-index:-2;pointer-events:none;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%);mask-image:linear-gradient(180deg,transparent,#000 60%)}
+#carol .mentor-banner::after{content:'';position:absolute;inset:0;z-index:-1;opacity:.1;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent,#000 20%,#000 58%,transparent 94%);mask-image:linear-gradient(180deg,transparent,#000 20%,#000 58%,transparent 94%);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 #carol .mentor-heading{position:relative;z-index:1;width:100%;padding-bottom:64px;padding-top:150px}
 #carol h2{max-width:calc((100% - 72px)*.6);margin:0;font-size:clamp(2.5rem,4.4vw,3.75rem);line-height:1.06;letter-spacing:-.035em;font-weight:500;color:var(--cream);text-wrap:balance}
 #carol h2 .serif{display:block;margin-top:4px;color:var(--mint-bright)}
@@ -1040,6 +1189,19 @@
 #carol .mentor-portrait::before{content:'';position:absolute;z-index:-1;inset:22px -22px -22px 22px;border:1px solid rgba(42,210,193,.5);border-radius:20px}
 #carol .mentor-portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 40%;border-radius:20px;background:var(--navy);filter:contrast(1.06) saturate(.9) brightness(.9)}
 #carol .mentor-portrait::after{content:'';position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(236,240,248,.14),inset 0 -90px 90px -60px rgba(8,12,34,.85);background:linear-gradient(0deg,rgba(8,12,34,.32),rgba(8,12,34,0) 28%);pointer-events:none}
+/* Borda da foto (referência do usuário, 24/09): fio turquesa nítido de 1px, sem brilho nem desfoque, que engrossa
+   um pouco (2px) em pontos escolhidos: canto de cima à direita, laterais a 35% da altura, base a 34% da largura e
+   canto de baixo à direita. O trecho grosso é um segundo anel de 2px que só aparece nesses pontos (máscara) e volta
+   aos poucos para o fio fino. Não muda o tamanho da foto nem a moldura deslocada. */
+#carol :is(.mentor-rim,.mentor-rim-bold){position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none}
+#carol :is(.mentor-rim,.mentor-rim-bold)::before{content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;background:var(--mint-bright);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+#carol .mentor-rim-bold::before{padding:2px}
+#carol .mentor-rim-bold{
+  -webkit-mask:radial-gradient(72px 72px at 100% 0,#000 35%,transparent),radial-gradient(36px 80px at 0 35%,#000 30%,transparent),radial-gradient(36px 80px at 100% 35%,#000 30%,transparent),radial-gradient(80px 36px at 34% 100%,#000 30%,transparent),radial-gradient(84px 84px at 100% 100%,#000 35%,transparent);
+  mask:radial-gradient(72px 72px at 100% 0,#000 35%,transparent),radial-gradient(36px 80px at 0 35%,#000 30%,transparent),radial-gradient(36px 80px at 100% 35%,#000 30%,transparent),radial-gradient(80px 36px at 34% 100%,#000 30%,transparent),radial-gradient(84px 84px at 100% 100%,#000 35%,transparent)}
+.motion-ready #carol .mentor-portrait:not(.tx-in) :is(.mentor-rim,.mentor-rim-bold){opacity:0}
+.motion-ready #carol .mentor-portrait.tx-in :is(.mentor-rim,.mentor-rim-bold){transition:opacity .9s var(--ease-out) .7s}
 #carol .mentor-content{grid-column:1;grid-row:1;min-width:0;padding-top:48px}
 /* Números sob o título, dentro da faixa, na mesma largura da primeira coluna. */
 #carol .auth-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:calc((100% - 72px)*.6);padding:28px 0 0;margin:36px 0 0;border-top:1px solid rgba(236,240,248,.16)}
@@ -1051,15 +1213,17 @@
 #carol .mentor-story p{max-width:56ch;margin:0;font-size:1.0625rem;line-height:1.75;color:var(--copy-readable);text-wrap:pretty}
 #carol .mentor-story p+p{margin-top:18px}
 #carol .mentor-opening{display:block;margin-bottom:16px;max-width:22ch;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.625rem,2.4vw,2rem);font-weight:500;line-height:1.25;letter-spacing:-.025em;color:var(--cream)}
-/* Citação final em bloco turquesa sólido, texto navy e a linha de batimento do mapa. */
-#carol .mentor-quote{position:relative;max-width:none;margin:36px 0 0;padding:28px 32px 32px;border:0;border-radius:16px;background:var(--mint);font-family:'Fraunces',serif;font-size:clamp(1.375rem,2vw,1.75rem);font-style:italic;font-weight:500;line-height:1.38;color:#06122E;text-wrap:balance}
+/* Citação final em vidro escuro com borda turquesa acesa (referência do usuário, 24/09), texto turquesa e a linha de
+   batimento do mapa. A borda é sombra interna, para o bloco manter o tamanho de antes. */
+#carol .mentor-quote{position:relative;max-width:none;margin:36px 0 0;padding:28px 32px 32px;border:0;border-radius:16px;
+  background:radial-gradient(120% 150% at 0 0,rgba(42,210,193,.16),rgba(42,210,193,0) 58%),linear-gradient(180deg,rgba(21,46,82,.6),rgba(9,19,50,.78));
+  box-shadow:inset 0 0 0 1px rgba(69,228,211,.6),inset 0 0 28px rgba(42,210,193,.1),0 0 26px -2px rgba(42,210,193,.26),0 24px 48px -30px rgba(0,0,0,.8);
+  font-family:'Fraunces',serif;font-size:clamp(1.375rem,2vw,1.75rem);font-style:italic;font-weight:500;line-height:1.38;color:var(--mint-bright);text-wrap:balance}
 #carol .quote-ecg{display:block;width:72px;height:16px;margin-bottom:16px;overflow:visible}
-#carol .quote-ecg path{fill:none;stroke:#06122E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;opacity:.25;animation:quoteEcg 4s var(--ease-out) infinite}
+#carol .quote-ecg path{fill:none;stroke:var(--mint-bright);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;opacity:.25;animation:quoteEcg 4s var(--ease-out) infinite}
 @keyframes quoteEcg{0%{stroke-dashoffset:100;opacity:.25}45%{stroke-dashoffset:0;opacity:.85}72%{stroke-dashoffset:0;opacity:.85}100%{stroke-dashoffset:-100;opacity:.25}}
 @media(prefers-reduced-motion:reduce){#carol .quote-ecg path{stroke-dashoffset:0;opacity:.6}}
 @media(min-width:761px) and (max-width:1000px){
- #para-quem .checklist{column-gap:24px}
- #para-quem .check{font-size:1rem}
  #carol .mentor-banner{min-height:420px}
  #carol .mentor-details{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px}
  #carol h2,#carol .auth-cards{max-width:calc((100% - 40px)*.55)}
@@ -1071,18 +1235,13 @@
  #carol .mentor-story p{font-size:1rem}
 }
 @media(max-width:760px){
- #para-quem{padding-block:56px}
- #para-quem .forwhom h2{font-size:clamp(2rem,6vw,2.75rem);margin-bottom:28px}
- #para-quem .checklist{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
- #para-quem .check{font-size:1rem;gap:12px;padding:20px 0}
- #para-quem .check:nth-child(n){grid-column:auto}
- #para-quem .check:nth-child(7){grid-column:1/-1}
  #carol{padding-bottom:56px}
  #carol .mentor-banner{min-height:390px}
  #carol .mentor-banner>img{height:115%;top:-15%;object-position:50% center}
  /* Textos mais baixos: rostos da turma livres no topo; sem escurecimento lateral no celular. */
  #carol .mentor-heading{padding-top:260px;padding-bottom:80px}
  #carol .mentor-banner::before{background:linear-gradient(180deg,var(--bg-2) 0%,rgba(12,18,54,0) 14%),linear-gradient(0deg,var(--bg-2) 0%,rgba(12,18,54,.8) 34%,rgba(12,18,54,.25) 56%,rgba(12,18,54,0) 70%)}
+ #carol .mentor-blur{height:50%;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
  #carol h2{font-size:clamp(2.25rem,6vw,3rem);max-width:540px}
  #carol .mentor-details{grid-template-columns:minmax(0,1fr);gap:32px;margin-top:0}
  #carol .mentor-portrait{grid-column:auto;grid-row:auto;position:relative;top:auto;width:100%;max-width:none;margin:-48px 0 0;border-radius:16px}
@@ -1099,10 +1258,6 @@
  #carol .mentor-opening{font-size:1.375rem}
  #carol .mentor-quote{margin-top:28px;padding:22px 22px 24px;border-radius:14px;font-size:1.25rem;line-height:1.42}
  #carol .quote-ecg{width:64px;height:14px;margin-bottom:14px}
-}
-@media(max-width:480px){
- #para-quem .checklist{grid-template-columns:minmax(0,1fr)}
- #para-quem .check{flex-direction:row;gap:14px;align-items:flex-start;padding:18px 0}
 }
 
 
@@ -1200,164 +1355,238 @@
  .shot-zoom-close{top:12px;right:12px}
 }
 
-/* Oferta: vitrine em um bloco. Cada entrega com capa, título com destaque em itálico,
-   filete turquesa e descrição; o preço fecha o bloco em duas colunas separadas por fio. */
-.offer-sec .sec-head{max-width:860px;text-align:left;margin-left:0}
-/* O "Você recebe:" foi para o título da seção; as duas entregas ficam lado a lado, ocupando a largura. */
-.offer-sec .offer-list{--ov-pad:clamp(28px,3.4vw,56px)}
-.offer-sec .ov{position:relative;border:1px solid var(--line);border-radius:28px;background:var(--bg);overflow:hidden;box-shadow:0 60px 120px -50px rgba(0,0,0,.9)}
-/* Entregas principais: lista curta, porque as capas já aparecem em "Como funciona". */
-/* Duas entregas em blocos próprios, na mesma linguagem dos cards de "Como funciona" — sem fio ligando. */
-/* As linhas vêm do grid de fora (subgrid): o título mais alto define a altura dos dois,
-   e as descrições começam na mesma linha nos dois blocos. */
-.offer-sec .ov-core{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-template-rows:auto auto;column-gap:clamp(18px,2vw,24px);row-gap:10px}
-.offer-sec .ov-core li{position:relative;display:grid;grid-row:span 2;grid-template-rows:subgrid;
-  grid-template-columns:auto minmax(0,1fr);column-gap:16px;
-  padding:clamp(26px,2.6vw,32px) clamp(26px,2.6vw,34px) clamp(28px,2.8vw,34px);
-  background:linear-gradient(180deg,var(--surface),var(--bg-2) 66%);border:1px solid var(--line);border-radius:18px;
-  box-shadow:0 30px 60px -48px #000;transition:border-color var(--motion-hover) ease}
-.offer-sec .ov-core li::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
-  background:radial-gradient(120% 70% at 18% -20%,rgba(42,210,193,.16),transparent 60%)}
-.offer-sec .ov-core li>*{position:relative;z-index:1}
-@media(hover:hover) and (pointer:fine){.offer-sec .ov-core li:hover{border-color:rgba(42,210,193,.45)}}
-.offer-sec .ov-core .ck{grid-row:span 2;position:relative;width:32px;height:32px;margin-top:.02em;border-radius:50%;
-  background:radial-gradient(circle at 34% 28%,var(--surface-2),var(--bg-2) 74%);border:1px solid var(--mint-deep);
-  box-shadow:0 0 0 5px rgba(42,210,193,.05),inset 0 1px 0 rgba(236,240,248,.10),0 10px 22px -14px rgba(0,0,0,.9)}
-.offer-sec .ov-core .ck svg{position:absolute;inset:0;margin:auto;width:15px;height:15px;color:var(--mint-bright)}
-.offer-sec .ov-core .ck svg path{stroke-dasharray:100;stroke-dashoffset:0}
-.motion-ready .offer-sec .ov-core:not(.tx-in) .ck svg path{stroke-dashoffset:100}
-.motion-ready .offer-sec .ov-core.tx-in .ck svg path{transition:stroke-dashoffset 520ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 200ms)}
-.offer-sec .ov-core h4{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.25rem,2vw,1.625rem);font-weight:600;line-height:1.22;letter-spacing:-.015em;color:var(--cream);text-wrap:pretty}
+/* Oferta (24/09, protótipo do usuário): título centralizado; duas entregas em cartões com ícone e capa à direita;
+   três bônus em cartões com número, título e imagem; preço num cartão próprio com o botão ao lado.
+   Fontes, tamanhos e pesos iguais aos de antes. As capas entram por <img>: para trocar, basta o arquivo. */
+.offer-sec>.wrap{max-width:1232px}
+.offer-sec .sec-head{max-width:none;text-align:center;margin:0 auto 40px}
+.offer-sec .offer-list{--ov-card-bg:linear-gradient(180deg,rgba(22,32,78,.62),rgba(10,15,44,.78));--ov-card-line:rgba(42,210,193,.2)}
+/* Cartão base: vidro navy, borda turquesa fina e um fio de luz no alto. */
+.offer-sec :is(.ov-core li,.ovb-card,.ov-buy){position:relative;isolation:isolate;overflow:hidden;
+  background:var(--ov-card-bg);border:1px solid var(--ov-card-line);border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(236,240,248,.06),0 36px 70px -46px #000;transition:border-color var(--motion-hover) ease}
+.offer-sec :is(.ov-core li,.ovb-card,.ov-buy)::before{content:"";position:absolute;z-index:3;top:-1px;left:8%;width:38%;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(69,228,211,.7) 45%,transparent)}
+@media(hover:hover) and (pointer:fine){.offer-sec :is(.ov-core li,.ovb-card):hover{border-color:rgba(42,210,193,.45)}}
+
+/* Entregas principais: ícone num anel, texto e a capa sangrando à direita. */
+.offer-sec .ov-core{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2vw,24px)}
+.offer-sec .ov-core li{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:18px;
+  min-height:clamp(170px,14vw,190px);padding:26px 34% 26px clamp(22px,2.2vw,28px)}
+.offer-sec .ovc-ic{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;color:var(--mint-bright);
+  border:1px solid rgba(42,210,193,.55);background:radial-gradient(circle at 34% 28%,rgba(42,210,193,.14),rgba(12,18,54,.9) 72%);
+  box-shadow:0 0 0 6px rgba(42,210,193,.05),0 0 22px -6px rgba(42,210,193,.45),inset 0 1px 0 rgba(236,240,248,.12)}
+.offer-sec .ovc-ic svg{width:24px;height:24px}
+.offer-sec .ovc-text{position:relative;z-index:1;display:grid;gap:10px}
+.offer-sec .ov-core h4{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.25rem,2vw,1.625rem);font-weight:600;line-height:1.22;letter-spacing:-.015em;color:var(--cream);text-wrap:balance}
 .offer-sec .ov-core h4 .serif{font-weight:500;letter-spacing:-.01em;color:var(--mint-bright)}
 .offer-sec .ov-core p{font-size:1.0625rem;line-height:1.55;color:var(--copy-readable);text-wrap:pretty}
 .offer-sec .ov-core p b{font-weight:600;color:var(--cream)}
-/* Bônus: o destaque da seção, em faixas largas com a imagem sangrando na borda. */
-/* "Bônus" abre o bloco em largura total e os cards vêm logo abaixo. */
-.offer-sec .ovb-head{margin:clamp(48px,5.5vw,76px) 0 clamp(20px,2.4vw,28px)}
-.offer-sec .ovb-head h4{max-width:26ch;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.5rem,2.4vw,1.875rem);font-weight:600;line-height:1.22;letter-spacing:-.02em;color:var(--cream);text-wrap:pretty}
+/* Capa: ocupa a lateral direita e se dissolve no cartão. --art-pos e --art-zoom ajustam o recorte de cada imagem. */
+.offer-sec .ovc-art{position:absolute;z-index:0;top:0;right:0;bottom:0;width:40%;margin:0;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 42%);mask-image:linear-gradient(90deg,transparent,#000 42%)}
+.offer-sec .ovc-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--art-pos,50% 50%);
+  scale:var(--art-zoom,1);transform-origin:var(--art-pos,50% 50%);transition:transform .35s var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ov-core li:hover .ovc-art img{transform:scale(1.03)}}
+.offer-sec .ovc-live{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 10px;
+  border:1px solid rgba(42,210,193,.6);border-radius:100px;background:rgba(8,12,34,.78);
+  font-family:'Hanken Grotesk',sans-serif;font-size:.6875rem;font-weight:700;letter-spacing:.08em;line-height:1.2;color:var(--mint-bright)}
+.offer-sec .ovc-live::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* Bônus: três cartões lado a lado. Número em etiqueta, título com filete e a imagem subindo por trás do texto. */
+.offer-sec .ovb-head{margin:clamp(48px,5.5vw,72px) 0 clamp(20px,2.4vw,26px)}
+.offer-sec .ovb-head h4{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.5rem,2.4vw,1.875rem);font-weight:600;line-height:1.22;letter-spacing:-.02em;color:var(--cream);text-wrap:pretty}
 .offer-sec .ovb-head h4 .serif{font-weight:500;letter-spacing:-.015em;color:var(--mint-bright)}
-.offer-sec .ovb-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;min-height:clamp(200px,20vw,264px)}
-.offer-sec .ovb-row.flip{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
-.offer-sec .ovb-row+.ovb-row{border-top:1px solid var(--line)}
-/* Conector "+" sobre a divisória, somando um bônus ao outro. */
-.offer-sec .ovb-op{position:absolute;left:50%;top:-18px;z-index:2;width:36px;height:36px;margin-left:-18px;
-  display:grid;place-items:center;border-radius:50%;background:var(--bg-2);border:1px solid rgba(42,210,193,.5);
-  color:var(--mint-bright);font-family:'Bricolage Grotesque',sans-serif;font-size:1.125rem;font-weight:500;line-height:1;
-  box-shadow:0 0 0 6px var(--bg)}
-.offer-sec .ovb-text{padding:clamp(26px,3vw,40px) 0 clamp(26px,3vw,40px) var(--ov-pad)}
-.offer-sec .ovb-row.flip .ovb-text{padding-left:clamp(20px,2vw,32px);padding-right:var(--ov-pad)}
-.offer-sec .ovb-num{display:block;margin-bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.2em;color:var(--mint)}
+.offer-sec .ovb-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.6vw,20px)}
+.offer-sec .ovb-card{display:flex;flex-direction:column}
+.offer-sec .ovb-text{position:relative;z-index:2;padding:clamp(20px,2vw,24px) clamp(20px,2vw,26px) 0;margin-bottom:-10px}
+.offer-sec .ovb-num{display:inline-block;margin-bottom:16px;padding:5px 10px 5px 12px;border:1px solid rgba(42,210,193,.5);border-radius:100px;
+  background:rgba(8,12,34,.6);font-family:'Bricolage Grotesque',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.2em;line-height:1.2;color:var(--mint)}
 .offer-sec .ovb-text h5{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.375rem,2.4vw,2rem);font-weight:600;line-height:1.16;letter-spacing:-.025em;color:var(--cream);text-wrap:pretty}
-.offer-sec .ovb-art{position:relative;margin:0;align-self:stretch;overflow:hidden}
-.offer-sec .ovb-art img{width:100%;height:100%;object-fit:cover;transition:transform .35s var(--ease-out);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 34%);mask-image:linear-gradient(90deg,transparent,#000 34%)}
-.offer-sec .ovb-row.flip .ovb-art img{-webkit-mask-image:linear-gradient(270deg,transparent,#000 34%);mask-image:linear-gradient(270deg,transparent,#000 34%)}
-@media(hover:hover) and (pointer:fine){.offer-sec .ovb-row:hover .ovb-art img{transform:scale(1.03)}}
-@media(prefers-reduced-motion:reduce){.offer-sec .ovb-row:hover .ovb-art img{transform:none}}
-/* Preço: valor e botão na mesma linha, sem coluna vazia. */
-.offer-sec .ov-buy{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,64px);
-  padding:clamp(28px,3.2vw,44px) var(--ov-pad);border-top:1px solid var(--line);
-  background:radial-gradient(120% 160% at 0% 0%,rgba(42,210,193,.09),transparent 58%),var(--bg-2)}
-.offer-sec .ov-rule{display:none}
+.offer-sec .ovb-text h5::after{content:"";display:block;width:32px;height:2px;margin-top:14px;border-radius:2px;background:var(--mint);
+  box-shadow:0 0 10px rgba(42,210,193,.5);transition:width var(--motion-hover) var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ovb-card:hover h5::after{width:48px}}
+.offer-sec .ovb-art{position:relative;z-index:1;margin-top:auto;aspect-ratio:16/10.4;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 26%);mask-image:linear-gradient(180deg,transparent,#000 26%)}
+.offer-sec .ovb-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--art-pos,50% 0);transition:transform .35s var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.offer-sec .ovb-card:hover .ovb-art img{transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.offer-sec :is(.ovb-card,.ov-core li):hover :is(.ovb-art,.ovc-art) img{transform:none}}
+
+/* Preço: cartão próprio. À esquerda o valor, fio vertical, e à direita o botão com o resumo embaixo. */
+.offer-sec .ov-buy{display:grid;grid-template-columns:minmax(0,auto) 1px minmax(0,1fr);align-items:center;gap:clamp(28px,4vw,56px);
+  margin-top:clamp(20px,2.2vw,28px);padding:clamp(28px,3vw,40px) clamp(28px,4vw,56px);
+  background:radial-gradient(90% 140% at 0% 0%,rgba(42,210,193,.08),transparent 58%),var(--ov-card-bg)}
+.offer-sec .ov-buy::after{content:"";position:absolute;z-index:3;bottom:-1px;left:30%;right:30%;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(69,228,211,.75) 50%,transparent);box-shadow:0 0 12px rgba(42,210,193,.35)}
+.offer-sec .ov-rule{display:block;align-self:stretch;width:1px;background:linear-gradient(180deg,transparent,var(--line) 20%,var(--line) 80%,transparent)}
 .offer-sec .ov-old{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(135,148,172,.7)}
-.offer-sec .ov-amount{margin:8px 0 10px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.5rem,6vw,5.25rem);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap}
-.offer-sec .ov-amount .cur,.offer-sec .ov-amount .cents{font-size:.4em;font-weight:500;letter-spacing:0;color:var(--muted)}
+.offer-sec .ov-amount{margin:8px 0 0;padding-bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.5rem,6vw,5.25rem);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap;
+  border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--mint),rgba(42,210,193,.12)) 1}
+.offer-sec .ov-amount .cur,.offer-sec .ov-amount .cents{font-size:.4em;font-weight:500;letter-spacing:0;color:var(--cream)}
 .offer-sec .ov-amount .cur{margin-right:.22em}
-.offer-sec .ov-parc{font-size:.9375rem;color:var(--copy-readable)}
+.offer-sec .ov-parc{margin-top:12px;font-size:.9375rem;color:var(--copy-readable)}
 .offer-sec .ov-parc b{font-weight:600;color:var(--mint-bright)}
-.offer-sec .ov-buy .btn{justify-self:stretch;width:100%;min-height:60px;padding:18px 30px;gap:12px;font-size:1rem;line-height:1.3;box-shadow:0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
+.offer-sec .ov-cta{display:grid;justify-items:center;gap:12px;text-align:center}
+.offer-sec .ov-buy .btn{width:100%;max-width:560px;min-height:64px;padding:18px 30px;gap:12px;font-size:1rem;line-height:1.3;box-shadow:0 0 34px -8px rgba(42,210,193,.55),0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
 .offer-sec .ov-buy .btn svg{flex:none;width:18px;height:18px;transition:transform var(--motion-press) var(--ease-out)}
 @media(hover:hover) and (pointer:fine){.offer-sec .ov-buy .btn:hover svg{transform:translateX(3px)}}
+.offer-sec .ov-sum{margin-top:4px;font-size:1rem;font-weight:500;line-height:1.4;color:var(--cream)}
+.offer-sec .ov-safe{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;font-size:.875rem;line-height:1.4;color:var(--muted)}
+.offer-sec :is(.ov-sum,.ov-safe)>span{white-space:nowrap}
+.offer-sec .ov-dot{margin-right:8px}
+.offer-sec .ov-safe svg{flex:none;width:16px;height:16px;color:var(--mint)}
+
+@media(max-width:1100px){
+ .offer-sec .ov-core{grid-template-columns:minmax(0,1fr)}
+ .offer-sec .ov-core li{padding-right:38%}
+ .offer-sec .ovc-art{width:44%}
+}
 @media(max-width:900px){
- .offer-sec .ov-core{grid-template-columns:minmax(0,1fr);grid-template-rows:none;gap:14px}
- .offer-sec .ov-core li{grid-row:auto;grid-template-rows:auto auto;column-gap:14px;row-gap:8px;padding:22px 20px 24px;border-radius:16px}
- .offer-sec .ovb-head{margin:clamp(36px,7vw,48px) 0 18px}
- .offer-sec .ovb-row,.offer-sec .ovb-row.flip{grid-template-columns:minmax(0,1fr)}
- .offer-sec .ovb-art{order:-1;aspect-ratio:16/9}
- .offer-sec .ovb-art img,.offer-sec .ovb-row.flip .ovb-art img{-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
- .offer-sec .ovb-text,.offer-sec .ovb-row.flip .ovb-text{padding:0 var(--ov-pad) clamp(24px,4vw,32px)}
- .offer-sec .ov-buy{grid-template-columns:minmax(0,1fr);gap:22px}
+ .offer-sec .sec-head{text-align:left}
+ .offer-sec .ovb-list{grid-template-columns:minmax(0,1fr)}
+ /* Bônus deitados: texto à esquerda, imagem à direita dissolvendo no cartão. */
+ .offer-sec .ovb-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center;min-height:210px}
+ .offer-sec .ovb-text{padding:24px 0 24px 26px;margin-bottom:0}
+ .offer-sec .ovb-art{align-self:stretch;margin:0;aspect-ratio:auto;
+   -webkit-mask-image:linear-gradient(90deg,transparent,#000 36%);mask-image:linear-gradient(90deg,transparent,#000 36%)}
+ .offer-sec .ovb-art img{object-position:var(--art-pos,50% 30%)}
  .offer-sec .ov-buy{grid-template-columns:minmax(0,1fr);gap:24px;padding:28px 24px}
- .offer-sec .ov-rule{height:1px;align-self:auto}
+ .offer-sec .ov-rule{width:auto;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
  .offer-sec .ov-amount{font-size:3.75rem}
- .offer-sec .ov-buy .btn{width:100%;max-width:460px;justify-self:start}
+ .offer-sec .ov-cta{justify-items:start;text-align:left}
+ .offer-sec .ov-safe{justify-content:flex-start}
+ .offer-sec .ov-buy .btn{max-width:460px}
 }
 @media(max-width:560px){
- .offer-sec .ov{border-radius:24px}
+ .offer-sec .ov-core li{grid-template-columns:auto minmax(0,1fr);column-gap:14px;min-height:0;padding:calc(56.25% - 12px) 20px 24px}
+ .offer-sec .ovc-ic{width:48px;height:48px}
+ .offer-sec .ovc-ic svg{width:21px;height:21px}
+ .offer-sec .ovc-art{left:0;bottom:auto;width:100%;aspect-ratio:16/9;
+   -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+ .offer-sec .ovc-live{top:12px;bottom:auto}
+ .offer-sec .ovb-card{display:flex;align-items:stretch;min-height:0}
+ .offer-sec .ovb-text{padding:22px 20px 0;margin-bottom:-28px}
+ .offer-sec .ovb-art{margin-top:0;aspect-ratio:16/10;
+   -webkit-mask-image:linear-gradient(180deg,transparent,#000 24%);mask-image:linear-gradient(180deg,transparent,#000 24%)}
+ .offer-sec .ovb-art img{object-position:var(--art-pos,50% 0)}
  .offer-sec .ov-buy .btn{font-size:.9375rem;padding-inline:18px;gap:8px}
+ .offer-sec .ov-cta{justify-items:stretch}
 }
 @media(max-width:360px){
  .offer-sec .ov-buy .btn{font-size:.875rem;letter-spacing:.02em;padding-inline:14px}
+ .offer-sec .ov-dot{display:none}
 }
 
-/* Garantia: certificado. Moldura dupla com cantos turquesa, anéis finos irradiando do topo
-   e medalha com o texto circular girando devagar em volta do "7" (parado com movimento reduzido). */
-.offer-sec .gcert{position:relative;margin-top:24px;padding:12px;border:1px solid var(--line);border-radius:30px;background:var(--bg)}
-.offer-sec .gcert-frame{position:relative;display:grid;justify-items:center;text-align:center;padding:56px 48px 52px;border:1px solid rgba(42,210,193,.22);border-radius:20px;overflow:hidden;background:repeating-radial-gradient(circle at 50% 0,rgba(42,210,193,.055) 0 1px,transparent 1px 14px),linear-gradient(180deg,var(--surface),var(--bg-2) 70%)}
-.offer-sec .gcert-frame::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 90% at 50% 0,transparent 30%,var(--bg-2) 80%)}
-.offer-sec .gcert-corner{position:absolute;width:22px;height:22px;border:0 solid var(--mint)}
-.offer-sec .gcert-corner.tl{top:14px;left:14px;border-top-width:1.5px;border-left-width:1.5px}
-.offer-sec .gcert-corner.tr{top:14px;right:14px;border-top-width:1.5px;border-right-width:1.5px}
-.offer-sec .gcert-corner.bl{bottom:14px;left:14px;border-bottom-width:1.5px;border-left-width:1.5px}
-.offer-sec .gcert-corner.br{bottom:14px;right:14px;border-bottom-width:1.5px;border-right-width:1.5px}
-.offer-sec .gcert-medal{position:relative;z-index:1;width:132px;height:132px;margin-bottom:28px}
-.offer-sec .gcert-ring{width:100%;height:100%;animation:gcertSpin 28s linear infinite}
-.offer-sec .gcert-ring text{font-family:'Hanken Grotesk',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:2.6px;text-transform:uppercase;fill:var(--muted)}
-.offer-sec .gcert-num{position:absolute;inset:26px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(180deg,var(--mint-bright),var(--mint) 60%,var(--mint-deep));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -18px rgba(42,210,193,.6);color:var(--bg);font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:3.5rem;line-height:1}
+/* Garantia: vidro navy translúcido, reflexo diagonal e bordas iluminadas.
+   Linhas e círculos ficam acima do desfoque, preservando o desenho do fundo. */
+.offer-sec .gcert{--seal-size:240px;--seal-top:26px;--gcert-edge:36,183,211;position:relative;isolation:isolate;margin-top:32px;padding:12px;border:1px solid rgba(201,224,246,.22);border-top-color:rgba(222,239,255,.38);border-left-color:rgba(201,224,246,.28);border-radius:40px;background:linear-gradient(135deg,rgba(146,188,255,.09),rgba(126,170,240,.025) 35%,rgba(126,170,240,.01) 65%,rgba(146,188,255,.045)),rgba(18,30,70,.94);-webkit-backdrop-filter:blur(20px) saturate(115%);backdrop-filter:blur(20px) saturate(115%);box-shadow:0 24px 56px -24px rgba(0,0,0,.55),inset 0 1px 0 rgba(238,247,255,.14),inset 0 -1px 0 rgba(201,224,246,.05)}
+.offer-sec .gcert::before,.offer-sec .gcert::after{content:"";position:absolute;z-index:2;left:32%;right:32%;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(var(--gcert-edge),.35) 35%,rgba(190,241,250,.8) 50%,rgba(var(--gcert-edge),.35) 65%,transparent);box-shadow:0 0 8px rgba(var(--gcert-edge),.18)}
+.offer-sec .gcert::before{top:-1px}
+.offer-sec .gcert::after{bottom:-1px}
+.offer-sec .gcert-frame{position:relative;isolation:isolate;display:grid;justify-items:center;text-align:center;padding:var(--seal-top) 48px 42px;border:1px solid rgba(211,232,252,.09);border-radius:28px;overflow:hidden;background:linear-gradient(145deg,rgba(181,209,255,.035),transparent 42%),radial-gradient(ellipse at 50% 0,rgba(var(--gcert-edge),.055),transparent 58%);box-shadow:inset 0 1px 0 rgba(238,247,255,.07)}
+.offer-sec .gcert-frame::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse 74% 150% at 50% -62%,transparent 73%,rgba(42,210,193,.11) calc(73% + 1px),rgba(42,210,193,.025) calc(73% + 2px),transparent 84%,rgba(42,210,193,.045) calc(84% + 1px),transparent calc(84% + 2px))}
+.offer-sec .gcert-orbits{--orbit-size:560px;position:absolute;z-index:-1;top:calc(var(--seal-top) + var(--seal-size)/2 - var(--orbit-size)/2);left:calc(50% - var(--orbit-size)/2);width:var(--orbit-size);height:var(--orbit-size);pointer-events:none;background:repeating-radial-gradient(circle,transparent 0 15px,rgba(42,210,193,.18) 15px 16px,transparent 16px 17px);mask-image:radial-gradient(circle,transparent 18%,#000 34%,rgba(0,0,0,.35) 49%,transparent 66%)}
+.offer-sec .gcert-corner{position:absolute;z-index:2;width:34px;height:34px;border:0 solid rgba(66,218,238,.85);pointer-events:none}
+.offer-sec .gcert-corner.tl{top:12px;left:12px;border-top-width:1.5px;border-left-width:1.5px;border-top-left-radius:24px}
+.offer-sec .gcert-corner.tr{top:12px;right:12px;border-top-width:1.5px;border-right-width:1.5px;border-top-right-radius:24px}
+.offer-sec .gcert-corner.bl{bottom:12px;left:12px;border-bottom-width:1.5px;border-left-width:1.5px;border-bottom-left-radius:24px}
+.offer-sec .gcert-corner.br{bottom:12px;right:12px;border-bottom-width:1.5px;border-right-width:1.5px;border-bottom-right-radius:24px}
+.offer-sec .gcert-medal{position:relative;z-index:1;width:var(--seal-size);height:var(--seal-size);margin-bottom:14px}
+.offer-sec .gcert-medal::before{content:"";position:absolute;left:50%;top:calc(-1 * var(--seal-top) - 14px);height:calc(var(--seal-top) + 34px);width:1px;background:linear-gradient(180deg,rgba(42,210,193,.7),rgba(42,210,193,.12));pointer-events:none}
+.offer-sec .gcert-medal img{display:block;width:100%;height:100%;object-fit:contain}
 .offer-sec .gcert h4,.offer-sec .gcert p{position:relative;z-index:1}
-.offer-sec .gcert h4{margin-bottom:16px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.875rem,3vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;color:var(--cream)}
-.offer-sec .gcert p{max-width:62ch;font-size:1.0625rem;line-height:1.7;color:var(--copy-readable);text-wrap:pretty}
-@keyframes gcertSpin{to{transform:rotate(360deg)}}
+.offer-sec .gcert h4{margin:0 0 24px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,3.6vw,3.125rem);font-weight:600;line-height:1.12;letter-spacing:-.025em;color:var(--cream);text-wrap:balance}
+.offer-sec .gcert h4 span{color:var(--mint-bright)}
+.offer-sec .gcert p{max-width:65ch;margin:0;font-size:1.25rem;line-height:1.55;color:var(--copy-readable);text-wrap:pretty}
 @media(max-width:900px){
- .offer-sec .gcert-frame{padding:48px 24px 44px}
+ .offer-sec .gcert{--seal-size:216px}
+ .offer-sec .gcert-frame{padding-inline:32px}
+ .offer-sec .gcert p{font-size:1.125rem}
 }
 @media(max-width:560px){
- .offer-sec .gcert{padding:8px;border-radius:24px}
- .offer-sec .gcert-frame{padding:44px 20px 40px;border-radius:18px}
- .offer-sec .gcert-medal{width:116px;height:116px}
- .offer-sec .gcert-num{inset:23px;font-size:3rem}
- .offer-sec .gcert p{font-size:1rem}
+ .offer-sec .gcert{--seal-size:184px;--seal-top:24px;padding:7px;border-radius:28px}
+ .offer-sec .gcert-frame{padding-inline:20px;padding-bottom:34px;border-radius:20px}
+ .offer-sec .gcert-corner{width:24px;height:24px}
+ .offer-sec .gcert-corner.tl,.offer-sec .gcert-corner.tr{top:8px}
+ .offer-sec .gcert-corner.bl,.offer-sec .gcert-corner.br{bottom:8px}
+ .offer-sec .gcert-corner.tl,.offer-sec .gcert-corner.bl{left:8px}
+ .offer-sec .gcert-corner.tr,.offer-sec .gcert-corner.br{right:8px}
+ .offer-sec .gcert-medal{margin-bottom:12px}
+ .offer-sec .gcert-orbits{--orbit-size:400px}
+ .offer-sec .gcert h4{font-size:clamp(1.625rem,6.8vw,2rem);margin-bottom:18px;line-height:1.16}
+ .offer-sec .gcert p{font-size:1rem;line-height:1.6}
 }
-@media(prefers-reduced-motion:reduce){
- .offer-sec .gcert-ring{animation:none}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .offer-sec .gcert{background-color:#121e46}
+}
+@media(prefers-reduced-transparency:reduce){
+ .offer-sec .gcert{background-color:#121e46;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media(prefers-contrast:more){
+ .offer-sec .gcert{background:#121e46;border-color:rgba(222,239,255,.6);-webkit-backdrop-filter:none;backdrop-filter:none}
+ .offer-sec .gcert p{color:var(--cream)}
 }
 
-/* FAQ editorial: título fixo à esquerda, filete para a pergunta aberta e ícone +/−.
-   A pergunta permanece no lugar durante a leitura e o fechamento pode ser revertido. */
-.sec-faq>.wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start}
-.sec-faq .sec-head{position:sticky;top:96px;max-width:none;margin:0;text-align:left}
+/* FAQ (24/09, referência do usuário): pausa limpa entre seções com foto. Fundo só em CSS (navy, luz turquesa no
+   canto de baixo à esquerda, azul discreto no topo e vinheta), "?" em contorno e linha de batimento em SVG, perguntas
+   em cartões numerados com botão circular. Só uma resposta aberta por vez; a altura anima pelo JS. */
+.sec-faq{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(96px,9.4vw,132px);
+  background:
+    radial-gradient(135% 120% at 50% 40%,rgba(8,12,34,0) 52%,rgba(3,5,16,.62) 100%),
+    radial-gradient(48% 58% at 4% 96%,rgba(42,210,193,.075),rgba(42,210,193,0) 70%),
+    radial-gradient(44% 36% at 16% -4%,rgba(58,100,200,.1),rgba(58,100,200,0) 72%),
+    #080C22}
+.sec-faq>.wrap{max-width:1232px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(48px,5.6vw,80px);align-items:start}
+/* Uma mesma prancheta mantém o batimento entre a haste e o ponto do "?".
+   Ancorada pelo topo: a arte não se desloca quando uma resposta se expande. */
+.sec-faq .faq-art{position:absolute;z-index:-1;left:max(-18px,calc(50% - 760px));top:calc(clamp(96px,9.4vw,132px) + 238px);width:clamp(660px,54vw,820px);aspect-ratio:800/520;pointer-events:none}
+.sec-faq .faq-mark,.sec-faq .faq-ecg{position:absolute;inset:0;width:100%;height:auto;overflow:visible}
+.sec-faq .sec-head{max-width:none;margin:0;text-align:left}
 .sec-faq .sec-head h2{font-size:clamp(2.25rem,4.2vw,3.75rem);line-height:1.04}
 .sec-faq .sec-head h2 .serif{display:block}
-.sec-faq .sec-head::after{content:"";display:block;width:32px;height:2px;margin-top:28px;background:var(--mint)}
-.sec-faq .faq{position:relative;border-top:1px solid var(--line)}
-.sec-faq .faq:last-child{border-bottom:1px solid var(--line)}
-.sec-faq .faq::before{content:"";position:absolute;left:0;top:-1px;width:100%;height:2px;background:var(--mint);transform:scaleX(0);transform-origin:left;transition:transform var(--motion-fast) var(--ease-out)}
-.sec-faq .faq[open]:not(.is-closing)::before{transform:scaleX(1)}
-.sec-faq .faq summary{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:30px 0;list-style:none;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1875rem,1.7vw,1.4375rem);font-weight:500;line-height:1.35;letter-spacing:-.015em;color:var(--cream)}
+.sec-faq .sec-head::after{content:"";display:block;width:40px;height:2px;margin-top:32px;background:var(--mint)}
+/* Cartões: número, divisória, pergunta e botão na mesma grade; a resposta alinha com a pergunta. */
+.sec-faq .faq-list{--faq-pl:28px;--faq-pr:22px;--faq-num:40px;--faq-gap:24px;--faq-btn:44px}
+.sec-faq .faq{position:relative;border:1px solid rgba(96,134,196,.17);border-radius:14px;background:linear-gradient(180deg,#0C1233,#0A0F2C);transition:border-color var(--motion-hover) ease,box-shadow var(--motion-hover) ease}
+.motion-ready .sec-faq .faq-list.tx-group.tx-in>.faq{transition:opacity 400ms var(--ease-out) calc(var(--i,0) * 60ms),transform 400ms var(--ease-out) calc(var(--i,0) * 60ms),border-color var(--motion-hover) ease,box-shadow var(--motion-hover) ease}
+.sec-faq .faq+.faq{margin-top:14px}
+.sec-faq .faq:hover{border-color:rgba(42,210,193,.34);box-shadow:inset 0 0 28px rgba(42,210,193,.05)}
+.sec-faq .faq[open]:not(.is-closing){border-color:rgba(42,210,193,.4);box-shadow:inset 0 0 36px rgba(42,210,193,.06)}
+.sec-faq .faq summary{display:grid;grid-template-columns:var(--faq-num) 1px minmax(0,1fr) var(--faq-btn);align-items:center;column-gap:var(--faq-gap);min-height:88px;padding:20px var(--faq-pr) 20px var(--faq-pl);list-style:none;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1875rem,1.7vw,1.4375rem);font-weight:500;line-height:1.35;letter-spacing:-.015em;color:var(--cream)}
 .sec-faq .faq summary::-webkit-details-marker{display:none}
-.sec-faq .faq summary:focus-visible{outline:2px solid var(--mint);outline-offset:4px;border-radius:8px}
-.sec-faq .faq .pm{position:relative;flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--bg-2);transition:background var(--motion-press) ease,border-color var(--motion-press) ease}
-.sec-faq .faq .pm::before,.sec-faq .faq .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.75px;margin:-.875px 0 0 -6px;border-radius:2px;background:var(--mint-bright);transition:transform var(--motion-press) var(--ease-out),background var(--motion-press) ease}
+.sec-faq .faq summary::before{content:"";grid-column:2;grid-row:1;width:1px;height:36px;background:rgba(135,148,172,.26)}
+.sec-faq .faq summary:focus-visible{outline:2px solid var(--mint);outline-offset:-3px;border-radius:13px}
+.sec-faq .faq-n{grid-column:1;grid-row:1;font-size:1.125rem;font-weight:500;letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--mint-bright)}
+.sec-faq .faq .q{grid-column:3;grid-row:1}
+.sec-faq .faq .pm{grid-column:4;grid-row:1;position:relative;width:var(--faq-btn);height:var(--faq-btn);border:1px solid rgba(42,210,193,.34);border-radius:50%;background:rgba(8,12,34,.55);box-shadow:0 0 16px rgba(42,210,193,.09),inset 0 0 10px rgba(42,210,193,.06);transition:transform 360ms var(--ease-out),border-color var(--motion-hover) ease,box-shadow var(--motion-hover) ease}
+.sec-faq .faq .pm::before,.sec-faq .faq .pm::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.75px;margin:-.875px 0 0 -7px;border-radius:2px;background:var(--mint-bright)}
 .sec-faq .faq .pm::after{transform:rotate(90deg)}
-.sec-faq .faq[open]:not(.is-closing) .pm{background:var(--mint);border-color:var(--mint)}
-.sec-faq .faq[open]:not(.is-closing) .pm::before,.sec-faq .faq[open]:not(.is-closing) .pm::after{background:var(--bg)}
-.sec-faq .faq[open]:not(.is-closing) .pm::after{transform:rotate(0)}
+.sec-faq .faq summary:hover .pm{border-color:rgba(42,210,193,.6);box-shadow:0 0 18px rgba(42,210,193,.15),inset 0 0 12px rgba(42,210,193,.1)}
+.sec-faq .faq[open]:not(.is-closing) .pm{transform:rotate(45deg);border-color:rgba(42,210,193,.6)}
 .sec-faq .faq .a{overflow:hidden}
-.sec-faq .faq .a p{max-width:60ch;padding:0 72px 32px 0;font-size:1.0625rem;line-height:1.75;color:var(--copy-readable);text-wrap:pretty}
+.sec-faq .faq .a p{margin:0;padding:0 calc(var(--faq-pr) + var(--faq-btn) + var(--faq-gap)) 28px calc(var(--faq-pl) + var(--faq-num) + var(--faq-gap) * 2 + 1px);font-size:1.0625rem;line-height:1.75;color:var(--copy-readable);text-wrap:pretty}
 .sec-faq .faq .a b{font-weight:600;color:var(--cream)}
-@media(max-width:900px){
- .sec-faq>.wrap{grid-template-columns:minmax(0,1fr);gap:32px}
- .sec-faq .sec-head{position:static}
- .sec-faq .sec-head h2{font-size:clamp(2rem,7vw,2.75rem)}
+/* Tablet e celular: uma coluna, título antes; "?" menor no alto à direita e batimento na base. */
+@media(max-width:980px){
+ .sec-faq>.wrap{grid-template-columns:minmax(0,1fr);gap:44px}
+ .sec-faq .faq-art{inset:0;width:auto;aspect-ratio:auto}
+ .sec-faq .faq-mark{left:auto;right:clamp(-230px,-23vw,-140px);top:48px;width:clamp(320px,48vw,480px);opacity:.65}
+ .sec-faq .faq-contour{display:none}
+ .sec-faq{padding-bottom:104px}
+ .sec-faq .faq-ecg{top:auto;bottom:-32px;width:min(78vw,520px)}
 }
 @media(max-width:560px){
- .sec-faq .faq summary{gap:20px;padding:24px 0;font-size:1.125rem}
- .sec-faq .faq .pm{width:32px;height:32px}
- .sec-faq .faq .a p{padding:0 0 26px;font-size:1rem}
-}
-@media(prefers-reduced-motion:reduce){
- .sec-faq .faq summary:hover .q{transform:none}
+ .sec-faq{padding-block:72px 88px}
+ .sec-faq .faq-ecg{width:92%;bottom:-16px}
+ .sec-faq .sec-head h2{font-size:clamp(2rem,7vw,2.75rem)}
+ .sec-faq .sec-head::after{margin-top:24px}
+ .sec-faq .faq-list{--faq-pl:16px;--faq-pr:12px;--faq-num:22px;--faq-gap:10px;--faq-btn:34px}
+ .sec-faq .faq+.faq{margin-top:12px}
+ .sec-faq .faq summary{min-height:76px;padding-block:18px;font-size:1.125rem}
+ .sec-faq .faq summary::before{height:28px}
+ .sec-faq .faq-n{font-size:1rem}
+ .sec-faq .faq .pm::before,.sec-faq .faq .pm::after{width:12px;margin-left:-6px}
+ .sec-faq .faq .a p{padding:0 var(--faq-pl) 24px;font-size:1rem}
 }
 
 /* Encerramento: a foto das mãos cobre a seção inteira (encerramento + rodapé), sob degradês e vinheta,
@@ -1403,51 +1632,85 @@
 }
 </style>
 <style id="css-proposta">
-/* ===== abertura (proposta aplicada em 15/09, variações A) ===== */
-/* ---------- 1. Hero: a foto se dissolve no fundo, sem corte seco ---------- */
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,12,34,0) 0%,rgba(8,12,34,.7) 58%,#080C22 100%)}
+/* ===== abertura (proposta aplicada em 15/09, variações A; hero + vídeo refeitos em 24/09 pelo protótipo do usuário) ===== */
+/* ---------- 1. Hero: a foto é uma camada no topo que se dissolve no navy ---------- */
+/* A camada segue a proporção da foto (1672×941), nunca abaixo de 720px: a Carol mantém o enquadramento em qualquer
+   largura, e o vídeo, que vem logo abaixo do texto, cai sobre a parte da foto que já escureceu. */
+@media (min-width:561px){
+  .hero{--hero-photo:max(56.28vw,720px)}
+  .hero::before{content:"";position:absolute;left:0;right:0;top:0;height:var(--hero-photo);z-index:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(8,12,34,0) 64%,rgba(8,12,34,.88) 71%,rgba(8,12,34,.96) 82%,#080C22 100%),
+      url('assets/images/Image - Hero.webp') center top/cover no-repeat}
+  /* Abaixo dos braços da Carol (65% da foto), a foto desfoca e escurece em azul-marinho: o corpo dela, atrás do
+     título e do texto ao lado do vídeo, não disputa com as letras. A borda de cima se dissolve. */
+  .hero::after{content:"";position:absolute;left:0;right:0;top:calc(var(--hero-photo) * .64);height:calc(var(--hero-photo) * .36);z-index:0;pointer-events:none;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000 16%);mask-image:linear-gradient(180deg,transparent,#000 16%)}
+}
 /* ---------- 2. Mesmo fundo contínuo, sem brilho próprio na seção seguinte ---------- */
-/* flow-root: impede que a margem negativa do vídeo "vaze" e suba a seção inteira por cima da foto */
 .pain{display:flow-root;background:#080C22;padding-top:0;z-index:2}
 .pain.band::before{display:none}
-/* ---------- 3. Vídeo: ponte entre a hero e a dor ---------- */
-.pain .video-intro{position:relative}
-.pain .video-block{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"frame frame" "title cta";align-items:center;column-gap:32px;row-gap:22px;margin:0 auto;text-align:left}
-.pain .video-frame{grid-area:frame;width:100%;max-width:none;margin:0;border-radius:16px;border:1px solid rgba(236,240,248,.12);
-  background:#0C1236;box-shadow:0 48px 96px -48px rgba(0,0,0,.9)}
-.pain .video-frame .halo{background:radial-gradient(circle at 50% 45%,rgba(42,210,193,.07),transparent 60%)}
-.pain .play{box-shadow:none}
-.pain .play::before{content:none}
-.pain .video-title{grid-area:title;margin:0;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82)}
-.pain .video-block>div:last-child{grid-area:cta;margin-top:0!important}
-/* botão secundário: mesmo texto, contorno, não compete com o CTA da hero */
-.pain .video-block .btn{background:transparent;color:#ECF0F8;border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 26px;font-size:.9375rem}
-@media(hover:hover) and (pointer:fine){.pain .video-block .btn:hover{background:rgba(42,210,193,.1);border-color:#2AD2C1;color:#45E4D3;transform:none;box-shadow:none;filter:none}}
-.pain .video-block .btn:active,.pain .video-block .btn.is-pressed{transform:scale(.97)}
+/* ---------- 3. Vídeo na primeira dobra: vídeo à esquerda; filete, título, texto e botão à direita ---------- */
+.hero .video-block{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,1fr);
+  grid-template-areas:"frame copy" "frame cta";column-gap:clamp(32px,3.6vw,52px);row-gap:24px;margin:0;text-align:left}
+.hero .video-frame{grid-area:frame;align-self:center;width:100%;max-width:none;margin:0;border-radius:18px;
+  border:1px solid rgba(42,210,193,.28);background:var(--video-poster,none) center/cover no-repeat,#0C1236;
+  box-shadow:0 48px 96px -48px rgba(0,0,0,.95),0 0 0 6px rgba(42,210,193,.035)}
+/* vinheta: a capa, quando houver, escurece nas bordas e o play continua em destaque */
+.hero .video-frame::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(8,12,34,.55) 100%)}
+.hero .video-frame .halo{background:radial-gradient(circle at 50% 45%,rgba(42,210,193,.08),transparent 60%)}
+.hero .play{box-shadow:0 14px 40px -12px rgba(42,210,193,.55)}
+.hero .play::before{content:none}
+/* a coluna começa no alto do vídeo e o botão fecha na base dele */
+.hero .video-copy{grid-area:copy;align-self:start;display:grid;gap:12px}
+.hero .video-copy::before{content:"";width:32px;height:2px;margin-bottom:8px;background:var(--mint)}
+/* tamanhos e cores de texto iguais aos de antes: só a posição mudou */
+.hero .video-title{margin:0 0 4px;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.35;color:rgba(236,240,248,.82);text-wrap:balance}
+.hero .video-desc{max-width:62ch;font-size:1.0625rem;line-height:1.6;color:rgba(236,240,248,.84);text-wrap:pretty}
+/* os termos marcados não mudam de cor, como no texto de cima */
+.hero .video-desc .mk{color:inherit;font-weight:inherit}
+.hero .video-cta{grid-area:cta;align-self:end}
+/* botão secundário: contorno turquesa, não compete com o botão principal */
+.hero .video-cta .btn{background:transparent;color:var(--cream);border:1px solid rgba(42,210,193,.55);box-shadow:none;min-height:52px;padding:14px 24px 14px 30px;font-size:.9375rem}
+@media(hover:hover) and (pointer:fine){.hero .video-cta .btn:hover{background:rgba(42,210,193,.1);border-color:var(--mint);color:var(--mint-bright);transform:none;box-shadow:none;filter:none}}
+.hero .video-cta .btn:active,.hero .video-cta .btn.is-pressed{transform:scale(.97)}
+/* seta dos botões: avança 3px no hover */
+.btn .btn-ic{flex:none;width:18px;height:18px;margin-right:-4px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform var(--motion-press) var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.btn:hover .btn-ic{transform:translateX(3px)}}
+/* Até 960px tudo empilha: vídeo, texto e botão. */
+@media(max-width:960px){
+  .hero .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "copy" "cta";row-gap:22px}
+  .hero .video-copy{margin-top:8px}
+  .hero .video-desc{font-size:1rem}
+}
 /* ---------- 4. Sem ECG divisório nem luz girando no aro ---------- */
 .pain .pain-ecg{display:none}
 .pain .orb-arc-track{display:none}
 /* ---------- 5. Dor: sem cartão, perguntas em lista com filete ---------- */
-.pain .pain-sub .serif{color:inherit}
+/* “certificado não responde”: itálico turquesa, como na referência do usuário (24/09). */
+.pain .pain-sub .serif{color:var(--mint-bright)}
 .pain .pain-diagnostic{background:none;border:0;border-radius:0;overflow:visible;box-shadow:none}
 .pain .pain-diagnostic-visual{background:none}
 .pain .pain-question-groups{gap:0;border-top:1px solid rgba(236,240,248,.10)}
 .pain .pain-question-card{min-height:0;padding:15px 0;background:none;border-radius:0;border-bottom:1px solid rgba(236,240,248,.10)}
 .pain .pain-question-card p{font-size:1.0625rem;line-height:1.45}
-/* Seta turquesa antes de cada pergunta (mesmo desenho da seta do botão de compra), alinhada à 1ª linha. */
+/* Seta turquesa num anel antes de cada pergunta, alinhado à 1ª linha (referência do usuário, 24/09). */
 .pain .pain-question-card p{display:flex;align-items:flex-start;gap:14px}
-.pain .pain-question-card p::before{content:"";flex:none;width:18px;height:18px;margin-top:calc((1.45em - 18px) / 2);background:var(--mint);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat}
+.pain .pain-question-card p::before{content:"";flex:none;box-sizing:border-box;width:24px;height:24px;margin-top:calc((1.45em - 24px) / 2);border:1px solid rgba(42,210,193,.5);border-radius:50%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2345E4D3' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12m-5-5 5 5-5 5'/%3E%3C/svg%3E") center/15px no-repeat,rgba(42,210,193,.08);
+  box-shadow:0 0 12px -3px rgba(42,210,193,.55)}
 /* Na entrada em cascata, a seta chega 6px atrás e desliza para o lugar logo depois da pergunta. */
 .motion-ready .pain-question-groups:not(.tx-in) .pain-question-card p::before{transform:translateX(-6px)}
 .motion-ready .pain-question-groups.tx-in .pain-question-card p::before{transition:transform 450ms var(--ease-out);transition-delay:calc(var(--i,0) * 60ms + 120ms)}
 /* ---------- Desktop e tablet: zigue-zague no mesmo eixo da hero ---------- */
 @media (min-width:761px){
-  .hero{padding-bottom:clamp(128px,11vw,168px)}
-  .pain .video-intro{margin-top:calc(-1 * clamp(88px,8vw,120px));padding-bottom:clamp(96px,9vw,128px)}
-  .pain .video-block{max-width:880px}
+  /* A linha do vídeo começa logo abaixo dos braços da Carol (65% da altura da foto): o texto ocupa no mínimo esse
+     espaço (menos o respiro do topo e o respiro até o vídeo) e fica centralizado nele.
+     Respiro entre o botão e o vídeo: 56 a 96px (antes 40px, pedido do usuário em 24/09). */
+  .hero{--hero-pad:clamp(40px,4vw,56px);--hero-gap:clamp(56px,6vw,96px);padding:var(--hero-pad) 0 clamp(96px,9vw,128px)}
+  .hero-inner{gap:var(--hero-gap)}
+  .hero-top{min-height:calc(var(--hero-photo) * .69 - var(--hero-pad) - var(--hero-gap));align-content:center}
   /* orbe à esquerda, título à direita (mesma grade 5/7 do diagnóstico, espelhada) */
   .pain .pain-concept{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;column-gap:clamp(40px,6vw,88px);
     max-width:none;min-height:0;margin:0 0 clamp(72px,7vw,112px);text-align:left;overflow:visible}
@@ -1463,10 +1726,9 @@
 }
 /* ---------- Celular ---------- */
 @media (max-width:760px){
-  .pain .video-intro{margin-top:-56px;padding-bottom:64px}
-  .pain .video-block{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "title" "cta";row-gap:16px}
-  .pain .video-block>div:last-child{width:100%}
-  .pain .video-block .btn{width:100%}
+  .hero{padding-bottom:64px}
+  .hero .video-block{row-gap:16px}
+  .hero .video-cta .btn{width:100%;padding-inline:18px}
   .pain .pain-concept{--orb:min(300px,76vw);margin:0 0 48px;text-align:left}
   .pain .concept-orb{margin:0}
   .pain .pain-concept-copy{margin-top:calc(var(--orb) * -.24)}
@@ -1474,9 +1736,9 @@
   .pain .pain-diagnostic-copy{padding-bottom:0}
 }
 @media (max-width:560px){
-  .hero::after{display:none}
-  /* no celular a hero não tem foto de fundo */
+  /* no celular a hero não tem foto de fundo; o vídeo sobe 56px sobre a base da foto da Carol */
   .hero-mobile-art{margin-bottom:0}
+  .hero .video-block{margin-top:-96px}
 }
 /* Controle único para os movimentos automáticos; feedback de teclado imediato. */
 .btn,.play,.rail-btn,.shot-zoom-nav,.shot-zoom-close,.motion-toggle{touch-action:manipulation}
@@ -1492,9 +1754,9 @@
  .is-pressed{transform:none!important}
  .topbar{position:relative}
  .marquee{width:100%;white-space:normal}
- .marquee>span{min-width:0;width:100%;flex-wrap:wrap;justify-content:center;gap:4px 10px;padding:10px 16px;font-size:.6875rem;letter-spacing:.04em}
+ .marquee>span{min-width:0;width:100%;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:10px 16px;font-size:.6875rem;letter-spacing:.04em}
  .marquee>span+span,.marquee .sep{display:none}
- .btn:active,.btn:hover,.pain .video-block .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ovb-row:hover .ovb-art img,.offer-sec .ov-buy .btn:hover svg{transform:none}
+ .btn:active,.btn:hover,.btn:hover .btn-ic,.hero .video-cta .btn:active,.play:active,.play:hover,.sec-proof .rail-btn:active,.shot-zoom-nav:active,.shot-zoom-close:active,.offer-sec .ov-buy .btn:hover svg{transform:none}
  .sec-proof .rail-btn:hover .rail-arrow svg:first-child{transform:none}
  .sec-proof .rail-btn:hover .rail-arrow svg+svg{visibility:hidden}
  .btn,.shot-zoom-close,.shot-zoom-nav,.sec-proof .rail-btn{transition:color 120ms ease,border-color 120ms ease!important}
@@ -1536,15 +1798,45 @@
 .motion-ready .offer-sec .ov-price.tx-in .ov-old::after{transition:transform 450ms var(--ease-out) 220ms}
 .motion-ready .offer-sec .ov-price.tx-in>.ov-amount{transition-delay:420ms}
 .motion-ready .offer-sec .ov-price.tx-in>.ov-parc{transition-delay:500ms}
+/* Aviso de inscrição (24/09): de vez em quando, no canto de baixo, "<nome> garantiu vaga na turma", no formato do
+   exemplo do usuário com as cores da página. Só com compras reais: a lista fica no fim do HTML; vazia, nada aparece. */
+.buy-toast[hidden]{display:none}
+.buy-toast{position:fixed;left:24px;bottom:24px;z-index:70;display:flex;align-items:center;gap:12px;max-width:min(380px,calc(100vw - 32px));padding:10px 8px 10px 12px;border:1px solid rgba(42,210,193,.26);border-radius:14px;background:rgba(12,18,54,.95);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 24px 48px -24px rgba(0,0,0,.9);opacity:0;visibility:hidden;transform:translateY(12px);pointer-events:none;transition:opacity 450ms var(--ease-out),transform 450ms var(--ease-out),visibility 0s linear 450ms}
+.buy-toast.is-on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+/* Em tela de toque o aviso fica na tela durante a rolagem; para não travar um botão que passe embaixo,
+   o toque atravessa o texto e só o "×" responde. */
+@media (hover:none),(pointer:coarse){
+ .buy-toast.is-on{pointer-events:none}
+ .buy-toast.is-on .bt-close{pointer-events:auto}
+}
+.bt-ic{flex:none;width:30px;height:30px;fill:none;stroke:var(--virada);stroke-linecap:round;stroke-linejoin:round}
+.bt-ic circle{stroke-width:1.5;stroke-opacity:.45}
+/* O check se desenha ao aparecer; parado (movimento reduzido), fica inteiro. */
+.bt-ic path{stroke-width:2;stroke-dasharray:1}
+.buy-toast.is-on .bt-ic path{animation:btCheck 500ms var(--ease-out) 150ms both}
+@keyframes btCheck{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.bt-msg{font-size:.9375rem;line-height:1.35;color:rgba(236,240,248,.8)}
+.bt-msg b{color:var(--cream);font-weight:700}
+.bt-close{flex:none;width:28px;height:28px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:transparent;color:rgba(236,240,248,.55);cursor:pointer;touch-action:manipulation;transition:color var(--motion-hover) ease,background-color var(--motion-hover) ease}
+.bt-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@media(hover:hover) and (pointer:fine){.bt-close:hover{color:var(--cream);background:rgba(236,240,248,.08)}}
+.bt-close:focus-visible{outline:2px solid var(--mint);outline-offset:1px}
+.bt-live{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:560px){
+ .buy-toast{left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));gap:10px;padding:8px 6px 8px 10px}
+ .bt-msg{font-size:.875rem}
+}
+@media(prefers-reduced-motion:reduce){.buy-toast{transform:none}}
 </style>
 </head>
 <body>
 
 <!-- ===== TOP MARQUEE ===== -->
 <div class="topbar">
+  <!-- Cada informação com um ícone; a segunda repetição existe só para o letreiro rodar sem salto. -->
   <div class="marquee">
-    <span>ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
-    <span aria-hidden="true">ENCONTRO AO VIVO <b>22 DE OUTUBRO</b> <span class="sep">•</span> 20H <span class="sep">•</span> ONLINE E AO VIVO <span class="sep">•</span> ACESSO IMEDIATO ÀS 3 AULAS <span class="sep">•</span></span>
+    <span><span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg>ENCONTRO AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></svg>22 DE OUTUBRO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20H</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>ONLINE E AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6 11.5v4.5c3.3 2.7 8.7 2.7 12 0v-4.5M22 9.5v5"/></svg>ACESSO IMEDIATO ÀS 3 AULAS</span> <span class="sep">•</span></span>
+    <span aria-hidden="true"><span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg>ENCONTRO AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></svg>22 DE OUTUBRO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20H</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></svg>ONLINE E AO VIVO</span> <span class="sep">•</span> <span class="mq-item"><svg class="mq-ic" viewBox="0 0 24 24"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6 11.5v4.5c3.3 2.7 8.7 2.7 12 0v-4.5M22 9.5v5"/></svg>ACESSO IMEDIATO ÀS 3 AULAS</span> <span class="sep">•</span></span>
   </div>
   <button class="motion-toggle" type="button" aria-label="Pausar animações automáticas" aria-pressed="false" title="Pausar animações automáticas" hidden>
     <svg class="pause-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg>
@@ -1564,27 +1856,20 @@
         <span class="eyebrow reveal">Para quem se formou em instrumentação cirúrgica, mas ainda não entrou no mercado...</span>
         <h1 class="reveal d1">Você se formou. Mas ainda não conseguiu espaço no <span class="serif accent u-dash">centro cirúrgico</span>?</h1>
         <p class="sub reveal d2">Descubra os <span class="mk">6 passos</span> para sair do zero e construir o caminho até a sua <span class="mk">primeira oportunidade</span> na instrumentação cirúrgica.</p>
-        <p class="desc reveal d2">No <span class="mk">Gancho da Virada</span>, você vai conhecer o mapa que eu gostaria de ter recebido quando comecei: uma jornada construída a partir da minha própria trajetória e que hoje utilizo para direcionar outros instrumentadores.</p>
-        <p class="desc reveal d3">Você recebe acesso imediato a <span class="mk">3 aulas de preparação</span> e participa de um <span class="mk">encontro ao vivo</span>, onde eu vou revelar e ensinar os 6 Passos da Virada.</p>
         <div class="cta-group">
-          <div class="hero-cta-slot"><a href="#oferta" class="btn">QUERO PARTICIPAR</a></div>
-          <span class="microcopy">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-            Vagas limitadas para o encontro ao vivo
-          </span>
+          <div class="hero-cta-slot">
+            <a href="#oferta" class="btn hero-enroll" aria-labelledby="hero-cta-label" aria-describedby="hero-availability-text">
+              <span class="hero-enroll-main"><span id="hero-cta-label">QUERO PARTICIPAR</span> <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
+              <span class="hero-availability" id="hero-availability-text"><span class="hero-availability-copy"><strong>Vagas limitadas</strong> <span>para o encontro ao vivo</span></span></span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-
-<!-- ===== BLOCO 02 — VÍDEO + A DOR ===== -->
-<section class="sec pain band band-deep">
-  <div class="wrap video-intro">
+    <!-- Vídeo na primeira dobra (24/09, protótipo do usuário): vídeo à esquerda; à direita, título, os dois
+         parágrafos que saíram do texto da hero e o botão. No celular tudo empilha abaixo da foto da Carol. -->
     <div class="video-block reveal d4">
-      <p class="video-title">Entenda em poucos minutos o que é o Gancho da Virada</p>
+      <!-- Capa do vídeo, quando houver: style="--video-poster:url('assets/images/arquivo.webp')" neste div. -->
       <div class="video-frame">
         <div class="halo"></div>
         <!-- INSERIR VÍDEO PRINCIPAL AQUI (substituir este bloco pelo embed/iframe) -->
@@ -1593,11 +1878,22 @@
         </button>
         <div class="ph">Vídeo principal</div>
       </div>
-      <div style="margin-top:30px">
-        <a href="#mapa" class="btn">QUERO CONHECER OS 6 PASSOS</a>
+      <div class="video-copy">
+        <p class="video-title">Entenda em poucos minutos o que é o Gancho da Virada</p>
+        <p class="video-desc">No <span class="mk">Gancho da Virada</span>, você vai conhecer o mapa que eu gostaria de ter recebido quando comecei: uma jornada construída a partir da minha própria trajetória e que hoje utilizo para direcionar outros instrumentadores.</p>
+        <p class="video-desc">Você recebe acesso imediato a <span class="mk">3 aulas de preparação</span> e participa de um <span class="mk">encontro ao vivo</span>, onde eu vou revelar e ensinar os 6 Passos da Virada.</p>
+      </div>
+      <div class="video-cta">
+        <a href="#mapa" class="btn">QUERO CONHECER OS 6 PASSOS <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
+</section>
+
+
+
+<!-- ===== BLOCO 02 — A DOR ===== -->
+<section class="sec pain band band-deep">
   <div class="wrap">
     <div class="hero-ecg pain-ecg reveal" aria-hidden="true">
       <svg viewBox="0 0 600 64" preserveAspectRatio="none">
@@ -1630,7 +1926,7 @@
 
     <div class="pain-diagnostic reveal" id="diagnostico">
       <div class="pain-diagnostic-copy">
-        <p class="pain-sub">Você terminou sua formação e percebeu que <span class="serif">o certificado não responde</span> algumas das perguntas mais importantes:</p>
+        <p class="pain-sub">Você terminou sua formação e percebeu que o <span class="serif">certificado não responde</span> algumas das perguntas mais importantes:</p>
         <div class="pain-question-groups">
           <div class="pain-question-card"><p><span>Com quem eu devo falar?</span></p></div>
           <div class="pain-question-card"><p><span>Como consigo minha primeira oportunidade?</span></p></div>
@@ -1672,14 +1968,35 @@
               <stop offset=".7" stop-color="#2AD2C1"/>
               <stop offset="1" stop-color="#30EFAD"/>
             </linearGradient>
+            <path id="ecgRouteDesk" pathLength="1" d="M0 52 H83 C122 52 123 92 154 92 L163 74 L174 111 L185 92 C215 92 215 132 250 132 C288 132 291 92 320 92 L330 74 L341 111 L352 92 C383 92 383 52 417 52 C456 52 458 92 487 92 L496 74 L507 111 L518 92 C547 92 550 132 583 132 C623 132 624 92 654 92 L663 74 L674 111 L685 92 C715 92 717 52 750 52 C789 52 791 92 820 92 L830 74 L841 111 L852 92 C882 92 884 132 917 132 H1000"/>
           </defs>
           <path class="ecg-line" d="M0 52 H83 C122 52 123 92 154 92 L163 74 L174 111 L185 92 C215 92 215 132 250 132 C288 132 291 92 320 92 L330 74 L341 111 L352 92 C383 92 383 52 417 52 C456 52 458 92 487 92 L496 74 L507 111 L518 92 C547 92 550 132 583 132 C623 132 624 92 654 92 L663 74 L674 111 L685 92 C715 92 717 52 750 52 C789 52 791 92 820 92 L830 74 L841 111 L852 92 C882 92 884 132 917 132 H1000"/>
-          <circle class="ecg-pulse" r="4"><animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M0 52 H83 C122 52 123 92 154 92 L163 74 L174 111 L185 92 C215 92 215 132 250 132 C288 132 291 92 320 92 L330 74 L341 111 L352 92 C383 92 383 52 417 52 C456 52 458 92 487 92 L496 74 L507 111 L518 92 C547 92 550 132 583 132 C623 132 624 92 654 92 L663 74 L674 111 L685 92 C715 92 717 52 750 52 C789 52 791 92 820 92 L830 74 L841 111 L852 92 C882 92 884 132 917 132 H1000"/></circle>
+          <!-- Pulso: rastro de luz + bolinha no mesmo relógio (4,2s: 3,5s de percurso com aceleração e freada suaves, 0,7s de pausa). -->
+          <g class="ecg-run">
+            <g class="ecg-tails">
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".12" stroke-dasharray=".09 2" stroke-dashoffset=".09"><animate attributeName="stroke-dashoffset" values=".09;-.91;-.91" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".22" stroke-dasharray=".06 2" stroke-dashoffset=".06"><animate attributeName="stroke-dashoffset" values=".06;-.94;-.94" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".4" stroke-dasharray=".035 2" stroke-dashoffset=".035"><animate attributeName="stroke-dashoffset" values=".035;-.965;-.965" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteDesk" class="ecg-tail" stroke-opacity=".8" stroke-dasharray=".015 2" stroke-dashoffset=".015"><animate attributeName="stroke-dashoffset" values=".015;-.985;-.985" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+            </g>
+            <g class="ecg-pulse ecg-pulse-dot"><path class="pulse-halo" d="M0 0h.01"/><path class="pulse-glow" d="M0 0h.01"/><path class="pulse-core" d="M0 0h.01"/><animateMotion keyPoints="0;1;1" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"><mpath href="#ecgRouteDesk"/></animateMotion></g>
+            <animate attributeName="opacity" dur="4.2s" repeatCount="indefinite" calcMode="spline" values="0;1;1;0;0" keyTimes="0;.07;.76;.833;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .6 1;0 0 1 1"/>
+          </g>
         </svg>
 
         <svg class="ecg-mobile" viewBox="0 0 300 450" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="mobileJourney" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#24B7D3"/><stop offset="1" stop-color="#30EFAD"/></linearGradient></defs>
+          <defs><linearGradient id="mobileJourney" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#24B7D3"/><stop offset="1" stop-color="#30EFAD"/></linearGradient><path id="ecgRouteMob" pathLength="1" d="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450"/></defs>
           <path d="M70 0 V40 C70 76 119 75 133 75 L143 64 L155 88 L166 75 C204 75 230 80 230 110 C230 146 181 145 167 145 L157 134 L145 158 L134 145 C96 145 70 150 70 180 C70 216 119 215 133 215 L143 204 L155 228 L166 215 C204 215 230 220 230 250 C230 286 181 285 167 285 L157 274 L145 298 L134 285 C96 285 70 290 70 320 C70 356 119 355 133 355 L143 344 L155 368 L166 355 C204 355 230 360 230 390 V450" fill="none" stroke="url(#mobileJourney)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <g class="ecg-run">
+            <g class="ecg-tails">
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".12" stroke-dasharray=".09 2" stroke-dashoffset=".09"><animate attributeName="stroke-dashoffset" values=".09;-.91;-.91" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".22" stroke-dasharray=".06 2" stroke-dashoffset=".06"><animate attributeName="stroke-dashoffset" values=".06;-.94;-.94" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".4" stroke-dasharray=".035 2" stroke-dashoffset=".035"><animate attributeName="stroke-dashoffset" values=".035;-.965;-.965" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+              <use href="#ecgRouteMob" class="ecg-tail" stroke-opacity=".8" stroke-dasharray=".015 2" stroke-dashoffset=".015"><animate attributeName="stroke-dashoffset" values=".015;-.985;-.985" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"/></use>
+            </g>
+            <g class="ecg-pulse ecg-pulse-dot"><path class="pulse-halo" d="M0 0h.01"/><path class="pulse-glow" d="M0 0h.01"/><path class="pulse-core" d="M0 0h.01"/><animateMotion keyPoints="0;1;1" dur="4.2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.833;1" keySplines=".45 .05 .55 .95;0 0 1 1"><mpath href="#ecgRouteMob"/></animateMotion></g>
+            <animate attributeName="opacity" dur="4.2s" repeatCount="indefinite" calcMode="spline" values="0;1;1;0;0" keyTimes="0;.07;.76;.833;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .6 1;0 0 1 1"/>
+          </g>
         </svg>
         <div class="nodes">
           <div class="node" style="animation-delay:.3s">
@@ -1725,7 +2042,7 @@
       </div>
       <div class="map-action reveal">
       <span class="map-note">Os 6 passos serão revelados exclusivamente no encontro ao vivo.</span>
-      <a href="#oferta" class="btn">QUERO DESCOBRIR</a>
+      <a href="#oferta" class="btn">QUERO DESCOBRIR <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -1742,7 +2059,7 @@
         <div class="how-art"><img src="assets/images/how-aulas.webp" srcset="assets/images/how-aulas-900.webp 900w, assets/images/how-aulas.webp 1672w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1160px) calc(50vw - 36px), 544px" alt="Carol em roupa privativa numa tela de aula, cercada por outras telas de vídeo do centro cirúrgico" width="1672" height="941" loading="lazy" decoding="async"></div>
         <h3>3 Aulas <span>de Preparação</span></h3>
         <p>Assim que sua inscrição for confirmada, você recebe acesso imediato às 3 aulas de preparação. Elas vão preparar sua visão sobre o mercado para que você chegue ao encontro entendendo os fundamentos necessários para aproveitar o mapa.</p>
-        <span class="badge mint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>ACESSO IMEDIATO</span>
+        <span class="badge">ACESSO IMEDIATO</span>
       </div>
       <div class="hcard reveal d1">
         <div class="how-art"><img src="assets/images/how-encontro.webp" srcset="assets/images/how-encontro-900.webp 900w, assets/images/how-encontro.webp 1672w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1160px) calc(50vw - 36px), 544px" alt="Mapa dobrado com uma linha de batimento passando por seis cadeados fechados e Carol falando numa tela ao vivo" width="1672" height="941" loading="lazy" decoding="async"></div>
@@ -1756,6 +2073,8 @@
 </section>
 
 <!-- ===== BLOCO 05 — PARA QUEM É + CAROL ===== -->
+<!-- Foto de fundo (sala cirúrgica à direita, como na referência), quando houver:
+     style="--who-photo:url('assets/images/arquivo.webp')" nesta section. Prompt em human-output/image/gancho-para-quem/. -->
 <section class="sec sec-who light branco" id="para-quem">
   <div class="wrap who-layout">
     <div class="forwhom reveal">
@@ -1776,7 +2095,8 @@
 <!-- Apresentação da Carol e números transferidos da faixa abaixo da hero. -->
 <section class="mentor-section" id="carol" aria-labelledby="mentor-title">
   <div class="mentor-banner">
-    <img src="assets/hero-equipe.webp" alt="" width="1024" height="683" loading="lazy" decoding="async">
+    <img src="assets/images/carol-equipe.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+    <span class="mentor-blur" aria-hidden="true"></span>
     <div class="wrap mentor-heading reveal">
       <h2 id="mentor-title">Quem vai te mostrar <span class="serif">esse caminho?</span></h2>
       <div class="auth-cards" role="group" aria-label="Números de autoridade">
@@ -1789,6 +2109,8 @@
   <div class="wrap mentor-details reveal">
     <figure class="mentor-portrait">
       <img src="assets/Foto-427-683x1024.webp" alt="Carol no centro cirúrgico" width="683" height="1024" loading="lazy" decoding="async">
+      <span class="mentor-rim" aria-hidden="true"></span>
+      <span class="mentor-rim-bold" aria-hidden="true"></span>
     </figure>
     <div class="mentor-content">
       <div class="mentor-story"><p><span class="mentor-opening">Quando eu comecei, ninguém me entregou um mapa.</span> Eu precisei descobrir na prática como esse mercado funcionava, quais movimentos faziam diferença e como construir meu espaço.</p>
@@ -1861,57 +2183,65 @@
     <div class="offer-list reveal">
       <ul class="ov-core">
         <li>
-          <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" d="M20 6 9 17l-5-5"/></svg></span>
-          <h4>3 Aulas de <span class="serif">Preparação</span></h4>
-          <p><b>Acesso imediato</b> após a confirmação da inscrição.</p>
+          <span class="ovc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9.2 4.6 2.8-4.6 2.8z" fill="currentColor" stroke-width="1.2"/></svg></span>
+          <div class="ovc-text">
+            <h4>3 Aulas de <span class="serif">Preparação</span></h4>
+            <p><b>Acesso imediato</b> após a confirmação da inscrição.</p>
+          </div>
+          <!-- Capa provisória (a mesma de "Como funciona"); para trocar, basta o arquivo. -->
+          <figure class="ovc-art" style="--art-pos:50% 30%"><img src="assets/images/how-aulas.webp" srcset="assets/images/how-aulas-900.webp 900w, assets/images/how-aulas.webp 1672w" sizes="(max-width: 560px) calc(100vw - 48px), 480px" alt="" width="1672" height="941" loading="lazy" decoding="async"></figure>
         </li>
         <li>
-          <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path pathLength="100" d="M20 6 9 17l-5-5"/></svg></span>
-          <h4>Encontro Ao Vivo — <span class="serif">Os 6 Passos da Virada</span></h4>
-          <p><b>22 de outubro às 20h.</b> Online e ao vivo.</p>
+          <span class="ovc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4m8-4v4"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 16.5h.01M12 16.5h.01" stroke-width="2.2"/></svg></span>
+          <div class="ovc-text">
+            <h4>Encontro Ao Vivo — <span class="serif">Os 6 Passos da Virada</span></h4>
+            <p><b>22 de outubro às 20h.</b> Online e ao vivo.</p>
+          </div>
+          <!-- Capa provisória: recorte da Carol na tela de "Como funciona"; para trocar, basta o arquivo (e tirar --art-zoom). -->
+          <figure class="ovc-art" style="--art-pos:88% 8%;--art-zoom:2.3"><img src="assets/images/how-encontro.webp" srcset="assets/images/how-encontro-900.webp 900w, assets/images/how-encontro.webp 1672w" sizes="(max-width: 560px) calc(100vw - 48px), 480px" alt="" width="1672" height="941" loading="lazy" decoding="async"><span class="ovc-live">AO VIVO</span></figure>
         </li>
       </ul>
       <div class="ovb-head">
         <h4>E ainda leva <span class="serif">três bônus</span> junto com a sua inscrição:</h4>
       </div>
-      <div class="ov">
-        <div class="ovb-list">
-        <article class="ovb-row">
+      <div class="ovb-list">
+        <article class="ovb-card">
           <div class="ovb-text"><span class="ovb-num">01</span><h5>1 dia de Vlog no Centro Cirúrgico</h5></div>
-          <figure class="ovb-art"><img src="assets/images/bonus-vlog.webp" srcset="assets/images/bonus-vlog-900.webp 900w, assets/images/bonus-vlog.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 600px" alt="Celular mostrando Carol em roupa privativa no centro cirúrgico, cercado por cenas do dia e uma câmera de vlog" width="1672" height="941" loading="lazy" decoding="async"></figure>
+          <figure class="ovb-art"><img src="assets/images/bonus-vlog.webp" srcset="assets/images/bonus-vlog-900.webp 900w, assets/images/bonus-vlog.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 400px" alt="Celular mostrando Carol em roupa privativa no centro cirúrgico, cercado por cenas do dia e uma câmera de vlog" width="1672" height="941" loading="lazy" decoding="async"></figure>
         </article>
-        <article class="ovb-row flip">
-          <span class="ovb-op" aria-hidden="true">+</span>
-          <figure class="ovb-art"><img src="assets/images/bonus-ebook.webp" srcset="assets/images/bonus-ebook-900.webp 900w, assets/images/bonus-ebook.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 600px" alt="Tablet com o e-book aberto: instrumentais cirúrgicos de um lado e um checklist com itens marcados do outro" width="1672" height="941" loading="lazy" decoding="async"></figure>
+        <article class="ovb-card">
           <div class="ovb-text"><span class="ovb-num">02</span><h5>E-book "Checklist Cirúrgico"</h5></div>
+          <figure class="ovb-art"><img src="assets/images/bonus-ebook.webp" srcset="assets/images/bonus-ebook-900.webp 900w, assets/images/bonus-ebook.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 400px" alt="Tablet com o e-book aberto: instrumentais cirúrgicos de um lado e um checklist com itens marcados do outro" width="1672" height="941" loading="lazy" decoding="async"></figure>
         </article>
-        <article class="ovb-row">
-          <span class="ovb-op" aria-hidden="true">+</span>
+        <article class="ovb-card">
           <div class="ovb-text"><span class="ovb-num">03</span><h5>Mapa da Jornada.</h5></div>
-          <figure class="ovb-art"><img src="assets/images/bonus-mapa.webp" srcset="assets/images/bonus-mapa-900.webp 900w, assets/images/bonus-mapa.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 600px" alt="Mapa de papel dobrado com um caminho pontilhado turquesa passando por pontos de parada até um destino aceso, ao lado de uma bússola" width="1672" height="941" loading="lazy" decoding="async"></figure>
+          <figure class="ovb-art"><img src="assets/images/bonus-mapa.webp" srcset="assets/images/bonus-mapa-900.webp 900w, assets/images/bonus-mapa.webp 1672w" sizes="(max-width: 900px) calc(100vw - 48px), 400px" alt="Mapa de papel dobrado com um caminho pontilhado turquesa passando por pontos de parada até um destino aceso, ao lado de uma bússola" width="1672" height="941" loading="lazy" decoding="async"></figure>
         </article>
+      </div>
+      <div class="ov-buy">
+        <div class="ov-price">
+          <p class="ov-old">DE R$ 297,00</p>
+          <p class="ov-amount"><span class="cur">6x de R$</span>8<span class="cents">,82</span></p>
+          <p class="ov-parc">ou <b>R$ 47,00</b> à vista</p>
         </div>
-        <div class="ov-buy">
-          <div class="ov-price">
-            <p class="ov-old">DE R$ 297,00</p>
-            <p class="ov-amount"><span class="cur">R$</span>47<span class="cents">,00</span></p>
-            <p class="ov-parc">ou em até <b>12x</b> no cartão</p>
-          </div>
-          <span class="ov-rule" aria-hidden="true"></span>
+        <span class="ov-rule" aria-hidden="true"></span>
+        <div class="ov-cta">
           <!-- SUBSTITUIR href pelo link do checkout -->
           <a href="#" class="btn" id="checkout-link">QUERO PARTICIPAR DO GANCHO DA VIRADA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <p class="ov-sum"><span>R$ 47,00 à vista</span> · <span>ou 6x de R$ 8,82</span></p>
+          <p class="ov-safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Pagamento seguro</span><span><span class="ov-dot" aria-hidden="true">•</span>Acesso imediato</span></p>
         </div>
       </div>
     </div>
 
     <aside class="gcert reveal" aria-labelledby="garantia-titulo">
       <div class="gcert-frame">
+        <span class="gcert-orbits" aria-hidden="true"></span>
         <i class="gcert-corner tl" aria-hidden="true"></i><i class="gcert-corner tr" aria-hidden="true"></i><i class="gcert-corner bl" aria-hidden="true"></i><i class="gcert-corner br" aria-hidden="true"></i>
         <div class="gcert-medal" aria-hidden="true">
-          <svg class="gcert-ring" viewBox="0 0 132 132"><defs><path id="gcert-ring-path" d="M66 66m-56 0a56 56 0 1 1 112 0a56 56 0 1 1-112 0"/></defs><circle cx="66" cy="66" r="65" fill="none" stroke="rgba(42,210,193,.35)"/><circle cx="66" cy="66" r="44" fill="none" stroke="rgba(42,210,193,.25)"/><text><textPath href="#gcert-ring-path" textLength="340">7 dias de garantia · 7 dias de garantia ·</textPath></text></svg>
-          <span class="gcert-num">7</span>
+          <img src="assets/Imagem do ChatGPT 24 de set. de 2026, 17_24_20.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
         </div>
-        <h4 id="garantia-titulo">Garantia de satisfação total</h4>
+        <h4 id="garantia-titulo">Garantia de <span>satisfação total</span></h4>
         <p>A inscrição conta com 7 dias de garantia, conforme as condições da plataforma. Caso o participante entenda dentro desse período que o Gancho da Virada não é para ele, poderá solicitar o cancelamento seguindo as condições aplicáveis.</p>
       </div>
     </aside>
@@ -1920,33 +2250,71 @@
 
 <!-- ===== BLOCO 08 — FAQ + CTA FINAL ===== -->
 <section class="sec sec-faq">
+  <!-- Arte vetorial decorativa: curva ampla, terminais retos e ECG integrado à base. -->
+  <div class="faq-art" aria-hidden="true">
+  <svg class="faq-mark" viewBox="0 0 800 520" focusable="false">
+    <defs>
+      <linearGradient id="faqMarkInk" gradientUnits="userSpaceOnUse" x1="30" y1="360" x2="390" y2="110">
+        <stop stop-color="#2AD2C1" stop-opacity=".08"/>
+        <stop offset=".5" stop-color="#2AD2C1" stop-opacity=".19"/>
+        <stop offset="1" stop-color="#2AD2C1" stop-opacity=".3"/>
+      </linearGradient>
+      <linearGradient id="faqContourInk" gradientUnits="userSpaceOnUse" x1="170" y1="90" x2="790" y2="500">
+        <stop stop-color="#2AD2C1" stop-opacity="0"/>
+        <stop offset=".48" stop-color="#2AD2C1" stop-opacity=".17"/>
+        <stop offset="1" stop-color="#2AD2C1" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path class="faq-contour" d="M158 65C365 44 470 150 556 296S701 479 800 508" fill="none" stroke="url(#faqContourInk)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <path d="M26 186C30 91 107 30 210 30C311 30 382 74 382 155C382 218 341 251 283 287C242 313 222 335 222 366H136C136 301 161 271 219 235C267 205 289 184 289 155C289 121 260 102 211 102C156 102 122 137 120 186Z" fill="none" stroke="url(#faqMarkInk)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+    <circle cx="179" cy="445" r="49" fill="none" stroke="url(#faqMarkInk)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <svg class="faq-ecg" viewBox="0 0 800 520" focusable="false">
+    <defs>
+      <linearGradient id="faqEcgFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0">
+        <stop offset="0" stop-color="#2AD2C1" stop-opacity="0"/>
+        <stop offset=".35" stop-color="#2AD2C1" stop-opacity=".1"/>
+        <stop offset=".49" stop-color="#2AD2C1" stop-opacity=".42"/>
+        <stop offset=".67" stop-color="#2AD2C1" stop-opacity=".28"/>
+        <stop offset="1" stop-color="#2AD2C1" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="faqEcgGlow">
+        <stop offset="0" stop-color="#2AD2C1" stop-opacity=".2"/>
+        <stop offset=".3" stop-color="#2AD2C1" stop-opacity=".08"/>
+        <stop offset="1" stop-color="#2AD2C1" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="522" cy="377" rx="66" ry="12" fill="url(#faqEcgGlow)"/>
+    <path d="M0 377H321C329 377 332 383 339 379C346 375 350 367 356 362L368 378L386 294L401 428L419 357L428 386L436 368C441 375 443 377 450 377H800" fill="none" stroke="url(#faqEcgFade)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </svg>
+  </div>
   <div class="wrap">
     <div class="sec-head reveal">
       <h2>Ficou com <span class="serif">alguma dúvida?</span></h2>
     </div>
     <div class="faq-list reveal">
       <details class="faq">
-        <summary><span class="q">O Gancho da Virada garante que vou conseguir uma equipe?</span><span class="pm" aria-hidden="true"></span></summary>
+        <summary><span class="faq-n" aria-hidden="true">01</span><span class="q">O Gancho da Virada garante que vou conseguir uma equipe?</span><span class="pm" aria-hidden="true"></span></summary>
         <div class="a"><p><b>Não.</b> O Gancho apresenta direcionamento e uma jornada estruturada para ajudar você a compreender os movimentos envolvidos na construção do seu espaço no mercado. Não existe garantia de contratação, equipe, cirurgia ou prazo para resultados.</p></div>
       </details>
       <details class="faq">
-        <summary><span class="q">Vou aprender técnicas de instrumentação cirúrgica?</span><span class="pm" aria-hidden="true"></span></summary>
+        <summary><span class="faq-n" aria-hidden="true">02</span><span class="q">Vou aprender técnicas de instrumentação cirúrgica?</span><span class="pm" aria-hidden="true"></span></summary>
         <div class="a"><p>O Gancho não substitui sua formação técnica. O foco está justamente no que acontece <b>depois da formação</b> e no caminho de entrada no mercado.</p></div>
       </details>
       <details class="faq">
-        <summary><span class="q">Quando recebo as 3 aulas?</span><span class="pm" aria-hidden="true"></span></summary>
+        <summary><span class="faq-n" aria-hidden="true">03</span><span class="q">Quando recebo as 3 aulas?</span><span class="pm" aria-hidden="true"></span></summary>
         <div class="a"><p><b>Imediatamente após a confirmação da inscrição.</b></p></div>
       </details>
       <details class="faq">
-        <summary><span class="q">Quando vou conhecer os 6 passos?</span><span class="pm" aria-hidden="true"></span></summary>
+        <summary><span class="faq-n" aria-hidden="true">04</span><span class="q">Quando vou conhecer os 6 passos?</span><span class="pm" aria-hidden="true"></span></summary>
         <div class="a"><p>O <b>Mapa dos 6 Passos da Virada</b> será revelado e explicado durante o encontro ao vivo.</p></div>
       </details>
       <details class="faq">
-        <summary><span class="q">O encontro ficará gravado?</span><span class="pm" aria-hidden="true"></span></summary>
+        <summary><span class="faq-n" aria-hidden="true">05</span><span class="q">O encontro ficará gravado?</span><span class="pm" aria-hidden="true"></span></summary>
         <div class="a"><p>[DEFINIR RESPOSTA — informar se o encontro ao vivo ficará disponível gravado e por quanto tempo.]</p></div>
       </details>
       <details class="faq">
-        <summary><span class="q">Ainda estou terminando minha formação. Posso participar?</span><span class="pm" aria-hidden="true"></span></summary>
+        <summary><span class="faq-n" aria-hidden="true">06</span><span class="q">Ainda estou terminando minha formação. Posso participar?</span><span class="pm" aria-hidden="true"></span></summary>
         <div class="a"><p><b>Sim.</b> Se você está próximo de concluir sua formação e quer começar a compreender a jornada de entrada no mercado, também pode participar.</p></div>
       </details>
     </div>
@@ -1978,6 +2346,19 @@
 </footer>
 </div>
 
+<!-- Aviso de inscrição (24/09). De vez em quando mostra "<nome> garantiu vaga na turma" no canto de baixo.
+     Os nomes saem da lista abaixo e precisam ser de compras reais, tirados da plataforma de checkout
+     (só o primeiro nome, ex.: ["Stella", "Mariana"]). Lista vazia = o aviso não aparece.
+     Para ver o visual antes das vendas, abra a página com ?compras=exemplo no endereço: o primeiro aviso aparece
+     em ~3s (ou assim que o vídeo e os botões saírem do canto de baixo) e os outros a cada 15–25s. -->
+<script type="application/json" id="compras-reais">[]</script>
+<div class="buy-toast" hidden>
+  <svg class="bt-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="m7.5 12.3 3.1 3.1 6-6.4" pathLength="1"/></svg>
+  <p class="bt-msg" aria-hidden="true"><b class="bt-name"></b> garantiu vaga na turma</p>
+  <button class="bt-close" type="button" aria-label="Fechar e não mostrar mais estes avisos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+<p class="bt-live" role="status" aria-atomic="true"></p>
+
 <script>
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const motionEase = getComputedStyle(document.documentElement).getPropertyValue('--ease-out').trim();
@@ -1988,7 +2369,7 @@
     shot.style.setProperty('--reveal-delay', (shot.parentElement.classList.contains('shot-col') ? siblings.indexOf(shot) * 40 : 0) + 'ms');
   });
   // Textos em lista entram em cascata. Um grupo que já era .reveal deixa de ser, para não mover duas vezes.
-  const textGroups = [...document.querySelectorAll('.pain-question-groups,#mapa .lines,#mapa .map-q,#para-quem .checklist,#carol .auth-cards,.offer-sec .ov-core,.offer-sec .ovb-list,.offer-sec .ov-price')];
+  const textGroups = [...document.querySelectorAll('.pain-question-groups,#mapa .lines,#mapa .map-q,#para-quem .checklist,#carol .auth-cards,.offer-sec .ov-core,.offer-sec .ovb-list,.offer-sec .ov-price,.sec-faq .faq-list')];
   textGroups.forEach(group => {
     group.classList.remove('reveal');
     group.classList.add('tx-group');
@@ -2105,7 +2486,9 @@
   const reveals = document.querySelectorAll('.reveal');
   let automaticMotionPaused = false;
   const motionToggle = document.querySelector('.motion-toggle');
-  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg path,.gcert-ring,svg:has(animateMotion)')];
+  // A linha de batimento da citação é observada pelo <svg>, não pelo <path>: a caixa do SVG é detectada na tela em
+  // qualquer navegador, e o estado de pausa vai para o <path>, que é quem anima.
+  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg,svg:has(animateMotion)')];
   const visibleMotion = new Set('IntersectionObserver' in window ? [] : continuousMotion);
   const syncContinuousMotion = () => {
     document.documentElement.classList.toggle('motion-paused', automaticMotionPaused);
@@ -2119,7 +2502,7 @@
       if (element.matches('svg:has(animateMotion)')) {
         if (paused) element.pauseAnimations();
         else element.unpauseAnimations();
-      } else element.style.animationPlayState = paused ? 'paused' : 'running';
+      } else (element.matches('.quote-ecg') ? element.querySelector('path') : element).style.animationPlayState = paused ? 'paused' : 'running';
     });
     document.dispatchEvent(new Event('automaticmotionchange'));
   };
@@ -2637,8 +3020,9 @@
   document.querySelector('.play')?.addEventListener('click',()=>{
     alert('Insira aqui o embed do vídeo principal (YouTube/Vimeo/Panda). Este é um placeholder.');
   });
-  // FAQ: a altura é a única animação de layout; cliques revertem do ponto atual.
-  document.querySelectorAll('.sec-faq .faq').forEach(item => {
+  // FAQ: a altura é a única animação de layout; cliques revertem do ponto atual. Só uma resposta aberta por vez:
+  // abrir uma fecha a que estiver aberta, com a mesma animação.
+  const faqItems = [...document.querySelectorAll('.sec-faq .faq')].map(item => {
     const summary = item.querySelector('summary');
     const answer = item.querySelector('.a');
     let effect = null;
@@ -2649,11 +3033,9 @@
       effect?.cancel();
       effect = null;
     };
-    summary.addEventListener('click', event => {
-      if (!answer.animate) return;
-      event.preventDefault();
-      expanded = effect ? !expanded : !item.open;
-      if (motionPreference.matches || event.detail === 0) { settle(); return; }
+    const toggle = (next, instant) => {
+      expanded = next;
+      if (instant) { settle(); return; }
       const height = item.open ? answer.getBoundingClientRect().height : 0;
       const opacity = item.open ? getComputedStyle(answer).opacity : 0;
       effect?.cancel();
@@ -2666,12 +3048,289 @@
       effect.onfinish = settle;
       // Ao abrir do zero, o texto da resposta desce 6px junto com a altura, como se desdobrasse.
       if (expanded && height === 0) answer.firstElementChild?.animate([{ transform: 'translateY(-6px)' }, { transform: 'none' }], { duration: 260, easing: motionEase });
+    };
+    const control = { item, toggle, isOpen: () => expanded };
+    summary.addEventListener('click', event => {
+      if (!answer.animate) return;
+      event.preventDefault();
+      const next = effect ? !expanded : !item.open;
+      const instant = motionPreference.matches || event.detail === 0;
+      if (next) faqItems.forEach(other => { if (other !== control && other.isOpen()) other.toggle(false, instant); });
+      toggle(next, instant);
     });
     motionPreference.addEventListener('change', () => {
       if (motionPreference.matches && effect) settle();
     });
     window.addEventListener('resize', () => { if (effect) settle(); });
+    return control;
   });
+  // Aviso de inscrição: um nome por vez, da lista de compras reais (#compras-reais), num ritmo constante:
+  // a cada 15–25s, em qualquer parte da página (também ao voltar para o topo). Não surge sobre botões ou o vídeo;
+  // depois de surgir, fica os 5s mesmo com a rolagem (no toque, o que está embaixo continua clicável).
+  // Espera com a aba oculta, a ampliação aberta ou as animações automáticas pausadas; o "×" encerra de vez.
+  const buyToast = document.querySelector('.buy-toast');
+  if (buyToast) {
+    // Prévia do visual antes das vendas: só com ?compras=exemplo no endereço, nunca para quem visita.
+    // Nela o primeiro aviso vem em ~3s e a lista de exemplo recomeça, para mostrar o ritmo.
+    const preview = new URLSearchParams(location.search).get('compras') === 'exemplo';
+    const FIRST = preview ? [2500, 3500] : [6000, 10000]; // ms até o primeiro, desde a abertura da página
+    const GAP = [15000, 25000];  // ms entre um aviso e o próximo
+    const ON_SCREEN = 5000;
+    const LIMIT = 12;            // por visita
+    const RETRY = 2000;          // ms até tentar de novo quando algo está no caminho
+    const AVOID = '.btn, .video-frame, .rail-nav, .faq summary';
+    const nameSlot = buyToast.querySelector('.bt-name');
+    const message = buyToast.querySelector('.bt-msg');
+    const live = document.querySelector('.bt-live');
+    let names = [];
+    try { names = JSON.parse(document.getElementById('compras-reais')?.textContent || '[]'); }
+    catch (error) { console.warn('Lista #compras-reais inválida:', error); }
+    if (preview) names = ['Stella', 'Mariana', 'Letícia', 'Rafael'];
+    names = Array.isArray(names) ? [...new Set(names.filter(name => typeof name === 'string').map(name => name.trim()).filter(Boolean))] : [];
+    const shuffle = list => {
+      const copy = [...list];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    };
+    let closed = false;
+    try { closed = !preview && sessionStorage.getItem('avisos-fechados') === '1'; } catch (error) {}
+    // Com compras reais, cada aviso é uma pessoa diferente: nenhum nome se repete na mesma visita.
+    const total = preview ? LIMIT : Math.min(LIMIT, names.length);
+    let shown = 0, queue = [], pending = '', last = '', showTimer = 0, hideTimer = 0, clearTimer = 0, held = false;
+    const nextName = () => {
+      if (!queue.length) {
+        queue = shuffle(names);
+        if (queue.length > 1 && queue[0] === last) queue.push(queue.shift());
+      }
+      return queue.shift();
+    };
+    const between = ([min, max]) => min + Math.random() * (max - min);
+    const isOn = () => buyToast.classList.contains('is-on');
+    // Escondido, o aviso fica 12px abaixo do lugar final; por isso a folga maior em cima.
+    // O vídeo só conta com metade dele ou mais na tela (alguém pode estar assistindo); só a borda aparecendo não.
+    const coversSomething = () => {
+      const box = buyToast.getBoundingClientRect();
+      return [...document.querySelectorAll(AVOID)].some(element => {
+        const rect = element.getBoundingClientRect();
+        if (element.matches('.video-frame') && Math.min(rect.bottom, innerHeight) - Math.max(rect.top, 0) < rect.height / 2) return false;
+        return rect.width > 0 && rect.top < box.bottom + 12 && rect.bottom > box.top - 24 && rect.left < box.right + 12 && rect.right > box.left - 12;
+      });
+    };
+    const blocked = () => document.hidden || automaticMotionPaused || (zoomLayer && !zoomLayer.hidden) || coversSomething();
+    const hide = () => {
+      clearTimeout(hideTimer);
+      if (!isOn()) return;
+      buyToast.classList.remove('is-on');
+      clearTimer = setTimeout(() => { live.textContent = ''; }, 1000);
+      clearTimeout(showTimer);
+      if (!closed && shown < total) showTimer = setTimeout(show, between(GAP));
+    };
+    // O nome entra antes da checagem para a medida valer para ele; se algo bloquear, tenta de novo em 2s.
+    const show = () => {
+      if (closed || shown >= total) return;
+      pending = pending || nextName();
+      nameSlot.textContent = pending;
+      if (blocked()) { showTimer = setTimeout(show, RETRY); return; }
+      clearTimeout(clearTimer);
+      buyToast.classList.add('is-on');
+      live.textContent = message.textContent;
+      last = pending;
+      pending = '';
+      shown++;
+      hideTimer = setTimeout(hide, ON_SCREEN);
+    };
+    // Com o mouse ou o foco em cima, o aviso espera; ao sair, some em 2,5s.
+    const hold = () => { held = true; clearTimeout(hideTimer); };
+    const release = () => {
+      held = false;
+      clearTimeout(hideTimer);
+      if (isOn()) hideTimer = setTimeout(hide, 2500);
+    };
+    buyToast.addEventListener('pointerenter', hold);
+    buyToast.addEventListener('pointerleave', release);
+    buyToast.addEventListener('focusin', hold);
+    buyToast.addEventListener('focusout', event => { if (!buyToast.contains(event.relatedTarget)) release(); });
+    buyToast.querySelector('.bt-close').addEventListener('click', () => {
+      closed = true;
+      clearTimeout(showTimer);
+      hide();
+      try { sessionStorage.setItem('avisos-fechados', '1'); } catch (error) {}
+    });
+    document.addEventListener('automaticmotionchange', () => { if (automaticMotionPaused) hide(); });
+    if (total && !closed) {
+      buyToast.hidden = false;
+      showTimer = setTimeout(show, between(FIRST));
+    }
+  }
+  // Pulso do mapa mais fluido (24/09): a bolinha desacelera ao entrar nas pontas do ECG e acelera ao sair, como algo
+  // físico numa curva fechada, e anda por uma versão arredondada do traçado. O rastro de luz segue a linha exata
+  // (acende cada ponta) e vai de onde a bolinha estava 50–300ms antes até onde ela está: encurta nas pontas e estica
+  // nos trechos rápidos. As tabelas são calculadas uma vez a partir do traçado; sem JS fica a versão declarada no SVG.
+  const tunePulse = svg => {
+    const route = svg.querySelector('defs path');
+    const motion = svg.querySelector('.ecg-pulse-dot animateMotion');
+    const fade = svg.querySelector('.ecg-run > animate');
+    const tails = [...svg.querySelectorAll('.ecg-tail')];
+    if (!route || !motion || !fade) return;
+    const desktop = svg.classList.contains('ecg-desktop');
+    const STEP = .5;                        // amostragem do traçado, em unidades do SVG
+    const ROUND = desktop ? 8 : 5;          // quanto o caminho da bolinha arredonda os bicos (desvio padrão, em unidades);
+                                            // no computador os picos ficam mais agudos na tela (o SVG estica mais na altura)
+    const GRIP = .024;                      // limite de curva: velocidade ≤ √(GRIP / curvatura), como aceleração lateral
+    const RAMP = .05;                       // quanto a velocidade pode mudar por unidade de caminho (freada e retomada graduais)
+    const KEYS = 300, TRAVEL = .84, DUR = 5;          // 4,2s de percurso e 0,8s de pausa
+    const LAGS = [.3, .19, .11, .05];                 // atraso de cada trecho do rastro, na ordem do HTML (s)
+    const smooth = (values, sigma) => {
+      const r = Math.ceil(sigma * 3), w = [];
+      for (let k = -r; k <= r; k++) w.push(Math.exp(-(k * k) / (2 * sigma * sigma)));
+      return values.map((_, i) => {
+        let acc = 0, sum = 0;
+        for (let k = -r; k <= r; k++) {
+          const j = Math.min(values.length - 1, Math.max(0, i + k));
+          acc += values[j] * w[k + r];
+          sum += w[k + r];
+        }
+        return acc / sum;
+      });
+    };
+    // Amostras do traçado a cada STEP, calculadas aqui a partir do atributo d (só M, L, H, V e C, os comandos usados):
+    // pedir milhares de pontos com getPointAtLength travava a página por segundos.
+    const outline = [];
+    let px = 0, py = 0, command = '';
+    const tokens = route.getAttribute('d').match(/[A-Za-z]|-?\d*\.?\d+(?:e-?\d+)?/g) || [];
+    for (let i = 0; i < tokens.length;) {
+      if (/[A-Za-z]/.test(tokens[i])) command = tokens[i++];
+      const next = () => parseFloat(tokens[i++]);
+      if (command === 'M' || command === 'L') { px = next(); py = next(); outline.push([px, py]); }
+      else if (command === 'H') { px = next(); outline.push([px, py]); }
+      else if (command === 'V') { py = next(); outline.push([px, py]); }
+      else if (command === 'C') {
+        const x1 = next(), y1 = next(), x2 = next(), y2 = next(), x3 = next(), y3 = next();
+        for (let k = 1; k <= 32; k++) {
+          const t = k / 32, u = 1 - t;
+          outline.push([u * u * u * px + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t * t * t * x3, u * u * u * py + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y3]);
+        }
+        px = x3; py = y3;
+      } else return;                         // comando inesperado: fica a versão declarada no SVG
+    }
+    if (outline.length < 2) return;
+    const reach = [0];
+    for (let i = 1; i < outline.length; i++) reach.push(reach[i - 1] + Math.hypot(outline[i][0] - outline[i - 1][0], outline[i][1] - outline[i - 1][1]));
+    const total = reach[reach.length - 1];
+    const n = Math.ceil(total / STEP);
+    const raw = [];
+    for (let i = 0, j = 0; i <= n; i++) {
+      const at = Math.min(total, i * STEP);
+      while (j < reach.length - 2 && reach[j + 1] < at) j++;
+      const f = (at - reach[j]) / Math.max(1e-9, reach[j + 1] - reach[j]);
+      raw.push({ x: outline[j][0] + f * (outline[j + 1][0] - outline[j][0]), y: outline[j][1] + f * (outline[j + 1][1] - outline[j][1]) });
+    }
+    const lineLen = raw.map((_, i) => Math.min(total, i * STEP));
+    const xs = smooth(raw.map(point => point.x), ROUND / STEP);
+    const ys = smooth(raw.map(point => point.y), ROUND / STEP);
+    const ballLen = [0];
+    for (let i = 1; i <= n; i++) ballLen.push(ballLen[i - 1] + Math.hypot(xs[i] - xs[i - 1], ys[i] - ys[i - 1]));
+    // Curvatura do caminho da bolinha = quanto a direção gira por unidade de comprimento.
+    const bend = xs.map((_, i) => {
+      const a = Math.max(0, i - 2), b = Math.min(n, i + 2);
+      if (i - a < 1 || b - i < 1) return 0;
+      let turn = Math.abs(Math.atan2(ys[b] - ys[i], xs[b] - xs[i]) - Math.atan2(ys[i] - ys[a], xs[i] - xs[a]));
+      if (turn > Math.PI) turn = 2 * Math.PI - turn;
+      return turn / Math.max(1e-6, (ballLen[b] - ballLen[a]) / 2);
+    });
+    // Velocidade: limitada pela curva e depois obrigada a mudar aos poucos nos dois sentidos, para a freada começar
+    // antes da ponta e a retomada vir depois dela.
+    let speed = bend.map(k => (k > 1e-6 ? Math.min(1, Math.sqrt(GRIP / k)) : 1));
+    const ramp = RAMP * STEP;
+    for (let i = 1; i <= n; i++) speed[i] = Math.min(speed[i], speed[i - 1] + ramp);
+    for (let i = n - 1; i >= 0; i--) speed[i] = Math.min(speed[i], speed[i + 1] + ramp);
+    speed = smooth(speed, 1.5 / STEP);
+    const clock = [0];
+    for (let i = 1; i <= n; i++) clock.push(clock[i - 1] + (ballLen[i] - ballLen[i - 1]) / ((speed[i] + speed[i - 1]) / 2));
+    // No percurso inteiro: sai devagar (primeiros 10% do tempo), anda em cruzeiro e chega devagar (últimos 12%),
+    // com rampas em cosseno. Diferente de uma curva de ease, o meio não fica mais rápido que o resto.
+    const warp = (() => {
+      const N = 2000, UP = .1, DOWN = .12, acc = [0];
+      const pace = x => (x < UP ? (1 - Math.cos(Math.PI * x / UP)) / 2 : x > 1 - DOWN ? (1 - Math.cos(Math.PI * (1 - x) / DOWN)) / 2 : 1);
+      for (let i = 1; i <= N; i++) acc.push(acc[i - 1] + pace((i - .5) / N) / N);
+      return x => { const pos = Math.min(1, Math.max(0, x)) * N, i = Math.floor(pos), f = pos - i; return (i >= N ? acc[N] : acc[i] + f * (acc[i + 1] - acc[i])) / acc[N]; };
+    })();
+    // Para um instante do percurso (0–1): a amostra onde a bolinha está e as frações nos dois caminhos.
+    const sampleAt = t => {
+      const target = warp(t) * clock[n];
+      let lo = 0, hi = n;
+      while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (clock[mid] < target) lo = mid; else hi = mid; }
+      return lo + (target - clock[lo]) / Math.max(1e-9, clock[hi] - clock[lo]);
+    };
+    const along = (lengths, pos) => { const i = Math.min(n - 1, Math.floor(pos)), f = pos - i; return (lengths[i] + f * (lengths[i + 1] - lengths[i])) / lengths[n]; };
+    const fmt = value => +value.toFixed(5);
+    const times = [], points = [], heads = [];
+    for (let k = 0; k <= KEYS; k++) {
+      const pos = sampleAt(k / KEYS);
+      times.push(fmt(k / KEYS * TRAVEL));
+      points.push(fmt(along(ballLen, pos)));
+      heads.push(along(lineLen, pos));
+    }
+    times.push(1); points.push(1); heads.push(1);
+    const keyTimes = times.join(';');
+    // Caminho arredondado só da bolinha, ao lado do traçado original (que o rastro continua usando).
+    let d = '';
+    for (let i = 0; i <= n; i += 2) d += `${i ? 'L' : 'M'}${xs[i].toFixed(2)} ${ys[i].toFixed(2)}`;
+    if (n % 2) d += `L${xs[n].toFixed(2)} ${ys[n].toFixed(2)}`;
+    const ballRoute = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    ballRoute.id = route.id + 'Ball';
+    ballRoute.setAttribute('d', d);
+    route.after(ballRoute);
+    motion.querySelector('mpath')?.setAttribute('href', '#' + ballRoute.id);
+    const retime = (animation, values) => {
+      animation.setAttribute('calcMode', 'linear');
+      animation.removeAttribute('keySplines');
+      animation.setAttribute('keyTimes', keyTimes);
+      animation.setAttribute('dur', DUR + 's');
+      if (values) animation.setAttribute('values', values);
+    };
+    retime(motion);
+    motion.setAttribute('keyPoints', points.join(';'));
+    tails.forEach((tail, j) => {
+      const lag = LAGS[j] / (DUR * TRAVEL);
+      const starts = [], lengths = [];
+      for (let k = 0; k <= KEYS; k++) {
+        const start = along(lineLen, sampleAt(Math.max(0, k / KEYS - lag)));
+        starts.push(start);
+        lengths.push(Math.max(0, heads[k] - start));
+      }
+      starts.push(starts[KEYS]);
+      lengths.push(lengths[KEYS]);
+      retime(tail.querySelector('animate[attributeName="stroke-dashoffset"]'), starts.map(start => fmt(-start)).join(';'));
+      let dash = tail.querySelector('animate[attributeName="stroke-dasharray"]');
+      if (!dash) {
+        dash = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+        dash.setAttribute('attributeName', 'stroke-dasharray');
+        dash.setAttribute('repeatCount', 'indefinite');
+        tail.append(dash);
+      }
+      retime(dash, lengths.map(length => `${fmt(length)} 2`).join(';'));
+    });
+    fade.setAttribute('dur', DUR + 's');
+    fade.setAttribute('keyTimes', `0;.05;${TRAVEL - .06};${TRAVEL};1`);
+    svg.setCurrentTime(0);
+  };
+  // Só o SVG que está na tela (computador ou celular); o outro é calculado se a largura mudar e ele aparecer.
+  if (!motionPreference.matches) {
+    const later = window.requestIdleCallback ? callback => requestIdleCallback(callback, { timeout: 2000 }) : callback => setTimeout(callback, 300);
+    const tuned = new Set();
+    const tuneVisible = () => document.querySelectorAll('#mapa .ecg-desktop, #mapa .ecg-mobile').forEach(svg => {
+      if (tuned.has(svg) || getComputedStyle(svg).display === 'none') return;
+      tuned.add(svg);
+      tunePulse(svg);
+    });
+    later(tuneVisible);
+    let tuneTimer;
+    window.addEventListener('resize', () => { clearTimeout(tuneTimer); tuneTimer = setTimeout(() => later(tuneVisible), 300); });
+  }
 </script>
 </body>
 </html>

@@ -4,6 +4,428 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa: carta de navegação no fundo do card — 24/09/2026
+
+- Imagem do usuário (prompt `human-output/image/gancho-mapa/03-carta-navy-lupa.txt`) no lugar da serra: `assets/images/mapa-carta.webp`, por baixo do navy translúcido, na largura inteira do card, com alto e base dissolvidos no arquivo. Lupa sobre “FORMAÇÃO”/passo 1 e rosa dos ventos junto do passo 6; no celular, lupa em volta do passo 1.
+- Celular (até 760px): imagem vertical do usuário, `assets/images/mapa-carta-m.webp`, cobrindo o card; só imagem e posição mudaram, a camada navy é a mesma. Conferido em 320, 375 e 740px, sem overflow.
+- Conferido por captura em 320, 375, 1024 e 1358px, sem overflow horizontal.
+
+## Mapa: paisagem de fundo no painel — 24/09/2026
+
+- Imagem do usuário (serra noturna) no alto do painel de vidro, como no protótipo: `assets/images/mapa-montanhas.webp` (48 KB, base transparente embutida). Curvas de nível removidas; halo navy nos rótulos. Entre 761 e 1100px a imagem sobe 44px para o clarão não ficar atrás de “PRIMEIRA OPORTUNIDADE”.
+- Conferido por captura em 320, 375, 768, 1024, 1358 e 1920px, sem overflow horizontal.
+- Em teste: imagem cobrindo o card inteiro (`mapa-montanhas-inteira.webp`, `cover`), para o usuário comparar com a versão só no alto.
+- Ajuste do usuário (mesmo dia): a imagem estava forte demais por cima. Voltou o navy translúcido do painel por cima dela; a serra aparece apagada, por transparência.
+
+## Oferta: estrutura do protótipo do usuário — 24/09/2026
+
+- Título centralizado; entregas em dois cartões com ícone (play, calendário) e capa à direita; três bônus em cartões com número, título, filete e imagem; preço num cartão próprio com botão, resumo do valor e “Pagamento seguro • Acesso imediato”.
+- Imagens: as dos bônus já servem; as capas das entregas são provisórias (`how-aulas` e recorte de `how-encontro`), trocáveis só pelo arquivo.
+- Fontes, tamanhos e pesos preservados. Conferido por captura (Chrome headless) em 320, 375, 768, 1024, 1358, 1440 e 1920px: sem overflow horizontal e sem erros de console.
+
+## Hero: teste do aviso integrado ao botão — 24/09/2026
+
+- Versão em teste solicitada pelo usuário: CTA em um único link com chamada turquesa e faixa inferior navy contendo o aviso de vagas. Cantos de 22 px, largura de 340 px no desktop e largura disponível no celular. Textos originais preservados.
+- Toda a superfície, incluindo a faixa, leva a `#oferta`. Nome acessível “QUERO PARTICIPAR” e aviso associado como descrição; foco visível no conjunto inteiro. Removidos o losango e a composição editorial separados.
+- Conferido visualmente pelo servidor local em desktop e mobile. Em 320, 375, 560, 768, 1024 e 1440 px: sem overflow horizontal, texto sem corte, foco do CTA e link `#oferta` preservados, sem erros de JavaScript. Capturas em `audit-visual/hero-availability/`.
+- Alterações em `index.html`; nenhuma nova pendência.
+
+## Garantia: card conforme protótipo e selo fornecido — 24/09/2026
+
+- Após aprovação do vidro, fundo ajustado para azul-marinho `rgba(18,30,70,.94)`, menos transparente, com reflexo azulado mais discreto para harmonizar com a página. Mantidos o acabamento de vidro, as linhas e os círculos; fallback sólido na mesma cor.
+- Versão atual, a pedido do usuário: glassmorphism em navy, superfície translúcida com `backdrop-filter`, reflexo diagonal suave e bordas claras. Retirada a faixa interna espessa. Linhas, círculos, selo, textos e medidas preservados. Fallback opaco para ausência de suporte, transparência reduzida ou contraste aumentado; sem novas animações. Conferido visualmente em desktop/mobile, sem overflow ou erros de 320 a 1920 px.
+- Refinamento solicitado após comparação com o protótipo: bordas em ciano azulado (`#24B7D3`), contorno externo menos intenso, faixa interna azul-marinho e cantos mais finos. Reflexos superior e inferior menores e mais suaves. Medidas, selo e textos preservados; desktop e mobile revalidados sem overflow ou erros.
+- Aplicado o PNG transparente original `assets/Imagem do ChatGPT 24 de set. de 2026, 17_24_20.png`, com dimensões explícitas e carregamento tardio. O selo vetorial anterior e sua rotação foram removidos.
+- Card centralizado com moldura dupla navy/turquesa, cantos arredondados destacados, reflexos estáticos nas bordas e círculos discretos centrados no selo. “Satisfação total” destacado em turquesa sólido; título e texto preservados integralmente.
+- Mobile com selo e círculos menores, tipografia e espaçamento próprios. Mantida a entrada `.reveal` e o suporte a movimento reduzido.
+- Conferido no servidor local em Chromium, de 320 a 1920 px: sem overflow horizontal, imagem carregada, entrada visível e nenhum erro de JavaScript ou resposta HTTP com erro. Capturas em `audit-visual/garantia-prototipo/`.
+- Nenhum novo placeholder ou pendência; mantidas as pendências de conteúdo já registradas.
+
+## FAQ: interrogação e ECG refinados — 24/09/2026
+
+- Removido posteriormente, a pedido do usuário, o rótulo “Dúvidas frequentes” acima do título, junto com seu traço e CSS exclusivo.
+- Interrogação redesenhada em SVG com curva mais ampla, terminais retos e ponto maior, seguindo a referência enviada. Contorno turquesa fino com variação discreta de opacidade.
+- Interrogação e ECG compartilham uma prancheta no desktop: batimento entre a haste e o ponto, curva de fundo suave e pequeno realce na linha horizontal. Posição ancorada ao topo para não deslocar ao abrir respostas.
+- No mobile, interrogação menor à direita do título e ECG na base. Sem novas animações, imagens raster ou dependências na página.
+- Validado pelo servidor local em Chromium: 320, 375, 768, 980, 981, 1024, 1440 e 1920 px, sem overflow horizontal ou erros de JavaScript. Conferidos acordeão exclusivo, Enter e movimento reduzido. Conteúdo do FAQ idêntico ao anterior.
+- Capturas e relatório locais em `audit-visual/faq-refinement/`. Placeholders anteriores preservados.
+
+## FAQ recriada com aparência premium — 24/09/2026
+
+- **Pedido do usuário:** briefing detalhado com referência, para recriar a seção em código, leve e responsiva.
+  - Fundo só em CSS, com “?” decorativo em contorno e linha de batimento discreta.
+  - Coluna do título com rótulo “DÚVIDAS FREQUENTES”.
+  - Perguntas em cartões numerados com botão circular.
+  - Uma resposta aberta por vez.
+  - Sem foto, sem textos novos além dos pedidos e com os textos do FAQ intactos.
+- **Feito:**
+  - A marcação, o CSS e o JS do FAQ foram substituídos (detalhes no handoff).
+  - O CSS anterior do FAQ saiu; os estados `.is-closing` e a animação de altura foram mantidos.
+  - O acordeão passou a exclusivo pelo JS. O atributo `name` do `<details>` fecharia as outras sem animação, por isso não foi usado.
+- **Conferido:**
+  - Perguntas, respostas e título iguais aos do commit anterior, texto a texto.
+  - Em 1920, 1440, 1358, 1024, 900, 768, 375 e 320px: sem overflow, sem texto cortado e sem erros. Duas colunas até 981px e uma coluna abaixo.
+  - Cliques: abrir a 3 com a 1 aberta fecha a 1 animando. Cliques rápidos em 2 e 4 deixam só a 4 aberta. Clicar na aberta fecha.
+  - Teclado: Enter abre e fecha na hora, também uma por vez. O “×” fica girado 45°.
+  - Com movimento reduzido: tudo sem animação, ainda uma por vez.
+  - Contraste: rótulo 6,3:1, número 11,6:1, pergunta 16:1, resposta 10,9:1.
+
+## Citação: linha de batimento no celular — 24/09/2026
+
+- **Relato do usuário:** “no mobile eu creio que essa animação parou de funcionar”, com print da linha de batimento da citação.
+- **Investigação:**
+  - No Chromium com emulação de celular (375px) e no computador, a animação rodava: desenha, segura, apaga e recomeça.
+  - O único ponto frágil era o controle de animações contínuas, que observava o `<path>` de dentro do SVG com `IntersectionObserver`. Esse é o caso menos confiável, sobretudo no Safari do iPhone. Se o `path` não for detectado na tela, o controle deixa a animação pausada.
+  - Não há WebKit instalado neste ambiente para confirmar no Safari.
+- **Feito:** o controle passa a observar o `<svg class="quote-ecg">` e aplica o `animation-play-state` ao `path`.
+- **Conferido** em 375 e 1358px:
+  - Anima na tela, pausa fora dela e volta ao reaparecer.
+  - O botão de pausa para e retoma.
+  - Com movimento reduzido, a linha fica parada e inteira (opacidade .6) e o botão some.
+  - Sem erros.
+- **Fica parada de propósito:** com movimento reduzido no aparelho, ou depois de um toque no botão de pausa (‖) do letreiro.
+
+## Carol: borda do retrato sem brilho, mais grossa em pontos escolhidos — 24/09/2026
+
+- **Pedido do usuário:** “ainda tá ruim, eu não quero blur, deixe a borda um pouquinho mais grossa em alguns pontos estratégicos. Somente isso.”
+- **Removido:**
+  - O `drop-shadow` do fio, que fazia o brilho em volta.
+  - Os brilhos difusos: o `span.mentor-flare` saiu.
+  - Os pontos mais claros no degradê do fio.
+  - O `overflow-x:clip` de `#carol`, que só existia por causa do brilho que passava da foto.
+- **Feito:**
+  - O fio é turquesa `--mint-bright` sólido, 1px, nítido.
+  - Um segundo anel de 2px (`span.mentor-rim-bold`), com a mesma cor, só aparece em cinco pontos, por máscara de elipses: canto de cima à direita, laterais a 35% da altura, base a 34% da largura e canto de baixo à direita.
+  - No centro de cada ponto a borda tem 2px, e o trecho grosso volta aos poucos para o fio de 1px.
+- **Conferido:**
+  - De 320 a 1920px: foto, retrato e citação com as mesmas medidas, moldura deslocada igual, sem overflow e sem erros.
+  - Borda sem `filter`.
+  - Com movimento reduzido, a borda aparece pronta.
+  - Ampliação dos pontos: 2px nos pontos e 1px no resto.
+
+## Carol: pontos de luz da borda suavizados — 24/09/2026
+
+- **Pedido do usuário**, com print da versão anterior: “ficou extremamente forte, eu quero algo leve, suave, desse jeito tá horrível”.
+- **Feito:**
+  - Saíram os núcleos brancos, os rastros de luz (horizontais, ao longo das bordas e o diagonal do canto de baixo) e o `::before`.
+  - Nos mesmos cinco pontos ficou só um brilho turquesa difuso, de alfa .18 a .22. Nas laterais e na base ele se espalha ao longo da borda (elipses de 26×60px e 60×26px); nos cantos, é redondo (44 e 48px).
+  - O fio da borda continua um pouco mais claro nesses pontos, como na versão anterior a esta.
+- **Conferido** em 1358 e 375px: mesmas medidas da foto, do retrato e da citação, sem overflow e sem erros.
+
+## Carol: pontos de luz mais fortes na borda do retrato — 24/09/2026
+
+- **Pedido do usuário**, com a referência marcada: “em alguns pontos da imagem as luzes são mais fortes, destacadas”.
+- **Na referência**, a borda é um fio fino com pontos de luz concentrados: núcleo claro, halo e rastro atravessando a borda.
+  - Os pontos ficam no canto de cima à direita, nas duas laterais a cerca de 35% da altura, na base a um terço da largura e no canto de baixo à direita, onde o rastro é diagonal.
+  - A versão anterior espalhava o brilho em trechos longos da borda.
+- **Feito:**
+  - Novo `span.mentor-flare` (`aria-hidden`, `mix-blend-mode:screen`) com núcleo, rastro e halo nesses cinco pontos. No canto de baixo, rastro diagonal em `::before`.
+  - Os pontos mais claros do fio (`.mentor-rim`) foram alinhados a essas posições e ficaram mais curtos.
+  - Surge junto com a borda, depois de a foto subir, e sem animação com movimento reduzido.
+  - Um brilho em estrela no canto de cima foi testado e tirado.
+- **Rolagem lateral:** a caixa dos pontos passa 48px da foto, e no celular a foto fica a 24px da tela. `#carol` ganhou `overflow-x:clip`, que recorta sem criar área de rolagem, então o `sticky` do retrato continua igual (medido antes e depois).
+- **Conferido** em 1920, 1440, 1358, 900, 768, 375 e 320px:
+  - Retrato, foto e citação com as mesmas medidas, e moldura deslocada igual.
+  - Sem overflow e sem erros no console.
+
+## Carol: citação em vidro escuro e borda acesa no retrato — 24/09/2026
+
+- **Pedido do usuário**, com duas referências marcadas com setas:
+  - Aplicar à citação “Ter um mapa muda completamente…” o fundo da referência.
+  - Aplicar ao retrato a estilização da borda, “sem mexer na largura e altura da imagem” e sem mexer nem engrossar o estilo sutil que ela já tinha.
+- **Citação:**
+  - Saiu o bloco turquesa sólido e entrou vidro escuro: brilho turquesa no canto de cima à esquerda sobre azul-marinho translúcido.
+  - Borda turquesa de 1px feita com sombra interna, com brilho suave dentro e fora. O bloco mantém o tamanho de antes.
+  - Texto e ícone de batimento passaram de navy para `--mint-bright`, como na referência (texto 10,6:1 sobre o fundo novo). Fonte, tamanho, peso e posição do ícone (acima do texto) não mudaram.
+- **Retrato:**
+  - Novo `span.mentor-rim` (`aria-hidden`) por cima da foto, com um fio de 1px em anel (máscara `xor`): turquesa `.55` com pontos de luz no canto de cima à direita, nas duas laterais e nos cantos de baixo.
+  - Brilho em volta com três `drop-shadow` (1px, 7px e 18px), mais forte nos pontos de luz.
+  - Surge 0,7s depois de a foto subir; sem animação com movimento reduzido.
+  - Tamanho da foto, moldura deslocada (`::before`, 1px `rgba(42,210,193,.5)`) e fio interno sutil (`::after`) seguem iguais.
+- **Conferido**, antes e depois, em 1920, 1440, 1358, 900, 768, 375 e 320px:
+  - Retrato, foto e citação com as mesmas medidas.
+  - Moldura deslocada igual.
+  - Sem overflow e sem erros no console.
+  - Com movimento reduzido, a borda aparece pronta e o ícone fica parado.
+
+## Carol: transição suave entre a foto e o fundo — 24/09/2026
+
+- **Pedido do usuário**, com print da base da faixa da equipe: “adicione um pouco de blur entre a imagem e o fundo para não ficar um corte seco e sim algo suave”.
+- **Causa medida** (cor média por linha, 1358px): a última linha da faixa era (18,6 · 23,4 · 50,3) e a seção logo abaixo, (12 · 18 · 54).
+  - O grão, com opacidade .1, clareava a faixa inteira até a borda.
+  - O escurecimento lateral, que ficava acima do degradê de baixo, escurecia a base à esquerda.
+  - No celular, o degrau aparecia dos lados do retrato.
+- **Feito:**
+  - Os degradês de cima e de baixo passaram para cima do escurecimento lateral, então as duas bordas terminam em `--bg-2` puro.
+  - O degradê de baixo ficou mais longo e suave: 1 → .86 (12%) → .6 (28%) → .26 (44%) → 0 (62%).
+  - O grão ganhou `mask-image` e some nos 20% de cima e a partir de 58% da altura.
+  - Novo `span.mentor-blur` (`aria-hidden`), entre a foto e os degradês: `backdrop-filter:blur(12px)` nos 34% de baixo, entrando aos poucos pela máscara. No celular, 10px e 50%. O desfoque começa abaixo do rosto da Carol em todas as larguras e não atinge texto nem retrato.
+- **Resultado:** a última linha da faixa agora é (12 · 18 · 54), a mesma cor da seção de baixo, sem degrau. O maior salto entre linhas vizinhas perto da borda caiu de 6,6 para 1,1 no computador e de 9,0 para 0 na borda, no celular. O degrau de cor no topo também sumiu. Fica só o fio de 1px da borda do `#para-quem`, o mesmo divisor do mapa e da oferta.
+- **Conferido**, antes e depois, em 1920, 1440, 1358, 900, 768, 375 e 320px: sem overflow e sem erros no console. Textos e rosto da Carol continuam nítidos.
+
+## Carol: foto nova da turma na faixa — 24/09/2026
+
+- **Pedido do usuário**, com a imagem anexada: trocar a foto atual por essa. É a mesma foto da turma (Carol de avental azul e touca rosa, braços abertos), agora numa sala cirúrgica azul com focos acesos, sem a parede branca e sem a marca do hospital.
+- **Feito:**
+  - `assets/images/carol-equipe.webp` (1448×1086, 199 KB) entrou no lugar de `assets/hero-equipe.webp` (1024×683) em `#carol .mentor-banner`. É a cópia que veio pelo chat; o original do usuário deve ser maior.
+  - O tratamento da seção é o mesmo: cinza, luminosidade sobre o navy, opacidade .52, grão e degradês.
+- **Enquadramento:** `object-position` passou de `center 42%` para `center 30%` acima de 760px.
+  - A foto nova é 4:3 e a antiga era 3:2. Com 42%, as cabeças de trás eram cortadas no alto em 1920 e 2560px, e o fim de “mostrar” passava sobre o rosto da Carol de 1358 a 1920px.
+  - Com 30%, as cabeças aparecem inteiras e o rosto da Carol fica ao lado de “esse caminho?”.
+  - O celular não mudou: recorte próprio, centralizado.
+- **Mantido:** `assets/hero-equipe.webp`, a foto real, continua no disco sem uso.
+- **Opção mostrada, não aplicada:** a foto nas cores originais (sem cinza, opacidade .62).
+- **Conferido:**
+  - Enquadramento em 2560, 1920, 1440, 1358, 1024, 900 e 768px.
+  - Na página final, em 1440, 1358, 900, 768, 375 e 320px: imagem carregada em 1448×1086, sem overflow, sem erros no console nem requisições com falha. Os números terminam em 9 anos / 10k / 20k.
+
+## Como funciona: etiqueta “Acesso imediato” em turquesa — 24/09/2026
+
+- **Pedido do usuário**, com print dos dois cards: dar à etiqueta “ACESSO IMEDIATO” (card da esquerda) a cor da etiqueta “22 de outubro • 20h • Online e ao vivo” (card da direita) e tirar o ícone de raio.
+- **Feito:** a etiqueta perdeu a classe `mint` e o SVG do raio e usa o estilo da etiqueta da data: texto `--mint-bright`, borda `rgba(42,210,193,.35)` e fundo `rgba(42,210,193,.08)`. As regras `.badge.mint`, sem outro uso na página, foram removidas. O texto não mudou.
+- **Conferido** em 1358, 1440, 900, 768, 375 e 320px: estilo calculado das duas etiquetas idêntico (cor, borda, fundo, fonte, espaçamento, cantos) e mesma altura quando ficam em uma linha. Sem overflow e sem erros no console.
+
+## Mapa: pulso fluido nas pontas do ECG — 24/09/2026
+
+- **Pedido do usuário**, com setas nos picos e vales: “precisa ficar mais suave ainda… por conta desses trajetos pequenos ainda tá muito rígido”.
+- **Causa medida:** a bolinha andava em velocidade constante pelo traçado e virava de uma vez em cada ponta. Congelando o relógio a cada 1/60s: giro de até 137° entre dois quadros no computador (12 quadros acima de 60°) e 108° no celular (10 quadros).
+- **Feito** (JS `tunePulse`, que calcula as tabelas SMIL uma vez, no ocioso, só para o SVG visível):
+  - Velocidade limitada pela curva, com freada e retomada graduais, como algo físico numa curva fechada.
+  - Bolinha num caminho arredondado; o rastro continua na linha exata e acende cada ponta.
+  - Rastro por tempo: 50–300ms atrás da bolinha, encurtando nas pontas.
+  - Saída e chegada suaves, com cruzeiro no meio. Ciclo de 5s: 4,2s de percurso e 0,8s de pausa.
+- **Tentativas intermediárias**, com a medição a cada passo:
+  - Freada suavizada demais ficava diluída (125°).
+  - Com a ease global (rápida no meio), as pontas do meio continuavam rápidas (108°).
+  - Só arredondar mais fazia o rastro cortar os picos. Por isso a bolinha e o rastro foram separados.
+- **Resultado:**
+  - Maior giro entre quadros de 60° no computador (1 quadro) e 40° no celular (nenhum acima de 60°).
+  - O rastro fica a ≤0,8px da bolinha durante o percurso.
+- **Desempenho:** a primeira versão amostrava o traçado com `getPointAtLength` e travava a página (1,9s no computador; 8,6s com CPU 4x mais lenta). Lendo o `d` e achatando as curvas no JS, caiu para 21ms e 75ms.
+- **Continua valendo:** pausa fora da tela e com o botão de pausa; some com movimento reduzido; sem JS fica a versão simples declarada no SVG; sem erros.
+
+## Mapa: pulso mais suave e menos rígido (computador e celular) — 24/09/2026
+
+- **Pedido do usuário:** “deixe mais suave e menos rígida a animação” da bolinha, no computador e no celular, com a skill da Emil se precisasse.
+  - Não há skill da Emil (Kowalski) no ambiente nem no catálogo de skills do usuário.
+  - Foi usado o guia `apple-design`, que trata de movimento fluido. Trechos aplicados: §11, rastro/motion blur para movimento rápido; §14, sem saltos bruscos de brilho e loop sem ser mecânico.
+- **Antes:** percurso linear de 3,4s, sem pausa, e a bolinha sumia no fim e reaparecia no começo de uma vez. No computador era um `<circle>` levemente oval (8,8×9,8px).
+- **Agora**, com ciclo de 4,2s:
+  - 3,5s de percurso com aceleração e freada por igual;
+  - fade de entrada de 0,3s e fade de saída ao chegar;
+  - 0,7s de pausa entre as passagens;
+  - rastro de luz em 4 trechos sobrepostos da própria linha;
+  - bolinha redonda, com anéis de brilho, igual nos dois.
+  - Uma primeira curva (.42 0 .2 1) chegava a 77% do caminho na metade do tempo e se arrastava no fim; foi trocada por .45 .05 .55 .95 (50% na metade).
+- **Verificado com o relógio congelado:**
+  - A ponta do rastro fica a ≤0,2px da bolinha em todos os instantes, nos dois.
+  - Opacidade .79 em 0,15s, 1 no percurso, .73 em 3,3s e 0 na pausa.
+  - Pausa fora da tela e com o botão do letreiro; some com movimento reduzido; sem erros.
+  - No celular o rastro fica sem filtro de brilho, porque seria refeito a cada quadro.
+
+## Mapa no celular: bolinha na linha, desenho desfeito — 24/09/2026
+
+- O usuário esclareceu que “a animação” era a bolinha que percorre a linha no computador, e que no celular ela nem existia. Pediu para voltar o mapa como estava, exceto o ajuste do PASSO 06.
+- **Desfeito:** o desenho da linha no celular, com os passos acendendo e os dois gatilhos (meio da tela e parada de rolagem). O `pathLength` da linha e o JS também saíram. O mapa aparece inteiro, como antes.
+- **Mantido:** PASSO 06 12px mais baixo, sem a haste, e “PRIMEIRA OPORTUNIDADE” descendo o mesmo tanto.
+- **Novo: bolinha no celular**, com o mesmo traçado da linha vertical, loop de 3,4s como no computador.
+  - Feita de traços de tamanho fixo (`non-scaling-stroke`) para ficar redonda: um círculo comum ficava oval, 12,7×8px em 430px de largura.
+  - O brilho vem de dois anéis translúcidos (22px a .12, 14px a .28) em volta do núcleo de 9px. A primeira versão usava `filter`, que num elemento tão pequeno é recortado: a bolinha não aparecia.
+- **Verificado:**
+  - Em 360, 390 e 430px, a bolinha anda, é redonda e tem brilho.
+  - Fica parada fora da tela e com o botão de pausa do letreiro; some com movimento reduzido.
+  - No computador nada mudou; sem erros.
+
+## Mapa no celular: PASSO 06 mais baixo e desenho quando a pessoa está no mapa — 24/09/2026
+
+- **Pedido do usuário:** “PASSO 06” estava colado ao ponto final dos passos no celular (abaixar um pouco, sem exagerar), e a animação do mapa precisava começar quando a pessoa já atravessou um pouco do mapa, para ver com facilidade.
+- **PASSO 06:**
+  - A linha que desce do nó 6 terminava 4px dentro do rótulo. O rótulo desceu 12px e agora começa 8px abaixo do fim da linha.
+  - A haste desse nó, que ficava sob a linha, saiu.
+  - “PRIMEIRA OPORTUNIDADE” desceu os mesmos 12px (gap de 14px mantido).
+- **Animação:**
+  - O mapa só tinha a entrada comum (fade de 350ms disparado com 8% visível), que acabava antes de a pessoa ver. Agora, no celular, a linha se desenha de cima para baixo em 2,4s e cada passo acende quando ela chega (frações medidas no traçado: 3%, 22%, 40%, 58%, 77%, 95%). “PRIMEIRA OPORTUNIDADE” aparece no fim.
+  - Começa com o topo do percurso no meio da tela, ou quando a pessoa para de rolar 0,6s com ele acima de 75%.
+- **Verificado em tempo real:**
+  - Rolando, o desenho começou com o topo em 45% da tela; parando em 61%, começou 0,5s depois.
+  - Pelo botão “QUERO CONHECER OS 6 PASSOS”, começou em 375×667, 360×740, 390×844 e 430×932.
+  - Computador sem mudança; movimento reduzido e sem JS mostram tudo; sem overflow e sem erros.
+
+## Mapa: luz do vidro por dentro, não por fora — 24/09/2026
+
+- Pedido do usuário, com setas no print 2 (canto de cima à esquerda, lateral esquerda, meio da base, canto de baixo à direita): “o blur tá aplicado na parte externa e na referência na parte interna”.
+- **Causa:** o painel tinha um brilho turquesa em volta (`box-shadow` externo de 70px), e o fundo da seção tinha duas manchas de luz ao lado dele. Por dentro, a cor era uniforme. A borda também era dupla: a real, fixa, e o anel com gradiente por cima.
+- **Feito:**
+  - Sem luz do lado de fora: só uma sombra escura de profundidade.
+  - Uma única linha de borda, fina e nítida: a borda real ficou transparente e o anel mostra a linha, acendendo nos pontos das setas.
+  - Por dentro, a luz desses pontos entra no vidro (camada abaixo do conteúdo), com brilho interno suave em toda a volta.
+  - No celular, os mesmos pontos em tamanho menor.
+- **Verificado** em 1358 e 375px, com recortes nos pontos das setas antes e depois; sem overflow e sem erros.
+
+## Mapa: painel de vidro e percurso luminoso — 24/09/2026
+
+- **Pedido do usuário**, com duas versões geradas: do print 1, o layout do cartão (glassmorphism); do print 2, o estilo interno (os 6 passos e as 3 perguntas com ícone no fim). A seção de baixo dos prints foi ignorada, como pedido.
+- **Aplicado:**
+  - Painel translúcido com desfoque, borda com gradiente turquesa mais forte nos cantos, brilho interno e externo, filete acima do título, e luzes suaves no fundo da seção para o vidro aparecer.
+  - Linha do ECG com brilho; nós com anel aceso, fundo radial e número com leve brilho; cadeado removido, como na referência.
+  - Haste pontilhada com ponto entre cada nó e o rótulo; pontos acesos nas pontas da linha no computador.
+  - Fio vertical entre as colunas; perguntas com linha em cima e embaixo e chevron turquesa no fim; seta no botão.
+- **Verificado:**
+  - Fontes, tamanhos e pesos iguais aos de antes (perguntas 18px/500, números 24px/500).
+  - Sem overflow e sem erros em 1358, 900 e 375px.
+
+## Dor: “o certificado não responde” e setas em anel — 24/09/2026
+
+- Pedido do usuário, com imagem de referência: estilizar “o certificado não responde” e as setinhas das perguntas.
+- A frase, que já estava em Fraunces itálico mas na cor do texto, ficou turquesa (`--mint-bright`). Fonte, tamanho e peso não mudaram.
+- As setas das 5 perguntas agora ficam num anel de 24px: borda turquesa, fundo translúcido, leve brilho, seta de 15px. Continuam alinhadas à primeira linha e deslizando 6px na entrada.
+- Ajuste do usuário: o “o” antes de “certificado” saiu do destaque e voltou ao estilo do texto.
+- Verificado em 1358 e 375px, sem overflow.
+
+## “Para quem é” no layout da referência — 24/09/2026
+
+- **Pedido do usuário** (imagem de referência): implementar o layout da referência na seção de público, sem mudar a fonte nem aumentá-la; se a fonte fosse mudar, fazer só o design/layout.
+- A copy da referência é idêntica à da página (título e 7 critérios), e a grade já era 2 · 3 · 2.
+- **Aplicado:**
+  - Cartões de vidro com borda e cantos de 12px.
+  - No topo de cada cartão, um filete turquesa que se dissolve, com brilho.
+  - Check num anel de 44px, fio vertical e texto.
+  - Espaço de 20px entre os cartões.
+  - Luz de foco no alto à direita.
+- **Grade:** 2 · 3 · 2 acima de 1100px (antes, três por linha deixava o texto dos cartões do meio em 4 linhas em 1440px; com o espaço interno ajustado, ficaram 3); duas colunas de 761 a 1100px; uma no celular.
+- **Não aplicado, e por quê:**
+  - Kicker “O GANCHO DA VIRADA” e negritos dentro dos critérios: é texto novo e mudança de peso de fonte (regra “não altere as fontes”).
+  - Foto da sala cirúrgica: não há imagem assim no projeto, e as que existem já são usadas em outras seções. Prompt em `human-output/image/gancho-para-quem/`; a foto entra por `--who-photo`.
+- **Verificado** em 1440, 1358, 1100, 1024, 900, 768, 375 e 320px:
+  - família, tamanho, peso e entrelinha iguais aos de antes em todas as larguras;
+  - sem overflow e sem erros;
+  - as outras seções ficaram iguais, com todos os elementos visíveis na mesma posição relativa. A seção ficou 56px mais alta em 1440px.
+
+## Preço: 6x de R$ 8,82 — 24/09/2026
+
+- Pedido do usuário: “O preço precisa ser alterado para 6 x de R$ 8,82.”
+- **Antes:** “DE R$ 297,00” · **R$ 47,00** · “ou em até 12x no cartão” (parcelamento a confirmar).
+- **Agora:** “DE R$ 297,00” · **6x de R$ 8,82** · “ou **R$ 47,00** à vista”.
+  - Mesmo estilo de antes: “6x de R$” e “,82” pequenos, “8” grande em Bricolage, e o valor à vista em turquesa como estava o “12x”.
+  - O R$ 47,00 continua informado como preço à vista.
+  - 6 × R$ 8,82 = R$ 52,92 no parcelado (juros do cartão).
+- **Verificado** em 1440, 1358, 900, 768, 375 e 320px:
+  - o valor cabe na linha (232px em 1358; 222px em 320);
+  - sem overflow e sem erros;
+  - a animação de entrada (preço antigo riscado, valor subindo) segue igual.
+
+## Aviso de inscrição fica na tela durante a rolagem — 24/09/2026
+
+- Pedido do usuário: no celular, ao deslizar depois que o aviso aparecia, ele sumia; ele quer que continue aparecendo pelo período, “que nem no PC”.
+- **Causa:** se a rolagem trouxesse um botão, o vídeo, o carrossel ou o FAQ para baixo do aviso, ele saía antes da hora. No celular o aviso ocupa quase a largura toda e os botões também, então qualquer deslizada fazia isso.
+- **Feito:**
+  - A saída antecipada foi removida: depois de aparecer, o aviso fica os 5s.
+  - Ele continua não *surgindo* em cima de botões ou do vídeo.
+  - Em tela de toque, o texto do aviso deixa o toque passar (`pointer-events:none`), então um botão que fique embaixo continua funcionando; só o “×” responde.
+- **Verificação:**
+  - Em tempo real, deslizando 60px a cada 100ms: o aviso ficou na tela em todas as 46 amostras e saiu após 5,0s (375×667 e 390×844).
+  - Com relógio simulado, sobre botão ou vídeo, ele sai só aos 5s (4,98s).
+  - Tocar no texto do aviso sobre “QUERO CONHECER OS 6 PASSOS” leva a `#mapa`.
+  - O “×” responde ao toque, e no computador o mouse ainda segura o aviso.
+
+## Aviso de inscrição com ritmo constante — 24/09/2026
+
+- Pedido do usuário: “só aparece uma vez, eu quero que se a pessoa subir a página novamente apareça de novo. Eu não quero algo lotando a tela, mas que dê a sensação de constância.”
+- **Antes:** primeiro só depois de rolar 60% da tela, 5,5s na tela, 38–64s de intervalo, no máximo 4 por visita.
+- **Agora:**
+  - Primeiro em 6–10s (~3s na prévia), em qualquer ponto da página, inclusive no topo.
+  - Um de cada vez: 5s na tela e 15–25s até o próximo; até 12 por visita.
+  - Com compras reais, cada nome aparece uma vez por visita. A prévia recomeça os 4 nomes de exemplo sem repetir o último.
+  - Continua sem cobrir botões, os controles do carrossel e as perguntas do FAQ. O vídeo agora só é evitado quando metade dele ou mais está na tela: só a borda aparecendo lá embaixo impedia o aviso no topo em 1358px.
+- **Verificação:**
+  - 46 testes com relógio simulado.
+  - 12 avisos em 8 minutos, com intervalos de 15,2 a 25,0s e 5s na tela.
+  - Ao subir a página, volta em 18–23s, com outro nome.
+  - Com 3 compras reais, 3 avisos com nomes diferentes; o primeiro em 9,1s.
+  - Com a lista vazia, nada aparece.
+  - Pausa, ampliação, “×”, teclado e movimento reduzido também verificados.
+  - Sem overflow de 320 a 1920px e sem erros no console.
+
+## Aviso de inscrição: prévia mais rápida; nomes fictícios recusados — 24/09/2026
+
+- O usuário disse que o aviso “ainda não tá aparecendo” e pediu nomes fictícios (“pode fazer com nomes aleatórios, mas bonitos”).
+- **Por que não aparecia:** no endereço normal, a lista `#compras-reais` está vazia, então o aviso não é ativado. Isso é de propósito. Na prévia (`?compras=exemplo`), o primeiro aviso só vinha 9–14s após abrir a página e depois de passar do vídeo.
+- **Feito:** na prévia, o primeiro aviso agora vem ~2s após abrir (até 3s depois de rolar para além do vídeo). Medido em tempo real, rolando como uma pessoa: 2,3s no computador (1358×650) e na hora no celular (375×667). Sem o parâmetro, continua sem aparecer.
+- **Não feito:** preencher a lista com nomes inventados. Seria escrever compras que não aconteceram para convencer quem visita, o que o CDC trata como publicidade enganosa (art. 37) e o manual veta como “urgência falsa” (§12). A lista continua esperando nomes de compras reais.
+
+## Aviso de inscrição (“<nome> garantiu vaga na turma”) — 24/09/2026
+
+- **Pedido do usuário**, com print de exemplo: um aviso “simulando que pessoas estão comprando”, que apareça “de forma leve e sutil em alguns momentos” e não a todo momento.
+- **Feito:**
+  - Cartão fixo no canto de baixo à esquerda, no formato do exemplo (check, nome em destaque, “garantiu vaga na turma”) com as cores da página. Detalhes no handoff, seção “Aviso de inscrição”.
+  - Aparece só depois da primeira dobra, 5,5s por vez, com 38–64s de intervalo, e no máximo 4 por visita.
+  - Nunca cobre botões, o vídeo, os controles do carrossel ou as perguntas do FAQ.
+  - Espera com a aba oculta, com a ampliação aberta e com as animações pausadas; o “×” encerra na sessão.
+- **Sem nomes inventados.** Aviso de compra que não aconteceu é publicidade enganosa (CDC art. 37), e o manual veta “urgência falsa” (§12). Por isso:
+  - o aviso lê a lista `#compras-reais` no fim do HTML, com nomes de compras reais;
+  - vazia, ele não aparece;
+  - `?compras=exemplo` mostra uma prévia com quatro nomes de exemplo, só para o usuário ver o visual.
+- **Verificação:**
+  - 49 testes com relógio simulado em 1358 e 375px: ritmo, bloqueios, limite de 4, “×”, pausa, ampliação, teclado e movimento reduzido.
+  - Capturas em 320, 375, 390, 768, 1358, 1440 e 1920px; sem overflow nem erros no console.
+  - Com a lista vazia, todos os elementos ficam na mesma posição da versão anterior (fora os que se movem sozinhos: letreiro e carrossel).
+
+## Hero: kicker em duas linhas no celular — 24/09/2026
+
+- O usuário perguntou se havia um `<br>` em “Para quem se formou em / instrumentação…” no celular. Não havia: a quebra vinha do `text-wrap: balance` com 12px. Sem o balance, “mercado...” ficaria sozinho na última linha.
+- A pedido dele (“e se diminuir para ficar em duas linhas?”), de 360 a 560px o kicker usa `font-size: clamp(10.25px, calc((100vw - 64px) / 29.5), 12px)`: 10,25px em 360, ~10,5 em 375, ~11,05 em 390 e 12px a partir de ~420. Família, peso e espaçamento continuam os mesmos.
+- A divisão por 29,5, e não por 27,8 (o ajuste exato), deixa margem para o arredondamento da largura das letras. Em 390px, com o ajuste exato, a linha passava 2,5px e voltava a ter três linhas.
+- Abaixo de 360px continua com 12px, em três linhas: em duas, o texto precisaria de ~9px.
+- Verificado em 320, 359, 360, 375, 384, 390, 393, 400, 412, 414, 430, 480 e 560px. Sem overflow.
+
+## Hero: mais respiro entre o botão e o vídeo — 24/09/2026
+
+- Pedido do usuário (print com setas): o vídeo e o texto ao lado estavam próximos demais do botão “QUERO PARTICIPAR”. Ele pediu mais respiro sem mexer no desfoque.
+- Acima de 760px o espaço entre a hero e a linha do vídeo virou `--hero-gap: clamp(56px, 6vw, 96px)` (antes, 40px fixos). Ele também entra na altura mínima do `.hero-top`, para o texto continuar centralizado nas telas largas.
+- Medido entre “Vagas limitadas…” e o topo do vídeo: 81px em 1358px (antes ~40), 87px em 1440, 61px em 1024, 57px em 768 e 166px em 1920. Celular sem mudança.
+- O desfoque continua preso à foto. Com a linha mais baixa, o título fica ainda mais dentro da área escurecida. Sem overflow.
+
+## Hero: desfoque azul abaixo dos braços da Carol — 24/09/2026
+
+- Pedido do usuário (print com setas): o corpo da Carol aparecia atrás do título “Entenda em poucos minutos…” e podia disputar com ele. Ele sugeriu “blur azul ou sei lá”.
+- **Primeira tentativa, descartada:** mancha oval desfocada atrás da coluna de texto. Deixava uma borda oval visível e não cobria o título em 1920px, onde a Carol fica maior.
+- **Aplicado:**
+  - a dissolução da foto ficou mais curta, de transparente em 64% a .88 de azul-marinho em 71% da altura (antes começava em 62% e chegava a .72 em 76%);
+  - `.hero::after` desfoca a foto (`backdrop-filter: blur(14px)`) em toda a largura a partir de 64%, com a borda de cima se dissolvendo.
+  - Os braços, que terminam em 65%, continuam nítidos.
+- Contraste no pior ponto: título de 6,4:1 para ≥10,2:1; parágrafos ≥11,6:1 (1920 a 961px). Celular sem mudança: até 560px a hero não tem essa foto.
+
+## Hero + vídeo no layout do protótipo do usuário — 24/09/2026
+
+- O usuário gerou no ChatGPT um protótipo em imagem (prompt escrito nesta sessão) e pediu o layout “na linha desse”. Instrução: implementar só o código e não se preocupar com fundos.
+- Durante o trabalho, o usuário pediu: **“NÃO ALTERE AS FONTES. Senão vai quebrar a harmonia com o restante do texto.”** O protótipo trazia o título em fonte serifada; ficou a Bricolage Grotesque. Os ajustes de tamanho e peso feitos no meio do caminho (kicker, subtítulo, texto do vídeo) foram desfeitos. Regra registrada no handoff.
+- **Do protótipo, aplicado:**
+  - ícones no letreiro;
+  - kicker com filete vertical turquesa;
+  - seta nos dois botões;
+  - vídeo na primeira dobra, em duas colunas (vídeo à esquerda; filete, título em itálico, parágrafos e botão contornado à direita, sob a Carol).
+- **Não aplicado (fundo/arte):** capa fotográfica do vídeo e as linhas curvas decorativas. Ficou o gancho `--video-poster` para a capa.
+- **Estrutura:**
+  - o bloco do vídeo saiu da seção da dor e foi para dentro da hero;
+  - a foto virou a camada `.hero::before` (altura `max(56.28vw,720px)`, dissolução a partir de 62%);
+  - `.hero-top` com altura mínima para o vídeo começar a 69% da foto, logo abaixo dos braços da Carol (que terminam em 65%);
+  - texto da hero limitado a 60% da largura;
+  - saíram as regras antigas `.pain .video-*`, `.video-intro`, `.hero::after`, a altura mínima anterior da hero e o `padding-bottom:96px` de 561–760px (não há mais sobreposição).
+- **Medido (1440px):** vídeo 622×350 a 32px abaixo dos braços. Em 1358px (tela do usuário) e 1920px, a mesma relação. Contraste do texto sobre a foto: título ≥6,4:1, parágrafos ≥9,9:1.
+- **Validação:** Chrome headless em 1920, 1440, 1358, 1280, 1024, 961, 900, 768, 600, 375 e 320px, com e sem movimento. Sem overflow e sem erros de console; sem JS, tudo visível. As seções da dor em diante mantêm a mesma geometria, elemento por elemento.
+
+## Hero: parágrafos movidos para o bloco do vídeo — 24/09/2026
+
+- Substituído no mesmo dia pelo layout do protótipo (entrada acima). Mantido o registro da autorização da mudança de copy.
+
+- Pedido expresso do usuário (com print): tirar da hero “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” e colocá-los depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”. Texto e marcação idênticos.
+- **Bloco do vídeo:** `.video-copy` reúne o título e os dois `p.video-desc` (17px no desktop, 16px até 960px, cor `rgba(236,240,248,.84)` como na hero; os `.mk` continuam sem destaque). Acima de 960px: texto à esquerda (até 62ch) e botão à direita, alinhado à base do texto. Até 960px o botão desce para baixo do texto. No DOM o vídeo vem antes do texto, na mesma ordem em que aparece na tela.
+- **Hero:** sem os parágrafos ela encolheria de 843 para ~670px em 1440px. A foto passaria a ser cortada em cima (cabeça da Carol colada no letreiro) e o vídeo cobriria os braços dela. Acima de 760px: `min-height:max(56.28vw,720px)` (proporção da foto) e texto centralizado (`display:grid;align-content:center`). Medido: 1440px 843→810, 1366px 826→769, 1024px 720→720. O vídeo começa na cintura da Carol, como antes. Em 1920px a hero passa a 1081px e mostra a foto inteira; antes a cabeça era cortada pelo letreiro nessa largura.
+- **Celular:** a hero ficou ~290px mais baixa. Em 375px o botão “QUERO PARTICIPAR” (antes em ~803px) e a foto da Carol (antes em 879px, agora em 587px) aparecem na primeira tela.
+- **Correção junto (já existia):** entre 561 e 760px o vídeo sobe 56px sobre a hero, que só tinha 40px de respiro, e cobria “Vagas limitadas para o encontro ao vivo”. Agora `padding-bottom:96px` nessa faixa.
+- CSS morto removido: as regras `.hero .desc` (cinco camadas) e `.hero .desc .mk`.
+- Validação: Chrome headless com servidor local, capturas antes/depois em 1920, 1440, 1366, 1280, 1024, 961, 960, 900, 768, 760, 700, 600, 561, 560, 375 e 320px. Na tela do usuário (1358×607), título, subtítulo, botão e Carol ficam inteiros na primeira tela. Sem overflow e sem erros de console. Com movimento, a hero e o bloco do vídeo entram normalmente; sem JS, tudo visível. As seções abaixo do vídeo têm a mesma geometria (posição e tamanho de todos os elementos iguais, diferença só de subpixel).
+
 ## Números de autoridade: contagem na entrada — 20/09/2026
 
 - Pedido do usuário. Os três números (`#carol .auth .n`) contam de zero até o valor real em 900 ms, com desaceleração, 60 ms entre um e outro, na mesma cascata do traço turquesa que já existia.

@@ -1,0 +1,13 @@
+PARA QUEM É — fundo de sala cirúrgica (seção "O Gancho da Virada é para você que...")
+
+Crie uma imagem horizontal 21:9, em alta resolução, para ser o fundo de uma seção de site.
+
+Cena: uma sala cirúrgica moderna, vazia e em penumbra, vista de dentro, sem nenhuma pessoa. No alto, à direita, um foco cirúrgico redondo aceso, com as lâmpadas visíveis, é a principal fonte de luz. Abaixo dele, também à direita, uma mesa de instrumentais coberta por campo cirúrgico azul, com pinças e tesouras alinhadas. Ao fundo, monitores e equipamentos desfocados.
+
+Composição: tudo o que é interessante fica no terço direito da imagem. Os dois terços da esquerda são quase pretos, um azul-marinho muito escuro e limpo, sem objetos nem detalhes, porque ali vão ficar o título e os cartões de texto da página.
+
+Estilo: fotografia realista e cinematográfica, com profundidade de campo curta (fundo desfocado), granulação fina de filme e sombras profundas.
+
+Cor: tudo em azul-marinho (#0C1236 a #1D2864) e azul-petróleo. A luz do foco é branca, levemente azulada, com reflexos turquesa suaves (#2AD2C1) nas bordas metálicas. Nada de vermelho, laranja ou amarelo.
+
+Evite: pessoas, rostos, mãos, textos, letras, logotipos, marcas d'água, sangue e qualquer objeto na metade esquerda da imagem.
