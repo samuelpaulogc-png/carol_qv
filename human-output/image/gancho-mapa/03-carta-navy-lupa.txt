@@ -1,0 +1,17 @@
+MAPA — carta de navegação azul-marinho com lupa e rosa dos ventos (fundo do card "Existe um caminho entre onde você está e onde quer chegar")
+Referências do usuário: mapas antigos com rosa dos ventos e rotas pontilhadas, e fotos de lupa sobre mapa. Adaptado para a paleta e a narrativa da página.
+
+Crie uma imagem horizontal 16:9, em alta resolução, para ser o fundo de um card escuro de site.
+
+Cena: foto vista de cima, em ângulo levemente inclinado, de uma carta de navegação antiga impressa em papel azul-marinho profundo, como uma cianotipia. A carta não mostra países reais: é um território imaginário desenhado só com linhas finas, curvas de nível de montanhas, contornos de costa, uma grade de meridianos e paralelos levemente curvos e hachuras de relevo, tudo em traço de gravura, em turquesa e creme bem apagados.
+- No terço esquerdo, uma lupa de metal escuro com cabo preto, apoiada sobre a carta. Dentro da lente, o traço aparece ampliado e nítido e há um único ponto pequeno de luz creme: o "você está aqui".
+- No terço direito, embaixo, uma rosa dos ventos gravada em linhas finas turquesa, elegante e discreta. A agulha principal aponta para a direita, para fora da imagem, na direção de onde se quer chegar.
+- Um clarão turquesa suave entra pela borda direita, como uma luz no horizonte do mapa.
+
+Composição: o centro da carta fica limpo, só com a grade e as curvas de nível bem apagadas, porque ali vão o título e uma linha de batimento que a página desenha por cima. Não desenhe rota, trilha ou caminho pontilhado: a página já traz o seu. Profundidade de campo curta: a lente e o centro nítidos, as bordas desfocadas.
+
+Estilo: fotografia realista e cinematográfica de objeto, luz baixa e lateral, papel com textura fina e dobras leves, granulação de filme, sombras profundas, contraste baixo. Premium e silencioso.
+
+Cor: papel em azul-marinho (#080C22 a #1D2864). Traços do mapa em turquesa (#2AD2C1) e creme (#ECF0F8) com pouca opacidade. Metal da lupa em grafite frio. Transformar a paleta sépia das referências em navy e turquesa: nada de marrom, bege, sépia, dourado, laranja, vermelho ou amarelo.
+
+Evite: textos, letras, nomes de lugares, números, pontos cardeais escritos (N, S, E, W), logotipos, marcas d'água, continentes reais, barcos, pessoas, mãos, rotas pontilhadas e linhas em zigue-zague ou de batimento cardíaco.

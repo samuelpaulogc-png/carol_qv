@@ -34,6 +34,7 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - Garantia (13/09): título “7 dias de garantia” trocado por “Garantia de satisfação total”, a pedido expresso do usuário. O texto circular da medalha (“7 dias de garantia · …”) e o parágrafo com as condições de 7 dias continuam iguais.
   - Hero → vídeo (24/09): os parágrafos “No Gancho da Virada, você vai conhecer o mapa…” e “Você recebe acesso imediato a 3 aulas de preparação…” saíram da hero e foram para o bloco do vídeo, depois de “Entenda em poucos minutos o que é o Gancho da Virada” e antes do botão “QUERO CONHECER OS 6 PASSOS”, a pedido expresso do usuário. Texto idêntico; não voltar com eles para a hero.
   - Preço (24/09): a pedido do usuário (“o preço precisa ser alterado para 6x de R$ 8,82”), o valor em destaque passou de “R$ 47,00” para “6x de R$ 8,82”. A linha de baixo passou de “ou em até 12x no cartão” (a confirmar) para “ou R$ 47,00 à vista”, para o preço à vista continuar informado. No parcelado, 6 × R$ 8,82 = R$ 52,92 (juros do cartão).
+  - Oferta (24/09): as linhas “R$ 47,00 à vista · ou 6x de R$ 8,82”, “Pagamento seguro • Acesso imediato” e a etiqueta “AO VIVO” vieram do protótipo que o usuário pediu para implementar (no protótipo, “R$ 47 à vista”; ficou “R$ 47,00” para bater com o preço). “Pagamento seguro” depende da plataforma de checkout; remova se ela não oferecer.
   - Aviso de inscrição (24/09): “<nome> garantiu vaga na turma”, texto do exemplo que o usuário enviou ao pedir o aviso. Os nomes vêm só de compras reais (ver “Aviso de inscrição” abaixo).
   - FAQ (24/09):
     - O rótulo “Dúvidas frequentes” (em caixa alta via CSS) acima de “Ficou com alguma dúvida?” e os números 01–06 antes das perguntas vieram do pedido expresso do usuário ao recriar a seção pela referência.
@@ -85,6 +86,19 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
   - A luz desses pontos entra no vidro por `.wrap::before` (`z-index:-1`, abaixo do conteúdo), com tamanhos menores até 760px.
   - O percurso segue o print 2: linha com brilho, nós com anel turquesa aceso **sem o cadeado**, e uma haste com ponto até “PASSO 0X”. No computador, pontos acesos nas pontas da linha (os marcadores dos rótulos saem).
   - Fio vertical entre as duas colunas de texto.
+  - **Fundo atual: carta de navegação (24/09, imagem do usuário gerada com o prompt `human-output/image/gancho-mapa/03-carta-navy-lupa.txt`).**
+    - Carta em navy estilo cianotipia, com lupa à esquerda sobre um ponto de luz (“você está aqui”) e rosa dos ventos à direita. `assets/images/mapa-carta.webp`, gerado de `assets/Imagem do ChatGPT 24 de set. de 2026, 20_41_26.png`. O alto (14%) e a base (28%) vêm transparentes no próprio arquivo.
+    - Mesma linha da serra: por baixo do navy translúcido do painel. Mas ocupa a **largura inteira** (`50% 30% / 100% auto`), não `cover`: o card é quase quadrado e o `cover` cortaria a lupa e a rosa. No computador, a lupa cai sobre “FORMAÇÃO” e o passo 1, e a rosa ao lado do passo 6.
+    - Até 760px, **imagem vertical própria** (pedido do usuário, 24/09: “só adicione ela, não mexa na transparência… a única coisa que é para você mexer é o posicionamento”): `assets/images/mapa-carta-m.webp` (941×1672, de `assets/Imagem do ChatGPT 24 de set. de 2026, 20_45_58.png`; a pedido do usuário, a base vem dissolvida no arquivo, do 66% da altura para baixo, para suavizar onde a imagem termina, na altura dos passos 4 e 5), em `100% auto` no alto do card (`50% 0`). Antes estava em `cover` com `14% 0`, mas o usuário achou que só mostrava a lupa e pediu para ela não cobrir o card todo. Com o navy a 90–95% ela quase não aparece no celular; foram mostradas prévias com o navy só do celular em 80–88% e 70–80%. O usuário aplicou primeiro a de 80–88% e depois escolheu a de **70–80%** (`.7`→`.8`), que é a atual, só até 760px. A camada navy do celular é própria (fica na regra do celular, que reescreve as três camadas), mais transparente que a do computador.
+    - Escurecida a pedido do usuário (24/09, “um pouco mais escurecido”): o degradê navy por cima passou de `.62`→`.74` para `.72`→`.82` e, num segundo pedido (“escureça mais um pouco”), para `.8`→`.88` e, num terceiro, para `.86`→`.92`. Depois, o usuário confirmou que se referia à transparência da camada por cima (“deixe menos transparente o fundo por cima da imagem”): `.9`→`.95`.
+    - Substituiu a serra (`mapa-montanhas*.webp`, ainda no disco). A subida de 44px entre 761 e 1100px deixou de existir.
+  - **Paisagem de fundo (24/09, substituída pela carta acima):** serra noturna com clarão no horizonte, no alto do painel, atrás do título e do percurso.
+    - Arquivo: `assets/images/mapa-montanhas.webp`, gerado de `assets/Imagem do ChatGPT 24 de set. de 2026, 19_32_00.png` (1672×941). A base já vem transparente no arquivo (de 56% da altura para baixo), por isso some no navy do vidro antes dos textos em qualquer largura. Se trocar a imagem, refaça essa transparência.
+    - **Fica por baixo do navy translúcido de sempre do painel** (ajuste do usuário, 24/09: com a imagem por cima “ficou muito forte”; ele pediu o fundo como estava, com a imagem visível por transparência, e mandou um exemplo de imagem apagada atrás de fundo escuro). Para deixar mais ou menos visível, mexa na opacidade do degradê navy (`.62`→`.74`).
+    - **Em teste (24/09, pedido do usuário “para eu ver como fica”):** a imagem cobre o card inteiro, com `assets/images/mapa-montanhas-inteira.webp` (sem a transparência na base) em `75% 50% / cover`, ainda por baixo do navy. A subida de 44px entre 761 e 1100px ficou desativada. O comentário no CSS explica como voltar à serra só no alto; aguardando o usuário escolher.
+    - É a última camada de `background` do `#mapa > .wrap` (`50% 0 / max(100%,1000px) auto`). De 761 a 1100px sobe 44px, senão o clarão cai atrás de “PRIMEIRA OPORTUNIDADE”.
+    - As curvas de nível (`map-contours.svg` em `.map-stage::before`) saíram, porque o protótipo não as tem.
+    - Rótulos, título e introdução ganharam um halo navy (`text-shadow`) para seguirem legíveis sobre o clarão.
   - As 3 perguntas em linhas com seta turquesa no fim.
   - “QUERO DESCOBRIR” ganhou seta.
   - Fontes, tamanhos e pesos iguais aos de antes. O cadeado saiu por seguir a referência; volta removendo `#mapa .node .disc svg{display:none}`.
@@ -167,17 +181,15 @@ Este arquivo é carregado automaticamente pelo `CLAUDE.md`. Ele consolida tudo o
 - **Ampliação** (`#shot-zoom`): o print **viaja da posição do card até o centro** (Web Animations API, 420ms) e volta ao fechar (300ms); setas laterais, ← → e Esc, deslize no celular, pontinhos de posição, troca suave entre prints, foco preso e devolvido ao card.
 
 ### Oferta, FAQ, encerramento
-- **Oferta (13/09, versão B do comparador `audit-visual/offer-options/` com a estrutura de preço 1):**
-  - Título alinhado à esquerda, sem kicker.
-  - "Você recebe:" e, abaixo, um único bloco `.ov` com três faixas `.ov-row` alternando capa e texto:
-    - aulas com `how-aulas`, encontro com `how-encontro` (via `srcset`);
-    - bônus com capa própria `assets/images/oferta-bonus.webp` (e `-900`), gerada no ChatGPT a partir de `Bônus.png` no estilo das capas (celular com vlog, e-book com checklist, mapa com trilha pontilhada); `object-position` à esquerda. Prompts em `human-output/image/gancho-oferta-bonus/`. O SVG antigo e a regra `.ov-bonus-art` foram removidos (13/09).
-  - Conectores "+" (`.ov-op`) sobre as linhas divisórias.
-  - Títulos `h4.ov-title` com trecho em Fraunces itálico turquesa, filete turquesa de 32px que cresce no hover, descrição com a informação-chave em peso, bônus em lista com traço.
-  - O preço fecha o bloco (`.ov-buy`): "DE R$ 297,00", "**6x de R$ 8,82**" em destaque (desde 24/09; "6x de R$" e ",82" pequenos, "8" grande, como era o "R$ 47,00"), "ou **R$ 47,00** à vista" embaixo, fio vertical e botão de 460px com seta. No celular (≤900px) tudo empilha e o fio fica horizontal.
-  - Checkout ainda `href="#"` (`#checkout-link`).
-  - As capas repetem as de "Como funciona", e o bônus não tem foto (sugestão pendente: gerar capa própria).
-  - CSS antigo da oferta (`.offer-box`, `.incl*`, `.plus`, `.price`, `.offer-purchase`, `.bonus-line`) foi removido.
+- **Oferta (24/09, recriada pelo protótipo do usuário):** o usuário pediu para já implementar a estrutura e, se as imagens atuais não servissem, deixar o layout pronto para as novas.
+  - Container de 1232px. Título “Entre para o Gancho da Virada e receba:” **centralizado** acima de 900px (à esquerda abaixo).
+  - Cartão base comum (`.ov-core li`, `.ovb-card`, `.ov-buy`): vidro navy, borda turquesa `.2`, raio de 18px e um fio de luz no alto. Hover acende a borda.
+  - **Entregas (`ul.ov-core`, 2 colunas; 1 coluna até 1100px):** ícone num anel de 56px (`.ovc-ic`: tela com play nas aulas, calendário no encontro), texto (`.ovc-text`) e capa sangrando à direita (`figure.ovc-art`, 40% da largura, dissolvendo para a esquerda). Até 560px a capa vira faixa 16:9 no alto do cartão.
+    - Capas **provisórias**: `how-aulas` e um recorte de `how-encontro` na Carol (`--art-pos:88% 8%; --art-zoom:2.3`). Com imagem nova, basta trocar o arquivo e tirar `--art-zoom`. Etiqueta “● AO VIVO” (`.ovc-live`, ponto fixo, sem pulsar) sobre a capa do encontro.
+  - **Bônus (`.ovb-list`, 3 cartões `.ovb-card`):** número em etiqueta com borda, título, filete de 32px com brilho (cresce no hover) e a imagem embaixo, subindo 10px por trás do texto com a parte de cima dissolvida. De 561 a 900px os cartões deitam (texto à esquerda, imagem à direita); até 560px empilham. As imagens `bonus-vlog/ebook/mapa.webp` já servem.
+  - **Preço (`.ov-buy`, cartão próprio):** valor à esquerda com traço turquesa sob “6x de R$ 8,82” (“6x de R$” e “,82” passaram de `--muted` para creme; tamanhos iguais), fio vertical e, à direita, botão com brilho, “R$ 47,00 à vista · ou 6x de R$ 8,82” (`.ov-sum`) e cadeado + “Pagamento seguro • Acesso imediato” (`.ov-safe`). Até 900px empilha.
+  - Saíram o bloco único `.ov`, as faixas `.ovb-row`/`.flip` e os conectores “+” (`.ovb-op`).
+  - Fontes, tamanhos e pesos iguais aos de antes. Checkout ainda `href="#"` (`#checkout-link`).
 - **Garantia (13/09, versão 2 "certificado" do comparador `audit-visual/guarantee-options/`):**
   - `aside.gcert` com moldura dupla, cantos turquesa e anéis finos irradiando do topo.
   - Medalha com o texto circular "7 dias de garantia · 7 dias de garantia ·" **girando devagar** (`@keyframes gcertSpin`, 28s linear infinito, pedido do usuário) em volta do "7" em Fraunces itálico sobre disco turquesa.

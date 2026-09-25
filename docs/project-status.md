@@ -4,6 +4,52 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Mapa: carta de navegação no fundo do card — 24/09/2026
+
+- Imagem do usuário (prompt `human-output/image/gancho-mapa/03-carta-navy-lupa.txt`) no lugar da serra: `assets/images/mapa-carta.webp`, por baixo do navy translúcido, na largura inteira do card, com alto e base dissolvidos no arquivo. Lupa sobre “FORMAÇÃO”/passo 1 e rosa dos ventos junto do passo 6; no celular, lupa em volta do passo 1.
+- Celular (até 760px): imagem vertical do usuário, `assets/images/mapa-carta-m.webp`, cobrindo o card; só imagem e posição mudaram, a camada navy é a mesma. Conferido em 320, 375 e 740px, sem overflow.
+- Conferido por captura em 320, 375, 1024 e 1358px, sem overflow horizontal.
+
+## Mapa: paisagem de fundo no painel — 24/09/2026
+
+- Imagem do usuário (serra noturna) no alto do painel de vidro, como no protótipo: `assets/images/mapa-montanhas.webp` (48 KB, base transparente embutida). Curvas de nível removidas; halo navy nos rótulos. Entre 761 e 1100px a imagem sobe 44px para o clarão não ficar atrás de “PRIMEIRA OPORTUNIDADE”.
+- Conferido por captura em 320, 375, 768, 1024, 1358 e 1920px, sem overflow horizontal.
+- Em teste: imagem cobrindo o card inteiro (`mapa-montanhas-inteira.webp`, `cover`), para o usuário comparar com a versão só no alto.
+- Ajuste do usuário (mesmo dia): a imagem estava forte demais por cima. Voltou o navy translúcido do painel por cima dela; a serra aparece apagada, por transparência.
+
+## Oferta: estrutura do protótipo do usuário — 24/09/2026
+
+- Título centralizado; entregas em dois cartões com ícone (play, calendário) e capa à direita; três bônus em cartões com número, título, filete e imagem; preço num cartão próprio com botão, resumo do valor e “Pagamento seguro • Acesso imediato”.
+- Imagens: as dos bônus já servem; as capas das entregas são provisórias (`how-aulas` e recorte de `how-encontro`), trocáveis só pelo arquivo.
+- Fontes, tamanhos e pesos preservados. Conferido por captura (Chrome headless) em 320, 375, 768, 1024, 1358, 1440 e 1920px: sem overflow horizontal e sem erros de console.
+
+## Hero: teste do aviso integrado ao botão — 24/09/2026
+
+- Versão em teste solicitada pelo usuário: CTA em um único link com chamada turquesa e faixa inferior navy contendo o aviso de vagas. Cantos de 22 px, largura de 340 px no desktop e largura disponível no celular. Textos originais preservados.
+- Toda a superfície, incluindo a faixa, leva a `#oferta`. Nome acessível “QUERO PARTICIPAR” e aviso associado como descrição; foco visível no conjunto inteiro. Removidos o losango e a composição editorial separados.
+- Conferido visualmente pelo servidor local em desktop e mobile. Em 320, 375, 560, 768, 1024 e 1440 px: sem overflow horizontal, texto sem corte, foco do CTA e link `#oferta` preservados, sem erros de JavaScript. Capturas em `audit-visual/hero-availability/`.
+- Alterações em `index.html`; nenhuma nova pendência.
+
+## Garantia: card conforme protótipo e selo fornecido — 24/09/2026
+
+- Após aprovação do vidro, fundo ajustado para azul-marinho `rgba(18,30,70,.94)`, menos transparente, com reflexo azulado mais discreto para harmonizar com a página. Mantidos o acabamento de vidro, as linhas e os círculos; fallback sólido na mesma cor.
+- Versão atual, a pedido do usuário: glassmorphism em navy, superfície translúcida com `backdrop-filter`, reflexo diagonal suave e bordas claras. Retirada a faixa interna espessa. Linhas, círculos, selo, textos e medidas preservados. Fallback opaco para ausência de suporte, transparência reduzida ou contraste aumentado; sem novas animações. Conferido visualmente em desktop/mobile, sem overflow ou erros de 320 a 1920 px.
+- Refinamento solicitado após comparação com o protótipo: bordas em ciano azulado (`#24B7D3`), contorno externo menos intenso, faixa interna azul-marinho e cantos mais finos. Reflexos superior e inferior menores e mais suaves. Medidas, selo e textos preservados; desktop e mobile revalidados sem overflow ou erros.
+- Aplicado o PNG transparente original `assets/Imagem do ChatGPT 24 de set. de 2026, 17_24_20.png`, com dimensões explícitas e carregamento tardio. O selo vetorial anterior e sua rotação foram removidos.
+- Card centralizado com moldura dupla navy/turquesa, cantos arredondados destacados, reflexos estáticos nas bordas e círculos discretos centrados no selo. “Satisfação total” destacado em turquesa sólido; título e texto preservados integralmente.
+- Mobile com selo e círculos menores, tipografia e espaçamento próprios. Mantida a entrada `.reveal` e o suporte a movimento reduzido.
+- Conferido no servidor local em Chromium, de 320 a 1920 px: sem overflow horizontal, imagem carregada, entrada visível e nenhum erro de JavaScript ou resposta HTTP com erro. Capturas em `audit-visual/garantia-prototipo/`.
+- Nenhum novo placeholder ou pendência; mantidas as pendências de conteúdo já registradas.
+
+## FAQ: interrogação e ECG refinados — 24/09/2026
+
+- Removido posteriormente, a pedido do usuário, o rótulo “Dúvidas frequentes” acima do título, junto com seu traço e CSS exclusivo.
+- Interrogação redesenhada em SVG com curva mais ampla, terminais retos e ponto maior, seguindo a referência enviada. Contorno turquesa fino com variação discreta de opacidade.
+- Interrogação e ECG compartilham uma prancheta no desktop: batimento entre a haste e o ponto, curva de fundo suave e pequeno realce na linha horizontal. Posição ancorada ao topo para não deslocar ao abrir respostas.
+- No mobile, interrogação menor à direita do título e ECG na base. Sem novas animações, imagens raster ou dependências na página.
+- Validado pelo servidor local em Chromium: 320, 375, 768, 980, 981, 1024, 1440 e 1920 px, sem overflow horizontal ou erros de JavaScript. Conferidos acordeão exclusivo, Enter e movimento reduzido. Conteúdo do FAQ idêntico ao anterior.
+- Capturas e relatório locais em `audit-visual/faq-refinement/`. Placeholders anteriores preservados.
+
 ## FAQ recriada com aparência premium — 24/09/2026
 
 - **Pedido do usuário:** briefing detalhado com referência, para recriar a seção em código, leve e responsiva.

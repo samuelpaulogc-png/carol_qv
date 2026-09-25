@@ -1,0 +1,15 @@
+MAPA — par de marcadores 3D, travado e livre (fundo do card "Existe um caminho entre onde você está e onde quer chegar")
+
+Crie uma imagem horizontal 16:9, em alta resolução, para ser o fundo de um card escuro de site.
+
+Cena: dois marcadores de localização em 3D (o ícone de "pin" de mapa: gota invertida com um furo redondo no meio), grandes, flutuando sobre um fundo azul-marinho quase preto e liso.
+- À esquerda: o marcador "onde você está". Feito de vidro fosco azul-marinho escuro, apagado, sem luz própria. Está preso por correntes metálicas grossas e escuras, que se enrolam em volta dele e saem pelas bordas da imagem. Levemente inclinado, como se estivesse travado.
+- À direita: o mesmo marcador, "onde quer chegar". Livre, sem correntes, em pé e firme. Aceso por dentro com uma luz turquesa (#2AD2C1) suave, com contorno de luz nas bordas e um brilho discreto em volta, como se fosse o destino.
+
+Composição: cada marcador ocupa cerca de 70% da altura da imagem. O da esquerda fica no terço esquerdo e o da direita no terço direito; os dois podem ser cortados de leve pelas bordas laterais. O terço central fica vazio e escuro, só com o fundo liso, porque ali vão o título e uma linha de batimento. Os dois estão na mesma altura.
+
+Estilo: render 3D de estúdio, limpo e premium, materiais realistas (vidro fosco, metal escovado), iluminação suave de recorte, profundidade de campo curta, sombras profundas. Sem aparência de desenho animado.
+
+Cor: fundo azul-marinho muito escuro (#080C22 a #0C1236). Marcador da esquerda em azul-marinho (#1D2864) com reflexos frios; correntes em grafite azulado. Marcador da direita em turquesa (#2AD2C1 a #45E4D3). Nada de vermelho, laranja, amarelo ou roxo.
+
+Evite: textos, letras, números, logotipos, marcas d'água, pessoas, mãos, mapas desenhados, qualquer objeto no terço central e fundo com textura ou cenário.

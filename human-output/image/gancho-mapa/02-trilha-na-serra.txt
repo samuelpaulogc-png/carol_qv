@@ -1,0 +1,13 @@
+MAPA — serra noturna com trilha de luz (fundo do card "Existe um caminho entre onde você está e onde quer chegar")
+
+Crie uma imagem horizontal 16:9, em alta resolução, para ser o fundo de um card escuro de site.
+
+Cena: vista aérea, de noite, de uma cadeia de montanhas com névoa nos vales. Uma trilha fina de luz turquesa (#2AD2C1), como pequenos pontos luminosos em sequência, sobe pela serra: começa apagada e quase invisível no canto de baixo à esquerda, atravessa os vales e termina no topo da montanha mais alta, à direita, onde há um ponto de luz turquesa mais forte, como um destino aceso. Atrás desse topo, no horizonte, um clarão frio e suave.
+
+Composição: a trilha e o topo aceso ficam na metade de baixo e no lado direito. O céu, na metade de cima, é quase preto e liso, sem estrelas nem nuvens marcadas, porque ali vai o título. O centro da imagem tem pouco detalhe; a trilha passa por ele fina e discreta.
+
+Estilo: fotografia realista e cinematográfica de paisagem, lente grande-angular, névoa volumétrica, granulação fina de filme, sombras profundas e contraste baixo. Clima silencioso e de expectativa.
+
+Cor: tudo em azul-marinho (#080C22 a #1D2864) e azul-petróleo. Só a trilha, o topo e o clarão têm turquesa. Nada de vermelho, laranja, amarelo, roxo ou dourado.
+
+Evite: textos, letras, números, logotipos, marcas d'água, pessoas, animais, construções, estradas, placas e linhas em zigue-zague ou de batimento cardíaco (a página já desenha a sua por cima).
