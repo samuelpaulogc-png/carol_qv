@@ -1,0 +1,34 @@
+Anexe a imagem de referência (selos + formas de pagamento) junto com este prompt.
+
+---
+
+Refaça a imagem anexada mantendo exatamente a mesma composição, mas com a identidade visual abaixo. É uma faixa de selos de confiança para ficar logo abaixo do botão de compra de uma landing page escura.
+
+COMPOSIÇÃO (igual à referência)
+- Linha de cima: três selos lado a lado, cada um com um ícone de linha à esquerda e o texto em duas linhas à direita, separados por fios verticais finos:
+  1. Escudo com um check dentro — "Checkout / Seguro"
+  2. Troféu com uma estrela dentro — "Satisfação / Garantida"
+  3. Cadeado com o buraco da fechadura — "Privacidade / Protegida"
+- Linha de baixo: as formas de pagamento em fila, separadas por pontinhos redondos: Pix · Visa · Mastercard · Elo · PayPal · Boleto (código de barras com a palavra BOLETO).
+- Tudo centralizado, com bastante respiro, alinhamento perfeito e o mesmo espaçamento entre os itens.
+
+FUNDO
+- Fundo TRANSPARENTE (PNG com canal alfa). Se não for possível, fundo sólido azul-marinho #0C1236, liso, sem textura.
+
+CORES (só estas)
+- Contorno dos ícones: creme #ECF0F8, traço fino e uniforme, cantos arredondados.
+- Detalhe de dentro de cada ícone (o check, a estrela, a fechadura): turquesa #2AD2C1, preenchido.
+- Fios verticais entre os selos e pontinhos entre as formas de pagamento: turquesa #2AD2C1.
+- Textos dos selos: creme #ECF0F8.
+- Logos de pagamento: monocromáticos em cinza-ardósia claro #8794AC, todos no mesmo tom, inclusive o Mastercard (os dois círculos em cinza, um com contorno, sem vermelho nem laranja).
+- Nada de laranja, vermelho, dourado ou qualquer outra cor.
+
+ESTILO
+- Ícones de linha minimalistas, traço de espessura única, no estilo de ícones de interface (como Lucide ou Feather), sem sombra, sem 3D, sem brilho, sem degradê.
+- Texto em sans-serif geométrica limpa, peso médio, parecida com Hanken Grotesk. Letras nítidas, acentos corretos: "Satisfação" com ç e ã.
+- Visual premium, sóbrio e plano. Sem efeitos de neon, sem reflexos, sem moldura, sem caixa em volta.
+
+FORMATO
+- Proporção 3:1, alta resolução (por exemplo 2400 × 800 px).
+- Não acrescente nenhum texto, ícone ou logo além dos listados.
+- Os textos precisam estar escritos exatamente assim: "Checkout Seguro", "Satisfação Garantida", "Privacidade Protegida", "BOLETO".

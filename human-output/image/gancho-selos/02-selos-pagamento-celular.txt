@@ -1,0 +1,11 @@
+Use depois de aprovar a versão larga (01), anexando a imagem que o ChatGPT gerou.
+
+---
+
+Crie uma versão para celular desta mesma imagem, com as mesmas cores, ícones, fonte e estilo, só reorganizada para uma tela estreita:
+
+- Proporção 4:5 (por exemplo 1200 × 1500 px), fundo transparente (ou azul-marinho liso #0C1236).
+- No alto, os três selos em três colunas lado a lado, cada um com o ícone EM CIMA e o texto centralizado embaixo, em duas linhas: "Checkout / Seguro", "Satisfação / Garantida", "Privacidade / Protegida". Fios verticais turquesa #2AD2C1 entre as colunas.
+- Embaixo, as formas de pagamento em duas linhas de três, centralizadas: Pix · Visa · Mastercard / Elo · PayPal · Boleto, com pontinhos turquesa entre elas.
+- Ícones e textos grandes o bastante para ler numa tela de celular.
+- Não acrescente nenhum texto, ícone ou logo além dos que já estão na imagem.

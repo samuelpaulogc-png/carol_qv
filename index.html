@@ -189,6 +189,21 @@
     .btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
   }
   .btn:active,.btn.is-pressed{transform:scale(.97)}
+  /* Reflexo nos CTAs: 1,2 s de passagem e 4,8 s de descanso.
+     Camada atrás do texto, recortada pelo botão; só transform/opacity animam. */
+  :root{--motion-shine-cycle:6s}
+  .btn-shine{position:relative;isolation:isolate;overflow:hidden}
+  .btn-shine::after{content:"";position:absolute;z-index:-1;inset:-30% 0;pointer-events:none;
+    background:linear-gradient(110deg,transparent 34%,rgba(255,255,255,.12) 43%,rgba(255,255,255,.38) 50%,rgba(255,255,255,.12) 57%,transparent 66%);
+    transform:translateX(-100%);opacity:0;animation:ctaShine var(--motion-shine-cycle) linear infinite;animation-play-state:var(--shine-play-state,paused)}
+  @keyframes ctaShine{
+    0%{transform:translateX(-100%);opacity:0}
+    2%{opacity:1}
+    18%{opacity:1}
+    20%,100%{transform:translateX(100%);opacity:0}
+  }
+  .btn-shine:focus-visible::after,.hero-enroll:focus-visible .btn-shine::after{animation:none}
+  @media(prefers-reduced-motion:reduce){.btn-shine::after{display:none;animation:none}}
   .btn-ghost{
     background:transparent;color:var(--cream);border:1px solid var(--line);
     box-shadow:none;flex-direction:row;gap:8px;
@@ -1418,6 +1433,36 @@
   background:radial-gradient(90% 140% at 0% 0%,rgba(42,210,193,.08),transparent 58%),var(--ov-card-bg)}
 .offer-sec .ov-buy::after{content:"";position:absolute;z-index:3;bottom:-1px;left:30%;right:30%;height:1px;pointer-events:none;
   background:linear-gradient(90deg,transparent,rgba(69,228,211,.75) 50%,transparent);box-shadow:0 0 12px rgba(42,210,193,.35)}
+/* Cartão do preço em vidro espelhado (protótipo do usuário, 26/09): navy translúcido com desfoque, reflexo diagonal
+   no canto de cima à direita e borda fina clara que acende em turquesa no alto, na lateral esquerda e no canto de
+   baixo à direita. A luz desses pontos entra um pouco no vidro (::after, abaixo do conteúdo). */
+.offer-sec .offer-list .ov-buy{--buy-r:24px;--buy-lit:69,228,211;overflow:visible;border-color:transparent;border-radius:var(--buy-r);
+  background:
+    linear-gradient(212deg,rgba(170,205,255,.11) 0%,rgba(170,205,255,.045) 20%,transparent 38%),
+    linear-gradient(32deg,rgba(0,0,0,.18),transparent 45%),
+    radial-gradient(90% 140% at 0% 0%,rgba(42,210,193,.07),transparent 58%),
+    linear-gradient(180deg,rgba(20,32,78,.66),rgba(9,14,42,.8));
+  -webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%);
+  box-shadow:inset 0 1px 0 rgba(238,247,255,.08),0 40px 80px -48px #000}
+.offer-sec .offer-list .ov-buy::before,.offer-sec .offer-list .ov-buy::after{content:"";position:absolute;inset:-1px;width:auto;height:auto;left:-1px;right:-1px;
+  border-radius:var(--buy-r);pointer-events:none;box-shadow:none}
+/* borda: fio claro de vidro + trechos turquesa acesos */
+.offer-sec .offer-list .ov-buy::before{z-index:3;padding:1.25px;filter:drop-shadow(0 0 5px rgba(42,210,193,.55));
+  background:
+    radial-gradient(ellipse 72% 42% at 16% 0%,rgba(var(--buy-lit),.95),rgba(var(--buy-lit),.35) 55%,transparent 80%),
+    radial-gradient(ellipse 30% 70% at 0% 22%,rgba(var(--buy-lit),.8),transparent 75%),
+    radial-gradient(ellipse 48% 62% at 100% 100%,rgba(var(--buy-lit),.95),rgba(var(--buy-lit),.3) 55%,transparent 80%),
+    linear-gradient(rgba(176,206,245,.2),rgba(176,206,245,.2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+/* a luz dos trechos acesos, difusa, entrando no vidro */
+.offer-sec .offer-list .ov-buy::after{z-index:-1;
+  background:
+    radial-gradient(ellipse 60% 26% at 14% 0%,rgba(42,210,193,.13),transparent 70%),
+    radial-gradient(ellipse 14% 40% at 0% 20%,rgba(42,210,193,.08),transparent 70%),
+    radial-gradient(ellipse 36% 38% at 100% 100%,rgba(42,210,193,.14),transparent 70%)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.offer-sec .offer-list .ov-buy{background-color:#0f1840}}
+@media(prefers-reduced-transparency:reduce){.offer-sec .offer-list .ov-buy{background-color:#0f1840;-webkit-backdrop-filter:none;backdrop-filter:none}}
 .offer-sec .ov-rule{display:block;align-self:stretch;width:1px;background:linear-gradient(180deg,transparent,var(--line) 20%,var(--line) 80%,transparent)}
 .offer-sec .ov-old{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(135,148,172,.7)}
 .offer-sec .ov-amount{margin:8px 0 0;padding-bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.5rem,6vw,5.25rem);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap;
@@ -1430,11 +1475,10 @@
 .offer-sec .ov-buy .btn{width:100%;max-width:560px;min-height:64px;padding:18px 30px;gap:12px;font-size:1rem;line-height:1.3;box-shadow:0 0 34px -8px rgba(42,210,193,.55),0 12px 28px -16px rgba(42,210,193,.55),inset 0 1px 0 rgba(255,255,255,.4)}
 .offer-sec .ov-buy .btn svg{flex:none;width:18px;height:18px;transition:transform var(--motion-press) var(--ease-out)}
 @media(hover:hover) and (pointer:fine){.offer-sec .ov-buy .btn:hover svg{transform:translateX(3px)}}
-.offer-sec .ov-sum{margin-top:4px;font-size:1rem;font-weight:500;line-height:1.4;color:var(--cream)}
-.offer-sec .ov-safe{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;font-size:.875rem;line-height:1.4;color:var(--muted)}
-.offer-sec :is(.ov-sum,.ov-safe)>span{white-space:nowrap}
-.offer-sec .ov-dot{margin-right:8px}
-.offer-sec .ov-safe svg{flex:none;width:16px;height:16px;color:var(--mint)}
+/* Selos abaixo do botão: imagem com fundo transparente, um pouco mais estreita que o botão no computador (480px). */
+.offer-sec .ov-seals{width:100%;max-width:480px;height:auto;margin-top:12px}
+/* No computador, a base dos selos fica rente à linha “ou R$ 47,00 à vista” do lado (pedido do usuário, com print). */
+@media(min-width:901px){.offer-sec .ov-cta{align-self:end}.offer-sec .ov-seals{margin-top:28px}}
 
 @media(max-width:1100px){
  .offer-sec .ov-core{grid-template-columns:minmax(0,1fr)}
@@ -1454,8 +1498,8 @@
  .offer-sec .ov-rule{width:auto;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
  .offer-sec .ov-amount{font-size:3.75rem}
  .offer-sec .ov-cta{justify-items:start;text-align:left}
- .offer-sec .ov-safe{justify-content:flex-start}
  .offer-sec .ov-buy .btn{max-width:460px}
+ .offer-sec .ov-seals{max-width:460px}
 }
 @media(max-width:560px){
  .offer-sec .ov-core li{grid-template-columns:auto minmax(0,1fr);column-gap:14px;min-height:0;padding:calc(56.25% - 12px) 20px 24px}
@@ -1471,10 +1515,24 @@
  .offer-sec .ovb-art img{object-position:var(--art-pos,50% 0)}
  .offer-sec .ov-buy .btn{font-size:.9375rem;padding-inline:18px;gap:8px}
  .offer-sec .ov-cta{justify-items:stretch}
+ .offer-sec .ov-seals{margin-top:22px}
+ /* Preço no celular (protótipo do usuário, 26/09): tudo centralizado; “ou” entre dois fios, o valor à vista em
+    destaque turquesa (mesma fonte e tamanho do “8”) e “à vista” embaixo. O texto é o mesmo do computador. */
+ .offer-sec .ov-price{text-align:center}
+ .offer-sec .ov-old{margin-inline:auto}
+ .offer-sec .ov-amount{padding-bottom:0;border-bottom:0}
+ .offer-sec .ov-parc{display:grid;justify-items:center;margin-top:18px;color:var(--copy-readable)}
+ .offer-sec .ov-parc .op-ou{display:flex;align-items:center;gap:16px;width:100%;max-width:260px;font-size:1rem}
+ .offer-sec .ov-parc .op-ou::before,.offer-sec .ov-parc .op-ou::after{content:"";flex:1;height:1px}
+ .offer-sec .ov-parc .op-ou::before{background:linear-gradient(90deg,transparent,rgba(42,210,193,.45))}
+ .offer-sec .ov-parc .op-ou::after{background:linear-gradient(90deg,rgba(42,210,193,.45),transparent)}
+ .offer-sec .ov-parc b{margin-top:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.75rem,15vw,3.75rem);font-weight:600;
+   line-height:1;letter-spacing:-.02em;white-space:nowrap;color:var(--mint-bright);text-shadow:0 0 28px rgba(42,210,193,.35)}
+ .offer-sec .ov-parc .op-vista{margin-top:6px;font-size:1rem}
+ .offer-sec .ov-rule{background:linear-gradient(90deg,transparent,var(--line) 15%,rgba(69,100,220,.55) 50%,var(--line) 85%,transparent)}
 }
 @media(max-width:360px){
  .offer-sec .ov-buy .btn{font-size:.875rem;letter-spacing:.02em;padding-inline:14px}
- .offer-sec .ov-dot{display:none}
 }
 
 /* Garantia: vidro navy translúcido, reflexo diagonal e bordas iluminadas.
@@ -1859,7 +1917,7 @@
         <div class="cta-group">
           <div class="hero-cta-slot">
             <a href="#oferta" class="btn hero-enroll" aria-labelledby="hero-cta-label" aria-describedby="hero-availability-text">
-              <span class="hero-enroll-main"><span id="hero-cta-label">QUERO PARTICIPAR</span> <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
+              <span class="hero-enroll-main btn-shine"><span id="hero-cta-label">QUERO PARTICIPAR</span> <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
               <span class="hero-availability" id="hero-availability-text"><span class="hero-availability-copy"><strong>Vagas limitadas</strong> <span>para o encontro ao vivo</span></span></span>
             </a>
           </div>
@@ -2042,7 +2100,7 @@
       </div>
       <div class="map-action reveal">
       <span class="map-note">Os 6 passos serão revelados exclusivamente no encontro ao vivo.</span>
-      <a href="#oferta" class="btn">QUERO DESCOBRIR <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      <a href="#oferta" class="btn btn-shine">QUERO DESCOBRIR <svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -2068,7 +2126,7 @@
         <span class="badge">22 de outubro • 20h • Online e ao vivo</span>
       </div>
     </div>
-    <div class="how-cta reveal"><a href="#oferta" class="btn">QUERO ESTAR NO ENCONTRO AO VIVO</a></div>
+    <div class="how-cta reveal"><a href="#oferta" class="btn btn-shine">QUERO ESTAR NO ENCONTRO AO VIVO</a></div>
   </div>
 </section>
 
@@ -2222,14 +2280,14 @@
         <div class="ov-price">
           <p class="ov-old">DE R$ 297,00</p>
           <p class="ov-amount"><span class="cur">6x de R$</span>8<span class="cents">,82</span></p>
-          <p class="ov-parc">ou <b>R$ 47,00</b> à vista</p>
+          <p class="ov-parc"><span class="op-ou">ou</span> <b>R$ 47,00</b> <span class="op-vista">à vista</span></p>
         </div>
         <span class="ov-rule" aria-hidden="true"></span>
         <div class="ov-cta">
           <!-- SUBSTITUIR href pelo link do checkout -->
-          <a href="#" class="btn" id="checkout-link">QUERO PARTICIPAR DO GANCHO DA VIRADA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-          <p class="ov-sum"><span>R$ 47,00 à vista</span> · <span>ou 6x de R$ 8,82</span></p>
-          <p class="ov-safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Pagamento seguro</span><span><span class="ov-dot" aria-hidden="true">•</span>Acesso imediato</span></p>
+          <a href="#" class="btn btn-shine" id="checkout-link">QUERO PARTICIPAR DO GANCHO DA VIRADA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <!-- Selos (26/09): primeira linha da imagem do usuário (assets/bandeiras.png), sem as bandeiras. -->
+          <img class="ov-seals" src="assets/images/selos-compra.webp" srcset="assets/images/selos-compra-1120.webp 1120w, assets/images/selos-compra.webp 1841w" sizes="(max-width: 560px) calc(100vw - 96px), 480px" alt="Checkout seguro, satisfação garantida e privacidade protegida." width="1841" height="178" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2331,7 +2389,7 @@
   <div class="wrap reveal">
     <h2>Você já aprendeu a instrumentar.<br><span class="serif">Agora descubra o caminho entre a sua formação e a sua primeira oportunidade.</span></h2>
     <p class="steps-line">Eu organizei essa jornada em 6 passos.<br><b>Talvez você já tenha percorrido alguns.</b> Talvez esteja travado em um deles. Talvez esteja mais perto do que imagina.<br>Mas primeiro você precisa descobrir <b>onde está.</b></p>
-    <a href="#oferta" class="btn">QUERO CONHECER OS 6 PASSOS DA VIRADA</a>
+    <a href="#oferta" class="btn btn-shine">QUERO CONHECER OS 6 PASSOS DA VIRADA</a>
   </div>
 </section>
 
@@ -2488,7 +2546,7 @@
   const motionToggle = document.querySelector('.motion-toggle');
   // A linha de batimento da citação é observada pelo <svg>, não pelo <path>: a caixa do SVG é detectada na tela em
   // qualquer navegador, e o estado de pausa vai para o <path>, que é quem anima.
-  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg,svg:has(animateMotion)')];
+  const continuousMotion = [...document.querySelectorAll('.marquee,.quote-ecg,svg:has(animateMotion),.btn-shine')];
   const visibleMotion = new Set('IntersectionObserver' in window ? [] : continuousMotion);
   const syncContinuousMotion = () => {
     document.documentElement.classList.toggle('motion-paused', automaticMotionPaused);
@@ -2502,6 +2560,8 @@
       if (element.matches('svg:has(animateMotion)')) {
         if (paused) element.pauseAnimations();
         else element.unpauseAnimations();
+      } else if (element.matches('.btn-shine')) {
+        element.style.setProperty('--shine-play-state', paused ? 'paused' : 'running');
       } else (element.matches('.quote-ecg') ? element.querySelector('path') : element).style.animationPlayState = paused ? 'paused' : 'running';
     });
     document.dispatchEvent(new Event('automaticmotionchange'));
