@@ -1433,6 +1433,36 @@
   background:radial-gradient(90% 140% at 0% 0%,rgba(42,210,193,.08),transparent 58%),var(--ov-card-bg)}
 .offer-sec .ov-buy::after{content:"";position:absolute;z-index:3;bottom:-1px;left:30%;right:30%;height:1px;pointer-events:none;
   background:linear-gradient(90deg,transparent,rgba(69,228,211,.75) 50%,transparent);box-shadow:0 0 12px rgba(42,210,193,.35)}
+/* Cartão do preço em vidro espelhado (protótipo do usuário, 26/09): navy translúcido com desfoque, reflexo diagonal
+   no canto de cima à direita e borda fina clara que acende em turquesa no alto, na lateral esquerda e no canto de
+   baixo à direita. A luz desses pontos entra um pouco no vidro (::after, abaixo do conteúdo). */
+.offer-sec .offer-list .ov-buy{--buy-r:24px;--buy-lit:69,228,211;overflow:visible;border-color:transparent;border-radius:var(--buy-r);
+  background:
+    linear-gradient(212deg,rgba(170,205,255,.11) 0%,rgba(170,205,255,.045) 20%,transparent 38%),
+    linear-gradient(32deg,rgba(0,0,0,.18),transparent 45%),
+    radial-gradient(90% 140% at 0% 0%,rgba(42,210,193,.07),transparent 58%),
+    linear-gradient(180deg,rgba(20,32,78,.66),rgba(9,14,42,.8));
+  -webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%);
+  box-shadow:inset 0 1px 0 rgba(238,247,255,.08),0 40px 80px -48px #000}
+.offer-sec .offer-list .ov-buy::before,.offer-sec .offer-list .ov-buy::after{content:"";position:absolute;inset:-1px;width:auto;height:auto;left:-1px;right:-1px;
+  border-radius:var(--buy-r);pointer-events:none;box-shadow:none}
+/* borda: fio claro de vidro + trechos turquesa acesos */
+.offer-sec .offer-list .ov-buy::before{z-index:3;padding:1.25px;filter:drop-shadow(0 0 5px rgba(42,210,193,.55));
+  background:
+    radial-gradient(ellipse 72% 42% at 16% 0%,rgba(var(--buy-lit),.95),rgba(var(--buy-lit),.35) 55%,transparent 80%),
+    radial-gradient(ellipse 30% 70% at 0% 22%,rgba(var(--buy-lit),.8),transparent 75%),
+    radial-gradient(ellipse 48% 62% at 100% 100%,rgba(var(--buy-lit),.95),rgba(var(--buy-lit),.3) 55%,transparent 80%),
+    linear-gradient(rgba(176,206,245,.2),rgba(176,206,245,.2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+/* a luz dos trechos acesos, difusa, entrando no vidro */
+.offer-sec .offer-list .ov-buy::after{z-index:-1;
+  background:
+    radial-gradient(ellipse 60% 26% at 14% 0%,rgba(42,210,193,.13),transparent 70%),
+    radial-gradient(ellipse 14% 40% at 0% 20%,rgba(42,210,193,.08),transparent 70%),
+    radial-gradient(ellipse 36% 38% at 100% 100%,rgba(42,210,193,.14),transparent 70%)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.offer-sec .offer-list .ov-buy{background-color:#0f1840}}
+@media(prefers-reduced-transparency:reduce){.offer-sec .offer-list .ov-buy{background-color:#0f1840;-webkit-backdrop-filter:none;backdrop-filter:none}}
 .offer-sec .ov-rule{display:block;align-self:stretch;width:1px;background:linear-gradient(180deg,transparent,var(--line) 20%,var(--line) 80%,transparent)}
 .offer-sec .ov-old{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(135,148,172,.7)}
 .offer-sec .ov-amount{margin:8px 0 0;padding-bottom:14px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.5rem,6vw,5.25rem);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--cream);white-space:nowrap;
@@ -1485,6 +1515,21 @@
  .offer-sec .ovb-art img{object-position:var(--art-pos,50% 0)}
  .offer-sec .ov-buy .btn{font-size:.9375rem;padding-inline:18px;gap:8px}
  .offer-sec .ov-cta{justify-items:stretch}
+ .offer-sec .ov-seals{margin-top:22px}
+ /* Preço no celular (protótipo do usuário, 26/09): tudo centralizado; “ou” entre dois fios, o valor à vista em
+    destaque turquesa (mesma fonte e tamanho do “8”) e “à vista” embaixo. O texto é o mesmo do computador. */
+ .offer-sec .ov-price{text-align:center}
+ .offer-sec .ov-old{margin-inline:auto}
+ .offer-sec .ov-amount{padding-bottom:0;border-bottom:0}
+ .offer-sec .ov-parc{display:grid;justify-items:center;margin-top:18px;color:var(--copy-readable)}
+ .offer-sec .ov-parc .op-ou{display:flex;align-items:center;gap:16px;width:100%;max-width:260px;font-size:1rem}
+ .offer-sec .ov-parc .op-ou::before,.offer-sec .ov-parc .op-ou::after{content:"";flex:1;height:1px}
+ .offer-sec .ov-parc .op-ou::before{background:linear-gradient(90deg,transparent,rgba(42,210,193,.45))}
+ .offer-sec .ov-parc .op-ou::after{background:linear-gradient(90deg,rgba(42,210,193,.45),transparent)}
+ .offer-sec .ov-parc b{margin-top:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.75rem,15vw,3.75rem);font-weight:600;
+   line-height:1;letter-spacing:-.02em;white-space:nowrap;color:var(--mint-bright);text-shadow:0 0 28px rgba(42,210,193,.35)}
+ .offer-sec .ov-parc .op-vista{margin-top:6px;font-size:1rem}
+ .offer-sec .ov-rule{background:linear-gradient(90deg,transparent,var(--line) 15%,rgba(69,100,220,.55) 50%,var(--line) 85%,transparent)}
 }
 @media(max-width:360px){
  .offer-sec .ov-buy .btn{font-size:.875rem;letter-spacing:.02em;padding-inline:14px}
@@ -2235,7 +2280,7 @@
         <div class="ov-price">
           <p class="ov-old">DE R$ 297,00</p>
           <p class="ov-amount"><span class="cur">6x de R$</span>8<span class="cents">,82</span></p>
-          <p class="ov-parc">ou <b>R$ 47,00</b> à vista</p>
+          <p class="ov-parc"><span class="op-ou">ou</span> <b>R$ 47,00</b> <span class="op-vista">à vista</span></p>
         </div>
         <span class="ov-rule" aria-hidden="true"></span>
         <div class="ov-cta">
