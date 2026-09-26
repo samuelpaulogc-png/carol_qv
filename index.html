@@ -524,7 +524,7 @@
     .hero{padding:0;background:#080C22}
     .hero-mobile-art{
       display:block;width:calc(100% + 48px);height:clamp(330px,90vw,430px);margin:0 -24px;
-      background:url('assets/images/Img_Mob.png') center bottom/100% auto no-repeat;
+      background:none center bottom/100% auto no-repeat;
       -webkit-mask-image:linear-gradient(to bottom,#000 82%,rgba(0,0,0,.35) 93%,transparent 100%);
       mask-image:linear-gradient(to bottom,#000 82%,rgba(0,0,0,.35) 93%,transparent 100%);
     }
@@ -630,7 +630,7 @@
 
   /* O mapa dobra o percurso; os seis passos continuam sem conteúdo revelado. */
   .map-stage{max-width:1080px;padding:32px 24px 24px;margin-bottom:40px;border:1px solid var(--line);border-radius:24px;background:var(--surface);isolation:isolate}
-  .map-stage::before{content:"";position:absolute;inset:0;z-index:-1;background:url('assets/images/journey-map.svg') center/cover no-repeat;opacity:.18;pointer-events:none}
+  .map-stage::before{content:"";position:absolute;inset:0;z-index:-1;background:none center/cover no-repeat;opacity:.18;pointer-events:none}
   .map-endpoint{font-size:clamp(.85rem,1.6vw,1.1rem);letter-spacing:.035em;gap:10px}
   .light .map-endpoint.end{color:var(--teal-ink)}
   .end .pin{box-shadow:0 0 0 5px rgba(0,251,138,.16)}
@@ -772,7 +772,7 @@
   #mapa .sec-head{max-width:none;margin:0 0 36px;text-align:left}
   #mapa .sec-head h2{max-width:760px;font-size:clamp(1.875rem,3.3vw,2.875rem);line-height:1.12;letter-spacing:-.025em;text-wrap:balance}
   #mapa .map-stage{max-width:none;padding:28px 32px 20px;margin:0 0 44px;background:var(--bg);border:1px solid var(--line);border-radius:24px;overflow:hidden}
-  #mapa .map-stage::before{background:url('assets/images/map-contours.svg') center/cover no-repeat;opacity:.5}
+  #mapa .map-stage::before{background:none center/cover no-repeat;opacity:.5}
   #mapa .map-endpoints{margin:0 0 20px;gap:16px}
   #mapa .map-endpoint{font-size:.875rem;font-weight:600;letter-spacing:.06em;gap:10px}
   #mapa .map-endpoint.start{color:var(--cream)}
@@ -912,7 +912,7 @@
 #mapa .map-copy .lines span{display:block}
 #mapa .map-copy .lines span+span{margin-top:14px}
 #mapa .map-stage{grid-area:map;min-width:0;margin:0 -48px;padding:24px 48px 12px;border:0;border-radius:0;background:none}
-#mapa .map-stage::before{background:url('assets/images/map-contours.svg') center/cover no-repeat;opacity:.26;mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent)}
+#mapa .map-stage::before{background:none center/cover no-repeat;opacity:.26;mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 75%,transparent)}
 #mapa .map-endpoints{margin-bottom:20px}
 #mapa .map-endpoint{font-size:.75rem;letter-spacing:.06em}
 #mapa .ecg-track{height:244px}
@@ -2286,7 +2286,7 @@
         <div class="ov-cta">
           <!-- SUBSTITUIR href pelo link do checkout -->
           <a href="#" class="btn btn-shine" id="checkout-link">QUERO PARTICIPAR DO GANCHO DA VIRADA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-          <!-- Selos (26/09): primeira linha da imagem do usuário (assets/bandeiras.png), sem as bandeiras. -->
+          <!-- Selos (26/09): primeira linha da imagem de selos do usuário, sem as bandeiras de pagamento. -->
           <img class="ov-seals" src="assets/images/selos-compra.webp" srcset="assets/images/selos-compra-1120.webp 1120w, assets/images/selos-compra.webp 1841w" sizes="(max-width: 560px) calc(100vw - 96px), 480px" alt="Checkout seguro, satisfação garantida e privacidade protegida." width="1841" height="178" loading="lazy" decoding="async">
         </div>
       </div>
@@ -2297,7 +2297,7 @@
         <span class="gcert-orbits" aria-hidden="true"></span>
         <i class="gcert-corner tl" aria-hidden="true"></i><i class="gcert-corner tr" aria-hidden="true"></i><i class="gcert-corner bl" aria-hidden="true"></i><i class="gcert-corner br" aria-hidden="true"></i>
         <div class="gcert-medal" aria-hidden="true">
-          <img src="assets/Imagem do ChatGPT 24 de set. de 2026, 17_24_20.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+          <img src="assets/images/garantia-selo.webp" srcset="assets/images/garantia-selo-480.webp 480w, assets/images/garantia-selo.webp 720w" sizes="(max-width: 560px) 184px, (max-width: 900px) 216px, 240px" alt="" width="720" height="720" loading="lazy" decoding="async">
         </div>
         <h4 id="garantia-titulo">Garantia de <span>satisfação total</span></h4>
         <p>A inscrição conta com 7 dias de garantia, conforme as condições da plataforma. Caso o participante entenda dentro desse período que o Gancho da Virada não é para ele, poderá solicitar o cancelamento seguindo as condições aplicáveis.</p>
