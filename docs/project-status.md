@@ -4,6 +4,22 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Oferta: selos abaixo do botão — 26/09/2026
+
+- Pedido do usuário: “R$ 47,00 à vista · ou 6x de R$ 8,82”, abaixo do botão de compra, repetia o preço do mesmo cartão. “3 aulas de preparação + encontro ao vivo” não agradou. Foi montado um comparador (`audit-visual/ov-sum-options/`, histórico), e o usuário gerou no ChatGPT uma faixa de selos e bandeiras (prompt `human-output/image/gancho-selos/01-selos-pagamento.txt`, arquivo `assets/bandeiras.png`).
+- As linhas `.ov-sum` e `.ov-safe` saíram, com o CSS delas.
+- Tentativas: imagem inteira (“muito grande”); selos em HTML com bandeiras, de 13px a 16px (“pequeno até demais”); selos em HTML de 18px sem bandeiras (“não tá bacana”).
+- **Versão final:** a primeira linha da imagem do usuário, sem as bandeiras (`img.ov-seals`, `assets/images/selos-compra.webp` 67 KB e `selos-compra-1120.webp` 44 KB), no tamanho das duas linhas antigas juntas: largura do botão (560px), 54px de altura, 68px abaixo do botão (antes, ~70px). 460px de 561 a 900px; largura toda no celular.
+- Ajuste do usuário: estava “muito colada ao botão” e, só no computador, grande. Agora há 24px entre o botão e a imagem, e no computador ela tem 480px (46px de altura). Em seguida, com print, pediu os selos rentes ao preço: no computador, a base deles se alinha à linha “ou R$ 47,00 à vista” (diferença de ~2px medida em 1024, 1440 e 1920px), com 40px até o botão.
+- Conferido em 320, 375, 560, 768, 1024, 1440 e 1920px: alinhada ao botão, sem overflow e sem erros de console. Página de conferência: `audit-visual/selos-pagamento/?w=375`. No celular o texto da imagem fica pequeno; há prompt para versão vertical.
+
+## Botões: brilho transversal — 26/09/2026
+
+- A pedido do usuário, aplicado efeito `shine sweep` aos cinco CTAs turquesa: hero, mapa, como funciona, checkout e encerramento. No hero, somente a faixa turquesa recebe o efeito; aviso inferior preservado.
+- Pseudoelemento atrás do texto, com gradiente branco translúcido. CSS anima apenas `transform` e `opacity`, com passagem linear de 1,2 s e descanso de 4,8 s; token `--motion-shine-cycle:6s`.
+- Integrado ao controle existente de animações: pausa fora da tela, com aba oculta ou pelo botão de pausa. Desativado com movimento reduzido e durante foco visível de teclado.
+- Conferido visualmente em 1440 e 375 px, sem overflow ou erros. Movimento, pausa, visibilidade e teclado verificados. Capturas em `audit-visual/cta-shine/`. Sem mudanças de copy, links ou pendências.
+
 ## Mapa: carta de navegação no fundo do card — 24/09/2026
 
 - Imagem do usuário (prompt `human-output/image/gancho-mapa/03-carta-navy-lupa.txt`) no lugar da serra: `assets/images/mapa-carta.webp`, por baixo do navy translúcido, na largura inteira do card, com alto e base dissolvidos no arquivo. Lupa sobre “FORMAÇÃO”/passo 1 e rosa dos ventos junto do passo 6; no celular, lupa em volta do passo 1.
