@@ -4,6 +4,15 @@ Resumo para continuar o trabalho em outro chat.
 
 Contexto consolidado: [handoff-claude.md](handoff-claude.md), atualizado em 12/09/2026. As entradas históricas podem incluir versões substituídas.
 
+## Limpeza de assets e conversão para WebP — 26/09/2026
+
+- Pedido do usuário: remover os assets sem uso e converter para WebP o que ainda não era.
+- Uso conferido no navegador, em 1440, 768 e 375px, rolando a página inteira com as imagens forçadas a carregar, e pelas referências do `index.html`. Nos `srcset`, as duas versões ficam.
+- Único arquivo em uso fora de WebP: o selo da garantia (`Imagem do ChatGPT … 17_24_20.png`, 1,28 MB). Virou `assets/images/garantia-selo.webp` (720px, 75 KB) e `garantia-selo-480.webp` (42 KB), com `srcset`/`sizes`; aparece igual.
+- Removidos: PNGs originais do ChatGPT (serra, carta, carta vertical e selo), `bandeiras.png`, `hero-equipe.webp`, `mapa-montanhas.webp`, `mapa-montanhas-inteira.webp`, `oferta-bonus(-900).webp`, `garantia-selo-320.webp` (selo antigo), `journey-map.svg` e `map-contours.svg`. Referências CSS mortas (os dois SVGs e `Img_Mob.png`, que já não existia) trocadas por `none` em regras sobrescritas; nada muda na tela.
+- `assets/hero-equipe.png` (fora do git) foi movido para `../Carol-assets-removidos/`, não apagado.
+- Resultado: `assets/` de 13 MB para 2,5 MB. Todas as 33 referências respondem 200 (exceto `arquivo.webp`, que só aparece em comentário); sem overflow em 320, 375, 768 e 1440px.
+
 ## Oferta: cartão do preço em vidro espelhado — 26/09/2026
 
 - Pedido do usuário, com protótipo: só o cartão do preço, sem fundo nem botão. Vidro navy translúcido com reflexo diagonal no canto de cima à direita e borda fina que acende em turquesa no alto, na esquerda e no canto de baixo à direita, com brilho suave. Cantos de 24px. Vale em todas as larguras.
